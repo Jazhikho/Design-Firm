@@ -1,0 +1,43 @@
+# Build and output
+/build/
+/dist/
+/out/
+*.exe
+*.dll
+*.so
+*.dylib
+*.o
+*.obj
+*.a
+*.lib
+
+# IDEs and editors
+.idea/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs and temp
+*.log
+*.tmp
+*.temp
+*.swp
+*~
+
+# Optional: uncomment when you choose a stack
+# Node
+# node_modules/
+# .env
+# .env.local
+# Python
+# __pycache__/
+# .venv/
+# venv/
+# *.pyc
