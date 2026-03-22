@@ -41,5 +41,5 @@
 1. Compile and save
 
 # References
-- [YouTube: USD to Unreal Engine Chaos Cloth Workflow]()
+- [YouTube: USD to Unreal Engine Chaos Cloth Workflow](https://www.youtube.com/watch?v=Nf6OUDoPCPs)
 - [YouTube: How to use MetaHumans in CLO](https://www.youtube.com/watch?v=LCtRMiPGLgc)
