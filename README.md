@@ -1,5 +1,9 @@
 # Fashion Styling Game
 
+**Sprint 53 Studio** — main studio page: [instagram.com/sprint53studio](https://www.instagram.com/sprint53studio).
+
+Material in this repository is owned by **Sprint 53 Studio** and licensed under the [MIT License](LICENSE).
+
 Interactive styling game for Dr. Trawick's History of Fashion course. Players assemble historically accurate outfits for given eras and receive teaching-focused feedback.
 
 ## Project structure
