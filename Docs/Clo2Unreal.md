@@ -1,14 +1,14 @@
 # Clo 3D
-1. Choose f_med_nrw_combined.avte
+1. Choose your avatar (e.g. f_med_nrw_combined.avte)
 1. Fit clothes to avatar
 1. Select patterns: 
-   1. reduce mesh density (18mm?)
-   1. set **Add’l thickness – collision** to *5mm*
-   1. set **Add’l thickness – rendering** to *3mm*
+   1. Reduce mesh density (18mm?)
+   1. Set **Add’l Thickness – Collision** to *5mm*
+   1. Set **Add’l Thickness – Rendering** to *3mm*
 1. Turn on simulation
-1. **File** -> **Export** -> **USD**
+1. In the main menu, select **File** -> **Export** -> **USD**
 1. In Export USD:
-   1. Unselect **Select All Avatars**
+   1. Unselect **Select All Avatars** and **Select All Scenes/Props**
    1. Select **Multiple Objects**
    1. Select **Thick**
    1. Select **Unified UV Coordinates**
@@ -16,7 +16,6 @@
  
 # Unreal Engine
 1. Install Substance 3D plugin (free from Fab)
-1. Install CloLiveSync from: LiveSync version archive – Help Center - CONNECT (I don't think this is necessary for this workflow)
 1. In the main menu, go to **Edit** -> **Project Settings…**
 1. Search for ‘transparency’ and enable **Enable Order Independent Transparency (Experimental)**.
  
