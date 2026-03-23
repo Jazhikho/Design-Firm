@@ -59,6 +59,22 @@
 1. Click Save and close the window.
 1. Click Save All in the Content Drawer.
 
+## Create Outfit Asset
+1. In Content Browser, navigate to your working folder (e.g. /Game/Outfits/Blouse01/Blouse01/).
+1. Right-click in the folder → **Physics** → **Outfit Asset**.
+1. Name it OA_BlouseSkirt.
+1. In the dialog, select **Resizable Outfit** template and click **OK**.
+1. Double-click your Outfit Asset (e.g. OA_Blouse) to open the Dataflow Editor.
+1. In the main menu, click the three dots next to **Evaluate Dataflow Graph** and select **Manual Graph Evaluation** for faster editing.
+1. In the **Node Details** window, check the Sized Outfit Source checkbox.
+1. Click the plus (+) icon to add an index entry for each cloth asset you have (e.g., blouse, skirt).
+1. For each entry...
+   1. In **Source Asset** dropdown, select the Cloth Asset.
+   1. In **Size Name**, enter the corresponding body name (e.g., bodyShapeG or your target skeletal mesh name).
+   1. Assign your skeletal mesh to Source Body Parts (e.g., the imported USD skeletal mesh).
+1. Click **Evaluate Dataflow Graph** to bake the outfit asset and wait for progress bar completion (can take a few minutes).
+1. After evaluation completes, re-enable **Automatic Graph Evaluation** from the three dots menu.
+
 ## Apply to Metahuman
 1. Double-click to open the Metahuman blueprint.
 1. In the **Components** tab, select the *Body* node, click the **Add** button and choose a **Chaos Cloth** component.
