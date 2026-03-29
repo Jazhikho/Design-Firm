@@ -6,18 +6,24 @@ Material in this repository is owned by **Sprint 53 Studio** and licensed under 
 
 Interactive styling game for Dr. Trawick's History of Fashion course. Players assemble historically accurate outfits for given eras and receive teaching-focused feedback.
 
-## Project structure
+## Project structure (Unity)
 
-| Folder       | Purpose (agnostic)                |
-|-------------|------------------------------------|
-| `Docs/`     | Design docs, client spec, sources |
-| `Scenes/`   | Levels, screens, or scene assets  |
-| `Scripts/`  | Gameplay and logic                |
-| `Art/`      | Models, textures, materials       |
-| `Audio/`    | Music and SFX                     |
-| `Resources/`| Data assets, tunables, configs     |
-| `Shaders/`  | Custom shaders (if needed)        |
-| `Tests/`    | Automated tests                   |
+Unity content lives under **`Assets/`**. Design and course documentation stays in **`Docs/`** at the repo root.
+
+| Folder | Purpose |
+|--------|---------|
+| `Assets/Scenes/` | Scenes (`.unity`) and scene-related assets |
+| `Assets/Scripts/` | Runtime C# and gameplay code |
+| `Assets/Editor/` | Editor-only scripts and tools |
+| `Assets/Art/` | Models, textures, materials |
+| `Assets/Audio/` | Music and SFX |
+| `Assets/Resources/` | Runtime-loaded assets (`Resources.Load`); use sparingly |
+| `Assets/Shaders/` | Custom shaders |
+| `Assets/Plugins/` | Native and third-party plugins |
+| `Assets/Tests/` | Play Mode / Edit Mode tests (assemblies as needed) |
+| `Docs/` | Design docs, client spec, sources (not imported as game assets) |
+
+Opening this folder in Unity will create **`Packages/`** and **`ProjectSettings/`** at the repo root; those are normal and are covered by `.gitignore` where appropriate.
 
 Version: see `VERSION.md`.
 
@@ -28,6 +34,7 @@ Version: see `VERSION.md`.
 - **[GDD.md](Docs/GDD.md)** — Game design document (stub; expand with engine/scope)
 - **[Assets.md](Docs/Assets.md)** — Third-party asset tracking (license, source)
 - **[AI-Provenance-Log.md](Docs/AI-Provenance-Log.md)** — AI-assisted work disclosure and audit trail
+- **[Credits.md](Docs/Credits.md)** — Sprint 53 Studio team credits
 
 ## External Docs and Tools
 

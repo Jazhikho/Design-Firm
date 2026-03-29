@@ -2,12 +2,22 @@
 /build/
 /dist/
 /out/
-*.exe
-*.dll
-*.so
-*.dylib
+# Do not use blanket *.dll / *.so / *.obj — Unity stores plugins and mesh assets under Assets/
+/build/**/*.exe
+/dist/**/*.exe
+/out/**/*.exe
+/build/**/*.dll
+/dist/**/*.dll
+/out/**/*.dll
+/build/**/*.so
+/dist/**/*.so
+/out/**/*.so
+/build/**/*.dylib
+/dist/**/*.dylib
+/out/**/*.dylib
+# Root-level executables only (does not ignore paths like Assets/...)
+/*.exe
 *.o
-*.obj
 *.a
 *.lib
 
@@ -41,3 +51,80 @@ desktop.ini
 # .venv/
 # venv/
 # *.pyc
+
+# --- Unity (https://github.com/github/gitignore/blob/main/Unity.gitignore) ---
+# Place the Unity project at repo root, or duplicate these paths under your Unity folder.
+.utmp/
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+
+# Blender: backup files are not needed in version control
+*.blend1
+*.blend1.meta
+
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+
+# /[Aa]ssets/AssetStoreTools*
+
+/[Aa]ssets/Plugins/Editor/JetBrains*
+*.DotSettings.user
+
+.vs/
+
+.gradle/
+
+ExportedObj/
+.consulo/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+sysinfo.txt
+
+mono_crash.*
+
+*.apk
+*.aab
+*.unitypackage
+*.unitypackage.meta
+*.app
+
+crashlytics-build.properties
+
+InitTestScene*.unity*
+
+/ServerData
+/[Aa]ssets/StreamingAssets/aa*
+/[Aa]ssets/AddressableAssetsData/link.xml*
+/[Aa]ssets/Addressables_Temp*
+/[Aa]ssets/AddressableAssetsData/*/*.bin*
+
+/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db
+/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Flow/UnitOptions.db.meta
+/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Core/Property Providers
+/[Aa]ssets/Unity.VisualScripting.Generated/VisualScripting.Core/Property Providers.meta
+
+/[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+.plastic/
