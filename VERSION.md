@@ -1,3 +1,3 @@
 # Version
 
-0.0.0.1 — README: Sprint 53 Studio, Instagram as studio home, MIT License and ownership; added `LICENSE`.
+0.0.1.4 — Move game folders under `Assets/` for Unity layout; add `Assets/Editor`, `Assets/Plugins`; README structure table.
