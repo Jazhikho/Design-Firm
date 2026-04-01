@@ -1,0 +1,31 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20StyleSheets/wardrobeLayout.uss?fileID=7433441132597879392&amp;guid=44001665433f60d4691159b7a6b2288e&amp;type=3#wardrobeLayout"/>
+    <ui:VisualElement name="container" style="flex-grow: 1; flex-direction: column; align-content: flex-start; justify-content: flex-start; background-color: rgb(218, 112, 214); align-self: stretch; width: 143px; height: 330px; min-height: 230px; min-width: 0%; max-width: 263px; max-height: 381px; aspect-ratio: auto;">
+        <ui:GroupBox name="header" style="flex-direction: row; justify-content: space-between; top: auto; padding-left: 0; margin-bottom: 0; margin-top: 0; margin-left: 0; margin-right: 0;">
+            <ui:Label text="Shirts&#10;"/>
+            <ui:Button text="X" name="closeButton" style="height: 54%; padding-bottom: 0; margin-bottom: 0; padding-left: 0; margin-left: 0; padding-top: 0; margin-top: 0; padding-right: 0; margin-right: 0; aspect-ratio: 1;"/>
+        </ui:GroupBox>
+        <ui:ScrollView horizontal-scroller-visibility="Hidden" name="itemList">
+            <ui:GroupBox name="columnOne" style="margin-left: 0; padding-left: 0; margin-right: 0; margin-top: 0; padding-top: 0; padding-bottom: 0; margin-bottom: 0;">
+                <ui:Button text="Button" tooltip="" name="casual80" style="aspect-ratio: 1; width: 55px;"/>
+                <ui:Button text="Button" name="casual90" style="aspect-ratio: 1; width: 55px;"/>
+                <ui:Button text="Button" name="casual00" style="aspect-ratio: 1; width: 55px;"/>
+                <ui:Button text="Button" name="casual10" style="aspect-ratio: 1; width: 55px;"/>
+                <ui:Button text="Button" name="formal80" style="aspect-ratio: 1; width: 55px;"/>
+                <ui:Button text="Button" name="formal90" style="aspect-ratio: 1; width: 55px;"/>
+                <ui:Button text="Button" name="formal00" style="aspect-ratio: 1; width: 55px;"/>
+                <ui:Button text="Button" name="formal10" style="aspect-ratio: 1; width: 55px;"/>
+            </ui:GroupBox>
+            <ui:GroupBox name="columnTwo" style="margin-left: 0; padding-left: 0; margin-right: 0; margin-top: 0; padding-top: 0; padding-bottom: 0; margin-bottom: 0;">
+                <ui:Button text="Button" name="business80" style="aspect-ratio: 1; width: 55px;"/>
+                <ui:Button text="Button" name="business90" style="aspect-ratio: 1; width: 55px;"/>
+                <ui:Button text="Button" name="business00" style="aspect-ratio: 1; width: 55px;"/>
+                <ui:Button text="Button" name="business10" style="aspect-ratio: 1; width: 55px;"/>
+                <ui:Button text="Button" name="cultural80" style="aspect-ratio: 1; width: 55px;"/>
+                <ui:Button text="Button" name="cultural90" style="aspect-ratio: 1; width: 55px;"/>
+                <ui:Button text="Button" name="cultural00" style="aspect-ratio: 1; width: 55px;"/>
+                <ui:Button text="Button" name="cultural10" style="aspect-ratio: 1; width: 55px;"/>
+            </ui:GroupBox>
+        </ui:ScrollView>
+    </ui:VisualElement>
+</ui:UXML>
