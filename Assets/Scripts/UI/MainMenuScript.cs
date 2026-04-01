@@ -1,32 +1,41 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+
 public class MainMenuScript : MonoBehaviour
 {
     private Button playButton;
     private Button quitButton;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void OnEnable()
     {
         var root = GetComponent<UIDocument>().rootVisualElement;
 
         playButton = root.Q<Button>("PlayButton");
         quitButton = root.Q<Button>("QuitButton");
+
+        playButton.clicked += OnPlayClicked;
+        quitButton.clicked += OnQuitClicked;
     }
 
     void OnPlayClicked()
     {
         Debug.Log("Play Clicked");
+
+        // Load your game scene
+        SceneManager.LoadScene("GameScene");
     }
 
     void OnQuitClicked()
     {
         Debug.Log("Quit Clicked");
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // Quit the application
+        Application.Quit();
+
+#if UNITY_EDITOR
+        // Stop play mode when testing in the editor
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
     }
 }
