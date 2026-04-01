@@ -1,0 +1,28 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/USS/WardrobeStylesheet.uss?fileID=7433441132597879392&amp;guid=81c303d3ec7a30445a00a6fbc3330ab1&amp;type=3#WardrobeStylesheet"/>
+    <ui:VisualElement name="root" class="root">
+        <ui:VisualElement name="leftColumn" enabled="true" class="side-column">
+            <ui:VisualElement name="rushTempLeft" style="flex-grow: 1;">
+                <ui:Button text="Next Shirt" name="nextShirtTemp" style="scale: 1 1; background-size: 100% 100%; top: 0; left: 0; padding-right: 3px; padding-left: 3px; padding-bottom: 5px; padding-top: 5px; margin-left: 2px; margin-right: 2px; width: 112px;"/>
+                <ui:VisualElement name="itemButtonList" style="flex-grow: 1;">
+                    <ui:MultiColumnListView columns="" sort-column-descriptions="" style="height: 191px;"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="middleColumn" class="middle-column" style="flex-grow: 1;">
+            <ui:VisualElement name="jeffTempMiddle" enabled="false" style="flex-grow: 1;">
+                <ui:Image name="activeAvatar" source="project://database/Assets/UI/Placeholders/Sprites/Avatars/Avatar_Female01.png?fileID=21300000&amp;guid=b56ba99503f677242b242975f174a853&amp;type=3#Avatar_Female01" scale-mode="ScaleToFit" uv="0,0,1,1" enabled="true" class="stacked-image" style="visibility: hidden;">
+                    <ui:Image name="activeJackets" enabled="true" class="stacked-image"/>
+                    <ui:Image name="activeTop" source="project://database/Assets/UI/Placeholders/Sprites/Tops/80s_polo.png?fileID=21300000&amp;guid=de3e6072c2f4d79458e7b345862a79a0&amp;type=3#80s_polo" enabled="true" class="stacked-image"/>
+                    <ui:Image name="activeShoes" source="project://database/Assets/UI/Placeholders/Sprites/Shoes/80s_high_tops.png?fileID=21300000&amp;guid=9dfa2a2f4ac0fc64fa990cef2caefd80&amp;type=3#80s_high_tops" class="stacked-image"/>
+                    <ui:Image name="activeBottoms" source="project://database/Assets/UI/Placeholders/Sprites/Bottoms/80s_acid_wash.png?fileID=21300000&amp;guid=f1dc96846b7148b4bab06f0bf1f3dccd&amp;type=3#80s_acid_wash" class="stacked-image"/>
+                </ui:Image>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="rightColumn" class="side-column" style="flex-grow: 1;">
+            <ui:VisualElement name="lrButtonSpace" style="flex-grow: 1; bottom: 0; padding-left: 0; padding-right: 0; margin-left: 25px; margin-top: 350px; margin-right: 0;">
+                <ui:Button text="Proceed" name="nextSceneButton" double-click-selects-word="true" data-source="" style="transform-origin: center; translate: 0 0; position: absolute; top: auto; left: auto; scale: 1 1; right: 0; bottom: 0; padding-left: 24px; padding-right: 24px; padding-top: 10px;"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

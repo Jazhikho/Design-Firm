@@ -13,6 +13,6 @@ public class wardrobeSlotsScript : MonoBehaviour
         currentItem = itemToSet;
         gameObject.GetComponent<SpriteRenderer>().sprite = itemToSet.itemSprite;
 
-        Debug.Log(currentItem.itemName + " set to " + slot);
+        Debug.Log(currentItem.ID + " set to " + slot);
     }
 }

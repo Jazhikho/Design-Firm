@@ -5,23 +5,28 @@ using UnityEngine;
 public class wardrobeItemList : MonoBehaviour
 {
     //Test Values
-        public Sprite testSprite;
+    public Sprite testSprite;
     //
     public List<wardrobeItemClothing> wardrobeListItems = new List<wardrobeItemClothing>();
     public List<wardrobeItemClothing> wardrobeListItemsChest = new List<wardrobeItemClothing>();
     public List<wardrobeItemClothing> wardrobeListItemsBottom = new List<wardrobeItemClothing>();
     public List<wardrobeItemClothing> wardrobeListItemsShoe = new List<wardrobeItemClothing>();
+    public List<wardrobeItemClothing> wardrobeListItemsJacket = new List<wardrobeItemClothing>();
     public List<string> wardrobeIDList = new List<string>();
 
 
     void Awake()
     {
         //Append empty items
-
+        newItemAdd("nothing_chest", "Nothing", "chest", null, "No clothing", false);
+        newItemAdd("nothing_jacket", "Nothing", "jacket", null, "No clothing", false);
+        newItemAdd("nothing_bottom", "Nothing", "bottom", null, "No clothing", false);
+        newItemAdd("nothing_shoe", "Nothing", "shoe", null, "No clothing", false);
         //
 
 
         // New Item
+        /*
         wardrobeItemClothing testAddItem = new wardrobeItemClothing();
         testAddItem.ID = "testShirt";
         testAddItem.itemName = "Test Shirt";
@@ -34,11 +39,13 @@ public class wardrobeItemList : MonoBehaviour
         wardrobeIDList.Add(testAddItem.ID);
         //
         Debug.Log(wardrobeListItems[0].ID);
+        */
+        //newItemAdd("testShirt", "Test Shirt", "chest", testSprite, "This is a shirt made for testing", false);
     }
 
     //AppendItemFunction
 
-    void newItemAdd(string newID, string newName, string newSlot, Sprite newSprite, string newDesc, bool newCover)
+    public void newItemAdd(string newID, string newName, string newSlot, Sprite newSprite, string newDesc, bool newCover)
     {
         wardrobeItemClothing newItem = new wardrobeItemClothing();
         newItem.ID = newID;
@@ -61,6 +68,10 @@ public class wardrobeItemList : MonoBehaviour
         else if (newItem.slotTag == "shoe")
         {
             wardrobeListItemsShoe.Add(newItem);
+        }
+        else if (newItem.slotTag == "jacket")
+        {
+            wardrobeListItemsJacket.Add(newItem);
         }
         else
         {
