@@ -1,20 +1,41 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/USS/WardrobeStylesheet.uss?fileID=7433441132597879392&amp;guid=81c303d3ec7a30445a00a6fbc3330ab1&amp;type=3#WardrobeStylesheet"/>
-    <ui:VisualElement name="root" class="root">
-        <ui:VisualElement name="leftColumn" class="side-column">
-            <ui:ListView name="jacketsList" class="half-list"/>
-            <ui:ListView name="bottomsList" class="half-list"/>
+    <ui:VisualElement name="root" enabled="true" class="root" style="flex-direction: column;">
+        <ui:VisualElement name="topRow" style="flex-grow: 1; height: 10%; width: 100%; flex-direction: row; justify-content: space-between; align-items: center;">
+            <ui:Label text="00:00" name="timer" style="font-size: 75px;"/>
+            <ui:Button text="Return" name="returnButton" style="right: 0; aspect-ratio: 1;"/>
         </ui:VisualElement>
-        <ui:VisualElement name="middleColumn" class="middle-column" style="flex-grow: 1;">
-            <ui:Image name="activeAvatar" source="project://database/Assets/UI/Placeholders/Sprites/Avatars/Avatar_Female01.png?fileID=21300000&amp;guid=b56ba99503f677242b242975f174a853&amp;type=3#Avatar_Female01" scale-mode="ScaleToFit" uv="0,0,1,1" class="stacked-image"/>
-            <ui:Image name="activeJackets" class="stacked-image"/>
-            <ui:Image name="activeTop" source="project://database/Assets/UI/Placeholders/Sprites/Tops/80s_polo.png?fileID=21300000&amp;guid=de3e6072c2f4d79458e7b345862a79a0&amp;type=3#80s_polo" class="stacked-image"/>
-            <ui:Image name="activeShoes" source="project://database/Assets/UI/Placeholders/Sprites/Shoes/80s_high_tops.png?fileID=21300000&amp;guid=9dfa2a2f4ac0fc64fa990cef2caefd80&amp;type=3#80s_high_tops" class="stacked-image"/>
-            <ui:Image name="activeBottoms" source="project://database/Assets/UI/Placeholders/Sprites/Bottoms/80s_acid_wash.png?fileID=21300000&amp;guid=f1dc96846b7148b4bab06f0bf1f3dccd&amp;type=3#80s_acid_wash" class="stacked-image"/>
+        <ui:VisualElement name="middleRow" enabled="true" style="flex-grow: 1; height: 80%; flex-direction: row;">
+            <ui:VisualElement name="leftColumn" class="side-column" style="flex-direction: row; height: 75%; align-items: flex-end; align-self: center; flex-grow: 1; width: 40%; justify-content: flex-start;">
+                <ui:VisualElement name="topsGarmentRack" style="flex-grow: 1; position: absolute; left: 0; padding-left: 0; margin-left: 0;">
+                    <ui:Button text="Button" name="topsGarmentRackButton" style="background-color: rgba(188, 188, 188, 0); background-image: url(&quot;project://database/Assets/UI/Placeholders/Sprites/Racks/topsRackPlaceholder.png?fileID=2800000&amp;guid=9b5d79ae82decc54586f2b88665e07bd&amp;type=3#topsRackPlaceholder&quot;); border-left-width: 0; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; height: 567px; width: 264px;"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="jacketsGarmentRack" style="flex-grow: 1; position: absolute; right: 0;">
+                    <ui:Button text="Button" name="jacketGarmentRackButton" style="border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; background-color: rgba(188, 188, 188, 0); background-image: url(&quot;project://database/Assets/UI/Placeholders/Sprites/Racks/topsRackPlaceholder.png?fileID=2800000&amp;guid=9b5d79ae82decc54586f2b88665e07bd&amp;type=3#topsRackPlaceholder&quot;); height: 553px; width: 291px;"/>
+                </ui:VisualElement>
+                <ui:ListView name="jacketsList" class="half-list" style="height: 60%; width: 75%; background-color: rgba(0, 0, 139, 0.42); border-top-width: 31px; border-top-color: rgb(0, 0, 255); align-self: flex-start;"/>
+                <ui:ListView name="topsList" class="half-list" style="align-self: flex-start; height: 60%; width: 75%; flex-wrap: nowrap; overflow: visible; visibility: visible; display: flex; border-top-color: rgb(0, 255, 0); border-top-width: 31px; background-color: rgba(0, 100, 0, 0.36);"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="middleColumn" enabled="true" class="middle-column" style="flex-grow: 1;">
+                <ui:Image name="activeAvatar" source="project://database/Assets/UI/Placeholders/Sprites/Avatars/Avatar_Female01.png?fileID=21300000&amp;guid=b56ba99503f677242b242975f174a853&amp;type=3#Avatar_Female01" scale-mode="ScaleToFit" uv="0,0,1,1" class="stacked-image"/>
+                <ui:Image name="activeJackets" class="stacked-image"/>
+                <ui:Image name="activeTop" source="project://database/Assets/UI/Placeholders/Sprites/Tops/80s_polo.png?fileID=21300000&amp;guid=de3e6072c2f4d79458e7b345862a79a0&amp;type=3#80s_polo" class="stacked-image"/>
+                <ui:Image name="activeShoes" source="project://database/Assets/UI/Placeholders/Sprites/Shoes/80s_high_tops.png?fileID=21300000&amp;guid=9dfa2a2f4ac0fc64fa990cef2caefd80&amp;type=3#80s_high_tops" class="stacked-image"/>
+                <ui:Image name="activeBottoms" source="project://database/Assets/UI/Placeholders/Sprites/Bottoms/80s_acid_wash.png?fileID=21300000&amp;guid=f1dc96846b7148b4bab06f0bf1f3dccd&amp;type=3#80s_acid_wash" class="stacked-image"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="rightColumn" class="side-column" style="flex-grow: 1; flex-direction: row; align-items: flex-end; align-self: center; height: 75%; width: 40%; justify-content: flex-start; flex-wrap: nowrap;">
+                <ui:VisualElement name="bottomsGarmentRack" style="flex-grow: 1; position: absolute; left: 0;">
+                    <ui:Button text="Button" name="bottomsGarmentRackButton" style="background-image: url(&quot;project://database/Assets/UI/Placeholders/Sprites/Racks/pantsRackPlaceholder.png?fileID=2800000&amp;guid=e48b974fcc7d0fd43a7b8635cb62576b&amp;type=3#pantsRackPlaceholder&quot;); height: 555px; background-color: rgba(188, 188, 188, 0); border-left-width: 0; border-right-width: 0; border-bottom-width: 0; border-top-width: 0; width: 237px;"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="shoeRack" style="flex-grow: 1; position: absolute; right: 0;">
+                    <ui:Button text="Button" name="shoeRackButton" style="border-top-width: 0; border-bottom-width: 0; border-right-width: 0; border-left-width: 0; background-color: rgba(188, 188, 188, 0); background-image: url(&quot;project://database/Assets/UI/Placeholders/Sprites/Racks/shoeRackPlaceholder.png?fileID=2800000&amp;guid=a96736193069ff1458ade6c4346bb842&amp;type=3#shoeRackPlaceholder&quot;); height: 445px; width: 226px;"/>
+                </ui:VisualElement>
+                <ui:ListView name="shoesList" class="half-list" style="height: 60%; width: 75%; position: relative; right: auto; background-color: rgba(102, 51, 153, 0.41); border-top-color: rgb(238, 130, 238); border-top-width: 31px; top: 0; justify-content: space-evenly; align-self: flex-start;"/>
+                <ui:ListView name="bottomsList" class="half-list" style="height: 60%; width: 75%; background-color: rgba(255, 69, 0, 0.38); border-top-color: rgb(255, 167, 107); border-top-width: 31px; align-self: flex-start;"/>
+            </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="rightColumn" class="side-column" style="flex-grow: 1;">
-            <ui:ListView name="topsList" class="half-list"/>
-            <ui:ListView name="shoesList" class="half-list"/>
+        <ui:VisualElement name="bottomRow" style="flex-grow: 1; height: 10%; align-items: stretch; justify-content: center; align-content: center; align-self: stretch;">
+            <ui:Button text="Submit" name="submitButton" style="align-items: center; align-self: center; width: 30%; height: 100%;"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
