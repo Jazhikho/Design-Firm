@@ -1,3 +1,3 @@
 # Version
 
-0.0.1.4 — Move game folders under `Assets/` for Unity layout; add `Assets/Editor`, `Assets/Plugins`; README structure table.
+0.0.1.5 — Add root `CodingStandards.md` (Unity C# conventions); link from `README.md`; AI provenance log entry.

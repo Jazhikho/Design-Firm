@@ -35,6 +35,7 @@ Version: see `VERSION.md`.
 - **[Assets.md](Docs/Assets.md)** — Third-party asset tracking (license, source)
 - **[AI-Provenance-Log.md](Docs/AI-Provenance-Log.md)** — AI-assisted work disclosure and audit trail
 - **[Credits.md](Docs/Credits.md)** — Sprint 53 Studio team credits
+- **[CodingStandards.md](CodingStandards.md)** — Unity C# and repo conventions for contributors
 
 ## External Docs and Tools
 

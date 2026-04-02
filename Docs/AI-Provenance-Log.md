@@ -4,6 +4,17 @@ Disclosure and audit trail for AI-assisted work. Update when committing signific
 
 ---
 
+**Date:** 2026-04-02  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** Add repository-root coding standards for Unity C#; prepare commit and push per team workflow (`VERSION.md`, README discoverability).  
+**Input materials used:** User request; existing `README.md`, `VERSION.md`, and project layout.  
+**Summary of AI contribution:** Authored `CodingStandards.md` (layout, naming, Unity practices, versioning pointers; ternary expressions allowed when readable); bumped `VERSION.md`; added README Docs link; this log entry.  
+**What the human accepted / rejected / changed:** (fill at commit / review)  
+**Validation method used:** File review against README structure and `VERSION.md` pattern.  
+**Final approver:** (if applicable)
+
+---
+
 **Date:** 2026-03-29  
 **Tool or model used:** Cursor agent (AI-assisted editing)  
 **Task purpose:** Align repository folder layout with Unity (`Assets/` hierarchy, `Editor`/`Plugins` placeholders); Unity-oriented `.gitignore`; update `README.md` and `VERSION.md`.  
