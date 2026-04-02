@@ -13,8 +13,8 @@
                 <ui:VisualElement name="jacketsGarmentRack" style="flex-grow: 1; position: absolute; right: 0;">
                     <ui:Button text="Button" name="jacketGarmentRackButton" style="border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; background-color: rgba(188, 188, 188, 0); background-image: url(&quot;project://database/Assets/UI/Placeholders/Sprites/Racks/topsRackPlaceholder.png?fileID=2800000&amp;guid=9b5d79ae82decc54586f2b88665e07bd&amp;type=3#topsRackPlaceholder&quot;); height: 553px; width: 291px;"/>
                 </ui:VisualElement>
-                <ui:ListView name="jacketsList" class="half-list" style="height: 100%; width: 75%; background-color: rgba(0, 0, 139, 0.42); border-top-width: 31px; border-top-color: rgb(0, 0, 255);"/>
-                <ui:ListView name="topsList" class="half-list" style="align-self: center; height: 100%; width: 75%; flex-wrap: nowrap; overflow: visible; visibility: visible; display: flex; border-top-color: rgb(0, 255, 0); border-top-width: 31px; background-color: rgba(0, 100, 0, 0.36);"/>
+                <ui:ListView name="jacketsList" class="half-list" style="height: 60%; width: 75%; background-color: rgba(0, 0, 139, 0.42); border-top-width: 31px; border-top-color: rgb(0, 0, 255); align-self: flex-start;"/>
+                <ui:ListView name="topsList" class="half-list" style="align-self: flex-start; height: 60%; width: 75%; flex-wrap: nowrap; overflow: visible; visibility: visible; display: flex; border-top-color: rgb(0, 255, 0); border-top-width: 31px; background-color: rgba(0, 100, 0, 0.36);"/>
             </ui:VisualElement>
             <ui:VisualElement name="middleColumn" enabled="true" class="middle-column" style="flex-grow: 1;">
                 <ui:Image name="activeAvatar" source="project://database/Assets/UI/Placeholders/Sprites/Avatars/Avatar_Female01.png?fileID=21300000&amp;guid=b56ba99503f677242b242975f174a853&amp;type=3#Avatar_Female01" scale-mode="ScaleToFit" uv="0,0,1,1" class="stacked-image"/>
@@ -30,8 +30,8 @@
                 <ui:VisualElement name="shoeRack" style="flex-grow: 1; position: absolute; right: 0;">
                     <ui:Button text="Button" name="shoeRackButton" style="border-top-width: 0; border-bottom-width: 0; border-right-width: 0; border-left-width: 0; background-color: rgba(188, 188, 188, 0); background-image: url(&quot;project://database/Assets/UI/Placeholders/Sprites/Racks/shoeRackPlaceholder.png?fileID=2800000&amp;guid=a96736193069ff1458ade6c4346bb842&amp;type=3#shoeRackPlaceholder&quot;); height: 445px; width: 226px;"/>
                 </ui:VisualElement>
-                <ui:ListView name="shoesList" class="half-list" style="height: 100%; width: 75%; position: relative; right: 0; background-color: rgba(102, 51, 153, 0.41); border-top-color: rgb(238, 130, 238); border-top-width: 31px;"/>
-                <ui:ListView name="bottomsList" class="half-list" style="height: 100%; width: 75%; background-color: rgba(255, 69, 0, 0.38); border-top-color: rgb(255, 167, 107); border-top-width: 31px;"/>
+                <ui:ListView name="shoesList" class="half-list" style="height: 60%; width: 75%; position: relative; right: auto; background-color: rgba(102, 51, 153, 0.41); border-top-color: rgb(238, 130, 238); border-top-width: 31px; top: 0; justify-content: space-evenly; align-self: flex-start;"/>
+                <ui:ListView name="bottomsList" class="half-list" style="height: 60%; width: 75%; background-color: rgba(255, 69, 0, 0.38); border-top-color: rgb(255, 167, 107); border-top-width: 31px; align-self: flex-start;"/>
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="bottomRow" style="flex-grow: 1; height: 10%; align-items: stretch; justify-content: center; align-content: center; align-self: stretch;">
