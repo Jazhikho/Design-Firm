@@ -39,7 +39,7 @@
                 <ui:ListView name="shoesList" class="half-list" style="height: 60%; width: 75%; position: relative; right: auto; background-color: rgba(102, 51, 153, 0.41); border-top-color: rgb(238, 130, 238); border-top-width: 31px; top: 0; justify-content: space-evenly; align-self: flex-start;"/>
                 <ui:ListView name="bottomsList" class="half-list" style="height: 60%; width: 75%; background-color: rgba(255, 69, 0, 0.38); border-top-color: rgb(255, 167, 107); border-top-width: 31px; align-self: flex-start;"/>
                 <ui:VisualElement name="lrButtonSpace" style="flex-grow: 0; position: absolute; bottom: 0; right: 0; padding-left: 0; padding-right: 0; margin-left: 25px; margin-top: 350px; margin-right: 0;">
-                    <ui:Button text="Proceed" name="nextSceneButton" double-click-selects-word="true" data-source="" style="transform-origin: center; translate: 0 0; padding-left: 24px; padding-right: 24px; padding-top: 10px;"/>
+                    <ui:Button text="Proceed" name="nextSceneButton" style="transform-origin: center; translate: 0 0; padding-left: 24px; padding-right: 24px; padding-top: 10px;"/>
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
