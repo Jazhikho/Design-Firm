@@ -1,8 +1,9 @@
-using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
+/// <summary>
+/// Binds temporary wardrobe UI Toolkit controls to slot scripts and the shared item list for class testing.
+/// </summary>
 public class wardrobeButtonTestScripts : MonoBehaviour
 {
     private UIDocument thisDoc;
@@ -65,12 +66,33 @@ public class wardrobeButtonTestScripts : MonoBehaviour
         nextSceneButton.UnregisterCallback<ClickEvent>(nextSceneScript);
     }
 
+    /// <summary>
+    /// Placeholder for navigating to the next scene once build settings exist.
+    /// </summary>
+    /// <param name="evt">The click event from the Proceed button.</param>
     public void nextSceneScript(ClickEvent evt)
     {
         SceneManager.LoadScene(nextScene);
     }
+
+    /// <summary>
+    /// Sets the chest slot to the second chest item when available (test harness).
+    /// </summary>
+    /// <param name="evt">The click event from the Next Shirt button.</param>
     public void nextShirtButtonClick(ClickEvent evt)
     {
+        if (chestSlot == null || itemList == null)
+        {
+            Debug.LogError("wardrobeButtonTestScripts: Assign chestSlot and itemList in the Inspector.");
+            return;
+        }
+
+        if (itemList.wardrobeListItemsChest.Count < 2)
+        {
+            Debug.LogError("wardrobeButtonTestScripts: wardrobeListItemsChest needs at least two entries for this test.");
+            return;
+        }
+
         chestSlot.setCurrentItem(itemList.wardrobeListItemsChest[1]);
         bottomSlot.setCurrentItem(itemList.wardrobeListItemsBottom[1]);
         shoeSlot.setCurrentItem(itemList.wardrobeListItemsShoe[1]);
