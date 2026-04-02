@@ -1,7 +1,9 @@
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// Holds runtime lists of wardrobe items per slot and supports JSON-driven registration.
+/// </summary>
 public class wardrobeItemList : MonoBehaviour
 {
     //Test Values
@@ -15,7 +17,10 @@ public class wardrobeItemList : MonoBehaviour
     public List<string> wardrobeIDList = new List<string>();
 
 
-    void Awake()
+    /// <summary>
+    /// Seeds placeholder "nothing" items for each slot so lists are never empty.
+    /// </summary>
+    private void Awake()
     {
         //Append empty items
         newItemAdd("nothing_chest", "Nothing", "chest", null, "No clothing", false);
@@ -43,8 +48,15 @@ public class wardrobeItemList : MonoBehaviour
         //newItemAdd("testShirt", "Test Shirt", "chest", testSprite, "This is a shirt made for testing", false);
     }
 
-    //AppendItemFunction
-
+    /// <summary>
+    /// Adds a clothing entry to the master list and the matching slot list.
+    /// </summary>
+    /// <param name="newID">Stable item identifier.</param>
+    /// <param name="newName">Display name.</param>
+    /// <param name="newSlot">Slot tag: chest, bottom, shoe, or jacket.</param>
+    /// <param name="newSprite">Sprite asset for the slot renderer.</param>
+    /// <param name="newDesc">Description text.</param>
+    /// <param name="newCover">Whether this item covers the bottom piece.</param>
     public void newItemAdd(string newID, string newName, string newSlot, Sprite newSprite, string newDesc, bool newCover)
     {
         wardrobeItemClothing newItem = new wardrobeItemClothing();
@@ -75,7 +87,7 @@ public class wardrobeItemList : MonoBehaviour
         }
         else
         {
-            Debug.Log("Error: No Slot detected");
+            Debug.LogError("wardrobeItemList: Unknown slotTag '" + newItem.slotTag + "' for item " + newID);
         }
     }
 

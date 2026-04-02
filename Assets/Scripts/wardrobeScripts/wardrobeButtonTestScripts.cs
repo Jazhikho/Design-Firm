@@ -1,58 +1,116 @@
-using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
+/// <summary>
+/// Binds temporary wardrobe UI Toolkit controls to slot scripts and the shared item list for class testing.
+/// </summary>
 public class wardrobeButtonTestScripts : MonoBehaviour
 {
     private UIDocument thisDoc;
     private Button testButton;
     private Button nextSceneButton;
+
     public string currentSlot = "shirt";
+    public string nextScene = "mainMenuScene";
 
-// nextScene will probably always be "mainMenuScene" or "taskResultScene"
-    public String nextScene = "mainMenuScene";
+    [SerializeField]
+    private wardrobeSlotsScript chestSlot;
 
-    //
-    public wardrobeSlotsScript chestSlot;
-    public wardrobeSlotsScript bottomSlot;
-    public wardrobeSlotsScript shoeSlot;
-    public wardrobeSlotsScript jacketSlot;
-    public wardrobeItemList itemList;
-    //
+    [SerializeField]
+    private wardrobeSlotsScript bottomSlot;
 
-    void Awake()
+    [SerializeField]
+    private wardrobeSlotsScript shoeSlot;
+
+    [SerializeField]
+    private wardrobeSlotsScript jacketSlot;
+
+    [SerializeField]
+    private wardrobeItemList itemList;
+
+    /// <summary>
+    /// Resolves UI elements and registers click callbacks.
+    /// </summary>
+    private void Awake()
     {
-        //
-        chestSlot = GameObject.Find("chestSlot").GetComponent<wardrobeSlotsScript>();
-        bottomSlot = GameObject.Find("bottomSlot").GetComponent<wardrobeSlotsScript>();
-        shoeSlot = GameObject.Find("shoeSlot").GetComponent<wardrobeSlotsScript>();
-        jacketSlot = GameObject.Find("jacketSlot").GetComponent<wardrobeSlotsScript>();
-        itemList = GameObject.Find("ItemsList").GetComponent<wardrobeItemList>();
-        //
-
         thisDoc = GetComponent<UIDocument>();
-        testButton = thisDoc.rootVisualElement.Q("nextShirtTemp") as Button;
-        nextSceneButton = thisDoc.rootVisualElement.Q("nextSceneButton") as Button;
-        testButton.RegisterCallback<ClickEvent>(nextShirtButtonClick);
-        nextSceneButton.RegisterCallback<ClickEvent>(nextSceneScript);
+        if (thisDoc == null)
+        {
+            Debug.LogError("wardrobeButtonTestScripts: UIDocument is missing on this GameObject.");
+            return;
+        }
 
+        VisualElement root = thisDoc.rootVisualElement;
+        if (root == null)
+        {
+            Debug.LogError("wardrobeButtonTestScripts: rootVisualElement is null.");
+            return;
+        }
+
+        testButton = root.Q("nextShirtTemp") as Button;
+        nextSceneButton = root.Q("nextSceneButton") as Button;
+
+        if (testButton != null)
+        {
+            testButton.RegisterCallback<ClickEvent>(nextShirtButtonClick);
+        }
+        else
+        {
+            Debug.LogError("wardrobeButtonTestScripts: nextShirtTemp button not found in UXML.");
+        }
+
+        if (nextSceneButton != null)
+        {
+            nextSceneButton.RegisterCallback<ClickEvent>(nextSceneScript);
+        }
+        else
+        {
+            Debug.LogError("wardrobeButtonTestScripts: nextSceneButton not found in UXML.");
+        }
     }
 
-    void OnDisable()
+    /// <summary>
+    /// Unregisters UI callbacks when this behaviour is disabled.
+    /// </summary>
+    private void OnDisable()
     {
-        testButton.UnregisterCallback<ClickEvent>(nextShirtButtonClick);
-        nextSceneButton.UnregisterCallback<ClickEvent>(nextSceneScript);
+        if (testButton != null)
+        {
+            testButton.UnregisterCallback<ClickEvent>(nextShirtButtonClick);
+        }
+        if (nextSceneButton != null)
+        {
+            nextSceneButton.UnregisterCallback<ClickEvent>(nextSceneScript);
+        }
     }
 
+    /// <summary>
+    /// Placeholder for navigating to the next scene once build settings exist.
+    /// </summary>
+    /// <param name="evt">The click event from the Proceed button.</param>
     public void nextSceneScript(ClickEvent evt)
     {
-        //This is for later when build settings get set up.
-        //SceneManager.LoadScene(nextScene);
-        Debug.Log("Not yet implemented");
+        Debug.Log("wardrobeButtonTestScripts: Scene load not yet implemented. Target scene name: " + nextScene);
     }
+
+    /// <summary>
+    /// Sets the chest slot to the second chest item when available (test harness).
+    /// </summary>
+    /// <param name="evt">The click event from the Next Shirt button.</param>
     public void nextShirtButtonClick(ClickEvent evt)
     {
+        if (chestSlot == null || itemList == null)
+        {
+            Debug.LogError("wardrobeButtonTestScripts: Assign chestSlot and itemList in the Inspector.");
+            return;
+        }
+
+        if (itemList.wardrobeListItemsChest.Count < 2)
+        {
+            Debug.LogError("wardrobeButtonTestScripts: wardrobeListItemsChest needs at least two entries for this test.");
+            return;
+        }
+
         chestSlot.setCurrentItem(itemList.wardrobeListItemsChest[1]);
     }
 }
