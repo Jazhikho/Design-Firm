@@ -8,10 +8,11 @@ public class wardrobeButtonTestScripts : MonoBehaviour
     private UIDocument thisDoc;
     private Button testButton;
     private Button nextSceneButton;
-    public string currentSlot = "shirt";
+    public string currentSlot = "shirts";
 
 // nextScene will probably always be "mainMenuScene" or "taskResultScene"
-    public String nextScene = "mainMenuScene";
+    public String nextScene;
+    public bool sandboxMode;
 
     //
     public wardrobeSlotsScript chestSlot;
@@ -30,13 +31,32 @@ public class wardrobeButtonTestScripts : MonoBehaviour
         jacketSlot = GameObject.Find("jacketSlot").GetComponent<wardrobeSlotsScript>();
         itemList = GameObject.Find("ItemsList").GetComponent<wardrobeItemList>();
         //
+        if (sandboxMode == false)
+        {
+            nextScene = "taskResultScene";
+        }
+        else
+        {
+            nextScene = "mainMenuScene";
+        }
+        //
 
         thisDoc = GetComponent<UIDocument>();
+
+        //Buttons
         testButton = thisDoc.rootVisualElement.Q("nextShirtTemp") as Button;
         nextSceneButton = thisDoc.rootVisualElement.Q("nextSceneButton") as Button;
+        //RegisterButtons
         testButton.RegisterCallback<ClickEvent>(nextShirtButtonClick);
         nextSceneButton.RegisterCallback<ClickEvent>(nextSceneScript);
+        //
 
+    }
+
+    public void changeUISlotSprite(string elementName, Sprite spriteUI)
+    {
+        Image slotUI = thisDoc.rootVisualElement.Q(elementName) as Image;
+        slotUI.style.backgroundImage = new StyleBackground(spriteUI);
     }
 
     void OnDisable()
@@ -47,12 +67,12 @@ public class wardrobeButtonTestScripts : MonoBehaviour
 
     public void nextSceneScript(ClickEvent evt)
     {
-        //This is for later when build settings get set up.
-        //SceneManager.LoadScene(nextScene);
-        Debug.Log("Not yet implemented");
+        SceneManager.LoadScene(nextScene);
     }
     public void nextShirtButtonClick(ClickEvent evt)
     {
         chestSlot.setCurrentItem(itemList.wardrobeListItemsChest[1]);
+        bottomSlot.setCurrentItem(itemList.wardrobeListItemsBottom[1]);
+        shoeSlot.setCurrentItem(itemList.wardrobeListItemsShoe[1]);
     }
 }

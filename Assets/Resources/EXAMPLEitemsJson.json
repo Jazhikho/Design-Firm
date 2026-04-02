@@ -1,0 +1,37 @@
+{
+	"items":
+	[
+		{
+			"ID": "testShirt",
+			"itemName": "Test Shirt",
+			"slotTag": "chest",
+			"itemSprite": "wardrobeTempResources/shirtTEST",
+			"itemDescription": "This is a shirt made for testing",
+			"coversBottomPiece": false
+		},
+		{
+			"ID": "testBottom",
+			"itemName": "Test Pants",
+			"slotTag": "bottom",
+			"itemSprite": "wardrobeTempResources/pantsTEST",
+			"itemDescription": "These are pants made for testing",
+			"coversBottomPiece": false
+		},
+		{
+			"ID": "testShoe",
+			"itemName": "Test Shoes",
+			"slotTag": "shoe",
+			"itemSprite": "wardrobeTempResources/shoesTEST",
+			"itemDescription": "These are shoes made for testing",
+			"coversBottomPiece": false
+		},
+		{
+			"ID": "testJacket",
+			"itemName": "Test Jacket",
+			"slotTag": "jacket",
+			"itemSprite": null,
+			"itemDescription": "This is a jacket made for... WAIT! It has no sprite!",
+			"coversBottomPiece": false
+		}
+	]
+}
