@@ -27,10 +27,10 @@
                 </ui:Image>
             </ui:VisualElement>
             <ui:VisualElement name="rightColumn" class="side-column" style="flex-grow: 1; flex-direction: row; align-items: flex-end; align-self: center; height: 75%; width: 40%; justify-content: flex-start; flex-wrap: nowrap;">
-                <ui:VisualElement name="bottomsGarmentRack" style="flex-grow: 1; position: absolute; left: 0;">
+                <ui:VisualElement name="bottomsGarmentRack" enabled="true" style="flex-grow: 1; position: absolute; left: 0; visibility: hidden;">
                     <ui:Button text="Button" name="bottomsGarmentRackButton" style="background-image: url(&quot;project://database/Assets/UI/Placeholders/Sprites/Racks/pantsRackPlaceholder.png?fileID=2800000&amp;guid=e48b974fcc7d0fd43a7b8635cb62576b&amp;type=3#pantsRackPlaceholder&quot;); height: 555px; background-color: rgba(188, 188, 188, 0); border-left-width: 0; border-right-width: 0; border-bottom-width: 0; border-top-width: 0; width: 237px;"/>
                 </ui:VisualElement>
-                <ui:VisualElement name="shoeRack" style="flex-grow: 1; position: absolute; right: 0;">
+                <ui:VisualElement name="shoeRack" style="flex-grow: 1; position: absolute; right: 0; visibility: hidden;">
                     <ui:Button text="Button" name="shoeRackButton" style="border-top-width: 0; border-bottom-width: 0; border-right-width: 0; border-left-width: 0; background-color: rgba(188, 188, 188, 0); background-image: url(&quot;project://database/Assets/UI/Placeholders/Sprites/Racks/shoeRackPlaceholder.png?fileID=2800000&amp;guid=a96736193069ff1458ade6c4346bb842&amp;type=3#shoeRackPlaceholder&quot;); height: 445px; width: 226px;"/>
                 </ui:VisualElement>
                 <ui:ListView name="shoesList" class="half-list" style="height: 60%; width: 75%; position: relative; right: auto; background-color: rgba(102, 51, 153, 0.41); border-top-color: rgb(238, 130, 238); border-top-width: 31px; top: 0; justify-content: space-evenly; align-self: flex-start;"/>

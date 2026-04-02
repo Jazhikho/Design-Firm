@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 /// <summary>
@@ -12,7 +13,7 @@ public class wardrobeButtonTestScripts : MonoBehaviour
     public string currentSlot = "shirts";
 
 // nextScene will probably always be "mainMenuScene" or "taskResultScene"
-    public String nextScene;
+    public string nextScene;
     public bool sandboxMode;
 
     //
@@ -66,10 +67,6 @@ public class wardrobeButtonTestScripts : MonoBehaviour
         nextSceneButton.UnregisterCallback<ClickEvent>(nextSceneScript);
     }
 
-    /// <summary>
-    /// Placeholder for navigating to the next scene once build settings exist.
-    /// </summary>
-    /// <param name="evt">The click event from the Proceed button.</param>
     public void nextSceneScript(ClickEvent evt)
     {
         SceneManager.LoadScene(nextScene);
