@@ -1,0 +1,13 @@
+{
+	"items":
+	[
+		{
+			"ID": "testShirt",
+			"itemName": "Test Shirt",
+			"slotTag": "chest",
+			"itemSprite": "wardrobeTempResources/shirtTEST",
+			"itemDescription": "This is a shirt made for testing",
+			"coversBottomPiece": false
+		}
+	]
+}
