@@ -23,6 +23,7 @@ Disclosure and audit trail for AI-assisted work. Update when committing signific
 **What the human accepted / rejected / changed:** (fill at commit / review)  
 **Validation method used:** Attribute at reported line matched empty binding URL pattern.  
 **Final approver:** Chris Del Gesso
+
 ---
 
 **Date:** 2026-04-02  
