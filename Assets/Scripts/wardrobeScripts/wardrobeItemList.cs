@@ -8,12 +8,12 @@ using UnityEngine;
 /// </summary>
 public static class wardrobeItemList
 {
-    public static List<wardrobeItemClothing> wardrobeListItems = new List<wardrobeItemClothing>();
-    public static List<wardrobeItemClothing> wardrobeListItemsChest = new List<wardrobeItemClothing>();
-    public static List<wardrobeItemClothing> wardrobeListItemsBottom = new List<wardrobeItemClothing>();
-    public static List<wardrobeItemClothing> wardrobeListItemsShoe = new List<wardrobeItemClothing>();
-    public static List<wardrobeItemClothing> wardrobeListItemsJacket = new List<wardrobeItemClothing>();
-    public static List<string> wardrobeIDList = new List<string>();
+    public static List<wardrobeItemClothing> wardrobeListItems = new();
+    public static List<wardrobeItemClothing> wardrobeListItemsChest = new();
+    public static List<wardrobeItemClothing> wardrobeListItemsBottom = new();
+    public static List<wardrobeItemClothing> wardrobeListItemsShoe = new();
+    public static List<wardrobeItemClothing> wardrobeListItemsJacket = new();
+    public static List<string> wardrobeIDList = new();
 
     public static wardrobeItemClothing currentItemTop;
     public static wardrobeItemClothing currentItemBottom;
@@ -138,13 +138,15 @@ public static class wardrobeItemList
     /// <param name="newCover">Whether this item covers the bottom piece.</param>
     public static void NewItemAdd(string newID, string newName, string newSlot, Sprite newSprite, string newDesc, bool newCover)
     {
-        wardrobeItemClothing newItem = new wardrobeItemClothing();
-        newItem.ID = newID;
-        newItem.itemName = newName;
-        newItem.slotTag = newSlot;
-        newItem.itemSprite = newSprite;
-        newItem.itemDescription = newDesc;
-        newItem.coversBottomPiece = newCover;
+        wardrobeItemClothing newItem = new()
+        {
+            ID = newID,
+            itemName = newName,
+            slotTag = newSlot,
+            itemSprite = newSprite,
+            itemDescription = newDesc,
+            coversBottomPiece = newCover
+        };
 
         wardrobeListItems.Add(newItem);
         wardrobeIDList.Add(newItem.ID);

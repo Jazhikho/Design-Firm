@@ -1,16 +1,13 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 /// <summary>
-/// Binds wardrobe UI Toolkit ListViews and stacked avatar images to the static <see cref="wardrobeItemList"/> data.
+/// Binds wardrobe UI Toolkit ScrollViews and stacked avatar images to the static <see cref="wardrobeItemList"/> data.
 /// Runs after <see cref="wardrobeManagerScript"/> so JSON items exist before list wiring and defaults apply.
 /// </summary>
 [RequireComponent(typeof(UIDocument))]
-[DefaultExecutionOrder(0)]
 public class wardrobeButtonTestScripts : MonoBehaviour
 {
     private UIDocument thisDoc;
@@ -25,16 +22,14 @@ public class wardrobeButtonTestScripts : MonoBehaviour
     [SerializeField]
     private string nextScene;
 
-    /// <summary>
-    /// Optional countdown label; assign a named Label from UXML in the Inspector when the timer UI is restored.
-    /// </summary>
-    [SerializeField]
     private Label timerModule;
 
     [SerializeField]
     private float wardrobeTimer = 60f;
 
-    private void Start()
+    private readonly Dictionary<string, Button> selectedButtonsByGrid = new();
+
+    private void OnEnable()
     {
         if (sandboxMode == false)
         {
@@ -59,21 +54,41 @@ public class wardrobeButtonTestScripts : MonoBehaviour
             return;
         }
 
-        nextSceneButton = root.Q("nextSceneButton") as Button;
+        nextSceneButton = root.Q<Button>("nextSceneButton");
         if (nextSceneButton == null)
         {
             Debug.LogError("wardrobeButtonTestScripts: nextSceneButton not found in UXML.");
             return;
         }
 
+        timerModule = root.Q<Label>("lblTimer");
+        if (timerModule == null)
+        {
+            Debug.LogError("wardrobeButtonTestScripts: lblTimer not found in UXML.");
+            return;
+        }
+
         nextSceneButton.RegisterCallback<ClickEvent>(NextSceneScript);
 
-        SetUpClothing(wardrobeItemList.wardrobeListItemsChest, "topsList", "chest", "activeTop");
-        SetUpClothing(wardrobeItemList.wardrobeListItemsBottom, "bottomsList", "bottom", "activeBottoms");
-        SetUpClothing(wardrobeItemList.wardrobeListItemsShoe, "shoesList", "shoe", "activeShoes");
-        SetUpClothing(wardrobeItemList.wardrobeListItemsJacket, "jacketsList", "jacket", "activeJackets");
+        SetUpClothing(gridName: "topsGrid",
+            slotList: wardrobeItemList.wardrobeListItemsChest,
+            setItemSlot: "chest",
+            setItemUi: "activeTop");
+        SetUpClothing(gridName: "bottomsGrid",
+            slotList: wardrobeItemList.wardrobeListItemsBottom,
+            setItemSlot: "bottom",
+            setItemUi: "activeBottoms");
+        SetUpClothing(gridName: "shoesGrid",
+            slotList: wardrobeItemList.wardrobeListItemsShoe,
+            setItemSlot: "shoe",
+            setItemUi: "activeShoes");
+        SetUpClothing(gridName: "jacketsGrid",
+            slotList: wardrobeItemList.wardrobeListItemsJacket,
+            setItemSlot: "jacket",
+            setItemUi: "activeJackets");
 
         ApplyDefaultOutfit();
+        SyncInitialSelectionVisuals();
     }
 
     private void Update()
@@ -92,10 +107,7 @@ public class wardrobeButtonTestScripts : MonoBehaviour
 
     private void OnDisable()
     {
-        if (nextSceneButton != null)
-        {
-            nextSceneButton.UnregisterCallback<ClickEvent>(NextSceneScript);
-        }
+        nextSceneButton?.UnregisterCallback<ClickEvent>(NextSceneScript);
     }
 
     /// <summary>
@@ -149,7 +161,7 @@ public class wardrobeButtonTestScripts : MonoBehaviour
             return;
         }
 
-        Image slotUI = root.Q(elementName) as Image;
+        Image slotUI = root.Q<Image>(elementName);
         if (slotUI == null)
         {
             Debug.LogError("wardrobeButtonTestScripts: UI Image not found: " + elementName);
@@ -188,59 +200,105 @@ public class wardrobeButtonTestScripts : MonoBehaviour
     /// <param name="listViewItem">UXML name of the ListView.</param>
     /// <param name="setItemSlot">Slot tag passed to <see cref="wardrobeItemList.SetItemSlot"/>.</param>
     /// <param name="setItemUi">UXML name of the stacked Image to update.</param>
-    public void SetUpClothing(List<wardrobeItemClothing> slotList, string listViewItem, string setItemSlot, string setItemUi)
+    public void SetUpClothing(string gridName,
+        List<wardrobeItemClothing> slotList,
+        string setItemSlot,
+        string setItemUi)
     {
         if (slotList == null)
         {
-            Debug.LogError("wardrobeButtonTestScripts: slotList is null for ListView " + listViewItem);
+            Debug.LogError($"slotList is null for grid {gridName}");
             return;
         }
 
-        if (string.IsNullOrEmpty(listViewItem))
+        VisualElement grid = thisDoc.rootVisualElement.Q<VisualElement>(gridName);
+        if (grid == null)
         {
-            Debug.LogError("wardrobeButtonTestScripts: listViewItem name is null or empty.");
+            Debug.LogError($"wardrobeButtonTestScripts: Could not find grid: {gridName}");
             return;
         }
 
-        Func<VisualElement> makeItem = () => new Image();
-        Action<VisualElement, int> bindItem = (e, i) =>
-        {
-            if (i < 0 || i >= slotList.Count)
-            {
-                Debug.LogError("wardrobeButtonTestScripts: ListView bind index out of range for " + listViewItem);
-                return;
-            }
+        grid.Clear();
 
-            ((Image)e).sprite = slotList[i].itemSprite;
+        foreach (wardrobeItemClothing item in slotList)
+        {
+            Button tileButton = CreateClothingButton(item, gridName, setItemSlot, setItemUi);
+            grid.Add(tileButton);
+        }
+    }
+
+    private Button CreateClothingButton(wardrobeItemClothing item, string gridName, string setItemSlot, string setItemUi)
+    {
+        Button button = new();
+        button.AddToClassList("wardrobe-tile");
+        button.userData = item;
+
+        // Optional: remove button text so Unity doesn't reserve weird text space.
+        button.text = string.Empty;
+
+        if (item.itemSprite != null)
+        {
+            Image image = new();
+            image.AddToClassList("wardrobe-tile-image");
+            image.sprite = item.itemSprite;
+            image.pickingMode = PickingMode.Ignore;
+            button.Add(image);
+        }
+        else
+        {
+            // Missing art or placeholder item.
+            button.AddToClassList("missing-art");
+
+            Label fallbackLabel = new(item.itemName);
+            fallbackLabel.AddToClassList("wardrobe-tile-placeholder");
+            fallbackLabel.pickingMode = PickingMode.Ignore;
+            button.Add(fallbackLabel);
+        }
+
+        button.clicked += () =>
+        {
+            SetCurrentItem(item, setItemSlot, setItemUi);
+            UpdateGridSelection(gridName, button);
         };
 
-        ListView listView = thisDoc.rootVisualElement.Q(listViewItem) as ListView;
-        if (listView == null)
+        return button;
+    }
+
+    private void UpdateGridSelection(string gridName, Button newlySelectedButton)
+    {
+        if (selectedButtonsByGrid.TryGetValue(gridName, out Button previousButton) && previousButton != null)
         {
-            Debug.LogError("wardrobeButtonTestScripts: Could not get ListView: " + listViewItem);
-            return;
+            previousButton.RemoveFromClassList("selected");
         }
 
-        listView.makeItem = makeItem;
-        listView.bindItem = bindItem;
-        listView.itemsSource = slotList;
-        listView.selectionType = SelectionType.Single;
+        newlySelectedButton.AddToClassList("selected");
+        selectedButtonsByGrid[gridName] = newlySelectedButton;
+    }
 
-        listView.itemsChosen += (selectedItems) =>
+    private void SyncInitialSelectionVisuals()
+    {
+        SyncSelectionForGrid("topsGrid", wardrobeItemList.currentItemTop);
+        SyncSelectionForGrid("bottomsGrid", wardrobeItemList.currentItemBottom);
+        SyncSelectionForGrid("shoesGrid", wardrobeItemList.currentItemShoe);
+        SyncSelectionForGrid("jacketsGrid", wardrobeItemList.currentItemJacket);
+    }
+
+    private void SyncSelectionForGrid(string gridName, wardrobeItemClothing currentItem)
+    {
+        if (currentItem == null) return;
+
+        VisualElement grid = thisDoc.rootVisualElement.Q<VisualElement>(gridName);
+        if (grid == null) return;
+
+        foreach (VisualElement child in grid.Children())
         {
-            if (selectedItems == null)
+            if (child is Button button && button.userData is wardrobeItemClothing item && item == currentItem)
             {
+                button.AddToClassList("selected");
+                selectedButtonsByGrid[gridName] = button;
                 return;
             }
-
-            wardrobeItemClothing selectedClothingItem = selectedItems.OfType<wardrobeItemClothing>().FirstOrDefault();
-            if (selectedClothingItem == null)
-            {
-                return;
-            }
-
-            SetCurrentItem(selectedClothingItem, setItemSlot, setItemUi);
-        };
+        }
     }
 
     /// <summary>
@@ -249,7 +307,7 @@ public class wardrobeButtonTestScripts : MonoBehaviour
     /// <param name="itemToSet">Clothing row to apply.</param>
     /// <param name="listSlot">Slot tag: chest, bottom, shoe, or jacket.</param>
     /// <param name="slotUi">UXML Image name for that layer.</param>
-    public void SetCurrentItem(wardrobeItemClothing itemToSet, string listSlot, string slotUi)
+    private void SetCurrentItem(wardrobeItemClothing itemToSet, string listSlot, string slotUi)
     {
         if (itemToSet == null)
         {
