@@ -1,34 +1,33 @@
 using UnityEngine;
 
 /// <summary>
-/// Loads wardrobe item definitions from a JSON TextAsset and registers them on a wardrobeItemList at runtime.
+/// Loads wardrobe item definitions from a JSON TextAsset and registers them on the static <see cref="wardrobeItemList"/> store.
 /// </summary>
+[DefaultExecutionOrder(-100)]
 public class wardrobeManagerScript : MonoBehaviour
 {
     [SerializeField]
     private TextAsset jsonFile;
 
-
     /// <summary>
-    /// Deserializes jsonFile and forwards each entry to itemList.
+    /// Deserializes <see cref="jsonFile"/> and forwards each entry to <see cref="wardrobeItemList.NewItemAdd"/>.
     /// </summary>
     private void Start()
     {
-        
         if (jsonFile == null)
         {
             Debug.LogError("wardrobeManagerScript: Assign jsonFile in the Inspector.");
             return;
         }
 
-        serialItems itemsInFile = JsonUtility.FromJson<serialItems>(jsonFile.text);
+        SerialItems itemsInFile = JsonUtility.FromJson<SerialItems>(jsonFile.text);
         if (itemsInFile == null || itemsInFile.items == null)
         {
-            Debug.LogError("wardrobeManagerScript: JSON did not deserialize to serialItems with a non-null items array.");
+            Debug.LogError("wardrobeManagerScript: JSON did not deserialize to SerialItems with a non-null items array.");
             return;
         }
 
-        foreach (newSerialItem newItem in itemsInFile.items)
+        foreach (NewSerialItem newItem in itemsInFile.items)
         {
             if (newItem == null)
             {
@@ -43,13 +42,13 @@ public class wardrobeManagerScript : MonoBehaviour
                 continue;
             }
 
-            wardrobeItemList.newItemAdd(newItem.ID, newItem.itemName, newItem.slotTag, newItemSprite, newItem.itemDescription, newItem.coversBottomPiece);
+            wardrobeItemList.NewItemAdd(newItem.ID, newItem.itemName, newItem.slotTag, newItemSprite, newItem.itemDescription, newItem.coversBottomPiece);
         }
     }
 }
 
 [System.Serializable]
-public class newSerialItem
+public class NewSerialItem
 {
     public string ID;
     public string itemName;
@@ -60,7 +59,7 @@ public class newSerialItem
 }
 
 [System.Serializable]
-public class serialItems
+public class SerialItems
 {
-    public newSerialItem[] items;
+    public NewSerialItem[] items;
 }

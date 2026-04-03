@@ -1,3 +1,3 @@
 # Version
 
-0.0.2.1 — Remove empty `data-source` on Proceed button in `WardrobeUITEMP.uxml` to clear UI Toolkit Semantic URL warning.
+0.0.3.0 — Merge wardrobe PR #18 (JSON-driven picker, static item store); follow-up: execution order, default outfit skips `nothing_*`, UI null-safety, PascalCase wardrobe APIs, UXML note for restoring River's layout.

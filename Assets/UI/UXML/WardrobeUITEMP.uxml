@@ -1,4 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <!-- Jeff / layout: River's wardrobe used three columns—garment racks + coloured ListViews left/right, stacked avatar middle, Proceed-style flow. Code keys off these names; keep them when restoring River's structure: ListViews jacketsList, topsList, shoesList, bottomsList; Images activeAvatar (base), activeJackets, activeTop, activeShoes, activeBottoms; Button nextSceneButton. Optional: add a Label named for the timer and assign it on UIRelated wardrobeButtonTestScripts.timerModule. The hidden rack block at the bottom can go once real racks return. -->
     <Style src="project://database/Assets/UI/USS/WardrobeStylesheetTEMP.uss?fileID=7433441132597879392&amp;guid=81c303d3ec7a30445a00a6fbc3330ab1&amp;type=3#WardrobeStylesheetTEMP"/>
     <ui:VisualElement name="root" class="root">
         <ui:VisualElement name="leftColumn" enabled="true" class="side-column">

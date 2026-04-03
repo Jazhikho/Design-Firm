@@ -1,5 +1,5 @@
 /// <summary>
-/// Data for a single wardrobe clothing entry used by wardrobeItemList and wardrobeSlotsScript.
+/// Data for a single wardrobe clothing entry used by the static <see cref="wardrobeItemList"/> store and UI ListViews.
 /// </summary>
 public class wardrobeItemClothing
 {
