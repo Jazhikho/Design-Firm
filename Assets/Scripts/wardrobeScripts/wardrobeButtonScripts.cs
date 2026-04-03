@@ -18,6 +18,10 @@ public class wardrobeButtonTestScripts : MonoBehaviour
     public string nextScene;
     public bool sandboxMode;
 
+    public Label timerModule;
+    [SerializeField]
+    public float wardrobeTimer = 60;
+
     //
     /*
     [SerializeField]
@@ -81,6 +85,11 @@ public class wardrobeButtonTestScripts : MonoBehaviour
         setCurrentItem(wardrobeItemList.wardrobeListItemsJacket[0], "jacket", "activeJackets");
         //
 
+    }
+
+    void Update()
+    {
+        wardrobeTimer -= Time.deltaTime;
     }
 
     public void changeUISlotSprite(string elementName, Sprite spriteUI)
