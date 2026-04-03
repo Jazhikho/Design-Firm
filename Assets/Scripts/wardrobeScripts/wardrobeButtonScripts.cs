@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
+[RequireComponent(typeof(UIDocument))]
+
 /// <summary>
 /// Binds temporary wardrobe UI Toolkit controls to slot scripts and the shared item list for class testing.
 /// </summary>
