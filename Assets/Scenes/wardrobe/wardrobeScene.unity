@@ -189,11 +189,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::wardrobeButtonTestScripts
   nextScene: 
   sandboxMode: 0
-  chestSlot: {fileID: 0}
-  bottomSlot: {fileID: 0}
-  shoeSlot: {fileID: 0}
-  jacketSlot: {fileID: 0}
-  itemList: {fileID: 0}
+  chestSlot: {fileID: 708440582}
+  bottomSlot: {fileID: 1258152899}
+  shoeSlot: {fileID: 1548589923}
+  jacketSlot: {fileID: 2112103690}
+  itemList: {fileID: 2072884607}
 --- !u!1 &565341808
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,6 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::wardrobeManagerScript
   jsonFile: {fileID: 4900000, guid: 489d11e09380fe9499c7309bd441ec21, type: 3}
+  itemList: {fileID: 2072884607}
 --- !u!1 &708440580
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,6 +287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::wardrobeSlotsScript
   slot: chest
   slotUI: activeTop
+  uiScripts: {fileID: 97330856}
 --- !u!212 &708440583
 SpriteRenderer:
   serializedVersion: 2
@@ -747,6 +749,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::wardrobeSlotsScript
   slot: bottom
   slotUI: activeBottoms
+  uiScripts: {fileID: 97330856}
 --- !u!212 &1258152900
 SpriteRenderer:
   serializedVersion: 2
@@ -853,6 +856,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::wardrobeSlotsScript
   slot: shoe
   slotUI: activeShoes
+  uiScripts: {fileID: 97330856}
 --- !u!212 &1548589924
 SpriteRenderer:
   serializedVersion: 2
@@ -1053,6 +1057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::wardrobeSlotsScript
   slot: jacket
   slotUI: activeJackets
+  uiScripts: {fileID: 97330856}
 --- !u!212 &2112103691
 SpriteRenderer:
   serializedVersion: 2

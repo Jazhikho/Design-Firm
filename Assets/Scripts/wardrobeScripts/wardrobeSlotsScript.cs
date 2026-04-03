@@ -9,12 +9,18 @@ public class wardrobeSlotsScript : MonoBehaviour
     public string slotUI;
     public wardrobeItemClothing currentItem;
 
-    wardrobeButtonTestScripts uiScripts;
+    [SerializeField]
+    private wardrobeButtonTestScripts uiScripts;
     //
 
     void Awake()
     {
-        uiScripts = GameObject.Find("UIRelated").GetComponent<wardrobeButtonTestScripts>();
+        //uiScripts = GameObject.Find("UIRelated").GetComponent<wardrobeButtonTestScripts>();
+        if (uiScripts == null)
+        {
+            Debug.Log("wardrobeSlotsScript: uiScripts is missing");
+            return;
+        }
     }
     /// <summary>
     /// Stores the active item for this slot and updates the SpriteRenderer.

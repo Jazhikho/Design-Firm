@@ -8,6 +8,7 @@ public class wardrobeManagerScript : MonoBehaviour
     [SerializeField]
     private TextAsset jsonFile;
 
+    [SerializeField]
     private wardrobeItemList itemList;
 
     /// <summary>
@@ -15,7 +16,12 @@ public class wardrobeManagerScript : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        itemList = GameObject.Find("ItemsList").GetComponent<wardrobeItemList>();
+        //itemList = GameObject.Find("ItemsList").GetComponent<wardrobeItemList>();
+        if (itemList == null)
+        {
+            Debug.Log("wardrobeManagerScript: itemList is null");
+            return;
+        }
         
         if (jsonFile == null)
         {
