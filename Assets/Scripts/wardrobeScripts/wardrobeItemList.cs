@@ -6,9 +6,7 @@ using UnityEngine;
 /// </summary>
 public class wardrobeItemList : MonoBehaviour
 {
-    //Test Values
-    public Sprite testSprite;
-    //
+
     public List<wardrobeItemClothing> wardrobeListItems = new List<wardrobeItemClothing>();
     public List<wardrobeItemClothing> wardrobeListItemsChest = new List<wardrobeItemClothing>();
     public List<wardrobeItemClothing> wardrobeListItemsBottom = new List<wardrobeItemClothing>();
@@ -28,24 +26,6 @@ public class wardrobeItemList : MonoBehaviour
         newItemAdd("nothing_bottom", "Nothing", "bottom", null, "No clothing", false);
         newItemAdd("nothing_shoe", "Nothing", "shoe", null, "No clothing", false);
         //
-
-
-        // New Item
-        /*
-        wardrobeItemClothing testAddItem = new wardrobeItemClothing();
-        testAddItem.ID = "testShirt";
-        testAddItem.itemName = "Test Shirt";
-        testAddItem.slotTag = "chest";
-        testAddItem.itemSprite = testSprite;
-        testAddItem.itemDescription = "This is a shirt made for testing.";
-        //
-        wardrobeListItems.Add(testAddItem);
-        wardrobeListItemsChest.Add(testAddItem);
-        wardrobeIDList.Add(testAddItem.ID);
-        //
-        Debug.Log(wardrobeListItems[0].ID);
-        */
-        //newItemAdd("testShirt", "Test Shirt", "chest", testSprite, "This is a shirt made for testing", false);
     }
 
     /// <summary>

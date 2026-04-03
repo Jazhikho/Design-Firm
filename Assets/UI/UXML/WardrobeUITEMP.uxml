@@ -2,20 +2,8 @@
     <Style src="project://database/Assets/UI/USS/WardrobeStylesheetTEMP.uss?fileID=7433441132597879392&amp;guid=81c303d3ec7a30445a00a6fbc3330ab1&amp;type=3#WardrobeStylesheetTEMP"/>
     <ui:VisualElement name="root" class="root">
         <ui:VisualElement name="leftColumn" enabled="true" class="side-column">
-            <ui:VisualElement name="rushTempLeft" style="flex-grow: 1;">
-                <ui:Button text="TestButton" name="nextShirtTemp" style="scale: 1 1; background-size: 100% 100%; top: 0; left: 0; padding-right: 3px; padding-left: 3px; padding-bottom: 5px; padding-top: 5px; margin-left: 2px; margin-right: 2px; width: 112px;"/>
-                <ui:VisualElement name="SlotSelectionSpace" style="flex-grow: 1; top: auto; padding-bottom: 0; height: auto;">
-                    <ui:Button text="Tops" name="TopsButton" style="width: 44px; position: absolute; top: 0; left: 0;"/>
-                    <ui:Button text="Bottoms" name="BottomsButton" style="width: 44px; top: 0; right: auto; position: absolute; left: 50px; text-overflow: clip; white-space: pre;"/>
-                    <ui:Button text="Shoes" name="ShoesButton" style="width: 44px; top: 0; right: auto; position: absolute; left: 100px;"/>
-                    <ui:Button text="Jackets" name="JacketsButton" style="width: 44px; top: 0; right: auto; position: absolute; left: 150px;"/>
-                </ui:VisualElement>
-                <ui:VisualElement name="itemButtonList" style="flex-grow: 1;">
-                    <ui:MultiColumnListView columns="" sort-column-descriptions="" style="height: 317px;"/>
-                </ui:VisualElement>
-                <ui:ListView name="jacketsList" class="half-list" style="height: 60%; width: 75%; background-color: rgba(0, 0, 139, 0.42); border-top-width: 31px; border-top-color: rgb(0, 0, 255); align-self: flex-start;"/>
-                <ui:ListView name="topsList" class="half-list" style="align-self: flex-start; height: 60%; width: 75%; flex-wrap: nowrap; overflow: visible; visibility: visible; display: flex; border-top-color: rgb(0, 255, 0); border-top-width: 31px; background-color: rgba(0, 100, 0, 0.36);"/>
-            </ui:VisualElement>
+            <ui:ListView name="jacketsList" class="half-list" style="height: 60%; width: 75%; background-color: rgba(0, 0, 139, 0.42); border-top-width: 31px; border-top-color: rgb(0, 0, 255); align-self: flex-start;"/>
+            <ui:ListView name="topsList" item-template="" tabindex="0" class="half-list" style="align-self: flex-start; height: 60%; width: 75%; flex-wrap: nowrap; overflow: visible; visibility: visible; display: flex; border-top-color: rgb(0, 255, 0); border-top-width: 31px; background-color: rgba(0, 100, 0, 0.36);"/>
         </ui:VisualElement>
         <ui:VisualElement name="middleColumn" class="middle-column" style="flex-grow: 1;">
             <ui:VisualElement name="jeffTempMiddle" enabled="true" style="flex-grow: 1;">
@@ -26,22 +14,21 @@
                     <ui:Image name="activeBottoms" source="" class="stacked-image" style="background-image: url(&quot;project://database/Assets/Resources/Bottom/2000sCasualBottom.PNG?fileID=2800000&amp;guid=7f370a1c5182eec40b365ab16d3b4c84&amp;type=3#2000sCasualBottom&quot;);"/>
                 </ui:Image>
             </ui:VisualElement>
-            <ui:VisualElement name="rightColumn" class="side-column" style="flex-grow: 1; flex-direction: row; align-items: flex-end; align-self: center; height: 75%; width: 40%; justify-content: flex-start; flex-wrap: nowrap;">
-                <ui:VisualElement name="bottomsGarmentRack" enabled="true" style="flex-grow: 1; position: absolute; left: 0; visibility: hidden;">
-                    <ui:Button text="Button" name="bottomsGarmentRackButton" style="background-image: url(&quot;project://database/Assets/UI/Placeholders/Sprites/Racks/pantsRackPlaceholder.png?fileID=2800000&amp;guid=e48b974fcc7d0fd43a7b8635cb62576b&amp;type=3#pantsRackPlaceholder&quot;); height: 555px; background-color: rgba(188, 188, 188, 0); border-left-width: 0; border-right-width: 0; border-bottom-width: 0; border-top-width: 0; width: 237px;"/>
-                </ui:VisualElement>
-                <ui:VisualElement name="shoeRack" style="flex-grow: 1; position: absolute; right: 0; visibility: hidden;">
-                    <ui:Button text="Button" name="shoeRackButton" style="border-top-width: 0; border-bottom-width: 0; border-right-width: 0; border-left-width: 0; background-color: rgba(188, 188, 188, 0); background-image: url(&quot;project://database/Assets/UI/Placeholders/Sprites/Racks/shoeRackPlaceholder.png?fileID=2800000&amp;guid=a96736193069ff1458ade6c4346bb842&amp;type=3#shoeRackPlaceholder&quot;); height: 445px; width: 226px;"/>
-                </ui:VisualElement>
-                <ui:ListView name="shoesList" class="half-list" style="height: 60%; width: 75%; position: relative; right: auto; background-color: rgba(102, 51, 153, 0.41); border-top-color: rgb(238, 130, 238); border-top-width: 31px; top: 0; justify-content: space-evenly; align-self: flex-start;"/>
-                <ui:ListView name="bottomsList" class="half-list" style="height: 60%; width: 75%; background-color: rgba(255, 69, 0, 0.38); border-top-color: rgb(255, 167, 107); border-top-width: 31px; align-self: flex-start;"/>
-                <ui:VisualElement name="lrButtonSpace" style="flex-grow: 0; position: absolute; bottom: 0; right: 0; padding-left: 0; padding-right: 0; margin-left: 25px; margin-top: 350px; margin-right: 0;">
-                    <ui:Button text="Proceed" name="nextSceneButton" style="transform-origin: center; translate: 0 0; padding-left: 24px; padding-right: 24px; padding-top: 10px;"/>
-                </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="rightColumn" class="side-column" style="flex-grow: 1; flex-direction: column; align-items: stretch; align-self: auto; height: auto; width: auto; justify-content: flex-start; flex-wrap: nowrap; left: auto; right: 0;">
+            <ui:ListView name="shoesList" class="half-list" style="height: 60%; width: 75%; position: relative; right: auto; background-color: rgba(102, 51, 153, 0.41); border-top-color: rgb(238, 130, 238); border-top-width: 31px; top: auto; justify-content: flex-start; align-self: flex-start; left: 20%;"/>
+            <ui:ListView name="bottomsList" class="half-list" style="height: 60%; width: 75%; background-color: rgba(255, 69, 0, 0.38); border-top-color: rgb(255, 167, 107); border-top-width: 31px; align-self: flex-start; bottom: auto; position: relative; margin-left: 0; right: auto; left: 20%;"/>
+            <ui:VisualElement name="rushTempRight" style="flex-grow: 0; position: relative; bottom: 0; right: 0; padding-left: 0; padding-right: 0; margin-left: 0; margin-top: 0; margin-right: 0;">
+                <ui:Button text="Submit" name="nextSceneButton" style="transform-origin: center; translate: 0 0; padding-left: 3px; padding-right: 3px; padding-top: 5px; margin-left: 2px; margin-top: 2px; margin-right: 2px; margin-bottom: 2px; padding-bottom: 9px; width: 50%; right: auto; bottom: 0; left: 100px;"/>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="bottomRow" style="flex-grow: 1; height: 10%; align-items: stretch; justify-content: center; align-content: center; align-self: stretch;">
-            <ui:Button text="Submit" name="submitButton" style="align-items: center; align-self: center; width: 30%; height: 100%;"/>
+    </ui:VisualElement>
+    <ui:VisualElement name="IDontKnowWhyTheseAreHereRightNowOrWhatToDoWithThem" enabled="true" style="flex-grow: 1; visibility: visible;">
+        <ui:VisualElement name="bottomsGarmentRack" enabled="true" style="flex-grow: 1; position: absolute; left: 0; visibility: hidden;">
+            <ui:Button text="Button" name="bottomsGarmentRackButton" style="background-image: url(&quot;project://database/Assets/UI/Placeholders/Sprites/Racks/pantsRackPlaceholder.png?fileID=2800000&amp;guid=e48b974fcc7d0fd43a7b8635cb62576b&amp;type=3#pantsRackPlaceholder&quot;); height: 555px; background-color: rgba(188, 188, 188, 0); border-left-width: 0; border-right-width: 0; border-bottom-width: 0; border-top-width: 0; width: 237px;"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="shoeRack" style="flex-grow: 1; position: absolute; right: 0; visibility: hidden;">
+            <ui:Button text="Button" name="shoeRackButton" style="border-top-width: 0; border-bottom-width: 0; border-right-width: 0; border-left-width: 0; background-color: rgba(188, 188, 188, 0); background-image: url(&quot;project://database/Assets/UI/Placeholders/Sprites/Racks/shoeRackPlaceholder.png?fileID=2800000&amp;guid=a96736193069ff1458ade6c4346bb842&amp;type=3#shoeRackPlaceholder&quot;); height: 445px; width: 226px;"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

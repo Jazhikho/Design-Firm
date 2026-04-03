@@ -187,7 +187,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c129d64c3a9eb942a875603e7c871c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::wardrobeButtonTestScripts
-  currentSlot: shirt
   nextScene: 
   sandboxMode: 0
   chestSlot: {fileID: 0}
@@ -240,7 +239,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::wardrobeManagerScript
   jsonFile: {fileID: 4900000, guid: 489d11e09380fe9499c7309bd441ec21, type: 3}
-  itemList: {fileID: 2072884607}
 --- !u!1 &708440580
 GameObject:
   m_ObjectHideFlags: 0
@@ -1007,7 +1005,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e672a936decd134880ce9421ba0fe36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::wardrobeItemList
-  testSprite: {fileID: 7482667652216324306, guid: c118cf01ae9d5b24e8058e0c3e841fbe, type: 3}
   wardrobeIDList: []
 --- !u!1 &2112103688
 GameObject:
@@ -1124,5 +1121,5 @@ SceneRoots:
   - {fileID: 1212488760}
   - {fileID: 2072884606}
   - {fileID: 1973194136}
-  - {fileID: 97330855}
   - {fileID: 565341809}
+  - {fileID: 97330855}

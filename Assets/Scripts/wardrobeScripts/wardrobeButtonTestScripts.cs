@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -10,7 +13,6 @@ public class wardrobeButtonTestScripts : MonoBehaviour
     private UIDocument thisDoc;
     private Button testButton;
     private Button nextSceneButton;
-    public string currentSlot = "shirts";
 
 // nextScene will probably always be "mainMenuScene" or "taskResultScene"
     public string nextScene;
@@ -46,10 +48,8 @@ public class wardrobeButtonTestScripts : MonoBehaviour
         thisDoc = GetComponent<UIDocument>();
 
         //Buttons
-        testButton = thisDoc.rootVisualElement.Q("nextShirtTemp") as Button;
         nextSceneButton = thisDoc.rootVisualElement.Q("nextSceneButton") as Button;
         //RegisterButtons
-        testButton.RegisterCallback<ClickEvent>(nextShirtButtonClick);
         nextSceneButton.RegisterCallback<ClickEvent>(nextSceneScript);
         //
 
@@ -63,7 +63,6 @@ public class wardrobeButtonTestScripts : MonoBehaviour
 
     void OnDisable()
     {
-        testButton.UnregisterCallback<ClickEvent>(nextShirtButtonClick);
         nextSceneButton.UnregisterCallback<ClickEvent>(nextSceneScript);
     }
 
@@ -72,26 +71,87 @@ public class wardrobeButtonTestScripts : MonoBehaviour
         SceneManager.LoadScene(nextScene);
     }
 
-    /// <summary>
-    /// Sets the chest slot to the second chest item when available (test harness).
-    /// </summary>
-    /// <param name="evt">The click event from the Next Shirt button.</param>
-    public void nextShirtButtonClick(ClickEvent evt)
+
+
+    //
+    void Start()
     {
-        if (chestSlot == null || itemList == null)
-        {
-            Debug.LogError("wardrobeButtonTestScripts: Assign chestSlot and itemList in the Inspector.");
-            return;
-        }
-
-        if (itemList.wardrobeListItemsChest.Count < 2)
-        {
-            Debug.LogError("wardrobeButtonTestScripts: wardrobeListItemsChest needs at least two entries for this test.");
-            return;
-        }
-
-        chestSlot.setCurrentItem(itemList.wardrobeListItemsChest[1]);
-        bottomSlot.setCurrentItem(itemList.wardrobeListItemsBottom[1]);
-        shoeSlot.setCurrentItem(itemList.wardrobeListItemsShoe[1]);
+        //Not actually sure how to set it up properly so I did this instead.
+        setUpClothingChest();
+        setUpClothingBottom();
+        setUpClothingShoe();
+        setUpClothingJacket();
     }
+    public void setUpClothingChest()
+    {
+        Func<VisualElement> makeItem = () => new Image();
+        Action<VisualElement, int> bindItem = (e, i) => ((Image)e).sprite = itemList.wardrobeListItemsChest[i].itemSprite;
+
+        ListView topsList = thisDoc.rootVisualElement.Q("topsList") as ListView;
+        topsList.makeItem = makeItem;
+        topsList.bindItem = bindItem;
+        topsList.itemsSource = itemList.wardrobeListItemsChest;
+        topsList.selectionType = SelectionType.Single;
+
+        topsList.itemsChosen += (selectedItems) =>
+        {
+            wardrobeItemClothing selectedClothingItem = selectedItems.Cast<wardrobeItemClothing>().ElementAt(0);
+            chestSlot.setCurrentItem(selectedClothingItem);
+        };
+    }
+    public void setUpClothingBottom()
+    {
+        Func<VisualElement> makeItem = () => new Image();
+        Action<VisualElement, int> bindItem = (e, i) => ((Image)e).sprite = itemList.wardrobeListItemsBottom[i].itemSprite;
+
+        ListView topsList = thisDoc.rootVisualElement.Q("bottomsList") as ListView;
+        topsList.makeItem = makeItem;
+        topsList.bindItem = bindItem;
+        topsList.itemsSource = itemList.wardrobeListItemsBottom;
+        topsList.selectionType = SelectionType.Single;
+
+        topsList.itemsChosen += (selectedItems) =>
+        {
+            wardrobeItemClothing selectedClothingItem = selectedItems.Cast<wardrobeItemClothing>().ElementAt(0);
+            bottomSlot.setCurrentItem(selectedClothingItem);
+        };
+    }
+    public void setUpClothingShoe()
+    {
+        Func<VisualElement> makeItem = () => new Image();
+        Action<VisualElement, int> bindItem = (e, i) => ((Image)e).sprite = itemList.wardrobeListItemsShoe[i].itemSprite;
+
+        ListView topsList = thisDoc.rootVisualElement.Q("shoesList") as ListView;
+        topsList.makeItem = makeItem;
+        topsList.bindItem = bindItem;
+        topsList.itemsSource = itemList.wardrobeListItemsShoe;
+        topsList.selectionType = SelectionType.Single;
+
+        topsList.itemsChosen += (selectedItems) =>
+        {
+            wardrobeItemClothing selectedClothingItem = selectedItems.Cast<wardrobeItemClothing>().ElementAt(0);
+            shoeSlot.setCurrentItem(selectedClothingItem);
+        };
+    }
+    public void setUpClothingJacket()
+    {
+        Func<VisualElement> makeItem = () => new Image();
+        Action<VisualElement, int> bindItem = (e, i) => ((Image)e).sprite = itemList.wardrobeListItemsJacket[i].itemSprite;
+
+        ListView topsList = thisDoc.rootVisualElement.Q("jacketsList") as ListView;
+        topsList.makeItem = makeItem;
+        topsList.bindItem = bindItem;
+        topsList.itemsSource = itemList.wardrobeListItemsJacket;
+        topsList.selectionType = SelectionType.Single;
+
+        topsList.itemsChosen += (selectedItems) =>
+        {
+            wardrobeItemClothing selectedClothingItem = selectedItems.Cast<wardrobeItemClothing>().ElementAt(0);
+            jacketSlot.setCurrentItem(selectedClothingItem);
+        };
+    }
+
+
+    //
+
 }
