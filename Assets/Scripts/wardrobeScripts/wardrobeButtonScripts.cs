@@ -19,6 +19,7 @@ public class wardrobeButtonTestScripts : MonoBehaviour
     public bool sandboxMode;
 
     //
+    /*
     [SerializeField]
     private wardrobeSlotsScript chestSlot;
 
@@ -33,43 +34,17 @@ public class wardrobeButtonTestScripts : MonoBehaviour
 
     [SerializeField]
     private wardrobeItemList itemList;
+    */
+    //
+
+
+    //WardrobeSlotPort
+
     //
 
     void Start()
     {
-        //
-        chestSlot = GameObject.Find("chestSlot").GetComponent<wardrobeSlotsScript>();
-        bottomSlot = GameObject.Find("bottomSlot").GetComponent<wardrobeSlotsScript>();
-        shoeSlot = GameObject.Find("shoeSlot").GetComponent<wardrobeSlotsScript>();
-        jacketSlot = GameObject.Find("jacketSlot").GetComponent<wardrobeSlotsScript>();
-        itemList = GameObject.Find("ItemsList").GetComponent<wardrobeItemList>();
 
-        if (chestSlot == null || bottomSlot == null || shoeSlot == null || jacketSlot == null || itemList == null)
-        {
-            Debug.LogError("wardrobeButtonTestScripts: Assign all slot references and itemList in the Inspector.");
-            return;
-        }
-
-        if (itemList.wardrobeListItemsChest.Count < 1)
-        {
-            Debug.LogError("wardrobeButtonTestScripts: wardrobeListItemsChest is empty.");
-            return;
-        }
-        if (itemList.wardrobeListItemsBottom.Count < 1)
-        {
-            Debug.LogError("wardrobeButtonTestScripts: wardrobeListItemsBottom is empty.");
-            return;
-        }
-        if (itemList.wardrobeListItemsShoe.Count < 1)
-        {
-            Debug.LogError("wardrobeButtonTestScripts: wardrobeListItemsShoe is empty.");
-            return;
-        }
-        if (itemList.wardrobeListItemsJacket.Count < 1)
-        {
-            Debug.LogError("wardrobeButtonTestScripts: wardrobeListItemsJacket is empty.");
-            return;
-        }
         //
         if (sandboxMode == false)
         {
@@ -95,10 +70,15 @@ public class wardrobeButtonTestScripts : MonoBehaviour
         //
 
         //
-        setUpClothing(itemList.wardrobeListItemsChest, chestSlot, "topsList");
-        setUpClothing(itemList.wardrobeListItemsBottom, bottomSlot, "bottomsList");
-        setUpClothing(itemList.wardrobeListItemsShoe, shoeSlot, "shoesList");
-        setUpClothing(itemList.wardrobeListItemsJacket, jacketSlot, "jacketsList");
+        setUpClothing(wardrobeItemList.wardrobeListItemsChest, "topsList", "chest", "activeTop");
+        setUpClothing(wardrobeItemList.wardrobeListItemsBottom, "bottomsList", "bottom", "activeBottoms");
+        setUpClothing(wardrobeItemList.wardrobeListItemsShoe, "shoesList", "shoe", "activeShoes");
+        setUpClothing(wardrobeItemList.wardrobeListItemsJacket, "jacketsList", "jacket", "activeJackets");
+
+        setCurrentItem(wardrobeItemList.wardrobeListItemsChest[0], "chest", "activeTop");
+        setCurrentItem(wardrobeItemList.wardrobeListItemsBottom[0], "bottom", "activeBottoms");
+        setCurrentItem(wardrobeItemList.wardrobeListItemsShoe[0], "shoe", "activeShoes");
+        setCurrentItem(wardrobeItemList.wardrobeListItemsJacket[0], "jacket", "activeJackets");
         //
 
     }
@@ -124,7 +104,7 @@ public class wardrobeButtonTestScripts : MonoBehaviour
         SceneManager.LoadScene(nextScene);
     }
 
-    public void setUpClothing(List<wardrobeItemClothing> slotList, wardrobeSlotsScript slot, string listViewItem)
+    public void setUpClothing(List<wardrobeItemClothing> slotList, string listViewItem, string setItemSlot, string setItemUi)
     {
         Func<VisualElement> makeItem = () => new Image();
         Action<VisualElement, int> bindItem = (e, i) => ((Image)e).sprite = slotList[i].itemSprite;
@@ -143,8 +123,23 @@ public class wardrobeButtonTestScripts : MonoBehaviour
         topsList.itemsChosen += (selectedItems) =>
         {
             wardrobeItemClothing selectedClothingItem = selectedItems.Cast<wardrobeItemClothing>().ElementAt(0);
-            slot.setCurrentItem(selectedClothingItem);
+            setCurrentItem(selectedClothingItem, setItemSlot, setItemUi);
         };
+    }
+
+    public void setCurrentItem(wardrobeItemClothing itemToSet, string listSlot, string slotUI)
+    {
+        
+        if (itemToSet == null)
+        {
+            Debug.LogError("wardrobeSlotsScript: itemToSet is null for slot " + listSlot);
+            return;
+        }
+
+
+        wardrobeItemList.setItemSlot(listSlot, itemToSet);
+        changeUISlotSprite(slotUI, itemToSet.itemSprite);
+        //
     }
 
 }

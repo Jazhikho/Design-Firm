@@ -8,20 +8,12 @@ public class wardrobeManagerScript : MonoBehaviour
     [SerializeField]
     private TextAsset jsonFile;
 
-    [SerializeField]
-    private wardrobeItemList itemList;
 
     /// <summary>
     /// Deserializes jsonFile and forwards each entry to itemList.
     /// </summary>
     private void Start()
     {
-        //itemList = GameObject.Find("ItemsList").GetComponent<wardrobeItemList>();
-        if (itemList == null)
-        {
-            Debug.Log("wardrobeManagerScript: itemList is null");
-            return;
-        }
         
         if (jsonFile == null)
         {
@@ -51,7 +43,7 @@ public class wardrobeManagerScript : MonoBehaviour
                 continue;
             }
 
-            itemList.newItemAdd(newItem.ID, newItem.itemName, newItem.slotTag, newItemSprite, newItem.itemDescription, newItem.coversBottomPiece);
+            wardrobeItemList.newItemAdd(newItem.ID, newItem.itemName, newItem.slotTag, newItemSprite, newItem.itemDescription, newItem.coversBottomPiece);
         }
     }
 }
