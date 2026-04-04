@@ -1,0 +1,154 @@
+.root {
+    flex-direction: row;
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.side-column {
+    flex-basis: 0;
+    min-width: 0;
+    margin: 8px;
+    flex-direction: row;
+    flex-grow: 2;
+}
+
+.middle-column {
+    flex-basis: 0;
+    min-width: 0;
+    position: relative;
+    flex-grow: 2;
+}
+
+.half-list {
+    flex-grow: 1;
+    min-height: 0;
+}
+
+.wardrobe-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    padding: 8px;
+}
+
+.wardrobe-tile {
+    width: 96px;
+    height: 96px;
+    margin: 6px;
+    padding: 4px;
+
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+
+    border-left-color: rgba(255,255,255,0.20);
+    border-right-color: rgba(255,255,255,0.20);
+    border-top-color: rgba(255,255,255,0.20);
+    border-bottom-color: rgba(255,255,255,0.20);
+
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.wardrobe-tile.selected {
+    border-left-color: rgb(80, 160, 255);
+    border-right-color: rgb(80, 160, 255);
+    border-top-color: rgb(80, 160, 255);
+    border-bottom-color: rgb(80, 160, 255);
+
+    border-left-width: 4px;
+    border-right-width: 4px;
+    border-top-width: 4px;
+    border-bottom-width: 4px;
+}
+
+.wardrobe-tile-image {
+    position: absolute;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+#jacketsGrid .wardrobe-tile-image {
+    width: 300%;
+    height: 300%;
+    left: -90%;
+    top: -30%;
+}
+
+#topsGrid .wardrobe-tile-image {
+    width: 300%;
+    height: 300%;
+    left: -95%;
+    top: -70%;
+}
+
+#bottomsGrid .wardrobe-tile-image {
+    width: 300%;
+    height: 300%;
+    left: -90%;
+    top: -115%;
+}
+
+#shoesGrid .wardrobe-tile-image {
+    width: 330%;
+    height: 330%;
+    left: -120%;
+    top: -250%;
+}
+
+.wardrobe-tile.missing-art {
+    border-left-color: rgba(255,180,80,0.65);
+    border-right-color: rgba(255,180,80,0.65);
+    border-top-color: rgba(255,180,80,0.65);
+    border-bottom-color: rgba(255,180,80,0.65);
+}
+
+.wardrobe-tile-placeholder {
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-stack {
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.stacked-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.btnRack {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: rgba(188, 188, 188, 0);
+    border-top-width: 0;
+    border-right-width: 0;
+    border-bottom-width: 0;
+    border-left-width: 0;
+}
+
+.clothingContainers {
+    flex-grow: 1;
+    flex-basis: 0;
+    min-width: 0;
+}

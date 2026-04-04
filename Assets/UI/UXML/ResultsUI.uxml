@@ -1,0 +1,61 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/USS/ResultsStylesheet.uss?fileID=7433441132597879392&amp;guid=59f5a80705eb3a24daaff36c9dbb1ed9&amp;type=3#ResultsStylesheet"/>
+    <ui:VisualElement name="topRow">
+        <ui:Button text="Retry Scenario" name="btnRetry"/>
+    </ui:VisualElement>
+    <ui:VisualElement name="middleRow" style="flex-grow: 1; flex-direction: row;">
+        <ui:VisualElement name="colYourOutfit" class="outfitContainer">
+            <ui:Label text="Your Outfit" name="lblYourOutfitHeader" class="outfit-header" style="font-size: 18px;"/>
+            <ui:Label text="Your Jacket: [Name]" name="lblYourJacketName" class="your-outfit-h2"/>
+            <ui:VisualElement class="feedbackContainer">
+                <ui:Label text="Feedback on your jacket" name="lblFeedbackJacket" class="item-feedback"/>
+                <ui:VisualElement style="flex-grow: 1;"/>
+                <ui:Label text="0.0" name="lblJacketScore" class="item-score" style="font-size: 10px; -unity-font-style: italic; -unity-text-align: upper-right;"/>
+            </ui:VisualElement>
+            <ui:Label text="Your Top: [Name]" name="lblYourTopName"/>
+            <ui:VisualElement class="feedbackContainer">
+                <ui:Label text="Feedback on your top" name="lblFeedbackTop" class="item-feedback"/>
+                <ui:VisualElement style="flex-grow: 1;"/>
+                <ui:Label text="0.0" name="lblTopScore" class="item-score" style="font-size: 10px; -unity-font-style: italic; -unity-text-align: upper-right;"/>
+            </ui:VisualElement>
+            <ui:Label text="Your Bottoms: [Name]" name="lblYourBottomsName" class="your-outfit-h2"/>
+            <ui:VisualElement class="feedbackContainer">
+                <ui:Label text="Feedback on your bottoms" name="lblFeedbackBottoms" class="item-feedback"/>
+                <ui:VisualElement style="flex-grow: 1;"/>
+                <ui:Label text="0.0" name="lblJacketScore" class="item-score" style="font-size: 10px; -unity-text-align: upper-right;"/>
+            </ui:VisualElement>
+            <ui:Label text="Your Shoes: [Name]" name="lblYourShoesName" class="your-outfit-h2"/>
+            <ui:VisualElement class="feedbackContainer">
+                <ui:Label text="Feedback on your shoes" name="lblFeedbackShoes" class="item-feedback" style="font-size: 10px; -unity-font-style: italic; white-space: normal;"/>
+                <ui:VisualElement style="flex-grow: 1;"/>
+                <ui:Label text="0.0" name="lblJacketScore" class="item-score" style="font-size: 10px; -unity-font-style: italic; -unity-text-align: upper-right;"/>
+            </ui:VisualElement>
+            <ui:Label text="0.0/4.0" name="lblTotalScore" class="total-score"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="colIdealOutfit" class="outfitContainer">
+            <ui:Label text="Ideal Outfit" name="lblIdealOutfitHeader" class="outfit-header" style="-unity-font-style: bold; font-size: 18px; -unity-text-align: upper-right;"/>
+            <ui:Label text="Ideal Jacket" name="lblIdealJacket" class="ideal-outfit-h2" style="-unity-text-align: upper-right;"/>
+            <ui:VisualElement class="hintContainer">
+                <ui:Label text="Hint: ideal jacket" name="lblHintIdealJacket" class="item-hint"/>
+            </ui:VisualElement>
+            <ui:Label text="Ideal Top" name="lblIdealTop" class="ideal-outfit-h2" style="-unity-text-align: upper-right;"/>
+            <ui:VisualElement class="hintContainer">
+                <ui:Label text="Hint: ideal top" name="lblHintIdealTop" class="item-hint"/>
+            </ui:VisualElement>
+            <ui:Label text="Ideal Bottoms" name="lblIdealBottoms" class="ideal-outfit-h2" style="-unity-text-align: upper-right;"/>
+            <ui:VisualElement class="hintContainer">
+                <ui:Label text="Hint: ideal bottoms" name="lblHintIdealBottoms" class="item-hint"/>
+            </ui:VisualElement>
+            <ui:Label text="Ideal Shoes" name="lblIdealShoes" class="ideal-outfit-h2" style="-unity-text-align: upper-right;"/>
+            <ui:VisualElement class="hintContainer">
+                <ui:Label text="Hint: ideal shoes" name="lblHintIdealShoes" class="item-hint"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="bottomRow" style="flex-direction: row;">
+        <ui:Label text="Sew It Goes" name="lblGameTitle"/>
+        <ui:VisualElement style="flex-grow: 1;"/>
+        <ui:Button text="Main Menu" name="btnMainMenu"/>
+        <ui:Button text="New Scenario" name="btnNewScenario"/>
+    </ui:VisualElement>
+</ui:UXML>

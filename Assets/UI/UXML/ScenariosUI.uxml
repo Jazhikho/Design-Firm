@@ -1,0 +1,14 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/USS/ScenariosStylesheet.uss?fileID=7433441132597879392&amp;guid=c5e026a4e12bf4141a5ef1113f39e2cb&amp;type=3#ScenariosStylesheet"/>
+    <ui:VisualElement name="topRow">
+        <ui:Button text="Back" name="btnBack"/>
+    </ui:VisualElement>
+    <ui:VisualElement name="middleRow" style="flex-grow: 1;">
+        <ui:Label text="list of scenarios and scenario descriptions" style="color: rgb(255, 255, 255); -unity-text-align: middle-center;"/>
+    </ui:VisualElement>
+    <ui:VisualElement name="bottomRow" style="flex-direction: row;">
+        <ui:Label text="Sew It Goes" name="lblGameTitle"/>
+        <ui:VisualElement style="flex-grow: 1;"/>
+        <ui:Button text="Next" name="btnNext"/>
+    </ui:VisualElement>
+</ui:UXML>

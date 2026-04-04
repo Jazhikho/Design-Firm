@@ -6,26 +6,44 @@ using UnityEngine;
 /// Static runtime store for wardrobe items loaded from JSON and current slot selections.
 /// Note: with Enter Play Mode Options that disable domain reload, static lists can persist between plays—prefer default domain reload for predictable behaviour.
 /// </summary>
-public static class wardrobeItemList
+public class wardrobeItemList
 {
-    public static List<wardrobeItemClothing> wardrobeListItems = new List<wardrobeItemClothing>();
-    public static List<wardrobeItemClothing> wardrobeListItemsChest = new List<wardrobeItemClothing>();
-    public static List<wardrobeItemClothing> wardrobeListItemsBottom = new List<wardrobeItemClothing>();
-    public static List<wardrobeItemClothing> wardrobeListItemsShoe = new List<wardrobeItemClothing>();
-    public static List<wardrobeItemClothing> wardrobeListItemsJacket = new List<wardrobeItemClothing>();
-    public static List<string> wardrobeIDList = new List<string>();
+    private static wardrobeItemList _instance;
+    public static wardrobeItemList Instance
+    {
+        get
+        {
+            _instance ??= new wardrobeItemList();
+            return _instance;
+        }
+    }
 
-    public static wardrobeItemClothing currentItemTop;
-    public static wardrobeItemClothing currentItemBottom;
-    public static wardrobeItemClothing currentItemShoe;
-    public static wardrobeItemClothing currentItemJacket;
+    public List<wardrobeItemClothing> wardrobeListItems = new();
+    public List<wardrobeItemClothing> wardrobeListItemsChest = new();
+    public List<wardrobeItemClothing> wardrobeListItemsBottom = new();
+    public List<wardrobeItemClothing> wardrobeListItemsShoe = new();
+    public List<wardrobeItemClothing> wardrobeListItemsJacket = new();
+    public List<string> wardrobeIDList = new();
+
+    public wardrobeItemClothing currentItemTop;
+    public wardrobeItemClothing currentItemBottom;
+    public wardrobeItemClothing currentItemShoe;
+    public wardrobeItemClothing currentItemJacket;
+
+    private wardrobeItemList()
+    {
+        NewItemAdd("nothing_chest", "Nothing", "chest", null, "No clothing", false);
+        NewItemAdd("nothing_jacket", "Nothing", "jacket", null, "No clothing", false);
+        NewItemAdd("nothing_bottom", "Nothing", "bottom", null, "No clothing", false);
+        NewItemAdd("nothing_shoe", "Nothing", "shoe", null, "No clothing", false);
+    }
 
     /// <summary>
     /// Returns the first item that is not a seeded <c>nothing_*</c> placeholder, or the first entry if all are placeholders.
     /// </summary>
     /// <param name="items">Per-slot list (must not be null).</param>
     /// <returns>Item to show by default, or null if the list is empty.</returns>
-    public static wardrobeItemClothing GetFirstDisplayableItem(List<wardrobeItemClothing> items)
+    public wardrobeItemClothing GetFirstDisplayableItem(List<wardrobeItemClothing> items)
     {
         if (items == null || items.Count == 0)
         {
@@ -61,7 +79,7 @@ public static class wardrobeItemList
     /// </summary>
     /// <param name="slot">One of chest, bottom, shoe, jacket.</param>
     /// <returns>Current item, or null if the tag is invalid.</returns>
-    public static wardrobeItemClothing GetItemSlot(string slot)
+    public wardrobeItemClothing GetItemSlot(string slot)
     {
         if (slot == "chest")
         {
@@ -92,7 +110,7 @@ public static class wardrobeItemList
     /// </summary>
     /// <param name="slot">One of chest, bottom, shoe, jacket.</param>
     /// <param name="setItem">Item to assign (may be null only if callers allow it).</param>
-    public static void SetItemSlot(string slot, wardrobeItemClothing setItem)
+    public void SetItemSlot(string slot, wardrobeItemClothing setItem)
     {
         if (slot == "chest")
         {
@@ -117,17 +135,6 @@ public static class wardrobeItemList
     }
 
     /// <summary>
-    /// Seeds placeholder "nothing" items for each slot so lists are never empty.
-    /// </summary>
-    static wardrobeItemList()
-    {
-        NewItemAdd("nothing_chest", "Nothing", "chest", null, "No clothing", false);
-        NewItemAdd("nothing_jacket", "Nothing", "jacket", null, "No clothing", false);
-        NewItemAdd("nothing_bottom", "Nothing", "bottom", null, "No clothing", false);
-        NewItemAdd("nothing_shoe", "Nothing", "shoe", null, "No clothing", false);
-    }
-
-    /// <summary>
     /// Adds a clothing entry to the master list and the matching slot list.
     /// </summary>
     /// <param name="newID">Stable item identifier.</param>
@@ -136,15 +143,17 @@ public static class wardrobeItemList
     /// <param name="newSprite">Sprite asset for the slot renderer.</param>
     /// <param name="newDesc">Description text.</param>
     /// <param name="newCover">Whether this item covers the bottom piece.</param>
-    public static void NewItemAdd(string newID, string newName, string newSlot, Sprite newSprite, string newDesc, bool newCover)
+    public void NewItemAdd(string newID, string newName, string newSlot, Sprite newSprite, string newDesc, bool newCover)
     {
-        wardrobeItemClothing newItem = new wardrobeItemClothing();
-        newItem.ID = newID;
-        newItem.itemName = newName;
-        newItem.slotTag = newSlot;
-        newItem.itemSprite = newSprite;
-        newItem.itemDescription = newDesc;
-        newItem.coversBottomPiece = newCover;
+        wardrobeItemClothing newItem = new()
+        {
+            ID = newID,
+            itemName = newName,
+            slotTag = newSlot,
+            itemSprite = newSprite,
+            itemDescription = newDesc,
+            coversBottomPiece = newCover
+        };
 
         wardrobeListItems.Add(newItem);
         wardrobeIDList.Add(newItem.ID);
