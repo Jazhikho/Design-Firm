@@ -1,18 +1,35 @@
 using UnityEngine;
 
 /// <summary>
-/// Loads wardrobe item definitions from a JSON TextAsset and registers them on the static <see cref="wardrobeItemList"/> store.
+/// Persistent singleton that loads wardrobe item definitions from a JSON TextAsset once at startup.
+/// Survives scene transitions via <see cref="DontDestroyOnLoad"/> so items are never loaded twice.
+/// Can live in any scene—whichever scene is opened first will bootstrap the data.
 /// </summary>
 [DefaultExecutionOrder(-100)]
 public class wardrobeManagerScript : MonoBehaviour
 {
+    private static wardrobeManagerScript instance;
+
     [SerializeField]
     private TextAsset jsonFile;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+        LoadItems();
+    }
 
     /// <summary>
     /// Deserializes <see cref="jsonFile"/> and forwards each entry to <see cref="wardrobeItemList.Instance.NewItemAdd"/>.
     /// </summary>
-    private void Awake()
+    private void LoadItems()
     {
         if (jsonFile == null)
         {
@@ -43,11 +60,11 @@ public class wardrobeManagerScript : MonoBehaviour
             }
 
             wardrobeItemList.Instance.NewItemAdd(
-                newItem.ID, 
-                newItem.itemName, 
-                newItem.slotTag, 
-                newItemSprite, 
-                newItem.itemDescription, 
+                newItem.ID,
+                newItem.itemName,
+                newItem.slotTag,
+                newItemSprite,
+                newItem.itemDescription,
                 newItem.coversBottomPiece);
         }
     }
