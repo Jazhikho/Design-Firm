@@ -10,7 +10,7 @@ public class wardrobeManagerScript : MonoBehaviour
     private TextAsset jsonFile;
 
     /// <summary>
-    /// Deserializes <see cref="jsonFile"/> and forwards each entry to <see cref="wardrobeItemList.NewItemAdd"/>.
+    /// Deserializes <see cref="jsonFile"/> and forwards each entry to <see cref="wardrobeItemList.Instance.NewItemAdd"/>.
     /// </summary>
     private void Awake()
     {
@@ -42,7 +42,13 @@ public class wardrobeManagerScript : MonoBehaviour
                 continue;
             }
 
-            wardrobeItemList.NewItemAdd(newItem.ID, newItem.itemName, newItem.slotTag, newItemSprite, newItem.itemDescription, newItem.coversBottomPiece);
+            wardrobeItemList.Instance.NewItemAdd(
+                newItem.ID, 
+                newItem.itemName, 
+                newItem.slotTag, 
+                newItemSprite, 
+                newItem.itemDescription, 
+                newItem.coversBottomPiece);
         }
     }
 }

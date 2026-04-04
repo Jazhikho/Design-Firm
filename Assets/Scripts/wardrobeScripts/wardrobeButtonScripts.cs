@@ -71,19 +71,19 @@ public class wardrobeButtonTestScripts : MonoBehaviour
         }
 
         SetUpClothing(gridName: "topsGrid",
-            slotList: wardrobeItemList.wardrobeListItemsChest,
+            slotList: wardrobeItemList.Instance.wardrobeListItemsChest,
             setItemSlot: "chest",
             setItemUi: "activeTop");
         SetUpClothing(gridName: "bottomsGrid",
-            slotList: wardrobeItemList.wardrobeListItemsBottom,
+            slotList: wardrobeItemList.Instance.wardrobeListItemsBottom,
             setItemSlot: "bottom",
             setItemUi: "activeBottoms");
         SetUpClothing(gridName: "shoesGrid",
-            slotList: wardrobeItemList.wardrobeListItemsShoe,
+            slotList: wardrobeItemList.Instance.wardrobeListItemsShoe,
             setItemSlot: "shoe",
             setItemUi: "activeShoes");
         SetUpClothing(gridName: "jacketsGrid",
-            slotList: wardrobeItemList.wardrobeListItemsJacket,
+            slotList: wardrobeItemList.Instance.wardrobeListItemsJacket,
             setItemSlot: "jacket",
             setItemUi: "activeJackets");
 
@@ -115,10 +115,14 @@ public class wardrobeButtonTestScripts : MonoBehaviour
     /// </summary>
     private void ApplyDefaultOutfit()
     {
-        wardrobeItemClothing chestDefault = wardrobeItemList.GetFirstDisplayableItem(wardrobeItemList.wardrobeListItemsChest);
-        wardrobeItemClothing bottomDefault = wardrobeItemList.GetFirstDisplayableItem(wardrobeItemList.wardrobeListItemsBottom);
-        wardrobeItemClothing shoeDefault = wardrobeItemList.GetFirstDisplayableItem(wardrobeItemList.wardrobeListItemsShoe);
-        wardrobeItemClothing jacketDefault = wardrobeItemList.GetFirstDisplayableItem(wardrobeItemList.wardrobeListItemsJacket);
+        wardrobeItemClothing chestDefault = 
+            wardrobeItemList.Instance.GetFirstDisplayableItem(wardrobeItemList.Instance.wardrobeListItemsChest);
+        wardrobeItemClothing bottomDefault = 
+            wardrobeItemList.Instance.GetFirstDisplayableItem(wardrobeItemList.Instance.wardrobeListItemsBottom);
+        wardrobeItemClothing shoeDefault = 
+            wardrobeItemList.Instance.GetFirstDisplayableItem(wardrobeItemList.Instance.wardrobeListItemsShoe);
+        wardrobeItemClothing jacketDefault = 
+            wardrobeItemList.Instance.GetFirstDisplayableItem(wardrobeItemList.Instance.wardrobeListItemsJacket);
 
         if (chestDefault != null)
         {
@@ -276,10 +280,10 @@ public class wardrobeButtonTestScripts : MonoBehaviour
 
     private void SyncInitialSelectionVisuals()
     {
-        SyncSelectionForGrid("topsGrid", wardrobeItemList.currentItemTop);
-        SyncSelectionForGrid("bottomsGrid", wardrobeItemList.currentItemBottom);
-        SyncSelectionForGrid("shoesGrid", wardrobeItemList.currentItemShoe);
-        SyncSelectionForGrid("jacketsGrid", wardrobeItemList.currentItemJacket);
+        SyncSelectionForGrid("topsGrid", wardrobeItemList.Instance.currentItemTop);
+        SyncSelectionForGrid("bottomsGrid", wardrobeItemList.Instance.currentItemBottom);
+        SyncSelectionForGrid("shoesGrid", wardrobeItemList.Instance.currentItemShoe);
+        SyncSelectionForGrid("jacketsGrid", wardrobeItemList.Instance.currentItemJacket);
     }
 
     private void SyncSelectionForGrid(string gridName, wardrobeItemClothing currentItem)
@@ -314,7 +318,7 @@ public class wardrobeButtonTestScripts : MonoBehaviour
             return;
         }
 
-        wardrobeItemList.SetItemSlot(listSlot, itemToSet);
+        wardrobeItemList.Instance.SetItemSlot(listSlot, itemToSet);
         ChangeUISlotSprite(slotUi, itemToSet.itemSprite);
     }
 }

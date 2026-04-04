@@ -1,0 +1,53 @@
+.outfitContainer {
+    background-color: rgba(194, 181, 131, 0.5);
+    margin-top: 10px;
+    flex-grow: 1;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.item-score {
+    -unity-font-style: italic;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.item-hint {
+    -unity-font-style: italic;
+    margin-top: 0;
+    margin-bottom: 0;
+    white-space: normal;
+    -unity-text-align: upper-right;
+    font-size: 10px;
+}
+
+.item-feedback {
+    -unity-font-style: italic;
+    font-size: 10px;
+    white-space: normal;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 8px;
+}
+
+.total-score {
+    -unity-text-align: upper-right;
+}
+
+.outfit-h1 {
+    -unity-font-style: bold;
+}
+
+.feedbackContainer {
+    margin-bottom: 10px;
+    flex-direction: row;
+}
+
+.hintContainer {
+    margin-bottom: 10px;
+}
