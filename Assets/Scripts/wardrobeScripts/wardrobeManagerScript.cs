@@ -12,7 +12,7 @@ public class wardrobeManagerScript : MonoBehaviour
     /// <summary>
     /// Deserializes <see cref="jsonFile"/> and forwards each entry to <see cref="wardrobeItemList.NewItemAdd"/>.
     /// </summary>
-    private void Start()
+    private void Awake()
     {
         if (jsonFile == null)
         {

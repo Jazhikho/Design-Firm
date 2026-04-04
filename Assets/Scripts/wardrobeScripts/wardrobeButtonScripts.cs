@@ -61,14 +61,14 @@ public class wardrobeButtonTestScripts : MonoBehaviour
             return;
         }
 
+        nextSceneButton.RegisterCallback<ClickEvent>(NextSceneScript);
+
         timerModule = root.Q<Label>("lblTimer");
         if (timerModule == null)
         {
             Debug.LogError("wardrobeButtonTestScripts: lblTimer not found in UXML.");
             return;
         }
-
-        nextSceneButton.RegisterCallback<ClickEvent>(NextSceneScript);
 
         SetUpClothing(gridName: "topsGrid",
             slotList: wardrobeItemList.wardrobeListItemsChest,
@@ -238,15 +238,14 @@ public class wardrobeButtonTestScripts : MonoBehaviour
 
         if (item.itemSprite != null)
         {
-            Image image = new();
+            VisualElement image = new();
             image.AddToClassList("wardrobe-tile-image");
-            image.sprite = item.itemSprite;
+            image.style.backgroundImage = new StyleBackground(item.itemSprite);
             image.pickingMode = PickingMode.Ignore;
             button.Add(image);
         }
-        else
+        else // Missing art or placeholder item.
         {
-            // Missing art or placeholder item.
             button.AddToClassList("missing-art");
 
             Label fallbackLabel = new(item.itemName);
