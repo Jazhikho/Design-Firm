@@ -71,9 +71,36 @@
 }
 
 .wardrobe-tile-image {
-    width: 100%;
-    height: 100%;
+    position: absolute;
     -unity-background-scale-mode: scale-to-fit;
+}
+
+#jacketsGrid .wardrobe-tile-image {
+    width: 300%;
+    height: 300%;
+    left: -90%;
+    top: -30%;
+}
+
+#topsGrid .wardrobe-tile-image {
+    width: 300%;
+    height: 300%;
+    left: -95%;
+    top: -70%;
+}
+
+#bottomsGrid .wardrobe-tile-image {
+    width: 300%;
+    height: 300%;
+    left: -90%;
+    top: -115%;
+}
+
+#shoesGrid .wardrobe-tile-image {
+    width: 330%;
+    height: 330%;
+    left: -120%;
+    top: -250%;
 }
 
 .wardrobe-tile.missing-art {
