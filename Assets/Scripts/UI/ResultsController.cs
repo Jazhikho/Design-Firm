@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(UIDocument))]
 public class ResultsController : MonoBehaviour
 {
-    private Button btnBack;
+    private Button btnRetry;
     private Button btnMainMenu;
     private Button btnRetryScenario;
 
@@ -13,11 +13,11 @@ public class ResultsController : MonoBehaviour
     {
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
 
-        btnBack = root.Q<Button>("btnBack");
-        btnBack.clicked += GoToWardrobe;
+        btnRetry = root.Q<Button>("btnRetry");
+        btnRetry.clicked += GoToWardrobe;
 
         btnMainMenu = root.Q<Button>("btnMainMenu");
-        btnMainMenu.clicked += NewScenario;
+        btnMainMenu.clicked += GoToMainMenu;
 
         btnRetryScenario = root.Q<Button>("btnNewScenario");
         btnRetryScenario.clicked += NewScenario;
@@ -25,7 +25,7 @@ public class ResultsController : MonoBehaviour
 
     public void OnDisable()
     {
-        btnBack.clicked -= GoToWardrobe;
+        btnRetry.clicked -= GoToWardrobe;
         btnMainMenu.clicked -= GoToMainMenu;
         btnRetryScenario.clicked -= NewScenario;
     }

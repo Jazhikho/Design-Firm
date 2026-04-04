@@ -12,17 +12,13 @@ public class wardrobeButtonTestScripts : MonoBehaviour
 {
     private UIDocument thisDoc;
     private Button nextSceneButton;
+    private Button backButton;
+    private Label timerModule;
+
+    private string nextScene;
 
     [SerializeField]
     private bool sandboxMode;
-
-    /// <summary>
-    /// Target scene after submit; set at runtime from <see cref="sandboxMode"/> unless overridden in the Inspector for testing.
-    /// </summary>
-    [SerializeField]
-    private string nextScene;
-
-    private Label timerModule;
 
     [SerializeField]
     private float wardrobeTimer = 60f;
@@ -53,6 +49,10 @@ public class wardrobeButtonTestScripts : MonoBehaviour
             Debug.LogError("wardrobeButtonTestScripts: rootVisualElement is null.");
             return;
         }
+
+        backButton = root.Q<Button>("btnBack");
+        if (backButton != null)
+            backButton.clicked += GoToScenarios;
 
         nextSceneButton = root.Q<Button>("nextSceneButton");
         if (nextSceneButton == null)
@@ -107,7 +107,13 @@ public class wardrobeButtonTestScripts : MonoBehaviour
 
     private void OnDisable()
     {
+        backButton.clicked -= GoToScenarios;
         nextSceneButton?.UnregisterCallback<ClickEvent>(NextSceneScript);
+    }
+
+    private void GoToScenarios()
+    {
+        SceneManager.LoadScene("taskScenarioScene");
     }
 
     /// <summary>

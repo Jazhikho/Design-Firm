@@ -6,7 +6,6 @@ using UnityEngine.UIElements;
 public class ScenariosController : MonoBehaviour
 {
     private Button btnBack;
-
     private Button btnNext;
 
     private void OnEnable()
