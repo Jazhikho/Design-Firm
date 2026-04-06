@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Bottoms_Local
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Bottoms_Local
+  m_GUID: 23b6d2691bcfd9443be1d0a3979686f6
+  m_SerializeEntries:
+  - m_GUID: a1df9a45d2a2bf94e9ead0542566d706
+    m_Address: Assets/Art/Clothing/Bottoms/00s_lowrise_bootcut_jeans.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cf923e4e6b7bd5b4998516abeb117e9b
+    m_Address: Assets/Art/Clothing/Bottoms/80s_pleated_trousers.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: cb8f221f4801dcc4db2d548c1343015b, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 1967631dd00f2d04bab25ed57aa451f5, type: 2}
+    - {fileID: 11400000, guid: 668c89d87f8d4b247b6784704abe03e5, type: 2}

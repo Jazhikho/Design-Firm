@@ -1,0 +1,852 @@
+{
+  "scenarios": [
+    {
+      "name": "First Day at the Corporate Office",
+      "description": "It is 1986 and you are reporting to a corporate office for your first week on the job. The look should communicate ambition, polish, and unmistakable 1980s power dressing.",
+      "era": "1980s",
+      "scene": "Corporate Office, Chicago, 1986",
+      "illustrationFile": "Scenarios/1980s_business.png",
+      "scoredItems": [
+        {
+          "itemId": "outerwear_80s_power_blazer",
+          "score": 1.0,
+          "commentary": "This is a strong 1980s business choice. Power dressing became a defining business look of the 1980s, especially in offices influenced by corporate ambition and gendered ideas of authority."
+        },
+        {
+          "itemId": "top_80s_silk_blouse",
+          "score": 1.0,
+          "commentary": "This is a strong 1980s business choice. Bow blouses paired well with suits and skirts in the 1980s office, balancing femininity with the decade's sharp tailoring."
+        },
+        {
+          "itemId": "bottoms_80s_pencil_skirt",
+          "score": 1.0,
+          "commentary": "This is a strong 1980s business choice. The pencil skirt remained a standard companion to power blazers in 1980s businesswear."
+        },
+        {
+          "itemId": "shoes_80s_pumps",
+          "score": 1.0,
+          "commentary": "This is a strong 1980s business choice. Pumps anchored both 1980s power dressing and formal eveningwear."
+        }
+      ],
+      "incorrectSlotFeedback": {
+        "jacket": "Choose tailored outerwear with a professional silhouette that matches the decade's office norms.",
+        "top": "Choose a polished top that looks workplace-appropriate for the decade and setting.",
+        "bottoms": "Choose tailored bottoms with the decade's correct rise and silhouette for business dress.",
+        "shoes": "Choose practical polished shoes appropriate for office wear in the target decade."
+      },
+      "idealOutfit": {
+        "jacket": {
+          "itemId": "outerwear_80s_power_blazer",
+          "commentary": "This is a strong 1980s business choice. Power dressing became a defining business look of the 1980s, especially in offices influenced by corporate ambition and gendered ideas of authority."
+        },
+        "top": {
+          "itemId": "top_80s_silk_blouse",
+          "commentary": "This is a strong 1980s business choice. Bow blouses paired well with suits and skirts in the 1980s office, balancing femininity with the decade's sharp tailoring."
+        },
+        "bottoms": {
+          "itemId": "bottoms_80s_pencil_skirt",
+          "commentary": "This is a strong 1980s business choice. The pencil skirt remained a standard companion to power blazers in 1980s businesswear."
+        },
+        "shoes": {
+          "itemId": "shoes_80s_pumps",
+          "commentary": "This is a strong 1980s business choice. Pumps anchored both 1980s power dressing and formal eveningwear."
+        }
+      }
+    },
+    {
+      "name": "Weekend Trip to the Mall",
+      "description": "It is 1987 and you are meeting friends at the mall for a relaxed Saturday afternoon. The outfit should feel everyday, youthful, and clearly mid-1980s casual.",
+      "era": "1980s",
+      "scene": "Suburban Shopping Mall, Illinois, 1987",
+      "illustrationFile": "Scenarios/1980s_casual.png",
+      "scoredItems": [
+        {
+          "itemId": "outerwear_80s_denim_jacket",
+          "score": 1.0,
+          "commentary": "This is a strong 1980s casual choice. Stonewashed and acid-treated denim were common casual looks in the 1980s, especially for youth and weekend wear."
+        },
+        {
+          "itemId": "top_80s_band_tee",
+          "score": 1.0,
+          "commentary": "This is a strong 1980s casual choice. Band t-shirts were common markers of music identity in the 1980s across rock, metal, and punk scenes."
+        },
+        {
+          "itemId": "bottoms_80s_acid_wash_jeans",
+          "score": 1.0,
+          "commentary": "This is a strong 1980s casual choice. Acid-wash denim is one of the clearest everyday denim markers of the 1980s."
+        },
+        {
+          "itemId": "shoes_80s_high_tops",
+          "score": 1.0,
+          "commentary": "This is a strong 1980s casual choice. Basketball sneakers became major fashion items in the 1980s through sport, hip-hop, and youth culture."
+        }
+      ],
+      "incorrectSlotFeedback": {
+        "jacket": "Choose relaxed outerwear that fits ordinary everyday dress for the decade.",
+        "top": "Choose an everyday top that reflects mainstream casual wear from the target decade.",
+        "bottoms": "Choose casual bottoms with a silhouette commonly worn in that decade.",
+        "shoes": "Choose everyday footwear that matches the decade's casual look."
+      },
+      "idealOutfit": {
+        "jacket": {
+          "itemId": "outerwear_80s_denim_jacket",
+          "commentary": "This is a strong 1980s casual choice. Stonewashed and acid-treated denim were common casual looks in the 1980s, especially for youth and weekend wear."
+        },
+        "top": {
+          "itemId": "top_80s_band_tee",
+          "commentary": "This is a strong 1980s casual choice. Band t-shirts were common markers of music identity in the 1980s across rock, metal, and punk scenes."
+        },
+        "bottoms": {
+          "itemId": "bottoms_80s_acid_wash_jeans",
+          "commentary": "This is a strong 1980s casual choice. Acid-wash denim is one of the clearest everyday denim markers of the 1980s."
+        },
+        "shoes": {
+          "itemId": "shoes_80s_high_tops",
+          "commentary": "This is a strong 1980s casual choice. Basketball sneakers became major fashion items in the 1980s through sport, hip-hop, and youth culture."
+        }
+      }
+    },
+    {
+      "name": "Neighborhood Music Scene Night",
+      "description": "It is 1984 and you are heading to a local music venue shaped by youth music culture. The outfit should reflect everyday subcultural style rather than formal fashion.",
+      "era": "1980s",
+      "scene": "Small Music Venue, Detroit, 1984",
+      "illustrationFile": "Scenarios/1980s_cultural.png",
+      "scoredItems": [
+        {
+          "itemId": "outerwear_80s_track_jacket",
+          "score": 1.0,
+          "commentary": "This is a strong 1980s cultural choice. Athletic warm-ups moved into street fashion in the 1980s and were especially visible in hip-hop, dance, and casual sportswear culture."
+        },
+        {
+          "itemId": "top_80s_band_tee",
+          "score": 1.0,
+          "commentary": "This is a strong 1980s cultural choice. Band t-shirts were common markers of music identity in the 1980s across rock, metal, and punk scenes."
+        },
+        {
+          "itemId": "bottoms_80s_acid_wash_jeans",
+          "score": 1.0,
+          "commentary": "This is a strong 1980s cultural choice. Acid-wash denim is one of the clearest everyday denim markers of the 1980s."
+        },
+        {
+          "itemId": "shoes_80s_high_tops",
+          "score": 1.0,
+          "commentary": "This is a strong 1980s cultural choice. Basketball sneakers became major fashion items in the 1980s through sport, hip-hop, and youth culture."
+        }
+      ],
+      "incorrectSlotFeedback": {
+        "jacket": "Choose outerwear tied to the decade's everyday subcultural or street-influenced dress.",
+        "top": "Choose a top that signals the right youth, music, or streetwear context for the decade.",
+        "bottoms": "Choose bottoms that support the decade's subcultural silhouette rather than generic fashion.",
+        "shoes": "Choose footwear strongly associated with the decade's youth or street-influenced style."
+      },
+      "idealOutfit": {
+        "jacket": {
+          "itemId": "outerwear_80s_track_jacket",
+          "commentary": "This is a strong 1980s cultural choice. Athletic warm-ups moved into street fashion in the 1980s and were especially visible in hip-hop, dance, and casual sportswear culture."
+        },
+        "top": {
+          "itemId": "top_80s_band_tee",
+          "commentary": "This is a strong 1980s cultural choice. Band t-shirts were common markers of music identity in the 1980s across rock, metal, and punk scenes."
+        },
+        "bottoms": {
+          "itemId": "bottoms_80s_acid_wash_jeans",
+          "commentary": "This is a strong 1980s cultural choice. Acid-wash denim is one of the clearest everyday denim markers of the 1980s."
+        },
+        "shoes": {
+          "itemId": "shoes_80s_high_tops",
+          "commentary": "This is a strong 1980s cultural choice. Basketball sneakers became major fashion items in the 1980s through sport, hip-hop, and youth culture."
+        }
+      }
+    },
+    {
+      "name": "Hotel Awards Banquet",
+      "description": "It is 1988 and you are attending an evening banquet at a downtown hotel. The outfit should read polished, dressy, and appropriate for an 1980s formal social event.",
+      "era": "1980s",
+      "scene": "Hotel Ballroom, New York City, 1988",
+      "illustrationFile": "Scenarios/1980s_formal.png",
+      "scoredItems": [
+        {
+          "itemId": "outerwear_80s_tuxedo_jacket",
+          "score": 1.0,
+          "commentary": "This is a strong 1980s formal choice. Formal eveningwear remained relatively conservative in the 1980s, though the decade often emphasized a stronger shoulder line."
+        },
+        {
+          "itemId": "top_80s_silk_blouse",
+          "score": 1.0,
+          "commentary": "This is a strong 1980s formal choice. Bow blouses paired well with suits and skirts in the 1980s office, balancing femininity with the decade's sharp tailoring."
+        },
+        {
+          "itemId": "bottoms_80s_pleated_trousers",
+          "score": 1.0,
+          "commentary": "This is a strong 1980s formal choice. Pleated trousers were common in 1980s office and formalwear, reflecting the decade's preference for volume and structure."
+        },
+        {
+          "itemId": "shoes_80s_pumps",
+          "score": 1.0,
+          "commentary": "This is a strong 1980s formal choice. Pumps anchored both 1980s power dressing and formal eveningwear."
+        }
+      ],
+      "incorrectSlotFeedback": {
+        "jacket": "Choose dressier outerwear or tailoring that fits the decade's formal silhouette.",
+        "top": "Choose a refined dress top appropriate for an evening or formal social event in the decade.",
+        "bottoms": "Choose dressier bottoms with an era-accurate formal line and proportion.",
+        "shoes": "Choose formal footwear that matches the decade's dress standards."
+      },
+      "idealOutfit": {
+        "jacket": {
+          "itemId": "outerwear_80s_tuxedo_jacket",
+          "commentary": "This is a strong 1980s formal choice. Formal eveningwear remained relatively conservative in the 1980s, though the decade often emphasized a stronger shoulder line."
+        },
+        "top": {
+          "itemId": "top_80s_silk_blouse",
+          "commentary": "This is a strong 1980s formal choice. Bow blouses paired well with suits and skirts in the 1980s office, balancing femininity with the decade's sharp tailoring."
+        },
+        "bottoms": {
+          "itemId": "bottoms_80s_pleated_trousers",
+          "commentary": "This is a strong 1980s formal choice. Pleated trousers were common in 1980s office and formalwear, reflecting the decade's preference for volume and structure."
+        },
+        "shoes": {
+          "itemId": "shoes_80s_pumps",
+          "commentary": "This is a strong 1980s formal choice. Pumps anchored both 1980s power dressing and formal eveningwear."
+        }
+      }
+    },
+    {
+      "name": "Starting Work at a Design Firm",
+      "description": "It is 1996 and you are starting a new office job at a design firm. The outfit should feel professional but softer and more minimal than 1980s businesswear.",
+      "era": "1990s",
+      "scene": "Design Office, Minneapolis, 1996",
+      "illustrationFile": "Scenarios/1990s_business.png",
+      "scoredItems": [
+        {
+          "itemId": "outerwear_90s_single_breasted_blazer",
+          "score": 1.0,
+          "commentary": "This is a strong 1990s business choice. Compared with the 1980s, 1990s tailoring generally moved toward less aggressive structure and cleaner lines."
+        },
+        {
+          "itemId": "top_90s_mock_neck",
+          "score": 1.0,
+          "commentary": "This is a strong 1990s business choice. Minimalist dressing in the 1990s favored sleek knit tops in dark neutrals, often paired with clean tailoring."
+        },
+        {
+          "itemId": "bottoms_90s_straight_leg_trousers",
+          "score": 1.0,
+          "commentary": "This is a strong 1990s business choice. 1990s workwear often softened from 1980s volume toward straighter, less padded silhouettes."
+        },
+        {
+          "itemId": "shoes_90s_loafers",
+          "score": 1.0,
+          "commentary": "This is a strong 1990s business choice. Minimal loafers suited the decade's pared-back office and smart casual looks."
+        }
+      ],
+      "incorrectSlotFeedback": {
+        "jacket": "Choose tailored outerwear with a professional silhouette that matches the decade's office norms.",
+        "top": "Choose a polished top that looks workplace-appropriate for the decade and setting.",
+        "bottoms": "Choose tailored bottoms with the decade's correct rise and silhouette for business dress.",
+        "shoes": "Choose practical polished shoes appropriate for office wear in the target decade."
+      },
+      "idealOutfit": {
+        "jacket": {
+          "itemId": "outerwear_90s_single_breasted_blazer",
+          "commentary": "This is a strong 1990s business choice. Compared with the 1980s, 1990s tailoring generally moved toward less aggressive structure and cleaner lines."
+        },
+        "top": {
+          "itemId": "top_90s_mock_neck",
+          "commentary": "This is a strong 1990s business choice. Minimalist dressing in the 1990s favored sleek knit tops in dark neutrals, often paired with clean tailoring."
+        },
+        "bottoms": {
+          "itemId": "bottoms_90s_straight_leg_trousers",
+          "commentary": "This is a strong 1990s business choice. 1990s workwear often softened from 1980s volume toward straighter, less padded silhouettes."
+        },
+        "shoes": {
+          "itemId": "shoes_90s_loafers",
+          "commentary": "This is a strong 1990s business choice. Minimal loafers suited the decade's pared-back office and smart casual looks."
+        }
+      }
+    },
+    {
+      "name": "Coffee Run Before Class",
+      "description": "It is 1995 and you are grabbing coffee before class. The outfit should feel practical, relaxed, and believable for everyday 1990s casual wear.",
+      "era": "1990s",
+      "scene": "Neighborhood Coffee Shop, Seattle, 1995",
+      "illustrationFile": "Scenarios/1990s_casual.png",
+      "scoredItems": [
+        {
+          "itemId": "outerwear_90s_denim_jacket",
+          "score": 1.0,
+          "commentary": "This is a strong 1990s casual choice. Oversized denim outerwear was common in 1990s casual dress across several youth styles."
+        },
+        {
+          "itemId": "top_90s_ribbed_tank",
+          "score": 1.0,
+          "commentary": "This is a strong 1990s casual choice. Simple ribbed tanks were a core 1990s basic, especially in pared-back casual wardrobes."
+        },
+        {
+          "itemId": "bottoms_90s_khaki_chinos",
+          "score": 1.0,
+          "commentary": "This is a strong 1990s casual choice. Chinos became a dependable mainstream casual and business-casual option in the 1990s."
+        },
+        {
+          "itemId": "shoes_90s_loafers",
+          "score": 1.0,
+          "commentary": "This is a strong 1990s casual choice. Minimal loafers suited the decade's pared-back office and smart casual looks."
+        }
+      ],
+      "incorrectSlotFeedback": {
+        "jacket": "Choose relaxed outerwear that fits ordinary everyday dress for the decade.",
+        "top": "Choose an everyday top that reflects mainstream casual wear from the target decade.",
+        "bottoms": "Choose casual bottoms with a silhouette commonly worn in that decade.",
+        "shoes": "Choose everyday footwear that matches the decade's casual look."
+      },
+      "idealOutfit": {
+        "jacket": {
+          "itemId": "outerwear_90s_denim_jacket",
+          "commentary": "This is a strong 1990s casual choice. Oversized denim outerwear was common in 1990s casual dress across several youth styles."
+        },
+        "top": {
+          "itemId": "top_90s_ribbed_tank",
+          "commentary": "This is a strong 1990s casual choice. Simple ribbed tanks were a core 1990s basic, especially in pared-back casual wardrobes."
+        },
+        "bottoms": {
+          "itemId": "bottoms_90s_khaki_chinos",
+          "commentary": "This is a strong 1990s casual choice. Chinos became a dependable mainstream casual and business-casual option in the 1990s."
+        },
+        "shoes": {
+          "itemId": "shoes_90s_loafers",
+          "commentary": "This is a strong 1990s casual choice. Minimal loafers suited the decade's pared-back office and smart casual looks."
+        }
+      }
+    },
+    {
+      "name": "Local Record Store Afternoon",
+      "description": "It is 1994 and you are spending the afternoon at an independent record store before a small local show. The outfit should reflect everyday youth subculture in the 1990s.",
+      "era": "1990s",
+      "scene": "Independent Record Store, Seattle, 1994",
+      "illustrationFile": "Scenarios/1990s_cultural.png",
+      "scoredItems": [
+        {
+          "itemId": "outerwear_90s_flannel",
+          "score": 1.0,
+          "commentary": "This is a strong 1990s cultural choice. Flannel shirts became strongly associated with 1990s grunge and relaxed anti-fashion styling."
+        },
+        {
+          "itemId": "top_90s_ribbed_tank",
+          "score": 1.0,
+          "commentary": "This is still believable for 1990s styling in this scenario. Simple ribbed tanks were a core 1990s basic, especially in pared-back casual wardrobes."
+        },
+        {
+          "itemId": "bottoms_90s_baggy_jeans",
+          "score": 1.0,
+          "commentary": "This is a strong 1990s cultural choice. Baggy denim was central to 1990s skate and hip-hop influenced casual dress."
+        },
+        {
+          "itemId": "shoes_90s_combat_boots",
+          "score": 1.0,
+          "commentary": "This is a strong 1990s cultural choice. Combat boots are one of the most recognizable 1990s markers, especially in grunge and alternative fashion."
+        }
+      ],
+      "incorrectSlotFeedback": {
+        "jacket": "Choose outerwear tied to the decade's everyday subcultural or street-influenced dress.",
+        "top": "Choose a top that signals the right youth, music, or streetwear context for the decade.",
+        "bottoms": "Choose bottoms that support the decade's subcultural silhouette rather than generic fashion.",
+        "shoes": "Choose footwear strongly associated with the decade's youth or street-influenced style."
+      },
+      "idealOutfit": {
+        "jacket": {
+          "itemId": "outerwear_90s_flannel",
+          "commentary": "This is a strong 1990s cultural choice. Flannel shirts became strongly associated with 1990s grunge and relaxed anti-fashion styling."
+        },
+        "top": {
+          "itemId": "top_90s_ribbed_tank",
+          "commentary": "This is still believable for 1990s styling in this scenario. Simple ribbed tanks were a core 1990s basic, especially in pared-back casual wardrobes."
+        },
+        "bottoms": {
+          "itemId": "bottoms_90s_baggy_jeans",
+          "commentary": "This is a strong 1990s cultural choice. Baggy denim was central to 1990s skate and hip-hop influenced casual dress."
+        },
+        "shoes": {
+          "itemId": "shoes_90s_combat_boots",
+          "commentary": "This is a strong 1990s cultural choice. Combat boots are one of the most recognizable 1990s markers, especially in grunge and alternative fashion."
+        }
+      }
+    },
+    {
+      "name": "Gallery Opening Reception",
+      "description": "It is 1998 and you are attending an evening gallery reception. The outfit should feel sleek, minimal, and dressy in a distinctly 1990s way.",
+      "era": "1990s",
+      "scene": "Art Gallery, New York City, 1998",
+      "illustrationFile": "Scenarios/1990s_formal.png",
+      "scoredItems": [
+        {
+          "itemId": "outerwear_90s_single_breasted_blazer",
+          "score": 1.0,
+          "commentary": "This is a strong 1990s formal choice. Compared with the 1980s, 1990s tailoring generally moved toward less aggressive structure and cleaner lines."
+        },
+        {
+          "itemId": "top_90s_mock_neck",
+          "score": 1.0,
+          "commentary": "This is a strong 1990s formal choice. Minimalist dressing in the 1990s favored sleek knit tops in dark neutrals, often paired with clean tailoring."
+        },
+        {
+          "itemId": "bottoms_90s_bias_skirt",
+          "score": 1.0,
+          "commentary": "This is a strong 1990s formal choice. Bias skirts echoed the minimalist formal language of the 1990s and translated well into office wardrobes."
+        },
+        {
+          "itemId": "shoes_90s_square_toe_heels",
+          "score": 1.0,
+          "commentary": "This is a strong 1990s formal choice. Square toes and cleaner, lower-profile heels fit the 1990s move away from overt 1980s excess."
+        }
+      ],
+      "incorrectSlotFeedback": {
+        "jacket": "Choose dressier outerwear or tailoring that fits the decade's formal silhouette.",
+        "top": "Choose a refined dress top appropriate for an evening or formal social event in the decade.",
+        "bottoms": "Choose dressier bottoms with an era-accurate formal line and proportion.",
+        "shoes": "Choose formal footwear that matches the decade's dress standards."
+      },
+      "idealOutfit": {
+        "jacket": {
+          "itemId": "outerwear_90s_single_breasted_blazer",
+          "commentary": "This is a strong 1990s formal choice. Compared with the 1980s, 1990s tailoring generally moved toward less aggressive structure and cleaner lines."
+        },
+        "top": {
+          "itemId": "top_90s_mock_neck",
+          "commentary": "This is a strong 1990s formal choice. Minimalist dressing in the 1990s favored sleek knit tops in dark neutrals, often paired with clean tailoring."
+        },
+        "bottoms": {
+          "itemId": "bottoms_90s_bias_skirt",
+          "commentary": "This is a strong 1990s formal choice. Bias skirts echoed the minimalist formal language of the 1990s and translated well into office wardrobes."
+        },
+        "shoes": {
+          "itemId": "shoes_90s_square_toe_heels",
+          "commentary": "This is a strong 1990s formal choice. Square toes and cleaner, lower-profile heels fit the 1990s move away from overt 1980s excess."
+        }
+      }
+    },
+    {
+      "name": "Interview at a Marketing Office",
+      "description": "It is 2004 and you are interviewing at a marketing office. The outfit should look polished and professional while still reflecting slimmer 2000s tailoring.",
+      "era": "2000s",
+      "scene": "Marketing Office, Atlanta, 2004",
+      "illustrationFile": "Scenarios/2000s_business.png",
+      "scoredItems": [
+        {
+          "itemId": "outerwear_00s_pinstripe_blazer",
+          "score": 1.0,
+          "commentary": "This is a strong 2000s business choice. Early-2000s officewear often mixed tailored pieces with slimmer silhouettes and lower rises than previous decades."
+        },
+        {
+          "itemId": "top_00s_button_front_shirt",
+          "score": 1.0,
+          "commentary": "This is a strong 2000s business choice. Office and business-casual shirts in the 2000s often became more body-conscious than 1990s versions."
+        },
+        {
+          "itemId": "bottoms_00s_trousers",
+          "score": 1.0,
+          "commentary": "This is a strong 2000s business choice. Businesswear in the 2000s frequently adopted the decade's lower waistline and slimmer fit."
+        },
+        {
+          "itemId": "shoes_00s_pointed_toe_heels",
+          "score": 1.0,
+          "commentary": "This is a strong 2000s business choice. Pointed dress shoes stayed strong in 2000s office and formal wardrobes, often with slimmer, sharper lines."
+        }
+      ],
+      "incorrectSlotFeedback": {
+        "jacket": "Choose tailored outerwear with a professional silhouette that matches the decade's office norms.",
+        "top": "Choose a polished top that looks workplace-appropriate for the decade and setting.",
+        "bottoms": "Choose tailored bottoms with the decade's correct rise and silhouette for business dress.",
+        "shoes": "Choose practical polished shoes appropriate for office wear in the target decade."
+      },
+      "idealOutfit": {
+        "jacket": {
+          "itemId": "outerwear_00s_pinstripe_blazer",
+          "commentary": "This is a strong 2000s business choice. Early-2000s officewear often mixed tailored pieces with slimmer silhouettes and lower rises than previous decades."
+        },
+        "top": {
+          "itemId": "top_00s_button_front_shirt",
+          "commentary": "This is a strong 2000s business choice. Office and business-casual shirts in the 2000s often became more body-conscious than 1990s versions."
+        },
+        "bottoms": {
+          "itemId": "bottoms_00s_trousers",
+          "commentary": "This is a strong 2000s business choice. Businesswear in the 2000s frequently adopted the decade's lower waistline and slimmer fit."
+        },
+        "shoes": {
+          "itemId": "shoes_00s_pointed_toe_heels",
+          "commentary": "This is a strong 2000s business choice. Pointed dress shoes stayed strong in 2000s office and formal wardrobes, often with slimmer, sharper lines."
+        }
+      }
+    },
+    {
+      "name": "Saturday at the Outdoor Shopping Center",
+      "description": "It is 2003 and you are meeting friends for a casual day of shopping and lunch. The outfit should feel mainstream, youthful, and recognizably early 2000s.",
+      "era": "2000s",
+      "scene": "Outdoor Shopping Center, Phoenix, 2003",
+      "illustrationFile": "Scenarios/2000s_casual.png",
+      "scoredItems": [
+        {
+          "itemId": "outerwear_00s_trucker_jacket",
+          "score": 1.0,
+          "commentary": "This is a strong 2000s casual choice. Denim jackets persisted in the 2000s, often in darker washes and more fitted cuts than many 1990s versions."
+        },
+        {
+          "itemId": "top_00s_graphic_tee",
+          "score": 1.0,
+          "commentary": "This is a strong 2000s casual choice. Logo-heavy casual tops were a strong part of 2000s youth and street-influenced everyday fashion."
+        },
+        {
+          "itemId": "bottoms_00s_denim_mini",
+          "score": 1.0,
+          "commentary": "This is a strong 2000s casual choice. Denim minis were a highly visible 2000s casual item, often paired with boots, fitted tops, or layered looks."
+        },
+        {
+          "itemId": "shoes_00s_ugg_boots",
+          "score": 1.0,
+          "commentary": "This is a strong 2000s casual choice. Sheepskin boots became a hallmark of 2000s casual dress, especially in celebrity-driven styling."
+        }
+      ],
+      "incorrectSlotFeedback": {
+        "jacket": "Choose relaxed outerwear that fits ordinary everyday dress for the decade.",
+        "top": "Choose an everyday top that reflects mainstream casual wear from the target decade.",
+        "bottoms": "Choose casual bottoms with a silhouette commonly worn in that decade.",
+        "shoes": "Choose everyday footwear that matches the decade's casual look."
+      },
+      "idealOutfit": {
+        "jacket": {
+          "itemId": "outerwear_00s_trucker_jacket",
+          "commentary": "This is a strong 2000s casual choice. Denim jackets persisted in the 2000s, often in darker washes and more fitted cuts than many 1990s versions."
+        },
+        "top": {
+          "itemId": "top_00s_graphic_tee",
+          "commentary": "This is a strong 2000s casual choice. Logo-heavy casual tops were a strong part of 2000s youth and street-influenced everyday fashion."
+        },
+        "bottoms": {
+          "itemId": "bottoms_00s_denim_mini",
+          "commentary": "This is a strong 2000s casual choice. Denim minis were a highly visible 2000s casual item, often paired with boots, fitted tops, or layered looks."
+        },
+        "shoes": {
+          "itemId": "shoes_00s_ugg_boots",
+          "commentary": "This is a strong 2000s casual choice. Sheepskin boots became a hallmark of 2000s casual dress, especially in celebrity-driven styling."
+        }
+      }
+    },
+    {
+      "name": "Mall Hangout with Friends",
+      "description": "It is 2002 and you are hanging out at the mall with friends after school. The outfit should reflect everyday youth culture shaped by logos, sporty layers, and street-influenced casualwear.",
+      "era": "2000s",
+      "scene": "Suburban Mall, California, 2002",
+      "illustrationFile": "Scenarios/2000s_cultural.png",
+      "scoredItems": [
+        {
+          "itemId": "outerwear_00s_velour_track_jacket",
+          "score": 1.0,
+          "commentary": "This is a strong 2000s cultural choice. Velour tracksuits became a highly visible 2000s casual look through celebrity culture and mall fashion."
+        },
+        {
+          "itemId": "top_00s_graphic_tee",
+          "score": 1.0,
+          "commentary": "This is a strong 2000s cultural choice. Logo-heavy casual tops were a strong part of 2000s youth and street-influenced everyday fashion."
+        },
+        {
+          "itemId": "bottoms_00s_cargo_pants",
+          "score": 1.0,
+          "commentary": "This is a strong 2000s cultural choice. Cargo pants remained widespread in 2000s casualwear through skate, pop-punk, and mainstream utility trends."
+        },
+        {
+          "itemId": "shoes_00s_skate_shoes",
+          "score": 1.0,
+          "commentary": "This is a strong 2000s cultural choice. Chunky skate shoes were common in 2000s skate and youth fashion and crossed into mainstream casual wear."
+        }
+      ],
+      "incorrectSlotFeedback": {
+        "jacket": "Choose outerwear tied to the decade's everyday subcultural or street-influenced dress.",
+        "top": "Choose a top that signals the right youth, music, or streetwear context for the decade.",
+        "bottoms": "Choose bottoms that support the decade's subcultural silhouette rather than generic fashion.",
+        "shoes": "Choose footwear strongly associated with the decade's youth or street-influenced style."
+      },
+      "idealOutfit": {
+        "jacket": {
+          "itemId": "outerwear_00s_velour_track_jacket",
+          "commentary": "This is a strong 2000s cultural choice. Velour tracksuits became a highly visible 2000s casual look through celebrity culture and mall fashion."
+        },
+        "top": {
+          "itemId": "top_00s_graphic_tee",
+          "commentary": "This is a strong 2000s cultural choice. Logo-heavy casual tops were a strong part of 2000s youth and street-influenced everyday fashion."
+        },
+        "bottoms": {
+          "itemId": "bottoms_00s_cargo_pants",
+          "commentary": "This is a strong 2000s cultural choice. Cargo pants remained widespread in 2000s casualwear through skate, pop-punk, and mainstream utility trends."
+        },
+        "shoes": {
+          "itemId": "shoes_00s_skate_shoes",
+          "commentary": "This is a strong 2000s cultural choice. Chunky skate shoes were common in 2000s skate and youth fashion and crossed into mainstream casual wear."
+        }
+      }
+    },
+    {
+      "name": "Night Out for a Birthday Dinner",
+      "description": "It is 2005 and you are dressing for a stylish birthday dinner that may continue into nightlife later. The outfit should feel dressy and distinctly 2000s.",
+      "era": "2000s",
+      "scene": "Trendy Restaurant District, Los Angeles, 2005",
+      "illustrationFile": "Scenarios/2000s_formal.png",
+      "scoredItems": [
+        {
+          "itemId": "outerwear_00s_pinstripe_blazer",
+          "score": 1.0,
+          "commentary": "This is a strong 2000s formal choice. Early-2000s officewear often mixed tailored pieces with slimmer silhouettes and lower rises than previous decades."
+        },
+        {
+          "itemId": "top_00s_halter_top",
+          "score": 1.0,
+          "commentary": "This is a strong 2000s formal choice. The halter was a signature early-2000s going-out top, often paired with low-rise denim or dressier pants."
+        },
+        {
+          "itemId": "bottoms_00s_trousers",
+          "score": 1.0,
+          "commentary": "This is a strong 2000s formal choice. Businesswear in the 2000s frequently adopted the decade's lower waistline and slimmer fit."
+        },
+        {
+          "itemId": "shoes_00s_pointed_toe_heels",
+          "score": 1.0,
+          "commentary": "This is a strong 2000s formal choice. Pointed dress shoes stayed strong in 2000s office and formal wardrobes, often with slimmer, sharper lines."
+        }
+      ],
+      "incorrectSlotFeedback": {
+        "jacket": "Choose dressier outerwear or tailoring that fits the decade's formal silhouette.",
+        "top": "Choose a refined dress top appropriate for an evening or formal social event in the decade.",
+        "bottoms": "Choose dressier bottoms with an era-accurate formal line and proportion.",
+        "shoes": "Choose formal footwear that matches the decade's dress standards."
+      },
+      "idealOutfit": {
+        "jacket": {
+          "itemId": "outerwear_00s_pinstripe_blazer",
+          "commentary": "This is a strong 2000s formal choice. Early-2000s officewear often mixed tailored pieces with slimmer silhouettes and lower rises than previous decades."
+        },
+        "top": {
+          "itemId": "top_00s_halter_top",
+          "commentary": "This is a strong 2000s formal choice. The halter was a signature early-2000s going-out top, often paired with low-rise denim or dressier pants."
+        },
+        "bottoms": {
+          "itemId": "bottoms_00s_trousers",
+          "commentary": "This is a strong 2000s formal choice. Businesswear in the 2000s frequently adopted the decade's lower waistline and slimmer fit."
+        },
+        "shoes": {
+          "itemId": "shoes_00s_pointed_toe_heels",
+          "commentary": "This is a strong 2000s formal choice. Pointed dress shoes stayed strong in 2000s office and formal wardrobes, often with slimmer, sharper lines."
+        }
+      }
+    },
+    {
+      "name": "Presentation Day at the Office",
+      "description": "It is 2016 and you are giving an important presentation at work. The outfit should look clean, professional, and contemporary without feeling overly rigid.",
+      "era": "2010s",
+      "scene": "Office Conference Room, Dallas, 2016",
+      "illustrationFile": "Scenarios/2010s_business.png",
+      "scoredItems": [
+        {
+          "itemId": "outerwear_10s_structured_blazer",
+          "score": 1.0,
+          "commentary": "This is a strong 2010s business choice. The 2010s blended tailored workwear with softer length and less rigid construction than classic power suiting."
+        },
+        {
+          "itemId": "top_10s_peplum_blouse",
+          "score": 1.0,
+          "commentary": "This is a strong 2010s business choice. Peplum tops were a recognizable early-2010s silhouette in office and dressier settings."
+        },
+        {
+          "itemId": "bottoms_10s_cigarette_trousers",
+          "score": 1.0,
+          "commentary": "This is a strong 2010s business choice. Slim ankle trousers fit the 2010s preference for neat, shortened, body-conscious tailoring."
+        },
+        {
+          "itemId": "shoes_10s_block_heels",
+          "score": 1.0,
+          "commentary": "This is a strong 2010s business choice. Block heels offered the 2010s balance of trendiness and practicality for dressier wear."
+        }
+      ],
+      "incorrectSlotFeedback": {
+        "jacket": "Choose tailored outerwear with a professional silhouette that matches the decade's office norms.",
+        "top": "Choose a polished top that looks workplace-appropriate for the decade and setting.",
+        "bottoms": "Choose tailored bottoms with the decade's correct rise and silhouette for business dress.",
+        "shoes": "Choose practical polished shoes appropriate for office wear in the target decade."
+      },
+      "idealOutfit": {
+        "jacket": {
+          "itemId": "outerwear_10s_structured_blazer",
+          "commentary": "This is a strong 2010s business choice. The 2010s blended tailored workwear with softer length and less rigid construction than classic power suiting."
+        },
+        "top": {
+          "itemId": "top_10s_peplum_blouse",
+          "commentary": "This is a strong 2010s business choice. Peplum tops were a recognizable early-2010s silhouette in office and dressier settings."
+        },
+        "bottoms": {
+          "itemId": "bottoms_10s_cigarette_trousers",
+          "commentary": "This is a strong 2010s business choice. Slim ankle trousers fit the 2010s preference for neat, shortened, body-conscious tailoring."
+        },
+        "shoes": {
+          "itemId": "shoes_10s_block_heels",
+          "commentary": "This is a strong 2010s business choice. Block heels offered the 2010s balance of trendiness and practicality for dressier wear."
+        }
+      }
+    },
+    {
+      "name": "Weekend Brunch with Friends",
+      "description": "It is 2014 and you are heading to brunch and errands around the city. The outfit should feel effortless, wearable, and true to 2010s everyday casual style.",
+      "era": "2010s",
+      "scene": "Neighborhood Cafe District, Austin, 2014",
+      "illustrationFile": "Scenarios/2010s_casual.png",
+      "scoredItems": [
+        {
+          "itemId": "outerwear_10s_denim_jacket",
+          "score": 1.0,
+          "commentary": "This is a strong 2010s casual choice. Denim jackets remained dependable basics in the 2010s, often cut slimmer than 1990s versions."
+        },
+        {
+          "itemId": "top_10s_chambray_shirt",
+          "score": 1.0,
+          "commentary": "This is a strong 2010s casual choice. Chambray shirts became a common 2010s casual staple, especially in layered and smart-casual wardrobes."
+        },
+        {
+          "itemId": "bottoms_10s_skinny_jeans",
+          "score": 1.0,
+          "commentary": "This is a strong 2010s casual choice. Skinny jeans dominated mainstream casualwear through much of the 2010s for multiple genders."
+        },
+        {
+          "itemId": "shoes_10s_white_sneakers",
+          "score": 1.0,
+          "commentary": "This is a strong 2010s casual choice. Simple white sneakers became one of the most versatile 2010s footwear staples."
+        }
+      ],
+      "incorrectSlotFeedback": {
+        "jacket": "Choose relaxed outerwear that fits ordinary everyday dress for the decade.",
+        "top": "Choose an everyday top that reflects mainstream casual wear from the target decade.",
+        "bottoms": "Choose casual bottoms with a silhouette commonly worn in that decade.",
+        "shoes": "Choose everyday footwear that matches the decade's casual look."
+      },
+      "idealOutfit": {
+        "jacket": {
+          "itemId": "outerwear_10s_denim_jacket",
+          "commentary": "This is a strong 2010s casual choice. Denim jackets remained dependable basics in the 2010s, often cut slimmer than 1990s versions."
+        },
+        "top": {
+          "itemId": "top_10s_chambray_shirt",
+          "commentary": "This is a strong 2010s casual choice. Chambray shirts became a common 2010s casual staple, especially in layered and smart-casual wardrobes."
+        },
+        "bottoms": {
+          "itemId": "bottoms_10s_skinny_jeans",
+          "commentary": "This is a strong 2010s casual choice. Skinny jeans dominated mainstream casualwear through much of the 2010s for multiple genders."
+        },
+        "shoes": {
+          "itemId": "shoes_10s_white_sneakers",
+          "commentary": "This is a strong 2010s casual choice. Simple white sneakers became one of the most versatile 2010s footwear staples."
+        }
+      }
+    },
+    {
+      "name": "Streetwear Pop-Up Event",
+      "description": "It is 2017 and you are attending a streetwear pop-up and live DJ event. The outfit should reflect everyday 2010s streetwear and athleisure influence.",
+      "era": "2010s",
+      "scene": "Streetwear Pop-Up, Chicago, 2017",
+      "illustrationFile": "Scenarios/2010s_cultural.png",
+      "scoredItems": [
+        {
+          "itemId": "outerwear_10s_bomber_jacket",
+          "score": 1.0,
+          "commentary": "This is a strong 2010s cultural choice. Bomber jackets became a staple of 2010s streetwear and casual fashion across genders."
+        },
+        {
+          "itemId": "top_10s_graphic_tee",
+          "score": 1.0,
+          "commentary": "This is a strong 2010s cultural choice. Graphic tees remained central in 2010s casual dress, often paired with slim denim, sneakers, or bomber jackets."
+        },
+        {
+          "itemId": "bottoms_10s_joggers",
+          "score": 1.0,
+          "commentary": "This is a strong 2010s cultural choice. Joggers translated athletic cues into mainstream streetwear and casual fashion in the 2010s."
+        },
+        {
+          "itemId": "shoes_10s_white_sneakers",
+          "score": 1.0,
+          "commentary": "This is still believable for 2010s styling in this scenario. Simple white sneakers became one of the most versatile 2010s footwear staples."
+        }
+      ],
+      "incorrectSlotFeedback": {
+        "jacket": "Choose outerwear tied to the decade's everyday subcultural or street-influenced dress.",
+        "top": "Choose a top that signals the right youth, music, or streetwear context for the decade.",
+        "bottoms": "Choose bottoms that support the decade's subcultural silhouette rather than generic fashion.",
+        "shoes": "Choose footwear strongly associated with the decade's youth or street-influenced style."
+      },
+      "idealOutfit": {
+        "jacket": {
+          "itemId": "outerwear_10s_bomber_jacket",
+          "commentary": "This is a strong 2010s cultural choice. Bomber jackets became a staple of 2010s streetwear and casual fashion across genders."
+        },
+        "top": {
+          "itemId": "top_10s_graphic_tee",
+          "commentary": "This is a strong 2010s cultural choice. Graphic tees remained central in 2010s casual dress, often paired with slim denim, sneakers, or bomber jackets."
+        },
+        "bottoms": {
+          "itemId": "bottoms_10s_joggers",
+          "commentary": "This is a strong 2010s cultural choice. Joggers translated athletic cues into mainstream streetwear and casual fashion in the 2010s."
+        },
+        "shoes": {
+          "itemId": "shoes_10s_white_sneakers",
+          "commentary": "This is still believable for 2010s styling in this scenario. Simple white sneakers became one of the most versatile 2010s footwear staples."
+        }
+      }
+    },
+    {
+      "name": "Evening Fundraiser Reception",
+      "description": "It is 2018 and you are attending a semi-formal evening fundraiser. The outfit should read polished and modern, with the cleaner lines common in the 2010s.",
+      "era": "2010s",
+      "scene": "Museum Event Space, Washington, D.C., 2018",
+      "illustrationFile": "Scenarios/2010s_formal.png",
+      "scoredItems": [
+        {
+          "itemId": "outerwear_10s_structured_blazer",
+          "score": 1.0,
+          "commentary": "This is a strong 2010s formal choice. The 2010s blended tailored workwear with softer length and less rigid construction than classic power suiting."
+        },
+        {
+          "itemId": "top_10s_peplum_blouse",
+          "score": 1.0,
+          "commentary": "This is a strong 2010s formal choice. Peplum tops were a recognizable early-2010s silhouette in office and dressier settings."
+        },
+        {
+          "itemId": "bottoms_10s_midi_skirt",
+          "score": 1.0,
+          "commentary": "This is a strong 2010s formal choice. Midi lengths returned strongly in the 2010s and worked across professional, modest, and dressy everyday looks."
+        },
+        {
+          "itemId": "shoes_10s_block_heels",
+          "score": 1.0,
+          "commentary": "This is a strong 2010s formal choice. Block heels offered the 2010s balance of trendiness and practicality for dressier wear."
+        }
+      ],
+      "incorrectSlotFeedback": {
+        "jacket": "Choose dressier outerwear or tailoring that fits the decade's formal silhouette.",
+        "top": "Choose a refined dress top appropriate for an evening or formal social event in the decade.",
+        "bottoms": "Choose dressier bottoms with an era-accurate formal line and proportion.",
+        "shoes": "Choose formal footwear that matches the decade's dress standards."
+      },
+      "idealOutfit": {
+        "jacket": {
+          "itemId": "outerwear_10s_structured_blazer",
+          "commentary": "This is a strong 2010s formal choice. The 2010s blended tailored workwear with softer length and less rigid construction than classic power suiting."
+        },
+        "top": {
+          "itemId": "top_10s_peplum_blouse",
+          "commentary": "This is a strong 2010s formal choice. Peplum tops were a recognizable early-2010s silhouette in office and dressier settings."
+        },
+        "bottoms": {
+          "itemId": "bottoms_10s_midi_skirt",
+          "commentary": "This is a strong 2010s formal choice. Midi lengths returned strongly in the 2010s and worked across professional, modest, and dressy everyday looks."
+        },
+        "shoes": {
+          "itemId": "shoes_10s_block_heels",
+          "commentary": "This is a strong 2010s formal choice. Block heels offered the 2010s balance of trendiness and practicality for dressier wear."
+        }
+      }
+    }
+  ]
+}

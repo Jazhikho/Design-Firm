@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Tops_Local
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Tops_Local
+  m_GUID: 5faffa996cc3e4942837f0a0bcce3ddf
+  m_SerializeEntries:
+  - m_GUID: b062f8ef58b78cd43a2e90e0004ea7ba
+    m_Address: Assets/Art/Clothing/Tops/80s_bow_neck_blouse.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f5ac4d5fec6bafc45944a45b870615a6
+    m_Address: Assets/Art/Clothing/Tops/80s_band_tshirt.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: cb8f221f4801dcc4db2d548c1343015b, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 8f960f92ddc3a9f41b12beaf05cb3b76, type: 2}
+    - {fileID: 11400000, guid: 89fb62319a7c3824f9b262dd584a6c41, type: 2}

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Avatar_Local
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Avatar_Local
+  m_GUID: 08bb6e71b5719d84593660015d3bbc5f
+  m_SerializeEntries:
+  - m_GUID: 085bd155e369f7b4a9b9fc05a55980bb
+    m_Address: Assets/Art/Avatars/avatar_male02.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 902526b09056a71419bfeb5fa348c5a2
+    m_Address: Assets/Art/Avatars/avatar_female02.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: cb8f221f4801dcc4db2d548c1343015b, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: d2f5cdf64cfe2d54bb4420f9afe58893, type: 2}
+    - {fileID: 11400000, guid: 20fb1766d4d39b0478971fe59831ee10, type: 2}

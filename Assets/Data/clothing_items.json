@@ -1,0 +1,1336 @@
+{
+  "clothingItems": [
+    {
+      "id": "outerwear_80s_power_blazer",
+      "name": "Power Blazer",
+      "slot": "outerwear",
+      "gender": "female",
+      "coversBottoms": false,
+      "sprite": "Outerwear/80s_power_blazer.png",
+      "decade": "1980s",
+      "scenarioTags": [
+        "business",
+        "formal"
+      ],
+      "description": "An oversized tailored blazer with pronounced shoulder pads and a longer line through the body.",
+      "historicalNotes": "Power dressing became a defining business look of the 1980s, especially in offices influenced by corporate ambition and gendered ideas of authority.",
+      "silhouetteKeywords": [
+        "shoulder pads",
+        "structured",
+        "oversized",
+        "tailored"
+      ]
+    },
+    {
+      "id": "outerwear_80s_denim_jacket",
+      "name": "Stonewashed Denim Jacket",
+      "slot": "outerwear",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Outerwear/80s_denim_jacket.png",
+      "decade": "1980s",
+      "scenarioTags": [
+        "casual"
+      ],
+      "description": "A medium-blue denim jacket with a boxy fit and stonewashed finish.",
+      "historicalNotes": "Stonewashed and acid-treated denim were common casual looks in the 1980s, especially for youth and weekend wear.",
+      "silhouetteKeywords": [
+        "boxy",
+        "cropped",
+        "denim",
+        "stonewashed"
+      ]
+    },
+    {
+      "id": "outerwear_80s_track_jacket",
+      "name": "Nylon Track Jacket",
+      "slot": "outerwear",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Outerwear/80s_track_jacket.png",
+      "decade": "1980s",
+      "scenarioTags": [
+        "casual",
+        "cultural"
+      ],
+      "description": "A lightweight color-blocked nylon warm-up jacket with elastic cuffs.",
+      "historicalNotes": "Athletic warm-ups moved into street fashion in the 1980s and were especially visible in hip-hop, dance, and casual sportswear culture.",
+      "silhouetteKeywords": [
+        "color-blocked",
+        "lightweight",
+        "athletic",
+        "shiny"
+      ]
+    },
+    {
+      "id": "outerwear_80s_tuxedo_jacket",
+      "name": "Satin-Lapel Dinner Jacket",
+      "slot": "outerwear",
+      "gender": "male",
+      "coversBottoms": false,
+      "sprite": "Outerwear/80s_tuxedo_jacket.png",
+      "decade": "1980s",
+      "scenarioTags": [
+        "formal"
+      ],
+      "description": "A classic single-breasted black dinner jacket with satin lapels and a structured shoulder.",
+      "historicalNotes": "Formal eveningwear remained relatively conservative in the 1980s, though the decade often emphasized a stronger shoulder line.",
+      "silhouetteKeywords": [
+        "structured",
+        "formal",
+        "sharp shoulder",
+        "tailored"
+      ]
+    },
+    {
+      "id": "top_80s_silk_blouse",
+      "name": "Bow-Neck Silk Blouse",
+      "slot": "tops",
+      "gender": "female",
+      "coversBottoms": false,
+      "sprite": "Tops/80s_bow_neck_blouse.png",
+      "decade": "1980s",
+      "scenarioTags": [
+        "business",
+        "formal"
+      ],
+      "description": "A soft silk blouse with a tie neck and slightly full sleeves.",
+      "historicalNotes": "Bow blouses paired well with suits and skirts in the 1980s office, balancing femininity with the decade's sharp tailoring.",
+      "silhouetteKeywords": [
+        "soft blouse",
+        "tie neck",
+        "full sleeve",
+        "office"
+      ]
+    },
+    {
+      "id": "top_80s_oxford_shirt",
+      "name": "Striped Oxford Shirt",
+      "slot": "tops",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Tops/80s_oxford_shirt.png",
+      "decade": "1980s",
+      "scenarioTags": [
+        "business",
+        "casual"
+      ],
+      "description": "A crisp striped button-front shirt in a slightly roomy fit.",
+      "historicalNotes": "Oxford shirts were a preppy and office-friendly staple in the 1980s, often tucked into pleated trousers or skirts.",
+      "silhouetteKeywords": [
+        "button-front",
+        "striped",
+        "roomy",
+        "tucked"
+      ]
+    },
+    {
+      "id": "top_80s_band_tee",
+      "name": "Rock Band T-Shirt",
+      "slot": "tops",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Tops/80s_band_tshirt.png",
+      "decade": "1980s",
+      "scenarioTags": [
+        "casual",
+        "cultural"
+      ],
+      "description": "A soft black concert t-shirt with a faded graphic and relaxed fit.",
+      "historicalNotes": "Band t-shirts were common markers of music identity in the 1980s across rock, metal, and punk scenes.",
+      "silhouetteKeywords": [
+        "graphic tee",
+        "relaxed",
+        "faded",
+        "music"
+      ]
+    },
+    {
+      "id": "top_80s_satin_cocktail_dress",
+      "name": "Satin Cocktail Dress",
+      "slot": "tops",
+      "gender": "female",
+      "coversBottoms": true,
+      "sprite": "Tops/80s_satin_cocktail_dress.png",
+      "decade": "1980s",
+      "scenarioTags": [
+        "formal"
+      ],
+      "description": "A knee-length cocktail dress with a fitted waist, sheen, and lightly padded shoulders.",
+      "historicalNotes": "1980s evening dresses often used shine, bright color, and strong shoulder emphasis rather than minimalism.",
+      "silhouetteKeywords": [
+        "defined waist",
+        "sheen",
+        "structured shoulder",
+        "cocktail"
+      ]
+    },
+    {
+      "id": "top_80s_sweater_vest",
+      "name": "Argyle Sweater Vest",
+      "slot": "tops",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Tops/80s_argyle_vest.png",
+      "decade": "1980s",
+      "scenarioTags": [
+        "casual",
+        "business"
+      ],
+      "description": "A knit argyle sweater vest worn over a collared shirt.",
+      "historicalNotes": "Preppy dressing remained influential in the 1980s, and sweater vests worked in both school-inspired and office-casual looks.",
+      "silhouetteKeywords": [
+        "preppy",
+        "layered",
+        "knit",
+        "argyle"
+      ]
+    },
+    {
+      "id": "bottoms_80s_pleated_trousers",
+      "name": "Pleated Trousers",
+      "slot": "bottoms",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Bottoms/80s_pleated_trousers.png",
+      "decade": "1980s",
+      "scenarioTags": [
+        "business",
+        "formal"
+      ],
+      "description": "High-waisted trousers with front pleats and a fuller leg.",
+      "historicalNotes": "Pleated trousers were common in 1980s office and formalwear, reflecting the decade's preference for volume and structure.",
+      "silhouetteKeywords": [
+        "high waist",
+        "pleated",
+        "full leg",
+        "tailored"
+      ]
+    },
+    {
+      "id": "bottoms_80s_pencil_skirt",
+      "name": "Knee-Length Pencil Skirt",
+      "slot": "bottoms",
+      "gender": "female",
+      "coversBottoms": false,
+      "sprite": "Bottoms/80s_pencil_skirt.png",
+      "decade": "1980s",
+      "scenarioTags": [
+        "business",
+        "formal"
+      ],
+      "description": "A straight knee-length skirt in suiting fabric.",
+      "historicalNotes": "The pencil skirt remained a standard companion to power blazers in 1980s businesswear.",
+      "silhouetteKeywords": [
+        "straight skirt",
+        "knee-length",
+        "tailored",
+        "office"
+      ]
+    },
+    {
+      "id": "bottoms_80s_acid_wash_jeans",
+      "name": "Acid-Wash Jeans",
+      "slot": "bottoms",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Bottoms/80s_acid_wash_jeans.png",
+      "decade": "1980s",
+      "scenarioTags": [
+        "casual",
+        "cultural"
+      ],
+      "description": "High-waisted jeans with a tapered leg and bleached acid-wash finish.",
+      "historicalNotes": "Acid-wash denim is one of the clearest everyday denim markers of the 1980s.",
+      "silhouetteKeywords": [
+        "high waist",
+        "tapered",
+        "acid wash",
+        "denim"
+      ]
+    },
+    {
+      "id": "bottoms_80s_taffeta_skirt",
+      "name": "Taffeta Party Skirt",
+      "slot": "bottoms",
+      "gender": "female",
+      "coversBottoms": false,
+      "sprite": "Bottoms/80s_taffeta_party_skirt.png",
+      "decade": "1980s",
+      "scenarioTags": [
+        "formal"
+      ],
+      "description": "A calf-length taffeta skirt with volume and a slight sheen.",
+      "historicalNotes": "Party and formal skirts in the 1980s often used crisp fabrics that held shape and caught light.",
+      "silhouetteKeywords": [
+        "full skirt",
+        "sheen",
+        "dressy",
+        "volume"
+      ]
+    },
+    {
+      "id": "shoes_80s_pumps",
+      "name": "Pointed Pumps",
+      "slot": "shoes",
+      "gender": "female",
+      "coversBottoms": false,
+      "sprite": "Shoes/80s_pointed_pumps.png",
+      "decade": "1980s",
+      "scenarioTags": [
+        "business",
+        "formal"
+      ],
+      "description": "Classic pointed pumps with a medium-to-high heel.",
+      "historicalNotes": "Pumps anchored both 1980s power dressing and formal eveningwear.",
+      "silhouetteKeywords": [
+        "pointed toe",
+        "heel",
+        "polished",
+        "dress"
+      ]
+    },
+    {
+      "id": "shoes_80s_loafers",
+      "name": "Leather Loafers",
+      "slot": "shoes",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Shoes/80s_leather_loafers.png",
+      "decade": "1980s",
+      "scenarioTags": [
+        "business",
+        "casual"
+      ],
+      "description": "Structured leather loafers with a modest heel and clean vamp.",
+      "historicalNotes": "Loafers were practical for office, school, and preppy looks in the 1980s.",
+      "silhouetteKeywords": [
+        "structured",
+        "practical",
+        "preppy",
+        "polished"
+      ]
+    },
+    {
+      "id": "shoes_80s_high_tops",
+      "name": "High-Top Basketball Sneakers",
+      "slot": "shoes",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Shoes/80s_high_tops.png",
+      "decade": "1980s",
+      "scenarioTags": [
+        "casual",
+        "cultural"
+      ],
+      "description": "Leather high-top sneakers with bold panels and thick ankle padding.",
+      "historicalNotes": "Basketball sneakers became major fashion items in the 1980s through sport, hip-hop, and youth culture.",
+      "silhouetteKeywords": [
+        "high-top",
+        "padded",
+        "sporty",
+        "bold"
+      ]
+    },
+    {
+      "id": "outerwear_90s_flannel",
+      "name": "Open Plaid Flannel",
+      "slot": "outerwear",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Outerwear/90s_flannel.png",
+      "decade": "1990s",
+      "scenarioTags": [
+        "casual",
+        "cultural"
+      ],
+      "description": "An oversized plaid flannel shirt worn open as a light layer.",
+      "historicalNotes": "Flannel shirts became strongly associated with 1990s grunge and relaxed anti-fashion styling.",
+      "silhouetteKeywords": [
+        "oversized",
+        "plaid",
+        "layered",
+        "grunge"
+      ]
+    },
+    {
+      "id": "outerwear_90s_denim_jacket",
+      "name": "Oversized Denim Jacket",
+      "slot": "outerwear",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Outerwear/90s_oversized_denim_jacket.png",
+      "decade": "1990s",
+      "scenarioTags": [
+        "casual"
+      ],
+      "description": "A loose, dropped-shoulder denim jacket in a light wash.",
+      "historicalNotes": "Oversized denim outerwear was common in 1990s casual dress across several youth styles.",
+      "silhouetteKeywords": [
+        "oversized",
+        "dropped shoulder",
+        "denim",
+        "casual"
+      ]
+    },
+    {
+      "id": "outerwear_90s_single_breasted_blazer",
+      "name": "Relaxed Single-Breasted Blazer",
+      "slot": "outerwear",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Outerwear/90s_relaxed_blazer.png",
+      "decade": "1990s",
+      "scenarioTags": [
+        "business",
+        "formal"
+      ],
+      "description": "A softer blazer with reduced shoulder padding and a straighter cut.",
+      "historicalNotes": "Compared with the 1980s, 1990s tailoring generally moved toward less aggressive structure and cleaner lines.",
+      "silhouetteKeywords": [
+        "relaxed tailoring",
+        "reduced shoulder",
+        "straight cut",
+        "minimal"
+      ]
+    },
+    {
+      "id": "outerwear_90s_leather_car_coat",
+      "name": "Leather Car Coat",
+      "slot": "outerwear",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Outerwear/90s_leather_car_coat.png",
+      "decade": "1990s",
+      "scenarioTags": [
+        "business",
+        "cultural",
+        "casual"
+      ],
+      "description": "A hip-length black leather coat with a simple straight silhouette.",
+      "historicalNotes": "Leather coats and jackets appeared in many 1990s urban and minimalist wardrobes, especially in black.",
+      "silhouetteKeywords": [
+        "straight silhouette",
+        "black leather",
+        "minimal",
+        "urban"
+      ]
+    },
+    {
+      "id": "top_90s_babydoll_dress",
+      "name": "Floral Babydoll Dress",
+      "slot": "tops",
+      "gender": "female",
+      "coversBottoms": true,
+      "sprite": "Tops/90s_babydoll_dress.png",
+      "decade": "1990s",
+      "scenarioTags": [
+        "casual",
+        "cultural"
+      ],
+      "description": "A short floral dress with an empire waist and loose body.",
+      "historicalNotes": "Babydoll dresses were widely visible in 1990s alternative and youth fashion, often styled with boots.",
+      "silhouetteKeywords": [
+        "empire waist",
+        "short dress",
+        "loose fit",
+        "floral"
+      ]
+    },
+    {
+      "id": "top_90s_ribbed_tank",
+      "name": "Ribbed Tank Top",
+      "slot": "tops",
+      "gender": "female",
+      "coversBottoms": false,
+      "sprite": "Tops/90s_ribbed_tank.png",
+      "decade": "1990s",
+      "scenarioTags": [
+        "casual"
+      ],
+      "description": "A fitted cotton rib tank with wide straps.",
+      "historicalNotes": "Simple ribbed tanks were a core 1990s basic, especially in pared-back casual wardrobes.",
+      "silhouetteKeywords": [
+        "fitted",
+        "minimal",
+        "rib knit",
+        "basic"
+      ]
+    },
+    {
+      "id": "top_90s_mock_neck",
+      "name": "Black Mock-Neck Top",
+      "slot": "tops",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Tops/90s_mock_neck.png",
+      "decade": "1990s",
+      "scenarioTags": [
+        "business",
+        "formal"
+      ],
+      "description": "A close-fitting knit mock-neck top in black or another neutral.",
+      "historicalNotes": "Minimalist dressing in the 1990s favored sleek knit tops in dark neutrals, often paired with clean tailoring.",
+      "silhouetteKeywords": [
+        "minimal",
+        "close fit",
+        "neutral",
+        "sleek"
+      ]
+    },
+    {
+      "id": "top_90s_camp_shirt",
+      "name": "Rayon Camp Shirt",
+      "slot": "tops",
+      "gender": "male",
+      "coversBottoms": false,
+      "sprite": "Tops/90s_rayon_camp_shirt.png",
+      "decade": "1990s",
+      "scenarioTags": [
+        "casual",
+        "formal"
+      ],
+      "description": "A boxy short-sleeve button-up in drapey rayon.",
+      "historicalNotes": "Camp shirts appeared in 1990s casual and vacation looks and could also read slightly dressier depending on styling.",
+      "silhouetteKeywords": [
+        "boxy",
+        "drapey",
+        "short sleeve",
+        "relaxed"
+      ]
+    },
+    {
+      "id": "top_90s_slip_dress",
+      "name": "Bias-Cut Slip Dress",
+      "slot": "tops",
+      "gender": "female",
+      "coversBottoms": true,
+      "sprite": "Tops/90s_bias_cut_slip_dress.png",
+      "decade": "1990s",
+      "scenarioTags": [
+        "formal"
+      ],
+      "description": "A minimal slip dress with thin straps and fluid drape.",
+      "historicalNotes": "Slip dresses became an important 1990s formal and evening silhouette, reflecting the decade's stripped-back elegance.",
+      "silhouetteKeywords": [
+        "thin straps",
+        "fluid",
+        "minimal",
+        "bias-cut"
+      ]
+    },
+    {
+      "id": "bottoms_90s_straight_leg_trousers",
+      "name": "Straight-Leg Trousers",
+      "slot": "bottoms",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Bottoms/90s_straight_leg_trousers.png",
+      "decade": "1990s",
+      "scenarioTags": [
+        "business",
+        "formal"
+      ],
+      "description": "Mid-rise trousers with a straight leg and clean front.",
+      "historicalNotes": "1990s workwear often softened from 1980s volume toward straighter, less padded silhouettes.",
+      "silhouetteKeywords": [
+        "straight leg",
+        "mid-rise",
+        "clean front",
+        "tailored"
+      ]
+    },
+    {
+      "id": "bottoms_90s_bias_skirt",
+      "name": "Bias-Cut Midi Skirt",
+      "slot": "bottoms",
+      "gender": "female",
+      "coversBottoms": false,
+      "sprite": "Bottoms/90s_bias_midi_skirt.png",
+      "decade": "1990s",
+      "scenarioTags": [
+        "formal",
+        "business"
+      ],
+      "description": "A fluid midi skirt cut on the bias for a gentle cling and swing.",
+      "historicalNotes": "Bias skirts echoed the minimalist formal language of the 1990s and translated well into office wardrobes.",
+      "silhouetteKeywords": [
+        "midi",
+        "fluid",
+        "bias-cut",
+        "minimal"
+      ]
+    },
+    {
+      "id": "bottoms_90s_baggy_jeans",
+      "name": "Baggy Jeans",
+      "slot": "bottoms",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Bottoms/90s_baggy_jeans.png",
+      "decade": "1990s",
+      "scenarioTags": [
+        "casual",
+        "cultural"
+      ],
+      "description": "Loose, long jeans with a wide leg and relaxed seat.",
+      "historicalNotes": "Baggy denim was central to 1990s skate and hip-hop influenced casual dress.",
+      "silhouetteKeywords": [
+        "baggy",
+        "wide leg",
+        "relaxed",
+        "youth"
+      ]
+    },
+    {
+      "id": "bottoms_90s_khaki_chinos",
+      "name": "Khaki Chinos",
+      "slot": "bottoms",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Bottoms/90s_khaki_chinos.png",
+      "decade": "1990s",
+      "scenarioTags": [
+        "casual",
+        "business"
+      ],
+      "description": "Flat-front khaki chinos with a straight leg.",
+      "historicalNotes": "Chinos became a dependable mainstream casual and business-casual option in the 1990s.",
+      "silhouetteKeywords": [
+        "flat-front",
+        "khaki",
+        "straight leg",
+        "mainstream"
+      ]
+    },
+    {
+      "id": "shoes_90s_combat_boots",
+      "name": "Combat Boots",
+      "slot": "shoes",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Shoes/90s_combat_boots.png",
+      "decade": "1990s",
+      "scenarioTags": [
+        "casual",
+        "cultural"
+      ],
+      "description": "Chunky lace-up leather boots with a heavy sole.",
+      "historicalNotes": "Combat boots are one of the most recognizable 1990s markers, especially in grunge and alternative fashion.",
+      "silhouetteKeywords": [
+        "chunky",
+        "lace-up",
+        "heavy sole",
+        "grunge"
+      ]
+    },
+    {
+      "id": "shoes_90s_square_toe_heels",
+      "name": "Square-Toe Heels",
+      "slot": "shoes",
+      "gender": "female",
+      "coversBottoms": false,
+      "sprite": "Shoes/90s_square_toe_heels.png",
+      "decade": "1990s",
+      "scenarioTags": [
+        "formal",
+        "business"
+      ],
+      "description": "Simple dress heels with a square toe and moderate heel height.",
+      "historicalNotes": "Square toes and cleaner, lower-profile heels fit the 1990s move away from overt 1980s excess.",
+      "silhouetteKeywords": [
+        "square toe",
+        "moderate heel",
+        "minimal",
+        "dress"
+      ]
+    },
+    {
+      "id": "shoes_90s_loafers",
+      "name": "Minimal Leather Loafers",
+      "slot": "shoes",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Shoes/90s_minimal_loafers.png",
+      "decade": "1990s",
+      "scenarioTags": [
+        "business",
+        "casual"
+      ],
+      "description": "Streamlined leather loafers with little ornament.",
+      "historicalNotes": "Minimal loafers suited the decade's pared-back office and smart casual looks.",
+      "silhouetteKeywords": [
+        "streamlined",
+        "minimal",
+        "practical",
+        "polished"
+      ]
+    },
+    {
+      "id": "outerwear_00s_velour_track_jacket",
+      "name": "Velour Track Jacket",
+      "slot": "outerwear",
+      "gender": "female",
+      "coversBottoms": false,
+      "sprite": "Outerwear/00s_velour_track_jacket.png",
+      "decade": "2000s",
+      "scenarioTags": [
+        "casual",
+        "cultural"
+      ],
+      "description": "A fitted zip-front velour track jacket with a plush surface.",
+      "historicalNotes": "Velour tracksuits became a highly visible 2000s casual look through celebrity culture and mall fashion.",
+      "silhouetteKeywords": [
+        "fitted",
+        "velour",
+        "zip-front",
+        "soft"
+      ]
+    },
+    {
+      "id": "outerwear_00s_trucker_jacket",
+      "name": "Dark-Wash Trucker Jacket",
+      "slot": "outerwear",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Outerwear/00s_darkwash_trucker_jacket.png",
+      "decade": "2000s",
+      "scenarioTags": [
+        "casual"
+      ],
+      "description": "A close-fitting dark-wash denim jacket with chest pockets and a shorter body.",
+      "historicalNotes": "Denim jackets persisted in the 2000s, often in darker washes and more fitted cuts than many 1990s versions.",
+      "silhouetteKeywords": [
+        "fitted",
+        "dark wash",
+        "short body",
+        "denim"
+      ]
+    },
+    {
+      "id": "outerwear_00s_pinstripe_blazer",
+      "name": "Pinstripe Blazer",
+      "slot": "outerwear",
+      "gender": "female",
+      "coversBottoms": false,
+      "sprite": "Outerwear/00s_pinstripe_blazer.png",
+      "decade": "2000s",
+      "scenarioTags": [
+        "business",
+        "formal"
+      ],
+      "description": "A slim pinstripe blazer with a nipped waist.",
+      "historicalNotes": "Early-2000s officewear often mixed tailored pieces with slimmer silhouettes and lower rises than previous decades.",
+      "silhouetteKeywords": [
+        "slim fit",
+        "pinstripe",
+        "nipped waist",
+        "office"
+      ]
+    },
+    {
+      "id": "outerwear_00s_athletic_zip_jacket",
+      "name": "Athletic Zip Jacket",
+      "slot": "outerwear",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Outerwear/00s_athletic_zip_jacket.png",
+      "decade": "2000s",
+      "scenarioTags": [
+        "casual",
+        "cultural"
+      ],
+      "description": "A sporty zip jacket in technical knit with stripe detailing.",
+      "historicalNotes": "Logo-heavy athleticwear remained important in 2000s casual and youth dress, especially with sneaker culture.",
+      "silhouetteKeywords": [
+        "sporty",
+        "stripe detail",
+        "technical knit",
+        "logo-friendly"
+      ]
+    },
+    {
+      "id": "top_00s_halter_top",
+      "name": "Going-Out Halter Top",
+      "slot": "tops",
+      "gender": "female",
+      "coversBottoms": false,
+      "sprite": "Tops/00s_halter_top.png",
+      "decade": "2000s",
+      "scenarioTags": [
+        "casual",
+        "formal"
+      ],
+      "description": "A fitted halter top with an open back and slight sheen.",
+      "historicalNotes": "The halter was a signature early-2000s going-out top, often paired with low-rise denim or dressier pants.",
+      "silhouetteKeywords": [
+        "open back",
+        "fitted",
+        "sheen",
+        "going-out"
+      ]
+    },
+    {
+      "id": "top_00s_polo_shirt",
+      "name": "Slim Polo Shirt",
+      "slot": "tops",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Tops/00s_slim_polo_shirt.png",
+      "decade": "2000s",
+      "scenarioTags": [
+        "casual",
+        "business"
+      ],
+      "description": "A fitted short-sleeve polo in pique cotton.",
+      "historicalNotes": "Polo shirts remained strongly present in 2000s mainstream casual dress, especially in mall brands and preppy looks.",
+      "silhouetteKeywords": [
+        "fitted",
+        "pique",
+        "preppy",
+        "mainstream"
+      ]
+    },
+    {
+      "id": "top_00s_button_front_shirt",
+      "name": "Stretch Button-Front Shirt",
+      "slot": "tops",
+      "gender": "female",
+      "coversBottoms": false,
+      "sprite": "Tops/00s_stretch_buttonfront.png",
+      "decade": "2000s",
+      "scenarioTags": [
+        "business"
+      ],
+      "description": "A fitted stretch shirt designed to skim the torso and tuck into low-rise trousers or skirts.",
+      "historicalNotes": "Office and business-casual shirts in the 2000s often became more body-conscious than 1990s versions.",
+      "silhouetteKeywords": [
+        "body-conscious",
+        "stretch",
+        "tucked",
+        "office"
+      ]
+    },
+    {
+      "id": "top_00s_graphic_tee",
+      "name": "Logo Graphic T-Shirt",
+      "slot": "tops",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Tops/00s_logo_graphic_tshirt.png",
+      "decade": "2000s",
+      "scenarioTags": [
+        "casual",
+        "cultural"
+      ],
+      "description": "A fitted or baby tee with a large logo or slogan graphic.",
+      "historicalNotes": "Logo-heavy casual tops were a strong part of 2000s youth and street-influenced everyday fashion.",
+      "silhouetteKeywords": [
+        "logo-heavy",
+        "baby tee",
+        "fitted",
+        "youth"
+      ]
+    },
+    {
+      "id": "top_00s_strapless_dress",
+      "name": "Strapless Party Dress",
+      "slot": "tops",
+      "gender": "female",
+      "coversBottoms": true,
+      "sprite": "Tops/00s_strapless_party_dress.png",
+      "decade": "2000s",
+      "scenarioTags": [
+        "formal"
+      ],
+      "description": "A short strapless dress with a body-skimming fit.",
+      "historicalNotes": "Strapless party dresses were common for 2000s dances, clubwear, and semi-formal social events.",
+      "silhouetteKeywords": [
+        "strapless",
+        "body-skimming",
+        "short dress",
+        "party"
+      ]
+    },
+    {
+      "id": "bottoms_00s_low_rise_bootcut_jeans",
+      "name": "Low-Rise Bootcut Jeans",
+      "slot": "bottoms",
+      "gender": "female",
+      "coversBottoms": false,
+      "sprite": "Bottoms/00s_lowrise_bootcut_jeans.png",
+      "decade": "2000s",
+      "scenarioTags": [
+        "casual",
+        "cultural"
+      ],
+      "description": "Low-rise jeans fitted through the thigh and opening slightly at the hem.",
+      "historicalNotes": "Low-rise bootcut denim was one of the most characteristic mainstream silhouettes of the early 2000s.",
+      "silhouetteKeywords": [
+        "low-rise",
+        "bootcut",
+        "fitted thigh",
+        "denim"
+      ]
+    },
+    {
+      "id": "bottoms_00s_trousers",
+      "name": "Low-Rise Trousers",
+      "slot": "bottoms",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Bottoms/00s_lowrise_trousers.png",
+      "decade": "2000s",
+      "scenarioTags": [
+        "business",
+        "formal"
+      ],
+      "description": "Tailored trousers cut lower on the waist with a longer lean leg.",
+      "historicalNotes": "Businesswear in the 2000s frequently adopted the decade's lower waistline and slimmer fit.",
+      "silhouetteKeywords": [
+        "low-rise",
+        "lean leg",
+        "tailored",
+        "office"
+      ]
+    },
+    {
+      "id": "bottoms_00s_denim_mini",
+      "name": "Denim Miniskirt",
+      "slot": "bottoms",
+      "gender": "female",
+      "coversBottoms": false,
+      "sprite": "Bottoms/00s_denim_mini.png",
+      "decade": "2000s",
+      "scenarioTags": [
+        "casual"
+      ],
+      "description": "A short denim miniskirt in a fitted cut.",
+      "historicalNotes": "Denim minis were a highly visible 2000s casual item, often paired with boots, fitted tops, or layered looks.",
+      "silhouetteKeywords": [
+        "mini",
+        "fitted",
+        "denim",
+        "youth"
+      ]
+    },
+    {
+      "id": "bottoms_00s_cargo_pants",
+      "name": "Cargo Pants",
+      "slot": "bottoms",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Bottoms/00s_cargo_pants.png",
+      "decade": "2000s",
+      "scenarioTags": [
+        "casual",
+        "cultural"
+      ],
+      "description": "Straight or loose cargo pants with flap utility pockets.",
+      "historicalNotes": "Cargo pants remained widespread in 2000s casualwear through skate, pop-punk, and mainstream utility trends.",
+      "silhouetteKeywords": [
+        "utility pockets",
+        "straight leg",
+        "casual",
+        "street"
+      ]
+    },
+    {
+      "id": "shoes_00s_ugg_boots",
+      "name": "Sheepskin Boots",
+      "slot": "shoes",
+      "gender": "female",
+      "coversBottoms": false,
+      "sprite": "Shoes/00s_sheepskin_boots.png",
+      "decade": "2000s",
+      "scenarioTags": [
+        "casual"
+      ],
+      "description": "Soft suede boots lined in sheepskin with a rounded toe and flat sole.",
+      "historicalNotes": "Sheepskin boots became a hallmark of 2000s casual dress, especially in celebrity-driven styling.",
+      "silhouetteKeywords": [
+        "soft shaft",
+        "rounded toe",
+        "flat",
+        "cozy"
+      ]
+    },
+    {
+      "id": "shoes_00s_skate_shoes",
+      "name": "Chunky Skate Shoes",
+      "slot": "shoes",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Shoes/00s_chunky_skate_shoes.png",
+      "decade": "2000s",
+      "scenarioTags": [
+        "casual",
+        "cultural"
+      ],
+      "description": "Padded skate shoes with a thick tongue and wide sole.",
+      "historicalNotes": "Chunky skate shoes were common in 2000s skate and youth fashion and crossed into mainstream casual wear.",
+      "silhouetteKeywords": [
+        "padded",
+        "chunky",
+        "wide sole",
+        "skate"
+      ]
+    },
+    {
+      "id": "shoes_00s_pointed_toe_heels",
+      "name": "Pointed-Toe Heels",
+      "slot": "shoes",
+      "gender": "female",
+      "coversBottoms": false,
+      "sprite": "Shoes/00s_pointed_toe_heels.png",
+      "decade": "2000s",
+      "scenarioTags": [
+        "business",
+        "formal"
+      ],
+      "description": "Slim heels with an elongated pointed toe.",
+      "historicalNotes": "Pointed dress shoes stayed strong in 2000s office and formal wardrobes, often with slimmer, sharper lines.",
+      "silhouetteKeywords": [
+        "elongated toe",
+        "slim heel",
+        "sharp",
+        "dress"
+      ]
+    },
+    {
+      "id": "outerwear_10s_bomber_jacket",
+      "name": "Bomber Jacket",
+      "slot": "outerwear",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Outerwear/10s_bomber_jacket.png",
+      "decade": "2010s",
+      "scenarioTags": [
+        "casual",
+        "cultural"
+      ],
+      "description": "A lightweight bomber with ribbed cuffs, waistband, and collar.",
+      "historicalNotes": "Bomber jackets became a staple of 2010s streetwear and casual fashion across genders.",
+      "silhouetteKeywords": [
+        "ribbed trim",
+        "streetwear",
+        "lightweight",
+        "short jacket"
+      ]
+    },
+    {
+      "id": "outerwear_10s_structured_blazer",
+      "name": "Longline Structured Blazer",
+      "slot": "outerwear",
+      "gender": "female",
+      "coversBottoms": false,
+      "sprite": "Outerwear/10s_longline_blazer.png",
+      "decade": "2010s",
+      "scenarioTags": [
+        "business",
+        "formal"
+      ],
+      "description": "A longline blazer with slim lapels and a cleaner, lightly oversized shape.",
+      "historicalNotes": "The 2010s blended tailored workwear with softer length and less rigid construction than classic power suiting.",
+      "silhouetteKeywords": [
+        "longline",
+        "lightly oversized",
+        "clean",
+        "tailored"
+      ]
+    },
+    {
+      "id": "outerwear_10s_denim_jacket",
+      "name": "Stretch Denim Jacket",
+      "slot": "outerwear",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Outerwear/10s_stretch_denim_jacket.png",
+      "decade": "2010s",
+      "scenarioTags": [
+        "casual"
+      ],
+      "description": "A fitted denim jacket with slight stretch and a streamlined body.",
+      "historicalNotes": "Denim jackets remained dependable basics in the 2010s, often cut slimmer than 1990s versions.",
+      "silhouetteKeywords": [
+        "fitted",
+        "streamlined",
+        "denim",
+        "everyday"
+      ]
+    },
+    {
+      "id": "outerwear_10s_cardigan",
+      "name": "Open-Front Cardigan",
+      "slot": "outerwear",
+      "gender": "female",
+      "coversBottoms": false,
+      "sprite": "Outerwear/10s_open_front_cardigan.png",
+      "decade": "2010s",
+      "scenarioTags": [
+        "business",
+        "casual"
+      ],
+      "description": "A soft draped cardigan worn open over basics.",
+      "historicalNotes": "Long cardigans were common in 2010s casual and business-casual wardrobes, especially in layered minimal looks.",
+      "silhouetteKeywords": [
+        "draped",
+        "soft",
+        "layered",
+        "business-casual"
+      ]
+    },
+    {
+      "id": "top_10s_peplum_blouse",
+      "name": "Peplum Blouse",
+      "slot": "tops",
+      "gender": "female",
+      "coversBottoms": false,
+      "sprite": "Tops/10s_peplum_blouse.png",
+      "decade": "2010s",
+      "scenarioTags": [
+        "business",
+        "formal"
+      ],
+      "description": "A fitted blouse that flares slightly at the waist into a peplum.",
+      "historicalNotes": "Peplum tops were a recognizable early-2010s silhouette in office and dressier settings.",
+      "silhouetteKeywords": [
+        "fitted",
+        "waist emphasis",
+        "peplum",
+        "structured"
+      ]
+    },
+    {
+      "id": "top_10s_chambray_shirt",
+      "name": "Chambray Shirt",
+      "slot": "tops",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Tops/10s_chambray_shirt.png",
+      "decade": "2010s",
+      "scenarioTags": [
+        "casual"
+      ],
+      "description": "A soft chambray button-front shirt in a relaxed everyday fit.",
+      "historicalNotes": "Chambray shirts became a common 2010s casual staple, especially in layered and smart-casual wardrobes.",
+      "silhouetteKeywords": [
+        "soft",
+        "button-front",
+        "relaxed",
+        "smart-casual"
+      ]
+    },
+    {
+      "id": "top_10s_graphic_tee",
+      "name": "Fitted Graphic T-Shirt",
+      "slot": "tops",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Tops/10s_fitted_graphic_tshirt.png",
+      "decade": "2010s",
+      "scenarioTags": [
+        "casual",
+        "cultural"
+      ],
+      "description": "A slim or straight-fit t-shirt with a clean graphic print.",
+      "historicalNotes": "Graphic tees remained central in 2010s casual dress, often paired with slim denim, sneakers, or bomber jackets.",
+      "silhouetteKeywords": [
+        "graphic",
+        "slim fit",
+        "casual",
+        "street"
+      ]
+    },
+    {
+      "id": "top_10s_sheath_dress",
+      "name": "Sheath Dress",
+      "slot": "tops",
+      "gender": "female",
+      "coversBottoms": true,
+      "sprite": "Tops/10s_sheath_dress.png",
+      "decade": "2010s",
+      "scenarioTags": [
+        "business",
+        "formal"
+      ],
+      "description": "A knee-length sheath dress with a close fit and clean seaming.",
+      "historicalNotes": "The sheath dress remained a practical 2010s business and event option, especially in polished professional wardrobes.",
+      "silhouetteKeywords": [
+        "knee-length",
+        "close fit",
+        "clean seam",
+        "professional"
+      ]
+    },
+    {
+      "id": "top_10s_athleisure_tank",
+      "name": "Athleisure Tank",
+      "slot": "tops",
+      "gender": "female",
+      "coversBottoms": false,
+      "sprite": "Tops/10s_athleisure_tank.png",
+      "decade": "2010s",
+      "scenarioTags": [
+        "casual",
+        "cultural"
+      ],
+      "description": "A sleek performance-inspired tank suitable for both workouts and everyday wear.",
+      "historicalNotes": "Athleisure became one of the defining fashion shifts of the 2010s, blurring activewear and everyday dress.",
+      "silhouetteKeywords": [
+        "performance fabric",
+        "sleek",
+        "athleisure",
+        "versatile"
+      ]
+    },
+    {
+      "id": "bottoms_10s_skinny_jeans",
+      "name": "Skinny Jeans",
+      "slot": "bottoms",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Bottoms/10s_skinny_jeans.png",
+      "decade": "2010s",
+      "scenarioTags": [
+        "casual",
+        "cultural"
+      ],
+      "description": "Stretch jeans cut close from hip to ankle.",
+      "historicalNotes": "Skinny jeans dominated mainstream casualwear through much of the 2010s for multiple genders.",
+      "silhouetteKeywords": [
+        "stretch",
+        "close fit",
+        "narrow ankle",
+        "mainstream"
+      ]
+    },
+    {
+      "id": "bottoms_10s_cigarette_trousers",
+      "name": "Cigarette Trousers",
+      "slot": "bottoms",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Bottoms/10s_cigarette_trousers.png",
+      "decade": "2010s",
+      "scenarioTags": [
+        "business",
+        "formal"
+      ],
+      "description": "Slim ankle-length trousers with a clean flat front.",
+      "historicalNotes": "Slim ankle trousers fit the 2010s preference for neat, shortened, body-conscious tailoring.",
+      "silhouetteKeywords": [
+        "ankle length",
+        "slim",
+        "flat front",
+        "tailored"
+      ]
+    },
+    {
+      "id": "bottoms_10s_joggers",
+      "name": "Jogger Pants",
+      "slot": "bottoms",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Bottoms/10s_joggers.png",
+      "decade": "2010s",
+      "scenarioTags": [
+        "casual",
+        "cultural"
+      ],
+      "description": "Tapered knit or woven joggers finished with elastic cuffs.",
+      "historicalNotes": "Joggers translated athletic cues into mainstream streetwear and casual fashion in the 2010s.",
+      "silhouetteKeywords": [
+        "tapered",
+        "elastic cuff",
+        "athleisure",
+        "streetwear"
+      ]
+    },
+    {
+      "id": "bottoms_10s_midi_skirt",
+      "name": "Pleated Midi Skirt",
+      "slot": "bottoms",
+      "gender": "female",
+      "coversBottoms": false,
+      "sprite": "Bottoms/10s_pleated_midi_skirt.png",
+      "decade": "2010s",
+      "scenarioTags": [
+        "business",
+        "formal",
+        "casual"
+      ],
+      "description": "A midi skirt with soft pleats and fluid movement.",
+      "historicalNotes": "Midi lengths returned strongly in the 2010s and worked across professional, modest, and dressy everyday looks.",
+      "silhouetteKeywords": [
+        "midi",
+        "pleated",
+        "fluid",
+        "versatile"
+      ]
+    },
+    {
+      "id": "shoes_10s_white_sneakers",
+      "name": "Minimal White Sneakers",
+      "slot": "shoes",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Shoes/10s_minimal_white_sneakers.png",
+      "decade": "2010s",
+      "scenarioTags": [
+        "casual"
+      ],
+      "description": "Clean low-top white sneakers with minimal branding.",
+      "historicalNotes": "Simple white sneakers became one of the most versatile 2010s footwear staples.",
+      "silhouetteKeywords": [
+        "low-top",
+        "clean",
+        "minimal",
+        "versatile"
+      ]
+    },
+    {
+      "id": "shoes_10s_ankle_boots",
+      "name": "Chelsea Ankle Boots",
+      "slot": "shoes",
+      "gender": "unisex",
+      "coversBottoms": false,
+      "sprite": "Shoes/10s_chelsea_ankle_boots.png",
+      "decade": "2010s",
+      "scenarioTags": [
+        "business",
+        "casual",
+        "formal"
+      ],
+      "description": "Sleek ankle boots with elastic side gores and a low heel.",
+      "historicalNotes": "Chelsea boots were widely worn in the 2010s across smart-casual, office, and evening looks.",
+      "silhouetteKeywords": [
+        "sleek",
+        "elastic side",
+        "low heel",
+        "versatile"
+      ]
+    },
+    {
+      "id": "shoes_10s_block_heels",
+      "name": "Block-Heel Sandals",
+      "slot": "shoes",
+      "gender": "female",
+      "coversBottoms": false,
+      "sprite": "Shoes/10s_block_heel_sandals.png",
+      "decade": "2010s",
+      "scenarioTags": [
+        "formal",
+        "business"
+      ],
+      "description": "Open or closed-toe sandals with a sturdy block heel.",
+      "historicalNotes": "Block heels offered the 2010s balance of trendiness and practicality for dressier wear.",
+      "silhouetteKeywords": [
+        "block heel",
+        "practical",
+        "dressy",
+        "modern"
+      ]
+    }
+  ]
+}

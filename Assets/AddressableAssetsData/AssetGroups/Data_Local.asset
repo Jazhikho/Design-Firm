@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Data_Local
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Data_Local
+  m_GUID: 823a156bbfb3719439ffbbfd1b7ee566
+  m_SerializeEntries:
+  - m_GUID: 50837f86a14dad6418b1c8626642ab6b
+    m_Address: Data/clothing_items.json
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c843504749161a84ea77b1371cb8b3b0
+    m_Address: Data/scenarios.json
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e2ed879ba7dbfa940a88af814625b4e6
+    m_Address: Data/avatars.json
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: cb8f221f4801dcc4db2d548c1343015b, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: b02140b682a677b48aba6cc7873c3cd6, type: 2}
+    - {fileID: 11400000, guid: cd20b0f406e93ad4287fc55754242975, type: 2}

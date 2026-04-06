@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Shoes_Local
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: Shoes_Local
+  m_GUID: 73326fe4083aa384da5370aee3ad1205
+  m_SerializeEntries:
+  - m_GUID: 5908b1f90cdc5114a8362df24e3a9b70
+    m_Address: Assets/Art/Clothing/Shoes/80s_leather_loafers.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: cb8f221f4801dcc4db2d548c1343015b, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 82bbbe7a2094a6840b3fda0f1470e883, type: 2}
+    - {fileID: 11400000, guid: e014a81f4659adc4cb20650267fd1258, type: 2}
