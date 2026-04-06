@@ -1,0 +1,7 @@
+VisualElement {
+}
+
+.CommonButtons {
+    height: 32px;
+    width: 150px;
+}
