@@ -27,11 +27,11 @@ public class ScenariosController : MonoBehaviour
 
     private void BackScene()
     {
-        SceneManager.LoadScene("mainMenuScene"); // TODO: replace scene name with game constant
-    }
+        SceneManager.LoadScene(GameConstants.MainMenuScene);
+    } 
 
     private void NextScene()
     {
-        SceneManager.LoadScene("wardrobeScene"); // TODO: replace scene name with game constant
+        SceneManager.LoadScene(GameConstants.Wardrobe); 
     }
 }

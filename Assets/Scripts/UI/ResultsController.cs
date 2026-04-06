@@ -32,16 +32,16 @@ public class ResultsController : MonoBehaviour
 
     private void GoToWardrobe()
     {
-        SceneManager.LoadScene("wardrobeScene"); // TODO: replace scene name with game constant
+        SceneManager.LoadScene(GameConstants.Wardrobe); 
     }
 
     private void GoToMainMenu()
     {
-        SceneManager.LoadScene("mainMenuScene"); // TODO: replace scene name with game constant
+        SceneManager.LoadScene(GameConstants.MainMenuScene); 
     }
 
     private void NewScenario()
     {
-        SceneManager.LoadScene("taskScenarioScene"); // TODO: replace scene name with game constant
+        SceneManager.LoadScene(GameConstants.TaskScenario);
     }
 }

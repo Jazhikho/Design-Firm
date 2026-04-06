@@ -24,7 +24,7 @@ public class MainMenuScript : MonoBehaviour
         Debug.Log("Play Clicked");
 
         // Load your game scene
-        SceneManager.LoadScene("taskScenarioScene");
+        SceneManager.LoadScene(GameConstants.TaskScenario);
     }
 
     void OnQuitClicked()
