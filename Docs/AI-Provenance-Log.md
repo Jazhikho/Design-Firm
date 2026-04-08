@@ -15,6 +15,17 @@ Disclosure and audit trail for AI-assisted work. Update when committing signific
 
 ---
 
+**Date:** 2026-04-08  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** Final coding-standards review on `main`; align scripts with `CodingStandards.md`; commit and push.  
+**Input materials used:** Staged changes on `main` (`GameConstants`, `UI/*Controller`, `WardrobeScripts/*`, `wardrobeScene.unity`); `CodingStandards.md`; `VERSION.md`; this log.  
+**Summary of AI contribution:** Third-pass review; moved `[SerializeField]` below XML summaries for serialized fields; corrected `SetUpClothing` summary (grid vs ListView); added null checks after `Q<Button>` in main menu, results, and scenarios UI; clarified manager inspector error and XML on JSON DTO types; bumped `VERSION.md` to 0.0.3.1; this entry.  
+**What the human accepted / rejected / changed:** Accepted via request to commit and push after review.  
+**Validation method used:** Read-through against `CodingStandards.md`; `read_lints` on edited C# paths.  
+**Final approver:** Chris Del Gesso  
+
+---
+
 **Date:** 2026-04-03  
 **Tool or model used:** Cursor agent (AI-assisted editing)  
 **Task purpose:** Merge PR #18 (`rushBranch`) into `main` and apply immediate hardening; align with repo `CodingStandards.md` and contribution records (`VERSION.md`, this log).  

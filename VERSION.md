@@ -1,3 +1,3 @@
 # Version
 
-0.0.3.0 — Merge wardrobe PR #18 (JSON-driven picker, static item store); follow-up: execution order, default outfit skips `nothing_*`, UI null-safety, PascalCase wardrobe APIs, UXML note for restoring River's layout.
+0.0.3.1 — Main: coding standards pass—`WardrobeScripts` PascalCase folder and types, `GameConstants` scene names aligned to Build Settings, UI null checks after UXML `Q`, wardrobe scene YAML class identifiers, docs in `AI-Provenance-Log.md`.

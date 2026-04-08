@@ -5,33 +5,63 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(UIDocument))]
 public class ScenariosController : MonoBehaviour
 {
-    private Button btnBack;
-    private Button btnNext;
+    private Button _backButton;
+    private Button _nextButton;
 
+    /// <summary>
+    /// Caches scenario screen buttons and binds handlers.
+    /// </summary>
     private void OnEnable()
     {
         VisualElement root = GetComponent<UIDocument>().rootVisualElement;
 
-        btnBack = root.Q<Button>("btnBack");
-        btnBack.clicked += BackScene;
+        _backButton = root.Q<Button>("btnBack");
+        _nextButton = root.Q<Button>("btnNext");
+        if (_backButton == null)
+        {
+            Debug.LogError("ScenariosController: btnBack not found in UXML.");
+            return;
+        }
 
-        btnNext = root.Q<Button>("btnNext");
-        btnNext.clicked += NextScene;
+        if (_nextButton == null)
+        {
+            Debug.LogError("ScenariosController: btnNext not found in UXML.");
+            return;
+        }
+
+        _backButton.clicked += BackScene;
+        _nextButton.clicked += NextScene;
     }
 
+    /// <summary>
+    /// Unbinds scenario screen button handlers.
+    /// </summary>
     private void OnDisable()
     {
-        btnBack.clicked -= BackScene;
-        btnNext.clicked -= NextScene;
+        if (_backButton != null)
+        {
+            _backButton.clicked -= BackScene;
+        }
+
+        if (_nextButton != null)
+        {
+            _nextButton.clicked -= NextScene;
+        }
     }
 
+    /// <summary>
+    /// Returns from scenario selection to the main menu.
+    /// </summary>
     private void BackScene()
     {
-        SceneManager.LoadScene("mainMenuScene"); // TODO: replace scene name with game constant
+        SceneManager.LoadScene(GameConstants.MainMenuScene);
     }
 
+    /// <summary>
+    /// Advances from scenario selection to wardrobe scene.
+    /// </summary>
     private void NextScene()
     {
-        SceneManager.LoadScene("wardrobeScene"); // TODO: replace scene name with game constant
+        SceneManager.LoadScene(GameConstants.WardrobeScene);
     }
 }

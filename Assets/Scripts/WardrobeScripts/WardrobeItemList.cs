@@ -6,31 +6,34 @@ using UnityEngine;
 /// Static runtime store for wardrobe items loaded from JSON and current slot selections.
 /// Note: with Enter Play Mode Options that disable domain reload, static lists can persist between plays—prefer default domain reload for predictable behaviour.
 /// </summary>
-public class wardrobeItemList
+public class WardrobeItemList
 {
-    private static wardrobeItemList _instance;
-    public static wardrobeItemList Instance
+    private static WardrobeItemList _instance;
+    public static WardrobeItemList Instance
     {
         get
         {
-            _instance ??= new wardrobeItemList();
+            _instance ??= new WardrobeItemList();
             return _instance;
         }
     }
 
-    public List<wardrobeItemClothing> wardrobeListItems = new();
-    public List<wardrobeItemClothing> wardrobeListItemsChest = new();
-    public List<wardrobeItemClothing> wardrobeListItemsBottom = new();
-    public List<wardrobeItemClothing> wardrobeListItemsShoe = new();
-    public List<wardrobeItemClothing> wardrobeListItemsJacket = new();
-    public List<string> wardrobeIDList = new();
+    public readonly List<WardrobeItemClothing> WardrobeListItems = new();
+    public readonly List<WardrobeItemClothing> WardrobeListItemsChest = new();
+    public readonly List<WardrobeItemClothing> WardrobeListItemsBottom = new();
+    public readonly List<WardrobeItemClothing> WardrobeListItemsShoe = new();
+    public readonly List<WardrobeItemClothing> WardrobeListItemsJacket = new();
+    public readonly List<string> WardrobeIdList = new();
 
-    public wardrobeItemClothing currentItemTop;
-    public wardrobeItemClothing currentItemBottom;
-    public wardrobeItemClothing currentItemShoe;
-    public wardrobeItemClothing currentItemJacket;
+    public WardrobeItemClothing CurrentItemTop;
+    public WardrobeItemClothing CurrentItemBottom;
+    public WardrobeItemClothing CurrentItemShoe;
+    public WardrobeItemClothing CurrentItemJacket;
 
-    private wardrobeItemList()
+    /// <summary>
+    /// Seeds each slot with a placeholder "Nothing" item.
+    /// </summary>
+    private WardrobeItemList()
     {
         NewItemAdd("nothing_chest", "Nothing", "chest", null, "No clothing", false);
         NewItemAdd("nothing_jacket", "Nothing", "jacket", null, "No clothing", false);
@@ -43,7 +46,7 @@ public class wardrobeItemList
     /// </summary>
     /// <param name="items">Per-slot list (must not be null).</param>
     /// <returns>Item to show by default, or null if the list is empty.</returns>
-    public wardrobeItemClothing GetFirstDisplayableItem(List<wardrobeItemClothing> items)
+    public WardrobeItemClothing GetFirstDisplayableItem(List<WardrobeItemClothing> items)
     {
         if (items == null || items.Count == 0)
         {
@@ -52,18 +55,18 @@ public class wardrobeItemList
 
         for (int i = 0; i < items.Count; i++)
         {
-            wardrobeItemClothing entry = items[i];
+            WardrobeItemClothing entry = items[i];
             if (entry == null)
             {
                 continue;
             }
 
-            if (string.IsNullOrEmpty(entry.ID))
+            if (string.IsNullOrEmpty(entry.Id))
             {
                 continue;
             }
 
-            if (entry.ID.StartsWith("nothing_", StringComparison.Ordinal))
+            if (entry.Id.StartsWith("nothing_", StringComparison.Ordinal))
             {
                 continue;
             }
@@ -79,29 +82,29 @@ public class wardrobeItemList
     /// </summary>
     /// <param name="slot">One of chest, bottom, shoe, jacket.</param>
     /// <returns>Current item, or null if the tag is invalid.</returns>
-    public wardrobeItemClothing GetItemSlot(string slot)
+    public WardrobeItemClothing GetItemSlot(string slot)
     {
         if (slot == "chest")
         {
-            return currentItemTop;
+            return CurrentItemTop;
         }
 
         if (slot == "bottom")
         {
-            return currentItemBottom;
+            return CurrentItemBottom;
         }
 
         if (slot == "shoe")
         {
-            return currentItemShoe;
+            return CurrentItemShoe;
         }
 
         if (slot == "jacket")
         {
-            return currentItemJacket;
+            return CurrentItemJacket;
         }
 
-        Debug.LogError("wardrobeItemList: Invalid slot at GetItemSlot: " + slot);
+        Debug.LogError("WardrobeItemList: Invalid slot at GetItemSlot: " + slot);
         return null;
     }
 
@@ -110,27 +113,27 @@ public class wardrobeItemList
     /// </summary>
     /// <param name="slot">One of chest, bottom, shoe, jacket.</param>
     /// <param name="setItem">Item to assign (may be null only if callers allow it).</param>
-    public void SetItemSlot(string slot, wardrobeItemClothing setItem)
+    public void SetItemSlot(string slot, WardrobeItemClothing setItem)
     {
         if (slot == "chest")
         {
-            currentItemTop = setItem;
+            CurrentItemTop = setItem;
         }
         else if (slot == "bottom")
         {
-            currentItemBottom = setItem;
+            CurrentItemBottom = setItem;
         }
         else if (slot == "shoe")
         {
-            currentItemShoe = setItem;
+            CurrentItemShoe = setItem;
         }
         else if (slot == "jacket")
         {
-            currentItemJacket = setItem;
+            CurrentItemJacket = setItem;
         }
         else
         {
-            Debug.LogError("wardrobeItemList: Invalid slot at SetItemSlot: " + slot);
+            Debug.LogError("WardrobeItemList: Invalid slot at SetItemSlot: " + slot);
         }
     }
 
@@ -145,37 +148,37 @@ public class wardrobeItemList
     /// <param name="newCover">Whether this item covers the bottom piece.</param>
     public void NewItemAdd(string newID, string newName, string newSlot, Sprite newSprite, string newDesc, bool newCover)
     {
-        wardrobeItemClothing newItem = new()
+        WardrobeItemClothing newItem = new()
         {
-            ID = newID,
-            itemName = newName,
-            slotTag = newSlot,
-            itemSprite = newSprite,
-            itemDescription = newDesc,
-            coversBottomPiece = newCover
+            Id = newID,
+            ItemName = newName,
+            SlotTag = newSlot,
+            ItemSprite = newSprite,
+            ItemDescription = newDesc,
+            CoversBottomPiece = newCover
         };
 
-        wardrobeListItems.Add(newItem);
-        wardrobeIDList.Add(newItem.ID);
-        if (newItem.slotTag == "chest")
+        WardrobeListItems.Add(newItem);
+        WardrobeIdList.Add(newItem.Id);
+        if (newItem.SlotTag == "chest")
         {
-            wardrobeListItemsChest.Add(newItem);
+            WardrobeListItemsChest.Add(newItem);
         }
-        else if (newItem.slotTag == "bottom")
+        else if (newItem.SlotTag == "bottom")
         {
-            wardrobeListItemsBottom.Add(newItem);
+            WardrobeListItemsBottom.Add(newItem);
         }
-        else if (newItem.slotTag == "shoe")
+        else if (newItem.SlotTag == "shoe")
         {
-            wardrobeListItemsShoe.Add(newItem);
+            WardrobeListItemsShoe.Add(newItem);
         }
-        else if (newItem.slotTag == "jacket")
+        else if (newItem.SlotTag == "jacket")
         {
-            wardrobeListItemsJacket.Add(newItem);
+            WardrobeListItemsJacket.Add(newItem);
         }
         else
         {
-            Debug.LogError("wardrobeItemList: Unknown slotTag '" + newItem.slotTag + "' for item " + newID);
+            Debug.LogError("WardrobeItemList: Unknown slotTag '" + newItem.SlotTag + "' for item " + newID);
         }
     }
 }
