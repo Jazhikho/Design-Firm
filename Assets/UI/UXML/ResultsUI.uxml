@@ -1,6 +1,7 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/USS/CommonStyleSheet.uss?fileID=7433441132597879392&amp;guid=ca6e6fde6791c32489861349490e14f1&amp;type=3#CommonStyleSheet"/>
     <Style src="project://database/Assets/UI/USS/ResultsStylesheet.uss?fileID=7433441132597879392&amp;guid=59f5a80705eb3a24daaff36c9dbb1ed9&amp;type=3#ResultsStylesheet"/>
-    <ui:VisualElement name="topRow">
+    <ui:VisualElement name="topRow" class="CommonStyleSheet">
         <ui:Button text="Retry Scenario" name="btnRetry"/>
     </ui:VisualElement>
     <ui:VisualElement name="middleRow" style="flex-grow: 1; flex-direction: row;">
@@ -52,7 +53,7 @@
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:VisualElement name="bottomRow" style="flex-direction: row;">
+    <ui:VisualElement name="bottomRow" class="CommonStyleSheet" style="flex-direction: row;">
         <ui:Label text="Sew It Goes" name="lblGameTitle"/>
         <ui:VisualElement style="flex-grow: 1;"/>
         <ui:Button text="Main Menu" name="btnMainMenu"/>
