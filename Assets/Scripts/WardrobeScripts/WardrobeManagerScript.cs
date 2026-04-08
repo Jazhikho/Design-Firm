@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 /// <summary>
 /// Persistent singleton that loads wardrobe item definitions from a JSON TextAsset once at startup.
@@ -6,41 +7,45 @@ using UnityEngine;
 /// Can live in any scene—whichever scene is opened first will bootstrap the data.
 /// </summary>
 [DefaultExecutionOrder(-100)]
-public class wardrobeManagerScript : MonoBehaviour
+public class WardrobeManagerScript : MonoBehaviour
 {
-    private static wardrobeManagerScript instance;
+    private static WardrobeManagerScript _instance;
 
     [SerializeField]
-    private TextAsset jsonFile;
+    [FormerlySerializedAs("jsonFile")]
+    private TextAsset _jsonFile;
 
+    /// <summary>
+    /// Ensures a single persistent manager instance and loads wardrobe data once.
+    /// </summary>
     private void Awake()
     {
-        if (instance != null)
+        if (_instance != null)
         {
             Destroy(gameObject);
             return;
         }
 
-        instance = this;
+        _instance = this;
         DontDestroyOnLoad(gameObject);
-        LoadItems();
+        LoadItemsFromJson();
     }
 
     /// <summary>
-    /// Deserializes <see cref="jsonFile"/> and forwards each entry to <see cref="wardrobeItemList.Instance.NewItemAdd"/>.
+    /// Deserializes <see cref="_jsonFile"/> and forwards each entry to <see cref="WardrobeItemList.Instance"/>.
     /// </summary>
-    private void LoadItems()
+    private void LoadItemsFromJson()
     {
-        if (jsonFile == null)
+        if (_jsonFile == null)
         {
-            Debug.LogError("wardrobeManagerScript: Assign jsonFile in the Inspector.");
+            Debug.LogError("WardrobeManagerScript: Assign the items JSON TextAsset in the Inspector.");
             return;
         }
 
-        SerialItems itemsInFile = JsonUtility.FromJson<SerialItems>(jsonFile.text);
+        SerialItems itemsInFile = JsonUtility.FromJson<SerialItems>(_jsonFile.text);
         if (itemsInFile == null || itemsInFile.items == null)
         {
-            Debug.LogError("wardrobeManagerScript: JSON did not deserialize to SerialItems with a non-null items array.");
+            Debug.LogError("WardrobeManagerScript: JSON did not deserialize to SerialItems with a non-null items array.");
             return;
         }
 
@@ -48,18 +53,18 @@ public class wardrobeManagerScript : MonoBehaviour
         {
             if (newItem == null)
             {
-                Debug.LogError("wardrobeManagerScript: Encountered a null item entry in JSON.");
+                Debug.LogError("WardrobeManagerScript: Encountered a null item entry in JSON.");
                 continue;
             }
 
             Sprite newItemSprite = Resources.Load<Sprite>(newItem.itemSprite);
             if (newItemSprite == null)
             {
-                Debug.LogError("wardrobeManagerScript: Resources.Load failed for sprite path: " + newItem.itemSprite);
+                Debug.LogError("WardrobeManagerScript: Resources.Load failed for sprite path: " + newItem.itemSprite);
                 continue;
             }
 
-            wardrobeItemList.Instance.NewItemAdd(
+            WardrobeItemList.Instance.NewItemAdd(
                 newItem.ID,
                 newItem.itemName,
                 newItem.slotTag,
@@ -70,9 +75,13 @@ public class wardrobeManagerScript : MonoBehaviour
     }
 }
 
+/// <summary>
+/// JSON row shape for <c>itemsJson.json</c>; field names must match file keys for <see cref="JsonUtility"/>.
+/// </summary>
 [System.Serializable]
 public class NewSerialItem
 {
+    // JSON field names must match source data keys exactly.
     public string ID;
     public string itemName;
     public string slotTag;
@@ -81,6 +90,9 @@ public class NewSerialItem
     public bool coversBottomPiece = false;
 }
 
+/// <summary>
+/// Root JSON object containing the items array for wardrobe deserialization.
+/// </summary>
 [System.Serializable]
 public class SerialItems
 {

@@ -5,9 +5,9 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(UIDocument))]
 public class ResultsController : MonoBehaviour
 {
-    private Button btnRetry;
-    private Button btnMainMenu;
-    private Button btnRetryScenario;
+    private Button _retryButton;
+    private Button _mainMenuButton;
+    private Button _retryScenarioButton;
 
     //
     private VisualElement root;
@@ -18,18 +18,37 @@ public class ResultsController : MonoBehaviour
     public float totalScore;
     //
 
-    public void OnEnable()
+    /// <summary>
+    /// Caches result screen buttons and binds handlers.
+    /// </summary>
+    private void OnEnable()
     {
         root = GetComponent<UIDocument>().rootVisualElement;
 
-        btnRetry = root.Q<Button>("btnRetry");
-        btnRetry.clicked += GoToWardrobe;
+        _retryButton = root.Q<Button>("btnRetry");
+        _mainMenuButton = root.Q<Button>("btnMainMenu");
+        _retryScenarioButton = root.Q<Button>("btnNewScenario");
+        if (_retryButton == null)
+        {
+            Debug.LogError("ResultsController: btnRetry not found in UXML.");
+            return;
+        }
 
-        btnMainMenu = root.Q<Button>("btnMainMenu");
-        btnMainMenu.clicked += GoToMainMenu;
+        if (_mainMenuButton == null)
+        {
+            Debug.LogError("ResultsController: btnMainMenu not found in UXML.");
+            return;
+        }
 
-        btnRetryScenario = root.Q<Button>("btnNewScenario");
-        btnRetryScenario.clicked += NewScenario;
+        if (_retryScenarioButton == null)
+        {
+            Debug.LogError("ResultsController: btnNewScenario not found in UXML.");
+            return;
+        }
+
+        _retryButton.clicked += GoToWardrobe;
+        _mainMenuButton.clicked += GoToMainMenu;
+        _retryScenarioButton.clicked += NewScenario;
 
         //RunSomeThings -ORGANIZE THIS
             tempScenario.tempScenarioRun();
@@ -40,26 +59,49 @@ public class ResultsController : MonoBehaviour
         //
     }
 
-    public void OnDisable()
+    /// <summary>
+    /// Unbinds result screen button handlers.
+    /// </summary>
+    private void OnDisable()
     {
-        btnRetry.clicked -= GoToWardrobe;
-        btnMainMenu.clicked -= GoToMainMenu;
-        btnRetryScenario.clicked -= NewScenario;
+        if (_retryButton != null)
+        {
+            _retryButton.clicked -= GoToWardrobe;
+        }
+
+        if (_mainMenuButton != null)
+        {
+            _mainMenuButton.clicked -= GoToMainMenu;
+        }
+
+        if (_retryScenarioButton != null)
+        {
+            _retryScenarioButton.clicked -= NewScenario;
+        }
     }
 
+    /// <summary>
+    /// Loads the wardrobe scene for another outfit attempt.
+    /// </summary>
     private void GoToWardrobe()
     {
-        SceneManager.LoadScene("wardrobeScene"); // TODO: replace scene name with game constant
+        SceneManager.LoadScene(GameConstants.WardrobeScene);
     }
 
+    /// <summary>
+    /// Returns to the main menu scene.
+    /// </summary>
     private void GoToMainMenu()
     {
-        SceneManager.LoadScene("mainMenuScene"); // TODO: replace scene name with game constant
+        SceneManager.LoadScene(GameConstants.MainMenuScene);
     }
 
+    /// <summary>
+    /// Loads another scenario prompt.
+    /// </summary>
     private void NewScenario()
     {
-        SceneManager.LoadScene("taskScenarioScene"); // TODO: replace scene name with game constant
+        SceneManager.LoadScene(GameConstants.TaskScenarioScene);
     }
 
     //Read wardrobe items
