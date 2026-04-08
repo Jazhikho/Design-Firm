@@ -17,6 +17,17 @@ Disclosure and audit trail for AI-assisted work. Update when committing signific
 
 **Date:** 2026-04-08  
 **Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** Trim README doc links (remove Credits and GDD); delete `Docs/GDD.md`; document that `CodingStandards.md` is at repository root; bump `VERSION.md`; commit and push.  
+**Input materials used:** User request; `README.md`, `Docs/GDD.md`, `VERSION.md`, this log.  
+**Summary of AI contribution:** README restructured (`Docs/` vs coding standards section); removed broken Credits and GDD entries; deleted `GDD.md`; `VERSION.md` 0.0.3.2; this entry.  
+**What the human accepted / rejected / changed:** Accepted via direct request.  
+**Validation method used:** Grep for stale `GDD` / `Credits` links in markdown.  
+**Final approver:** Chris Del Gesso  
+
+---
+
+**Date:** 2026-04-08  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
 **Task purpose:** Final coding-standards review on `main`; align scripts with `CodingStandards.md`; commit and push.  
 **Input materials used:** Staged changes on `main` (`GameConstants`, `UI/*Controller`, `WardrobeScripts/*`, `wardrobeScene.unity`); `CodingStandards.md`; `VERSION.md`; this log.  
 **Summary of AI contribution:** Third-pass review; moved `[SerializeField]` below XML summaries for serialized fields; corrected `SetUpClothing` summary (grid vs ListView); added null checks after `Q<Button>` in main menu, results, and scenarios UI; clarified manager inspector error and XML on JSON DTO types; bumped `VERSION.md` to 0.0.3.1; this entry.  

@@ -27,15 +27,16 @@ Opening this folder in Unity will create **`Packages/`** and **`ProjectSettings/
 
 Version: see `VERSION.md`.
 
-## Docs
+## Docs (`Docs/`)
 
 - **[ClientSpec.md](Docs/ClientSpec.md)** — Project brief, goals, eras, audience, technical requirements
 - **[Sources.md](Docs/Sources.md)** — Fashion history references (1980s–2010s): FIT, Vogue, video links
-- **[GDD.md](Docs/GDD.md)** — Game design document (stub; expand with engine/scope)
 - **[Assets.md](Docs/Assets.md)** — Third-party asset tracking (license, source)
 - **[AI-Provenance-Log.md](Docs/AI-Provenance-Log.md)** — AI-assisted work disclosure and audit trail
-- **[Credits.md](Docs/Credits.md)** — Sprint 53 Studio team credits
-- **[CodingStandards.md](CodingStandards.md)** — Unity C# and repo conventions for contributors
+
+## Coding standards (repository root)
+
+**[CodingStandards.md](CodingStandards.md)** — Unity C# and repo conventions for contributors. This file lives at the **repository root** (not under `Docs/`), next to `README.md`.
 
 ## External Docs and Tools
 
