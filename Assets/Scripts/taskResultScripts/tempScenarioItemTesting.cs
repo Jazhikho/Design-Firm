@@ -1,6 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+    /// <summary>
+    /// THIS WILL BE DELETED LATER: DO NOT KEEP THIS AROUND IF SCENARIO JSON IS IMPLEMENTED
+    /// </summary>
 public class tempScenarioItemTesting
 {
     public string name;
