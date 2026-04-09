@@ -11,7 +11,7 @@ public class ScenarioItemList
             return _instance;
         } 
     }
-    public List<ScenarioItem> Items;
+    public List<ScenarioItem> Items = new();
     public ScenarioItem currentItem;
 
     public void NewItemAdd(string NewName,string NewDescription,string NewEra,string NewCategory,Sprite NewBackgroundimage, Sprite NewAvatarImage, List<ScoreItem> NewScoredItems,IncorrectFeedback NewFeedback, IdealOutfit NewIdealOutfits )

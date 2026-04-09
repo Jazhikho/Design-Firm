@@ -1,4 +1,3 @@
-VisualElement {
+.CommonButton {
+    background-color: rgb(242, 21, 191);
 }
-
-
