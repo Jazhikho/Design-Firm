@@ -31,7 +31,13 @@ public class MainMenuScript : MonoBehaviour
         }
 
         _playButton.clicked += OnPlayClicked;
+
+#if UNITY_WEBGL
+        // remove it from layout completely in WebGL
+        _quitButton.style.display = DisplayStyle.None;
+#else
         _quitButton.clicked += OnQuitClicked;
+#endif
     }
 
     /// <summary>
@@ -46,7 +52,9 @@ public class MainMenuScript : MonoBehaviour
 
         if (_quitButton != null)
         {
+#if !UNITY_WEBGL
             _quitButton.clicked -= OnQuitClicked;
+#endif
         }
     }
 
