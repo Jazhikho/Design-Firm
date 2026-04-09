@@ -38,7 +38,7 @@ public class WardrobeButtonScripts : MonoBehaviour
     {
         if (_sandboxMode == false)
         {
-            _nextScene = GameConstants.TaskResultScene;
+            _nextScene = GameConstants.TaskResult;
         }
         else
         {
@@ -137,7 +137,7 @@ public class WardrobeButtonScripts : MonoBehaviour
     /// </summary>
     private void GoToScenarios()
     {
-        SceneManager.LoadScene(GameConstants.TaskScenarioScene);
+        SceneManager.LoadScene(GameConstants.TaskScenario);
     }
 
     /// <summary>
