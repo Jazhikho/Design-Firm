@@ -107,15 +107,15 @@ public class ResultsController : MonoBehaviour
     //Read wardrobe items
     public void readWardrobeItems()
     {
-        readItem("lblYourJacketName", "Jacket", wardrobeItemList.Instance.currentItemJacket);
-        readItem("lblYourTopName", "Top", wardrobeItemList.Instance.currentItemTop);
-        readItem("lblYourBottomsName", "Bottoms", wardrobeItemList.Instance.currentItemBottom);
-        readItem("lblYourShoesName", "Shoes", wardrobeItemList.Instance.currentItemShoe);
+        readItem("lblYourJacketName", "Jacket", WardrobeItemList.Instance.CurrentItemJacket);
+        readItem("lblYourTopName", "Top", WardrobeItemList.Instance.CurrentItemTop);
+        readItem("lblYourBottomsName", "Bottoms", WardrobeItemList.Instance.CurrentItemBottom);
+        readItem("lblYourShoesName", "Shoes", WardrobeItemList.Instance.CurrentItemShoe);
     }
-    public void readItem(string slotLabel, string slotStr, wardrobeItemClothing itemSlot)
+    public void readItem(string slotLabel, string slotStr, WardrobeItemClothing itemSlot)
     {
         Label itemDisplay = root.Q<Label>(slotLabel);
-        itemDisplay.text = "Your " + slotStr + ": " + itemSlot.itemName;
+        itemDisplay.text = "Your " + slotStr + ": " + itemSlot.ItemName;
     }
     //Read Scenario stuffs
     public void readScenario()
@@ -145,16 +145,16 @@ public class ResultsController : MonoBehaviour
     }
     public void scoring()
     {
-        scoreItem("lblJacketScore", wardrobeItemList.Instance.currentItemJacket.ID, "lblFeedbackJacket");
-        scoreItem("lblTopScore", wardrobeItemList.Instance.currentItemTop.ID, "lblFeedbackTop");
-        scoreItem("lblBottomsScore", wardrobeItemList.Instance.currentItemBottom.ID, "lblFeedbackBottoms");
-        scoreItem("lblShoesScore", wardrobeItemList.Instance.currentItemShoe.ID, "lblFeedbackShoes");
+        scoreItem("lblJacketScore", WardrobeItemList.Instance.CurrentItemJacket, "lblFeedbackJacket", currentScenario.slotFeedback.jacketFeedback);
+        scoreItem("lblTopScore", WardrobeItemList.Instance.CurrentItemTop, "lblFeedbackTop", currentScenario.slotFeedback.topFeedback);
+        scoreItem("lblBottomsScore", WardrobeItemList.Instance.CurrentItemBottom, "lblFeedbackBottoms", currentScenario.slotFeedback.bottomsFeedback);
+        scoreItem("lblShoesScore", WardrobeItemList.Instance.CurrentItemShoe, "lblFeedbackShoes", currentScenario.slotFeedback.shoesFeedback);
 
         Label totalScoreDispaly;
         totalScoreDispaly = root.Q<Label>("lblTotalScore");
         totalScoreDispaly.text = totalScore.ToString() + "/4.0";
     }
-    private void scoreItem(string label, string itemID, string commentaryLabel)
+    private void scoreItem(string label, WardrobeItemClothing item, string commentaryLabel, string slotFeedback)
     {
         Label scoreDisplay;
         scoreDisplay = root.Q<Label>(label);
@@ -163,7 +163,7 @@ public class ResultsController : MonoBehaviour
 
         foreach (scoredItem scoreItem in currentScenario.scoredItems)
         {
-            if (scoreItem.itemID == itemID)
+            if (scoreItem.itemID == item.Id)
             {
                 totalScore += scoreItem.score;
                 scoreDisplay.text = scoreItem.score.ToString();
@@ -174,7 +174,7 @@ public class ResultsController : MonoBehaviour
         }
         if (anyFeedback == false)
         {
-            feedBackItem(commentaryLabel, "");
+            feedBackItem(commentaryLabel, slotFeedback);
         }
     }
 }
