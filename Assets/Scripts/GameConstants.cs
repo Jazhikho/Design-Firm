@@ -1,6 +1,5 @@
-/// <summary>
-/// Build Settings scene names (must match names in Editor Build Settings).
-/// </summary>
+using UnityEngine;
+
 public static class GameConstants
 {
     public const string MainMenuScene = "mainMenuScene";
