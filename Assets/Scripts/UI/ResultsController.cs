@@ -22,7 +22,6 @@ public class ResultsController : MonoBehaviour
         _root = GetComponent<UIDocument>().rootVisualElement;
 
         _retryButton = _root.Q<Button>("btnRetry");
-        _mainMenuButton = _root.Q<Button>("btnMainMenu");
         _retryScenarioButton = _root.Q<Button>("btnNewScenario");
         if (_retryButton == null)
         {
@@ -30,11 +29,6 @@ public class ResultsController : MonoBehaviour
             return;
         }
 
-        if (_mainMenuButton == null)
-        {
-            Debug.LogError("ResultsController: btnMainMenu not found in UXML.");
-            return;
-        }
 
         if (_retryScenarioButton == null)
         {
@@ -43,7 +37,6 @@ public class ResultsController : MonoBehaviour
         }
 
         _retryButton.clicked += GoToWardrobe;
-        _mainMenuButton.clicked += GoToMainMenu;
         _retryScenarioButton.clicked += NewScenario;
 
         _totalScore = 0f;
@@ -72,11 +65,6 @@ public class ResultsController : MonoBehaviour
             _retryButton.clicked -= GoToWardrobe;
         }
 
-        if (_mainMenuButton != null)
-        {
-            _mainMenuButton.clicked -= GoToMainMenu;
-        }
-
         if (_retryScenarioButton != null)
         {
             _retryScenarioButton.clicked -= NewScenario;
@@ -91,13 +79,6 @@ public class ResultsController : MonoBehaviour
         SceneManager.LoadScene(GameConstants.WardrobeScene);
     }
 
-    /// <summary>
-    /// Returns to the main menu scene.
-    /// </summary>
-    private void GoToMainMenu()
-    {
-        SceneManager.LoadScene(GameConstants.MainMenuScene);
-    }
 
     /// <summary>
     /// Loads another scenario prompt.
