@@ -6,7 +6,6 @@ using UnityEngine.UIElements;
 public class ResultsController : MonoBehaviour
 {
     private Button _retryButton;
-    private Button _mainMenuButton;
     private Button _retryScenarioButton;
 
     private VisualElement _root;
