@@ -9,25 +9,21 @@ public class ResultsController : MonoBehaviour
     private Button _mainMenuButton;
     private Button _retryScenarioButton;
 
-    //
-    private VisualElement root;
-    public temporaryScenario tempScenario = new temporaryScenario();
-
-    public tempScenarioItemTesting CurrentScenario; //Change this to whatever Markus makes
-
-    public float TotalScore;
-    //
+    private VisualElement _root;
+    private readonly TemporaryScenario _temporaryScenario = new TemporaryScenario();
+    private TempScenarioItemTesting _currentScenario;
+    private float _totalScore;
 
     /// <summary>
-    /// Caches result screen buttons and binds handlers. and runs the wardrobe and scenario reading.
+    /// Caches result buttons, runs TEMP scenario fill, then binds wardrobe and scenario text to the UI.
     /// </summary>
     private void OnEnable()
     {
-        root = GetComponent<UIDocument>().rootVisualElement;
+        _root = GetComponent<UIDocument>().rootVisualElement;
 
-        _retryButton = root.Q<Button>("btnRetry");
-        _mainMenuButton = root.Q<Button>("btnMainMenu");
-        _retryScenarioButton = root.Q<Button>("btnNewScenario");
+        _retryButton = _root.Q<Button>("btnRetry");
+        _mainMenuButton = _root.Q<Button>("btnMainMenu");
+        _retryScenarioButton = _root.Q<Button>("btnNewScenario");
         if (_retryButton == null)
         {
             Debug.LogError("ResultsController: btnRetry not found in UXML.");
@@ -50,19 +46,20 @@ public class ResultsController : MonoBehaviour
         _mainMenuButton.clicked += GoToMainMenu;
         _retryScenarioButton.clicked += NewScenario;
 
-        //This debugs and runs the temp Scenario; delete this later.
-        tempScenario.tempScenarioRun();
-        CurrentScenario = tempScenario.Scenario;
-        tempScenario.debugTempScenario(CurrentScenario);
-        //
-        if (CurrentScenario == null)
+        _totalScore = 0f;
+        _temporaryScenario.RunTempScenario();
+        _currentScenario = _temporaryScenario.Scenario;
+#if UNITY_EDITOR
+        _temporaryScenario.LogTempScenarioDebug(_currentScenario);
+#endif
+        if (_currentScenario == null)
         {
-            Debug.LogError("ResultsController: There is no CurrentScenario");
+            Debug.LogError("ResultsController: There is no current scenario.");
             return;
         }
+
         ReadWardrobeItems();
         ReadScenario();
-
     }
 
     /// <summary>
@@ -111,7 +108,7 @@ public class ResultsController : MonoBehaviour
     }
 
     /// <summary>
-    /// uses the ReadItem function to read the current Jacket, Top, Bottom, and Shoe items and then assigns them to UI elements.
+    /// Sets label text for each equipped wardrobe slot.
     /// </summary>
     public void ReadWardrobeItems()
     {
@@ -122,25 +119,31 @@ public class ResultsController : MonoBehaviour
     }
 
     /// <summary>
-    /// The read item function that ReadWardrobeItems uses to set text.
+    /// Sets one outfit line label from a wardrobe item.
     /// </summary>
+    /// <param name="slotLabel">UXML name of the label.</param>
+    /// <param name="slotStr">Human-readable slot name for copy.</param>
+    /// <param name="itemSlot">Equipped item, if any.</param>
     public void ReadItem(string slotLabel, string slotStr, WardrobeItemClothing itemSlot)
     {
-        Label itemDisplay = root.Q<Label>(slotLabel);
+        Label itemDisplay = _root.Q<Label>(slotLabel);
         if (itemDisplay == null)
         {
             Debug.LogError("ResultsController: Could not find itemDisplay for ReadItem " + slotStr);
             return;
         }
+
         if (itemSlot == null)
         {
             Debug.LogError("ResultsController: Could not find the item for ReadItem " + slotStr);
             return;
         }
+
         itemDisplay.text = "Your " + slotStr + ": " + itemSlot.ItemName;
     }
+
     /// <summary>
-    /// Calculates the score of each item and combines them, also provides feedback.
+    /// Runs scoring and ideal-hint UI pass for the current scenario.
     /// </summary>
     public void ReadScenario()
     {
@@ -149,99 +152,139 @@ public class ResultsController : MonoBehaviour
     }
 
     /// <summary>
-    /// Uses the IdealItemHint function to set the text of the hints to that of the scenario's hints.
+    /// Fills ideal-item hint labels from the scenario.
     /// </summary>
     public void IdealItemsHint()
     {
-        IdealItemHint("lblHintIdealJacket", CurrentScenario.outfitGood.jacketIdeal.commentary);
-        IdealItemHint("lblHintIdealTop", CurrentScenario.outfitGood.topIdeal.commentary);
-        IdealItemHint("lblHintIdealBottoms", CurrentScenario.outfitGood.bottomsIdeal.commentary);
-        IdealItemHint("lblHintIdealShoes", CurrentScenario.outfitGood.shoesIdeal.commentary);
-    }
-
-    /// <summary>
-    /// The function that idealItemsHint uses to set text
-    /// </summary>
-    public void IdealItemHint(string label, string commentary)
-    {
-        Label idealHint;
-        idealHint = root.Q<Label>(label);
-        if (idealHint == null)
+        if (_currentScenario == null || _currentScenario.OutfitGood == null)
         {
-            Debug.LogError("ResultsController: Could not find idealHint label for IdealItemHint");
+            Debug.LogError("ResultsController: IdealItemsHint missing scenario or OutfitGood.");
             return;
         }
-        idealHint.text = "Hint: " + commentary;
+
+        IdealOutfit outfit = _currentScenario.OutfitGood;
+        IdealItemHint("lblHintIdealJacket", outfit.JacketIdeal);
+        IdealItemHint("lblHintIdealTop", outfit.TopIdeal);
+        IdealItemHint("lblHintIdealBottoms", outfit.BottomsIdeal);
+        IdealItemHint("lblHintIdealShoes", outfit.ShoesIdeal);
     }
 
     /// <summary>
-    /// The function that ScoreItem uses to set the fail text for a slot.
+    /// Sets hint text for one ideal slot when data exists.
+    /// </summary>
+    /// <param name="label">UXML label name.</param>
+    /// <param name="ideal">Ideal row, may be null.</param>
+    public void IdealItemHint(string label, IdealOutfitItem ideal)
+    {
+        Label hintLabel = _root.Q<Label>(label);
+        if (hintLabel == null)
+        {
+            Debug.LogError("ResultsController: Could not find label for IdealItemHint.");
+            return;
+        }
+
+        if (ideal == null || string.IsNullOrEmpty(ideal.Commentary))
+        {
+            hintLabel.text = "Hint: ";
+            return;
+        }
+
+        hintLabel.text = "Hint: " + ideal.Commentary;
+    }
+
+    /// <summary>
+    /// Sets feedback label text for a slot.
     /// </summary>
     public void FeedBackItem(string label, string commentary)
     {
-        Label idealHint;
-        idealHint = root.Q<Label>(label);
-        if (idealHint == null)
+        Label feedbackLabel = _root.Q<Label>(label);
+        if (feedbackLabel == null)
         {
-            Debug.LogError("ResultsController: Could not find idealHint label for FeedBackItem");
+            Debug.LogError("ResultsController: Could not find label for FeedBackItem.");
             return;
         }
-        idealHint.text = commentary;
+
+        if (commentary == null)
+        {
+            commentary = string.Empty;
+        }
+
+        feedbackLabel.text = commentary;
     }
 
     /// <summary>
-    /// Calculates the score of each item, assigns relevant text for each item's feedback, and then displays the total score.
+    /// Scores each slot against scenario rows and shows total.
     /// </summary>
     public void Scoring()
     {
-        ScoreItem("lblJacketScore", WardrobeItemList.Instance.CurrentItemJacket, "lblFeedbackJacket", CurrentScenario.slotFeedback.jacketFeedback);
-        ScoreItem("lblTopScore", WardrobeItemList.Instance.CurrentItemTop, "lblFeedbackTop", CurrentScenario.slotFeedback.topFeedback);
-        ScoreItem("lblBottomsScore", WardrobeItemList.Instance.CurrentItemBottom, "lblFeedbackBottoms", CurrentScenario.slotFeedback.bottomsFeedback);
-        ScoreItem("lblShoesScore", WardrobeItemList.Instance.CurrentItemShoe, "lblFeedbackShoes", CurrentScenario.slotFeedback.shoesFeedback);
-
-        Label totalScoreDispaly;
-        totalScoreDispaly = root.Q<Label>("lblTotalScore");
-
-        if (totalScoreDispaly == null)
+        if (_currentScenario == null || _currentScenario.SlotFeedback == null)
         {
-            Debug.LogError("ResultsController: Could not find totalScoreDisplay label for scoring. Current score is: " + TotalScore.ToString());
+            Debug.LogError("ResultsController: Scoring requires scenario and SlotFeedback.");
             return;
         }
-        totalScoreDispaly.text = TotalScore.ToString() + "/4.0";
+
+        IncorrectSlotFeedback fb = _currentScenario.SlotFeedback;
+        ScoreItem("lblJacketScore", WardrobeItemList.Instance.CurrentItemJacket, "lblFeedbackJacket", fb.JacketFeedback);
+        ScoreItem("lblTopScore", WardrobeItemList.Instance.CurrentItemTop, "lblFeedbackTop", fb.TopFeedback);
+        ScoreItem("lblBottomsScore", WardrobeItemList.Instance.CurrentItemBottom, "lblFeedbackBottoms", fb.BottomsFeedback);
+        ScoreItem("lblShoesScore", WardrobeItemList.Instance.CurrentItemShoe, "lblFeedbackShoes", fb.ShoesFeedback);
+
+        Label totalScoreDisplay = _root.Q<Label>("lblTotalScore");
+        if (totalScoreDisplay == null)
+        {
+            Debug.LogError("ResultsController: Could not find lblTotalScore. Current score is: " + _totalScore.ToString());
+            return;
+        }
+
+        totalScoreDisplay.text = _totalScore.ToString() + "/4.0";
     }
 
     /// <summary>
-    /// Checks one of the current items ID against each of the items in the scenarios scoreItems and provides the relevant score and feedback for matching items.
+    /// Matches one equipped item to scored rows; otherwise shows slot fallback feedback.
     /// </summary>
     private void ScoreItem(string label, WardrobeItemClothing item, string commentaryLabel, string slotFeedback)
     {
-        Label scoreDisplay;
-        scoreDisplay = root.Q<Label>(label);
-
+        Label scoreDisplay = _root.Q<Label>(label);
         if (scoreDisplay == null)
         {
-            Debug.LogError("ResultsController: Could not find scoreDisplay label for ScoreItem: " + item.SlotTag);
+            string slotTagForLog = item != null ? item.SlotTag : "unknown";
+            Debug.LogError("ResultsController: Could not find scoreDisplay label for ScoreItem: " + slotTagForLog);
             return;
         }
-        //This is to help provide the fallback/fail text.
-        bool anyFeedback = false;
 
-        foreach (scoredItem ScoreItem in CurrentScenario.scoredItems)
+        if (item == null)
         {
-            if (ScoreItem == null)
+            scoreDisplay.text = "0";
+            FeedBackItem(commentaryLabel, slotFeedback);
+            return;
+        }
+
+        if (_currentScenario == null || _currentScenario.ScoredItems == null)
+        {
+            Debug.LogError("ResultsController: ScoreItem requires ScoredItems list.");
+            scoreDisplay.text = "0";
+            FeedBackItem(commentaryLabel, slotFeedback);
+            return;
+        }
+
+        bool anyFeedback = false;
+        foreach (ScoredItem scoredRow in _currentScenario.ScoredItems)
+        {
+            if (scoredRow == null)
             {
-                Debug.LogError("ResultsController: Null item found in ScoreItem loop: " + item.SlotTag);
-                return;
+                Debug.LogError("ResultsController: Null entry in ScoredItems for slot " + item.SlotTag);
+                continue;
             }
-            if (ScoreItem.itemID == item.Id)
+
+            if (scoredRow.ItemId == item.Id)
             {
-                TotalScore += ScoreItem.score;
-                scoreDisplay.text = ScoreItem.score.ToString();
-                
+                _totalScore += scoredRow.Score;
+                scoreDisplay.text = scoredRow.Score.ToString();
                 anyFeedback = true;
-                FeedBackItem(commentaryLabel, ScoreItem.commentary);
+                FeedBackItem(commentaryLabel, scoredRow.Commentary);
             }
         }
+
         if (anyFeedback == false)
         {
             FeedBackItem(commentaryLabel, slotFeedback);
