@@ -26,10 +26,10 @@
             </ui:VisualElement>
             <ui:VisualElement name="middleColumn" class="middle-column">
                 <ui:VisualElement name="jeffTempMiddle" enabled="true" style="flex-grow: 1;">
-                    <ui:Image name="activeAvatar" source="project://database/Assets/Resources/Avatar/2000sFemModel.PNG?fileID=21300000&amp;guid=4c6401480963d24479d4f25e7c829604&amp;type=3#2000sFemModel" class="stacked-image"/>
-                    <ui:Image name="activeShoes" source="" class="stacked-image" style="background-image: url(&quot;project://database/Assets/Resources/Shoe/2000sCasualShoes.PNG?fileID=2800000&amp;guid=50eceee05f4e35d4b818208b762629f1&amp;type=3#2000sCasualShoes&quot;);"/>
-                    <ui:Image name="activeBottoms" source="" class="stacked-image" style="background-image: url(&quot;project://database/Assets/Resources/Bottom/2000sCasualBottom.PNG?fileID=2800000&amp;guid=7f370a1c5182eec40b365ab16d3b4c84&amp;type=3#2000sCasualBottom&quot;);"/>
-                    <ui:Image name="activeTop" source="" enabled="true" class="stacked-image" style="background-image: url(&quot;project://database/Assets/Resources/Top/2000sCasualTop.PNG?fileID=2800000&amp;guid=0546a4308f3bce64f99033ffe15a2fb5&amp;type=3#2000sCasualTop&quot;);"/>
+                    <ui:Image name="activeAvatar" class="stacked-image"/>
+                    <ui:Image name="activeShoes" class="stacked-image"/>
+                    <ui:Image name="activeBottoms" class="stacked-image"/>
+                    <ui:Image name="activeTop" enabled="true" class="stacked-image"/>
                     <ui:Image name="activeJackets" enabled="true" class="stacked-image"/>
                 </ui:VisualElement>
             </ui:VisualElement>

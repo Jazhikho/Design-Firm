@@ -6,17 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/mainMenu/mainMenuScene.unity
+    path: Assets/Scenes/MainMenuScene.unity
     guid: 3f6fe18ae28c02242944ef1faf2c30a8
   - enabled: 1
-    path: Assets/Scenes/taskScenario/taskScenarioScene.unity
+    path: Assets/Scenes/ScenarioScene.unity
     guid: 648dd935c7431ca41846a79bef122de2
   - enabled: 1
-    path: Assets/Scenes/wardrobe/wardrobeScene.unity
+    path: Assets/Scenes/WardrobeScene.unity
     guid: 43f8d1cfb43336442bed2b45754102f9
   - enabled: 1
-    path: Assets/Scenes/taskResult/taskResultScene.unity
+    path: Assets/Scenes/ResultsScene.unity
     guid: b7e036915a39f4d4a982b34cfcea2a8a
   m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 81b4d7877fea28c468ba8b3f0d1de422, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
