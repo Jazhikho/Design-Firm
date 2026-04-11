@@ -15,6 +15,17 @@ Disclosure and audit trail for AI-assisted work. Update when committing signific
 
 ---
 
+**Date:** 2026-04-11  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** After merge of PR #31, bump repository version label and replace machine-specific or broken Claude Code local Bash allow-list entries with paths for the `Design Firm` workspace; commit and push to `origin`.  
+**Input materials used:** `VERSION.md` (was 0.0.3.3); `.claude/settings.local.json` from merged PR #31; user direction to handle version and settings locally.  
+**Summary of AI contribution:** Set `VERSION.md` to 0.0.4.0 with summary line for PR #31 and this housekeeping; rewrote `.claude/settings.local.json` `permissions.allow` to use `\"/d/School/Design Firm\"` and `git -C` for the same tree, removed invalid `python3 -c` stubs; this entry.  
+**What the human accepted / rejected / changed:** Accepted via request to perform bump and settings fix after merge.  
+**Validation method used:** JSON parse check on `settings.local.json`; `git status` / push.  
+**Final approver:** Chris Del Gesso  
+
+---
+
 **Date:** 2026-04-10  
 **Tool or model used:** Claude Code (claude-code CLI, Claude Opus 4)  
 **Task purpose:** Introduce Unity Addressables for async data/sprite loading; reorganize art, scene, and script assets into a cleaner structure; replace legacy wardrobe scripts with event-driven Core/Data/UI architecture.  
