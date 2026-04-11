@@ -25,13 +25,11 @@
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement name="middleColumn" class="middle-column">
-                <ui:VisualElement name="jeffTempMiddle" enabled="true" style="flex-grow: 1;">
-                    <ui:Image name="activeAvatar" class="stacked-image"/>
-                    <ui:Image name="activeShoes" class="stacked-image"/>
-                    <ui:Image name="activeBottoms" class="stacked-image"/>
-                    <ui:Image name="activeTop" enabled="true" class="stacked-image"/>
-                    <ui:Image name="activeJackets" enabled="true" class="stacked-image"/>
-                </ui:VisualElement>
+                <ui:Image name="activeAvatar" class="stacked-image"/>
+                <ui:Image name="activeShoes" class="stacked-image"/>
+                <ui:Image name="activeBottoms" class="stacked-image"/>
+                <ui:Image name="activeTop" enabled="true" class="stacked-image"/>
+                <ui:Image name="activeJacket" enabled="true" class="stacked-image"/>
             </ui:VisualElement>
             <ui:VisualElement name="rightColumn" class="side-column">
                 <ui:VisualElement name="bottomsContainer" class="clothingContainers">

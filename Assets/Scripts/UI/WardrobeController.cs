@@ -85,7 +85,7 @@ namespace Assets.Scripts.UI
             }
 
             _avatarImage = root.Q<Image>("activeAvatar");
-            _jacketImage = root.Q<Image>("activeJackets");
+            _jacketImage = root.Q<Image>("activeJacket");
             _topImage = root.Q<Image>("activeTop");
             _bottomsImage = root.Q<Image>("activeBottoms");
             _shoesImage = root.Q<Image>("activeShoes");

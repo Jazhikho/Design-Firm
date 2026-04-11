@@ -1,6 +1,11 @@
 using Assets.Scripts.Core;
 using Assets.Scripts.Data;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.ResourceManagement.ResourceLocations;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
@@ -16,6 +21,7 @@ namespace Assets.Scripts.UI
         private VisualElement _root;
         private Scenario _currentScenario;
         private float _totalScore;
+        private readonly List<AsyncOperationHandle<Sprite>> _spriteHandles = new();
 
         /// <summary>
         /// Caches result buttons, runs TEMP scenario fill, then binds wardrobe and scenario text to the UI.
@@ -52,10 +58,10 @@ namespace Assets.Scripts.UI
             _currentScenario = ScenarioState.Instance.ActiveScenario;
             if (_currentScenario == null)
             {
-                Debug.LogError("ResultsController: There is no current scenario.");
-                return;
+                Debug.LogWarning("ResultsController: There is no current scenario.");
             }
 
+            LoadAvatarImages();
             ReadWardrobeItems();
             ReadScenario();
         }
@@ -79,6 +85,12 @@ namespace Assets.Scripts.UI
             {
                 _retryScenarioButton.UnregisterCallback<ClickEvent>(NewScenario);
             }
+
+            foreach (AsyncOperationHandle<Sprite> handle in _spriteHandles)
+            {
+                Addressables.Release(handle);
+            }
+            _spriteHandles.Clear();
         }
 
         /// <summary>
@@ -103,6 +115,79 @@ namespace Assets.Scripts.UI
         private void NewScenario(ClickEvent e)
         {
             SceneManager.LoadScene(GameConstants.TaskScenarioScene);
+        }
+
+        /// <summary>
+        /// Loads avatar and clothing sprites from Addressables into the stacked result images.
+        /// </summary>
+        private void LoadAvatarImages()
+        {
+            SetSlotSprite("activeAvatar", _currentScenario?.avatarImage);
+            SetSlotSprite("activeJacket", WardrobeState.Instance.CurrentItemJacket?.sprite);
+            SetSlotSprite("activeTop", WardrobeState.Instance.CurrentItemTop?.sprite);
+            SetSlotSprite("activeBottoms", WardrobeState.Instance.CurrentItemBottom?.sprite);
+            SetSlotSprite("activeShoes", WardrobeState.Instance.CurrentItemShoe?.sprite);
+        }
+
+        /// <summary>
+        /// Loads a sprite from Addressables by key and sets it on the named Image element.
+        /// Clears the sprite if the key is null or empty.
+        /// </summary>
+        private void SetSlotSprite(string elementName, string spriteKey)
+        {
+            Image slotImage = _root.Q<Image>(elementName);
+            if (slotImage == null)
+            {
+                Debug.LogError("ResultsController: Image element not found: " + elementName);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(spriteKey))
+            {
+                slotImage.sprite = null;
+                return;
+            }
+
+            LoadSprite(spriteKey, loadedSprite =>
+            {
+                slotImage.sprite = loadedSprite;
+            });
+        }
+
+        /// <summary>
+        /// Loads a sprite from Addressables with a location pre-check, tracks the handle for cleanup.
+        /// </summary>
+        private void LoadSprite(string key, Action<Sprite> onSuccess)
+        {
+            AsyncOperationHandle<IList<IResourceLocation>> locHandle =
+                Addressables.LoadResourceLocationsAsync(key, typeof(Sprite));
+
+            locHandle.Completed += locOp =>
+            {
+                if (locOp.Status != AsyncOperationStatus.Succeeded || locOp.Result.Count == 0)
+                {
+                    Debug.LogWarning("ResultsController: no Addressable location found for key: " + key);
+                    Addressables.Release(locHandle);
+                    return;
+                }
+
+                Addressables.Release(locHandle);
+
+                AsyncOperationHandle<Sprite> handle = Addressables.LoadAssetAsync<Sprite>(key);
+                _spriteHandles.Add(handle);
+
+                handle.Completed += op =>
+                {
+                    if (op.Status == AsyncOperationStatus.Succeeded)
+                    {
+                        onSuccess(op.Result);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("ResultsController: failed to load sprite with key: " + key);
+                    }
+                };
+            };
         }
 
         /// <summary>
@@ -234,7 +319,7 @@ namespace Assets.Scripts.UI
                 return;
             }
 
-            totalScoreDisplay.text = _totalScore.ToString() + "/4.0";
+            totalScoreDisplay.text = _totalScore.ToString("F1") + "/4.0";
         }
 
         /// <summary>
@@ -252,7 +337,7 @@ namespace Assets.Scripts.UI
 
             if (item == null)
             {
-                scoreDisplay.text = "0";
+                scoreDisplay.text = "0.0";
                 FeedBackItem(commentaryLabel, slotFeedback);
                 return;
             }
@@ -260,7 +345,7 @@ namespace Assets.Scripts.UI
             if (_currentScenario == null || _currentScenario.scoredItems == null)
             {
                 Debug.LogError("ResultsController: ScoreItem requires ScoredItems list.");
-                scoreDisplay.text = "0";
+                scoreDisplay.text = "0.0";
                 FeedBackItem(commentaryLabel, slotFeedback);
                 return;
             }
@@ -277,7 +362,7 @@ namespace Assets.Scripts.UI
                 if (scoredRow.itemId == item.id)
                 {
                     _totalScore += scoredRow.score;
-                    scoreDisplay.text = scoredRow.score.ToString();
+                    scoreDisplay.text = scoredRow.score.ToString("F1");
                     anyFeedback = true;
                     FeedBackItem(commentaryLabel, scoredRow.commentary);
                 }
