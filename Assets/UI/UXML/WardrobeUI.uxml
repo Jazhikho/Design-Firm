@@ -1,4 +1,5 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/USS/CommonStylesheet.uss?fileID=7433441132597879392&amp;guid=8e23400638b471247abded66e2e9521e&amp;type=3#CommonStylesheet"/>
     <Style src="project://database/Assets/UI/USS/WardrobeStylesheet.uss?fileID=7433441132597879392&amp;guid=81c303d3ec7a30445a00a6fbc3330ab1&amp;type=3#WardrobeStylesheet"/>
     <ui:VisualElement name="root" class="root" style="flex-direction: column;">
         <ui:VisualElement name="topRow" style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; flex-direction: row; align-items: center; justify-content: space-between;">
