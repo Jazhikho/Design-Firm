@@ -2,6 +2,7 @@
     background-color: rgba(194, 181, 131, 0.5);
     margin-top: 10px;
     flex-grow: 1;
+    flex-basis: 0;
     margin-right: 10px;
     margin-bottom: 10px;
     margin-left: 10px;
@@ -9,12 +10,17 @@
     border-top-right-radius: 12px;
     border-bottom-right-radius: 12px;
     border-bottom-left-radius: 12px;
+    padding: 8px;
 }
 
 .item-score {
     -unity-font-style: italic;
+    -unity-text-align: upper-right;
+    font-size: 10px;
     margin-top: 0;
     margin-bottom: 0;
+    flex-shrink: 0;
+    min-width: 30px;
 }
 
 .item-hint {
@@ -33,6 +39,8 @@
     margin-top: 0;
     margin-bottom: 0;
     margin-left: 8px;
+    flex-grow: 1;
+    flex-shrink: 1;
 }
 
 .total-score {
@@ -50,4 +58,20 @@
 
 .hintContainer {
     margin-bottom: 10px;
+}
+
+.middle-column {
+    flex-basis: 0;
+    min-width: 200px;
+    position: relative;
+    flex-grow: 2;
+}
+
+.stacked-image {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    -unity-background-scale-mode: scale-to-fit;
 }

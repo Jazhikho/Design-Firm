@@ -6,7 +6,9 @@
       "Bash(grep -E \"\\\\.\\(json|py|sh|env|yml|yaml|config|conf\\)$\")",
       "Bash(find /d/UnityProjects/Design-Firm -type f -name .env* -o -name *server* -o -name *backend* -o -name *launch*)",
       "Bash(find /d/UnityProjects/Design-Firm -maxdepth 3 -type f ! -path */Library/* ! -path */.git/* ! -path */Temp/* ! -path */.vs/* ! -path */node_modules/*)",
-      "Bash(git -C /d/UnityProjects/Design-Firm config --list)"
+      "Bash(git -C /d/UnityProjects/Design-Firm config --list)",
+      "Bash(python3 -c \":*)",
+      "Bash(python3 -c ':*)"
     ]
   }
 }

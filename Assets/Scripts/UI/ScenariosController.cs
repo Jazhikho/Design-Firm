@@ -1,67 +1,218 @@
+using Assets.Scripts.Core;
+using Assets.Scripts.Data;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-[RequireComponent(typeof(UIDocument))]
-public class ScenariosController : MonoBehaviour
+namespace Assets.Scripts.UI
 {
-    private Button _backButton;
-    private Button _nextButton;
-
-    /// <summary>
-    /// Caches scenario screen buttons and binds handlers.
-    /// </summary>
-    private void OnEnable()
+    [RequireComponent(typeof(UIDocument))]
+    public class ScenariosController : MonoBehaviour
     {
-        VisualElement root = GetComponent<UIDocument>().rootVisualElement;
+        private Button _backButton;
+        private ScrollView _scenariosList;
+        private VisualElement _root;
+        private ToggleButtonGroup _decadeToggleGroup;
+        private ToggleButtonGroup _categoryToggleGroup;
+        private List<string> _decades;
+        private List<string> _categories;
 
-        _backButton = root.Q<Button>("btnBack");
-        _nextButton = root.Q<Button>("btnNext");
-        if (_backButton == null)
+        /// <summary>
+        /// Caches scenario screen buttons, binds handlers, and subscribes to scenario data loading.
+        /// </summary>
+        private void OnEnable()
         {
-            Debug.LogError("ScenariosController: btnBack not found in UXML.");
-            return;
+            _root = GetComponent<UIDocument>().rootVisualElement;
+
+            _backButton = _root.Q<Button>("btnBack");
+            if (_backButton == null)
+            {
+                Debug.LogError("ScenariosController: btnBack not found in UXML.");
+                return;
+            }
+            _backButton.RegisterCallback<ClickEvent>(BackScene);
+
+            _scenariosList = _root.Q<ScrollView>("scrollScenariosList");
+
+            if (ScenarioState.Instance.IsScenariosLoaded)
+            {
+                RefreshUI();
+            }
+            else
+            {
+                ScenarioState.Instance.ScenariosLoaded += OnScenariosLoaded;
+            }
         }
 
-        if (_nextButton == null)
+        /// <summary>
+        /// Unbinds handlers and unsubscribes from the loading event.
+        /// </summary>
+        private void OnDisable()
         {
-            Debug.LogError("ScenariosController: btnNext not found in UXML.");
-            return;
+            if (_backButton != null)
+            {
+                _backButton.UnregisterCallback<ClickEvent>(BackScene);
+            }
+
+            if (_decadeToggleGroup != null)
+            {
+                _decadeToggleGroup.UnregisterValueChangedCallback(OnFilterChanged);
+            }
+
+            if (_categoryToggleGroup != null)
+            {
+                _categoryToggleGroup.UnregisterValueChangedCallback(OnFilterChanged);
+            }
+
+            ScenarioState.Instance.ScenariosLoaded -= OnScenariosLoaded;
         }
 
-        _backButton.clicked += BackScene;
-        _nextButton.clicked += NextScene;
-    }
-
-    /// <summary>
-    /// Unbinds scenario screen button handlers.
-    /// </summary>
-    private void OnDisable()
-    {
-        if (_backButton != null)
+        private void OnScenariosLoaded()
         {
-            _backButton.clicked -= BackScene;
+            RefreshUI();
         }
 
-        if (_nextButton != null)
+        private void RefreshUI()
         {
-            _nextButton.clicked -= NextScene;
+            VisualElement decadeFilters = _root.Q<VisualElement>("decadeFilters");
+            DisplayDecadeFilters(decadeFilters);
+
+            VisualElement categoryFilters = _root.Q<VisualElement>("categoryFilters");
+            DisplayCategoryFilters(categoryFilters);
+
+            DisplayScenarios();
         }
-    }
 
-    /// <summary>
-    /// Returns from scenario selection to the main menu.
-    /// </summary>
-    private void BackScene()
-    {
-        SceneManager.LoadScene(GameConstants.MainMenuScene);
-    }
+        private void OnFilterChanged(ChangeEvent<ToggleButtonGroupState> evt)
+        {
+            DisplayScenarios();
+        }
 
-    /// <summary>
-    /// Advances from scenario selection to wardrobe scene.
-    /// </summary>
-    private void NextScene()
-    {
-        SceneManager.LoadScene(GameConstants.WardrobeScene);
+        private HashSet<string> GetActiveFilters(ToggleButtonGroup group, List<string> values)
+        {
+            HashSet<string> active = new();
+            ToggleButtonGroupState state = group.value;
+            for (int i = 0; i < values.Count; i++)
+            {
+                if (state[i])
+                {
+                    active.Add(values[i]);
+                }
+            }
+            return active;
+        }
+
+        private void DisplayScenarios()
+        {
+            _scenariosList.Clear();
+
+            HashSet<string> activeDecades = GetActiveFilters(_decadeToggleGroup, _decades);
+            HashSet<string> activeCategories = GetActiveFilters(_categoryToggleGroup, _categories);
+
+            IEnumerable<Scenario> filtered = ScenarioState.Instance.Scenarios;
+
+            if (activeDecades.Count > 0)
+            {
+                filtered = filtered.Where(s => activeDecades.Contains(s.era));
+            }
+
+            if (activeCategories.Count > 0)
+            {
+                filtered = filtered.Where(s => activeCategories.Contains(s.category));
+            }
+
+            foreach (Scenario scenario in filtered)
+            {
+                VisualElement card = new();
+                card.AddToClassList("scenario-card");
+
+                Label nameLabel = new(scenario.name);
+                nameLabel.AddToClassList("scenario-card-name");
+                card.Add(nameLabel);
+
+                Label descriptionLabel = new(scenario.description);
+                descriptionLabel.AddToClassList("scenario-card-description");
+                card.Add(descriptionLabel);
+
+                Button selectButton = new() { text = ">>" };
+                selectButton.AddToClassList("scenario-card-select");
+                selectButton.clicked += () => SelectScenario(scenario);
+                card.Add(selectButton);
+
+                _scenariosList.Add(card);
+            }
+        }
+
+        private void SelectScenario(Scenario scenario)
+        {
+            ScenarioState.Instance.ActiveScenario = scenario;
+            SceneManager.LoadScene(GameConstants.WardrobeScene);
+        }
+
+        /// <summary>
+        /// Returns from scenario selection to the main menu.
+        /// </summary>
+        private void BackScene(ClickEvent e)
+        {
+            SceneManager.LoadScene(GameConstants.MainMenuScene);
+        }
+
+        /// <summary>
+        /// Adds toggle buttons to act as filters for each decade.
+        /// </summary>
+        /// <param name="decadeFilters">The VisualElement container for decade filter buttons.</param>
+        private void DisplayDecadeFilters(VisualElement decadeFilters)
+        {
+            _decades = ScenarioState.Instance.Scenarios.Select(s => s.era).Distinct().ToList();
+
+            _decadeToggleGroup = new ToggleButtonGroup()
+            {
+                allowEmptySelection = true
+            };
+            _decadeToggleGroup.AddToClassList("filter-toggle-group");
+            _decadeToggleGroup.RegisterValueChangedCallback(OnFilterChanged);
+            decadeFilters.Add(_decadeToggleGroup);
+
+            foreach (string decade in _decades)
+            {
+                Button decadeButton = new()
+                {
+                    text = decade,
+                    name = $"toggle{decade}"
+                };
+                decadeButton.AddToClassList("filter-button");
+                _decadeToggleGroup.Add(decadeButton);
+            }
+        }
+
+        /// <summary>
+        /// Adds toggle buttons to act as filters for each category.
+        /// </summary>
+        /// <param name="categoryFilters">The VisualElement container for category filter buttons.</param>
+        private void DisplayCategoryFilters(VisualElement categoryFilters)
+        {
+            _categories = ScenarioState.Instance.Scenarios.Select(s => s.category).Distinct().ToList();
+
+            _categoryToggleGroup = new ToggleButtonGroup()
+            {
+                allowEmptySelection = true
+            };
+            _categoryToggleGroup.AddToClassList("filter-toggle-group");
+            _categoryToggleGroup.RegisterValueChangedCallback(OnFilterChanged);
+            categoryFilters.Add(_categoryToggleGroup);
+
+            foreach (string category in _categories)
+            {
+                Button categoryButton = new()
+                {
+                    text = category,
+                    name = $"toggle{category}"
+                };
+                categoryButton.AddToClassList("filter-button");
+                _categoryToggleGroup.Add(categoryButton);
+            }
+        }
     }
 }
