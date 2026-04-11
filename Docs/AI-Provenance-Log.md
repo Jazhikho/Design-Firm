@@ -17,6 +17,17 @@ Disclosure and audit trail for AI-assisted work. Update when committing signific
 
 **Date:** 2026-04-11  
 **Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** Set Unity player-facing `bundleVersion` to 0.2 while keeping the internal four-part repo label in `VERSION.md`; document the split; commit and push.  
+**Input materials used:** `ProjectSettings/ProjectSettings.asset`; `VERSION.md`; user request to decouple user-facing and internal versioning.  
+**Summary of AI contribution:** Updated `bundleVersion` from 0.1 to 0.2; revised `VERSION.md` to state player-facing 0.2 vs internal 0.0.4.0; this entry.  
+**What the human accepted / rejected / changed:** Accepted via direct request (“humor me” on intentional mismatch).  
+**Validation method used:** Grep for `bundleVersion`; file review.  
+**Final approver:** Chris Del Gesso  
+
+---
+
+**Date:** 2026-04-11  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
 **Task purpose:** After merge of PR #31, bump repository version label and replace machine-specific or broken Claude Code local Bash allow-list entries with paths for the `Design Firm` workspace; commit and push to `origin`.  
 **Input materials used:** `VERSION.md` (was 0.0.3.3); `.claude/settings.local.json` from merged PR #31; user direction to handle version and settings locally.  
 **Summary of AI contribution:** Set `VERSION.md` to 0.0.4.0 with summary line for PR #31 and this housekeeping; rewrote `.claude/settings.local.json` `permissions.allow` to use `\"/d/School/Design Firm\"` and `git -C` for the same tree, removed invalid `python3 -c` stubs; this entry.  
