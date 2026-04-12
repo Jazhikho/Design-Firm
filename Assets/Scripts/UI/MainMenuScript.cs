@@ -5,75 +5,37 @@ using UnityEngine.UIElements;
 [RequireComponent(typeof(UIDocument))]
 public class MainMenuScript : MonoBehaviour
 {
-    private Button _playButton;
-    private Button _quitButton;
+    private Button playButton;
+    private Button quitButton;
 
-    /// <summary>
-    /// Caches UI Toolkit buttons and binds click handlers.
-    /// </summary>
-    private void OnEnable()
+    void OnEnable()
     {
-        UIDocument uiDocument = GetComponent<UIDocument>();
-        VisualElement root = uiDocument.rootVisualElement;
+        var root = GetComponent<UIDocument>().rootVisualElement;
 
-        _playButton = root.Q<Button>("PlayButton");
-        _quitButton = root.Q<Button>("QuitButton");
-        if (_playButton == null)
-        {
-            Debug.LogError("MainMenuScript: PlayButton not found in UXML.");
-            return;
-        }
+        playButton = root.Q<Button>("PlayButton");
+        quitButton = root.Q<Button>("QuitButton");
 
-        if (_quitButton == null)
-        {
-            Debug.LogError("MainMenuScript: QuitButton not found in UXML.");
-            return;
-        }
-
-        _playButton.clicked += OnPlayClicked;
-
-#if UNITY_WEBGL
-        // Remove quit from layout on Web; Application.Quit is not meaningful there.
-        _quitButton.style.display = DisplayStyle.None;
-#else
-        _quitButton.clicked += OnQuitClicked;
-#endif
+        playButton.clicked += OnPlayClicked;
+        quitButton.clicked += OnQuitClicked;
     }
 
-    /// <summary>
-    /// Unbinds click handlers when this component disables.
-    /// </summary>
-    private void OnDisable()
+    void OnPlayClicked()
     {
-        if (_playButton != null)
-        {
-            _playButton.clicked -= OnPlayClicked;
-        }
+        Debug.Log("Play Clicked");
 
-        if (_quitButton != null)
-        {
-#if !UNITY_WEBGL
-            _quitButton.clicked -= OnQuitClicked;
-#endif
-        }
-    }
-
-    /// <summary>
-    /// Opens the task scenario scene from the main menu.
-    /// </summary>
-    private void OnPlayClicked()
-    {
+        // Load your game scene
         SceneManager.LoadScene(GameConstants.TaskScenario);
     }
 
-    /// <summary>
-    /// Exits the application or stops play mode in editor.
-    /// </summary>
-    private void OnQuitClicked()
+    void OnQuitClicked()
     {
+        Debug.Log("Quit Clicked");
+
+        // Quit the application
         Application.Quit();
 
 #if UNITY_EDITOR
+        // Stop play mode when testing in the editor
         UnityEditor.EditorApplication.isPlaying = false;
 #endif
     }
