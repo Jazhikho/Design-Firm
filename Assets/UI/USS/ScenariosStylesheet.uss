@@ -1,1 +1,43 @@
+.filter-toggle-group {
+    flex-direction: row;
+    justify-content: center;
+    align-self: center;
+}
 
+.filter-button {
+    margin: 4px;
+    padding: 6px 12px;
+}
+
+.scenario-card {
+    width: 200px;
+    min-height: 200px;
+    margin: 8px;
+    padding: 12px;
+    border-width: 1px;
+    border-color: rgb(128, 128, 128);
+    border-radius: 6px;
+    flex-shrink: 0;
+    align-items: center;
+}
+
+.scenario-card-name {
+    font-size: 18px;
+    -unity-font-style: bold;
+    -unity-text-align: upper-center;
+    white-space: normal;
+    margin-bottom: 8px;
+}
+
+.scenario-card-description {
+    white-space: normal;
+    -unity-font-style: italic;
+    -unity-text-align: upper-center;
+    flex-grow: 1;
+    margin-bottom: 8px;
+}
+
+.scenario-card-select {
+    align-self: flex-end;
+    padding: 6px 16px;
+}

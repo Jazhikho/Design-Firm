@@ -1,38 +1,26 @@
 {
   "scenarios": [
     {
-      "name": "First Day at a Corporate Office",
-      "description": "It's 1987 and you've just landed your first job on Wall Street. Power dressing is everything — your outfit needs to project confidence and authority on day one.",
-      "era": "1980s",
-      "category": "business", 
-      "backgroundImage": "Scenarios/80s_office.png",
-      "avatarImage": "Avatars/80s_female_avatar.png",
+      "name": "2000s Casual",
+      "description": "Let's put together a casual 2000s look. Let's make it fun, like a girls day at the mall!",
+      "era": "2000s",
+      "category": "casual", 
+      "backgroundImage": "Scenarios/DressingRoom.png",
+      "avatarImage": "Avatars/2000sFemModel.png",
       "scoredItems": [
-        { "itemId": "jacket_80s_blazer", "score": 1.0, "commentary": "The power blazer with bold shoulder pads was the cornerstone of 1980s corporate fashion, projecting authority in the boardroom." },
-        { "itemId": "jacket_80s_leather", "score": 0.1, "commentary": "A leather jacket screams rebellion, not corporate ambition. You'd be escorted out by security." },
-        { "itemId": "jacket_90s_flannel", "score": 0.0, "commentary": "Grunge flannel won't exist as a fashion trend for another 5 years — and it's definitely not office wear." },
-        { "itemId": "top_80s_polo", "score": 0.7, "commentary": "A polo shirt is preppy and era-appropriate, but too casual for a Wall Street first impression. A blouse or dress shirt would be better." },
-        { "itemId": "top_80s_neon_crop", "score": 0.1, "commentary": "A neon crop top is for the aerobics studio, not the trading floor." },
-        { "itemId": "top_80s_band_tee", "score": 0.0, "commentary": "A band t-shirt on Wall Street? You wouldn't make it past the lobby." },
-        { "itemId": "top_90s_turtleneck", "score": 0.5, "commentary": "A turtleneck is somewhat professional but more associated with the 90s minimalist look than 80s power dressing." },
-        { "itemId": "bottoms_80s_acid_wash", "score": 0.1, "commentary": "Acid-wash jeans are peak 80s casual — completely wrong for a corporate environment." },
-        { "itemId": "bottoms_80s_miniskirt", "score": 0.6, "commentary": "A miniskirt was worn in some 80s offices but was considered too informal for Wall Street's conservative culture." },
-        { "itemId": "bottoms_10s_skinny_jeans", "score": 0.0, "commentary": "Skinny jeans haven't been invented yet, and jeans of any kind are wrong for 1987 Wall Street." },
-        { "itemId": "shoes_80s_pumps", "score": 1.0, "commentary": "Stiletto pumps in a bold color were the power-dressing footwear of choice — confident, sharp, and unmistakably 80s corporate." },
-        { "itemId": "shoes_80s_high_tops", "score": 0.0, "commentary": "High-top sneakers are for the basketball court, not the corner office." },
-        { "itemId": "shoes_90s_combat_boots", "score": 0.0, "commentary": "Combat boots are the opposite of corporate polish." }
+        { "itemId": "2000sCasualTop", "score": 1.0, "commentary": "Perfect! Bright colors and flowy fabrics fit in perfectly with boho trends of the 2000s." },
+        { "itemId": "2000sCasualBottom", "score": 1.0, "commentary": "That’s right! Miniskirts were a popular casual choice in the 2000s." },
+        { "itemId": "2000sCasualShoes", "score": 1.0, "commentary": "Great work! Wedge heels and ankle straps were popular design choices in the 2000s for casual footwear." }
       ],
       "incorrectSlotFeedback": {
-        "jacket": "1980s power dressing demanded a structured blazer with strong shoulder pads — authority came through silhouette.",
-        "top": "A crisp blouse or dress shirt was essential under the power blazer. Bold colors were encouraged.",
-        "bottoms": "A tailored pencil skirt or high-waisted trousers completed the power look.",
-        "shoes": "Stiletto pumps were the definitive shoe of 80s corporate women's fashion."
+        "top": "The 2000s embraced boho styles, consider experimenting with fun colors and flowy shapes!",
+        "bottoms": "Miniskirts had a resurgence in 2000s, often in fabrics like denim.",
+        "shoes": "Wedge heels were a popular choice in the 2000s, for both dressy and casual looks."
       },
       "idealOutfit": {
-        "jacket": { "itemId": "jacket_80s_blazer", "commentary": "The oversized power blazer symbolized women's entry into corporate America. Shoulder pads literally made women take up more space in male-dominated offices." },
-        "top": { "itemId": "top_80s_polo", "commentary": "While a blouse would be ideal, the polo shirt captures the preppy corporate aesthetic. In reality, a silk blouse with a bow collar was the power-dressing standard." },
-        "bottoms": { "itemId": "bottoms_80s_miniskirt", "commentary": "A pencil skirt would be ideal, but the denim mini captures 80s fashion broadly. The real Wall Street look paired the blazer with a fitted knee-length skirt." },
-        "shoes": { "itemId": "shoes_80s_pumps", "commentary": "Stiletto pumps completed the power suit. Bold colors like red or cobalt made a statement — beige was for people without ambition." }
+        "top": { "itemId": "2000sCasualTop", "commentary": "Bright colors and flowy fabrics fit in perfectly with boho trends of the 2000s." },
+        "bottoms": { "itemId": "2000sCasualBottom", "commentary": "Miniskirts were a popular casual choice in the 2000s." },
+        "shoes": { "itemId": "2000sCasualShoes", "commentary": "Wedge heels and ankle straps were popular design choices in the 2000s for casual footwear." }
       }
     },
     {

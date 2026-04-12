@@ -1,12 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "Bash(find /d/UnityProjects/Design-Firm -maxdepth 3 -type f \\\\\\(-name *.json -o -name *.py -o -name *.sh -o -name docker-compose* -o -name Dockerfile \\\\\\) ! -path */Library/* ! -path */.git/* ! -path */node_modules/*)",
-      "Bash(find /d/UnityProjects/Design-Firm -maxdepth 2 -type f ! -path */Library/* ! -path */.git/* ! -path */node_modules/* ! -path */Temp/* ! -path */.vs/*)",
+      "Bash(find \"/d/School/Design Firm\" -maxdepth 3 -type f \\\\\\(-name *.json -o -name *.py -o -name *.sh -o -name docker-compose* -o -name Dockerfile \\\\\\) ! -path */Library/* ! -path */.git/* ! -path */node_modules/*)",
+      "Bash(find \"/d/School/Design Firm\" -maxdepth 2 -type f ! -path */Library/* ! -path */.git/* ! -path */node_modules/* ! -path */Temp/* ! -path */.vs/*)",
       "Bash(grep -E \"\\\\.\\(json|py|sh|env|yml|yaml|config|conf\\)$\")",
-      "Bash(find /d/UnityProjects/Design-Firm -type f -name .env* -o -name *server* -o -name *backend* -o -name *launch*)",
-      "Bash(find /d/UnityProjects/Design-Firm -maxdepth 3 -type f ! -path */Library/* ! -path */.git/* ! -path */Temp/* ! -path */.vs/* ! -path */node_modules/*)",
-      "Bash(git -C /d/UnityProjects/Design-Firm config --list)"
+      "Bash(find \"/d/School/Design Firm\" -type f -name .env* -o -name *server* -o -name *backend* -o -name *launch*)",
+      "Bash(find \"/d/School/Design Firm\" -maxdepth 3 -type f ! -path */Library/* ! -path */.git/* ! -path */Temp/* ! -path */.vs/* ! -path */node_modules/*)",
+      "Bash(git -C \"/d/School/Design Firm\" config --list)"
     ]
   }
 }
