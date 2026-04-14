@@ -5,6 +5,7 @@
         <ui:VisualElement name="topRow" style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; flex-direction: row; align-items: center; justify-content: space-between;">
             <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
                 <ui:Button text="&lt; Back" name="btnBack" style="width: 75px;"/>
+                <ui:Label text="scenarioDesc" name="scenarioDesc" style="left: auto; right: 0; position: absolute; width: 30%; height: 100%; font-size: 14%; -unity-text-align: upper-left; white-space: pre-wrap;"/>
             </ui:VisualElement>
             <ui:VisualElement picking-mode="Ignore" style="align-items: center; justify-content: center; position: absolute; top: 0; left: 0; bottom: 0; right: 0;">
                 <ui:Label text="0:00" name="lblTimer" style="font-size: 32px; -unity-text-align: middle-center; color: rgb(255, 255, 255); -unity-text-outline-width: 1px; -unity-text-outline-color: rgb(0, 0, 0);"/>
@@ -50,7 +51,11 @@
         </ui:VisualElement>
         <ui:VisualElement name="bottomRow" style="flex-direction: row; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;">
             <ui:Label text="Sew It Goes" name="lblGameTitle" style="align-self: flex-end; font-size: 18px; -unity-font-style: bold-and-italic; color: rgb(253, 136, 202);"/>
-            <ui:VisualElement style="flex-grow: 1;"/>
+            <ui:VisualElement name="clothingInfoElement" style="flex-grow: 1;">
+                <ui:Label text="" name="hoverItemName" style="font-size: 10px; width: 50%; height: 40%; white-space: pre-wrap;"/>
+                <ui:Label text="" name="hoverItemImage" style="width: 30%; height: 40%; background-position-x: center; right: 0; left: auto; align-self: auto; align-items: stretch; justify-content: flex-start; align-content: auto; transform-origin: center; position: absolute;"/>
+                <ui:Label text="" name="hoverItemDesc" style="font-size: 7px; width: 90%; height: 40%; white-space: pre-wrap;"/>
+            </ui:VisualElement>
             <ui:Button text="Submit Outfit" name="nextSceneButton" style="width: 100px;"/>
         </ui:VisualElement>
     </ui:VisualElement>

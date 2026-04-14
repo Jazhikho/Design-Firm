@@ -30,6 +30,7 @@ namespace Assets.Scripts.UI
         private Image _shoesImage;
 
         private string _nextScene;
+        private WardrobeItem _lasthoveredItem;
 
         /// <summary>
         /// When true, submit returns to main menu instead of result scene.
@@ -100,6 +101,20 @@ namespace Assets.Scripts.UI
             {
                 WardrobeState.Instance.WardrobeItemsLoaded += OnWardrobeItemsLoaded;
             }
+
+            string scenarioDescText;
+            if (ScenarioState.Instance.ActiveScenario != null)
+            {
+                //scenarioDesc
+                scenarioDescText = ScenarioState.Instance.ActiveScenario.description;
+            }
+            else
+            {
+                scenarioDescText = "fallbackDesc";
+            }
+            Label scenarioDesc;
+            scenarioDesc = root.Q<Label>("scenarioDesc");
+            scenarioDesc.text = scenarioDescText;
         }
 
         /// <summary>
@@ -314,6 +329,7 @@ namespace Assets.Scripts.UI
 
             TileButtonData tileButtonData = new(item, gridName);
             button.RegisterCallback<ClickEvent, TileButtonData>(WardrobeItemClicked, tileButtonData);
+            button.RegisterCallback<MouseOverEvent, TileButtonData>(hoverOverButtonEvent, tileButtonData);
             _tileCallbacks.Add((button, tileButtonData));
 
             return button;
@@ -464,5 +480,21 @@ namespace Assets.Scripts.UI
                 }
             }
         }
+        //HoverStuff
+        private void hoverOverButtonEvent(MouseOverEvent evt, TileButtonData data)
+        {
+            _lasthoveredItem = data.Item;
+            //Update UI
+            VisualElement root = _uiDocument.rootVisualElement;
+            Label displayName = root.Q<Label>("hoverItemName");
+            Label displayDesc = root.Q<Label>("hoverItemDesc");
+            Label displayImage = root.Q<Label>("hoverItemImage");
+
+            displayName.text = data.Item.name;
+            displayDesc.text = data.Item.description;
+            Button evtButton = evt.target as Button;
+            //
+        }
+        //
     }
 }
