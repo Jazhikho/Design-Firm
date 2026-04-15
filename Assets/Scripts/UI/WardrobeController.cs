@@ -30,7 +30,6 @@ namespace Assets.Scripts.UI
         private Image _shoesImage;
 
         private string _nextScene;
-        private WardrobeItem _lasthoveredItem;
 
         /// <summary>
         /// When true, submit returns to main menu instead of result scene.
@@ -101,21 +100,8 @@ namespace Assets.Scripts.UI
             {
                 WardrobeState.Instance.WardrobeItemsLoaded += OnWardrobeItemsLoaded;
             }
-            //This changes some text in the top right to whatever the active scenario's description is.
-            string scenarioDescText;
-            if (ScenarioState.Instance.ActiveScenario != null)
-            {
-                //scenarioDesc
-                scenarioDescText = ScenarioState.Instance.ActiveScenario.description;
-            }
-            else
-            {
-                scenarioDescText = "Sandbox Mode";
-            }
-            Label scenarioDesc;
-            scenarioDesc = root.Q<Label>("scenarioDesc");
-            scenarioDesc.text = scenarioDescText;
-            //
+
+            ApplyScenarioDescriptionLabel(root);
         }
 
         /// <summary>
@@ -153,7 +139,7 @@ namespace Assets.Scripts.UI
             foreach ((Button button, TileButtonData data) in _tileCallbacks)
             {
                 button.UnregisterCallback<ClickEvent, TileButtonData>(WardrobeItemClicked);
-                button.UnregisterCallback<MouseOverEvent, TileButtonData>(hoverOverButtonEvent);
+                button.UnregisterCallback<PointerEnterEvent, TileButtonData>(WardrobeTilePointerEntered);
             }
             _tileCallbacks.Clear();
 
@@ -307,7 +293,7 @@ namespace Assets.Scripts.UI
             button.userData = item;
             button.text = string.Empty;
 
-            button.name = item.id + "_button"; //For item info UI
+            button.name = item.id + "_button";
 
             if (!string.IsNullOrEmpty(item.sprite))
             {
@@ -316,7 +302,7 @@ namespace Assets.Scripts.UI
                 imageElement.pickingMode = PickingMode.Ignore;
                 button.Add(imageElement);
 
-                imageElement.name = item.id + "_sprite"; //For item info UI
+                imageElement.name = item.id + "_sprite";
 
                 LoadSprite(item.sprite, loadedSprite =>
                 {
@@ -335,7 +321,7 @@ namespace Assets.Scripts.UI
 
             TileButtonData tileButtonData = new(item, gridName);
             button.RegisterCallback<ClickEvent, TileButtonData>(WardrobeItemClicked, tileButtonData);
-            button.RegisterCallback<MouseOverEvent, TileButtonData>(hoverOverButtonEvent, tileButtonData); //For item info UI
+            button.RegisterCallback<PointerEnterEvent, TileButtonData>(WardrobeTilePointerEntered, tileButtonData);
             _tileCallbacks.Add((button, tileButtonData));
 
             return button;
@@ -486,34 +472,73 @@ namespace Assets.Scripts.UI
                 }
             }
         }
+
         /// <summary>
-        /// Event that runs when an item is hovered over; Will display the description for the item near the bottom-center of the screen. Currently does not look good.
+        /// Sets the header scenario description label from <see cref="ScenarioState.ActiveScenario"/> or a clear fallback.
         /// </summary>
-        private void hoverOverButtonEvent(MouseOverEvent evt, TileButtonData data)
+        /// <param name="root">Root visual element of the wardrobe UIDocument.</param>
+        private void ApplyScenarioDescriptionLabel(VisualElement root)
+        {
+            Label scenarioDesc = root.Q<Label>("scenarioDesc");
+            if (scenarioDesc == null)
+            {
+                Debug.LogError("WardrobeController: scenarioDesc label not found in UXML.");
+                return;
+            }
+
+            string scenarioDescText;
+            if (ScenarioState.Instance.ActiveScenario != null)
+            {
+                scenarioDescText = ScenarioState.Instance.ActiveScenario.description ?? string.Empty;
+            }
+            else if (_sandboxMode)
+            {
+                scenarioDescText = "Sandbox Mode";
+            }
+            else
+            {
+                Debug.LogWarning("WardrobeController: ActiveScenario is null but sandbox mode is off; scenario header left empty.");
+                scenarioDescText = "No scenario description (none active).";
+            }
+
+            scenarioDesc.text = scenarioDescText;
+        }
+
+        /// <summary>
+        /// When the pointer enters a clothing tile, shows that item's description and sprite preview in the bottom panel.
+        /// </summary>
+        /// <param name="evt">Pointer enter event from the tile.</param>
+        /// <param name="data">Tile item and grid name.</param>
+        private void WardrobeTilePointerEntered(PointerEnterEvent evt, TileButtonData data)
         {
             if (data == null)
             {
-                Debug.LogError("WardrobeController: No data for hoverOverButtonEvent");
+                Debug.LogError("WardrobeController: WardrobeTilePointerEntered received null TileButtonData.");
+                return;
             }
-            _lasthoveredItem = data.Item;
-            //Update UI
+
             VisualElement root = _uiDocument.rootVisualElement;
 
             Label displayDesc = root.Q<Label>("hoverItemDesc");
             Label displayImage = root.Q<Label>("hoverItemImage");
             if (displayDesc == null || displayImage == null)
             {
-                Debug.LogError("WardrobeController: Could not find hoverItem UI element");
+                Debug.LogError("WardrobeController: hoverItemDesc or hoverItemImage not found in UXML.");
+                return;
             }
 
-            displayDesc.text = data.Item.description;
-            Button evtButton = evt.target as Button;
+            displayDesc.text = data.Item.description ?? string.Empty;
 
-            //Get the sprite
-            VisualElement evtImage;
-            if (evtButton.Q<VisualElement>(data.Item.id + "_sprite") != null)
+            Button evtButton = evt.currentTarget as Button;
+            if (evtButton == null)
             {
-                evtImage = evtButton.Q<VisualElement>(data.Item.id + "_sprite");
+                Debug.LogError("WardrobeController: WardrobeTilePointerEntered expected currentTarget to be a Button.");
+                return;
+            }
+
+            VisualElement evtImage = evtButton.Q<VisualElement>(data.Item.id + "_sprite");
+            if (evtImage != null)
+            {
                 displayImage.style.backgroundImage = evtImage.style.backgroundImage;
             }
             else

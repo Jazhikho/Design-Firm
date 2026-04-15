@@ -15,6 +15,17 @@ Disclosure and audit trail for AI-assisted work. Update when committing signific
 
 ---
 
+**Date:** 2026-04-15  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** Merge GitHub PR #41 into `main` with a documented merge commit, then apply code-only follow-ups on `WardrobeController` (no layout polish); bump internal `VERSION.md` label; push `origin/main`.  
+**Input materials used:** `origin/rushBranchNew`; PR #41 diff and prior review notes; `WardrobeController.cs`, `VERSION.md`, this log.  
+**Summary of AI contribution:** Recreated merge as `--no-ff` with merge message referencing PR #41; removed unused hover state field; added `ApplyScenarioDescriptionLabel` with null check for `scenarioDesc`, scenario text when `ActiveScenario` is null tied to `_sandboxMode` plus warning and user-facing fallback when not sandbox; replaced `MouseOverEvent` with `PointerEnterEvent`; renamed hover handler to `WardrobeTilePointerEntered` with early returns, null-safe labels, `currentTarget` as `Button`, and `description ?? string.Empty`; updated `VERSION.md` to 0.0.4.1; this entry.  
+**What the human accepted / rejected / changed:** Accepted via request to merge PR #41, apply corrections, and push (layout polish explicitly out of scope).  
+**Validation method used:** `read_lints` on `WardrobeController.cs`; `git log` / `git push` verification.  
+**Final approver:** Chris Del Gesso  
+
+---
+
 **Date:** 2026-04-11  
 **Tool or model used:** Cursor agent (AI-assisted editing)  
 **Task purpose:** Set Unity player-facing `bundleVersion` to 0.2 while keeping the internal four-part repo label in `VERSION.md`; document the split; commit and push.  
