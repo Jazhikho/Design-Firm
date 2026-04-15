@@ -101,7 +101,7 @@ namespace Assets.Scripts.UI
             {
                 WardrobeState.Instance.WardrobeItemsLoaded += OnWardrobeItemsLoaded;
             }
-
+            //This changes some text in the top right to whatever the active scenario's description is.
             string scenarioDescText;
             if (ScenarioState.Instance.ActiveScenario != null)
             {
@@ -110,11 +110,12 @@ namespace Assets.Scripts.UI
             }
             else
             {
-                scenarioDescText = "fallbackDesc";
+                scenarioDescText = "Sandbox Mode";
             }
             Label scenarioDesc;
             scenarioDesc = root.Q<Label>("scenarioDesc");
             scenarioDesc.text = scenarioDescText;
+            //
         }
 
         /// <summary>
@@ -152,6 +153,7 @@ namespace Assets.Scripts.UI
             foreach ((Button button, TileButtonData data) in _tileCallbacks)
             {
                 button.UnregisterCallback<ClickEvent, TileButtonData>(WardrobeItemClicked);
+                button.UnregisterCallback<MouseOverEvent, TileButtonData>(hoverOverButtonEvent);
             }
             _tileCallbacks.Clear();
 
@@ -305,12 +307,16 @@ namespace Assets.Scripts.UI
             button.userData = item;
             button.text = string.Empty;
 
+            button.name = item.id + "_button"; //For item info UI
+
             if (!string.IsNullOrEmpty(item.sprite))
             {
                 VisualElement imageElement = new();
                 imageElement.AddToClassList("wardrobe-tile-image");
                 imageElement.pickingMode = PickingMode.Ignore;
                 button.Add(imageElement);
+
+                imageElement.name = item.id + "_sprite"; //For item info UI
 
                 LoadSprite(item.sprite, loadedSprite =>
                 {
@@ -329,7 +335,7 @@ namespace Assets.Scripts.UI
 
             TileButtonData tileButtonData = new(item, gridName);
             button.RegisterCallback<ClickEvent, TileButtonData>(WardrobeItemClicked, tileButtonData);
-            button.RegisterCallback<MouseOverEvent, TileButtonData>(hoverOverButtonEvent, tileButtonData);
+            button.RegisterCallback<MouseOverEvent, TileButtonData>(hoverOverButtonEvent, tileButtonData); //For item info UI
             _tileCallbacks.Add((button, tileButtonData));
 
             return button;
@@ -480,21 +486,40 @@ namespace Assets.Scripts.UI
                 }
             }
         }
-        //HoverStuff
+        /// <summary>
+        /// Event that runs when an item is hovered over; Will display the description for the item near the bottom-center of the screen. Currently does not look good.
+        /// </summary>
         private void hoverOverButtonEvent(MouseOverEvent evt, TileButtonData data)
         {
+            if (data == null)
+            {
+                Debug.LogError("WardrobeController: No data for hoverOverButtonEvent");
+            }
             _lasthoveredItem = data.Item;
             //Update UI
             VisualElement root = _uiDocument.rootVisualElement;
-            Label displayName = root.Q<Label>("hoverItemName");
+
             Label displayDesc = root.Q<Label>("hoverItemDesc");
             Label displayImage = root.Q<Label>("hoverItemImage");
+            if (displayDesc == null || displayImage == null)
+            {
+                Debug.LogError("WardrobeController: Could not find hoverItem UI element");
+            }
 
-            displayName.text = data.Item.name;
             displayDesc.text = data.Item.description;
             Button evtButton = evt.target as Button;
-            //
+
+            //Get the sprite
+            VisualElement evtImage;
+            if (evtButton.Q<VisualElement>(data.Item.id + "_sprite") != null)
+            {
+                evtImage = evtButton.Q<VisualElement>(data.Item.id + "_sprite");
+                displayImage.style.backgroundImage = evtImage.style.backgroundImage;
+            }
+            else
+            {
+                displayImage.style.backgroundImage = null;
+            }
         }
-        //
     }
 }
