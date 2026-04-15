@@ -30,6 +30,7 @@ namespace Assets.Scripts.UI
         private Image _shoesImage;
 
         private string _nextScene;
+        private bool _isUiBuilt;
 
         /// <summary>
         /// When true, submit returns to main menu instead of result scene.

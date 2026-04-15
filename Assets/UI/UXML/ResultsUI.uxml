@@ -1,8 +1,9 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/USS/CommonStylesheet.uss?fileID=7433441132597879392&amp;guid=8e23400638b471247abded66e2e9521e&amp;type=3#CommonStylesheet"/>
     <Style src="project://database/Assets/UI/USS/ResultsStylesheet.uss?fileID=7433441132597879392&amp;guid=59f5a80705eb3a24daaff36c9dbb1ed9&amp;type=3#ResultsStylesheet"/>
+    <ui:Image name="imgBackground" class="background-runway"/>
     <ui:VisualElement name="topRow">
-        <ui:Button text="Retry Scenario" name="btnRetry"/>
+        <ui:Button text="Retry Scenario" name="btnRetry" class="button-common"/>
     </ui:VisualElement>
     <ui:VisualElement name="middleRow" style="flex-grow: 1; flex-direction: row;">
         <ui:VisualElement name="colYourOutfit" class="outfitContainer">
@@ -57,9 +58,9 @@
         </ui:VisualElement>
     </ui:VisualElement>
     <ui:VisualElement name="bottomRow" style="flex-direction: row;">
-        <ui:Label text="Sew It Goes" name="lblGameTitle"/>
+        <ui:Label text="Sew It Goes" name="lblGameTitle" class="game-title"/>
         <ui:VisualElement style="flex-grow: 1;"/>
-        <ui:Button text="Main Menu" name="btnMainMenu"/>
-        <ui:Button text="New Scenario" name="btnNewScenario"/>
+        <ui:Button text="Main Menu" name="btnMainMenu" class="button-common"/>
+        <ui:Button text="New Scenario" name="btnNewScenario" class="button-common"/>
     </ui:VisualElement>
 </ui:UXML>
