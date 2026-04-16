@@ -12,14 +12,23 @@ Unity content lives under **`Assets/`**. Design and course documentation stays i
 
 | Folder | Purpose |
 |--------|---------|
+| `Assets/Art/` | Models, textures, materials |
+| `Assets/Art/Avatars` | Images of fashion model characters |
+| `Assets/Art/Backgrounds` | Images to be used in backgrounds |
+| `Assets/Art/ClothingItems` | Images of clothing items |
+| `Assets/Art/UI` | Models, textures, materials related to the UI |
+| `Assets/Audio/Music` | Background music and the like |
+| `Assets/Audio/SFX` | Sound effects like button clicks and explosions |
+| `Assets/Data/` | Data files and data-related assets |
+| `Assets/Editor/` | Editor-only scripts and tools |
+| `Assets/Plugins/` | Native and third-party plugins |
+| `Assets/Resources/` | Runtime-loaded assets (`Resources.Load`); use sparingly |
 | `Assets/Scenes/` | Scenes (`.unity`) and scene-related assets |
 | `Assets/Scripts/` | Runtime C# and gameplay code |
-| `Assets/Editor/` | Editor-only scripts and tools |
-| `Assets/Art/` | Models, textures, materials |
-| `Assets/Audio/` | Music and SFX |
-| `Assets/Resources/` | Runtime-loaded assets (`Resources.Load`); use sparingly |
+| `Assets/Scripts/Core` | Runtime C# and gameplay code used across the breadth of the game |
+| `Assets/Scripts/Data` | Runtime C# and gameplay code related to data (loading, saving, etc.) |
+| `Assets/Scripts/UI` | Runtime C# and gameplay code related to player input and user interface |
 | `Assets/Shaders/` | Custom shaders |
-| `Assets/Plugins/` | Native and third-party plugins |
 | `Assets/Tests/` | Play Mode / Edit Mode tests (assemblies as needed) |
 | `Docs/` | Design docs, client spec, sources (not imported as game assets) |
 
