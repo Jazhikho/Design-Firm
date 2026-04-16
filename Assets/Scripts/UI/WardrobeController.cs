@@ -89,6 +89,10 @@ namespace Assets.Scripts.UI
                 Debug.LogError("WardrobeController: lblTimer not found in UXML.");
                 return;
             }
+            if (_sandboxMode)
+            {
+                _timerLabel.visible = false;
+            }
 
             _avatarImage = root.Q<Image>("activeAvatar");
             _jacketImage = root.Q<Image>("activeJacket");
@@ -115,16 +119,17 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void Update()
         {
-            _wardrobeTimer -= Time.deltaTime;
-            if (_wardrobeTimer < 0f)
+            if (_sandboxMode == false)
             {
-                _wardrobeTimer = 0f;
-
-                //
-                NextSceneScript(null);
-                //
+                _wardrobeTimer -= Time.deltaTime;
+                if (_wardrobeTimer < 0f)
+                {
+                    _wardrobeTimer = 0f;
+                    //
+                    NextSceneScript(null);
+                    //
+                }
             }
-
             if (_timerLabel != null)
             {
                 _timerLabel.text = Mathf.CeilToInt(_wardrobeTimer).ToString();
