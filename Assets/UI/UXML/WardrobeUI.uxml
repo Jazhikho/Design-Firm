@@ -50,9 +50,12 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="bottomRow" style="flex-direction: row; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;">
-            <ui:Label name="lblGameTitle" text="Sew It Goes" class="game-title" style="align-self: flex-end;"/>
-            <ui:VisualElement style="flex-grow: 1;"/>
-            <ui:Button text="Submit Outfit" name="nextSceneButton" class="button-common"/>
+            <ui:Label text="Sew It Goes" name="lblGameTitle" style="align-self: flex-end; font-size: 18px; -unity-font-style: bold-and-italic; color: rgb(253, 136, 202);"/>
+            <ui:VisualElement name="clothingInfoElement" style="flex-grow: 1; align-self: stretch; background-color: rgb(255, 239, 213);">
+                <ui:Label text="" name="hoverItemDesc" style="font-size: 10px; width: 60%; height: 60%; white-space: pre-wrap; align-self: center; -unity-text-align: upper-center;"/>
+                <ui:Label text="" name="hoverItemImage" style="align-self: flex-start; position: absolute; width: 20%; height: 80%;"/>
+            </ui:VisualElement>
+            <ui:Button text="Submit Outfit" name="nextSceneButton" style="width: 100px;"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
