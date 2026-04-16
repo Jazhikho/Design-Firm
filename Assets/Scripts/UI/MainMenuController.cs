@@ -1,3 +1,5 @@
+using System.Collections;
+using Assets.Scripts.Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
@@ -65,6 +67,7 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void OnPlayClicked(ClickEvent e)
         {
+            AudioManager.Instance.PlayButtonSfx();
             SceneManager.LoadScene(GameConstants.TaskScenarioScene);
         }
 
@@ -73,6 +76,13 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void OnQuitClicked(ClickEvent e)
         {
+            AudioManager.Instance.PlayButtonSfx();
+            StartCoroutine(QuitAfterSfx());
+        }
+
+        private IEnumerator QuitAfterSfx()
+        {
+            yield return new WaitForSeconds(AudioManager.Instance.ButtonSfxLength);
             Application.Quit();
 
 #if UNITY_EDITOR
