@@ -52,6 +52,12 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void OnEnable()
         {
+            //
+            WardrobeState.Instance.CurrentItemTop = WardrobeState.Instance.AvailableTops[0];
+            WardrobeState.Instance.CurrentItemJacket = WardrobeState.Instance.AvailableJackets[0];
+            WardrobeState.Instance.CurrentItemBottom = WardrobeState.Instance.AvailableBottoms[0];
+            WardrobeState.Instance.CurrentItemShoe = WardrobeState.Instance.AvailableShoes[0];
+            //
             _nextScene = _sandboxMode ? GameConstants.MainMenuScene : GameConstants.TaskResultScene;
 
             _uiDocument = GetComponent<UIDocument>();
