@@ -119,6 +119,10 @@ namespace Assets.Scripts.UI
             if (_wardrobeTimer < 0f)
             {
                 _wardrobeTimer = 0f;
+
+                //
+                NextSceneScript(null);
+                //
             }
 
             if (_timerLabel != null)
