@@ -52,12 +52,16 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void OnEnable()
         {
-            //
+            if (WardrobeState.Instance.AllWardrobeItems[0] == null)
+            {
+                Debug.LogError("WardrobeController: There are no items.");
+            }
+
             WardrobeState.Instance.CurrentItemTop = WardrobeState.Instance.AvailableTops[0];
             WardrobeState.Instance.CurrentItemJacket = WardrobeState.Instance.AvailableJackets[0];
             WardrobeState.Instance.CurrentItemBottom = WardrobeState.Instance.AvailableBottoms[0];
             WardrobeState.Instance.CurrentItemShoe = WardrobeState.Instance.AvailableShoes[0];
-            //
+
             _nextScene = _sandboxMode ? GameConstants.MainMenuScene : GameConstants.TaskResultScene;
 
             _uiDocument = GetComponent<UIDocument>();
@@ -125,9 +129,9 @@ namespace Assets.Scripts.UI
                 if (_wardrobeTimer < 0f)
                 {
                     _wardrobeTimer = 0f;
-                    //
+
                     NextSceneScript(null);
-                    //
+
                 }
             }
             if (_timerLabel != null)
