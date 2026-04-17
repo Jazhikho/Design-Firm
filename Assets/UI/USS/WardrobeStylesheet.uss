@@ -156,3 +156,7 @@
     flex-basis: 0;
     min-width: 0;
 }
+
+.scenario-description {
+    background-color: rgb(255, 235, 205);
+}
