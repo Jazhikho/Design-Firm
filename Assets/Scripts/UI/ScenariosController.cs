@@ -18,6 +18,9 @@ namespace Assets.Scripts.UI
         private ToggleButtonGroup _categoryToggleGroup;
         private List<string> _decades;
         private List<string> _categories;
+        private Label _lblErrorMessage;
+
+        private bool _hasRenderedUi;
 
         /// <summary>
         /// Caches scenario screen buttons, binds handlers, and subscribes to scenario data loading.
@@ -25,6 +28,9 @@ namespace Assets.Scripts.UI
         private void OnEnable()
         {
             _root = GetComponent<UIDocument>().rootVisualElement;
+
+            _lblErrorMessage = _root.Q<Label>("lblErrorMessage");
+            EnsureStatusLabelExists();
 
             _backButton = _root.Q<Button>("btnBack");
             if (_backButton == null)
@@ -38,7 +44,7 @@ namespace Assets.Scripts.UI
 
             if (ScenarioState.Instance.IsScenariosLoaded)
             {
-                RefreshUI();
+                RefreshViewState();
             }
             else
             {
@@ -71,18 +77,117 @@ namespace Assets.Scripts.UI
 
         private void OnScenariosLoaded()
         {
-            RefreshUI();
+            Debug.Log("ScenariosController: received ScenariosLoaded event.");
+            RefreshViewState();
         }
 
-        private void RefreshUI()
+        private void RefreshViewState()
+        {
+            ClearDynamicUi();
+
+            if (StartupServices.HasCriticalFailure)
+            {
+                ShowStatus(
+                    "Failed to load scenario data.\n\n" +
+                    StartupServices.LastCriticalError,
+                    isError: true);
+                return;
+            }
+
+            if (!StartupServices.ScenariosLoaded)
+            {
+                ShowStatus("Loading scenarios...");
+                return;
+            }
+
+            if (ScenarioState.Instance.Scenarios == null || ScenarioState.Instance.Scenarios.Count == 0)
+            {
+                ShowStatus("No scenarios were loaded.", isError: true);
+                return;
+            }
+
+            HideStatus();
+            RenderScenarioUi();
+        }
+        private void RenderScenarioUi()
         {
             VisualElement decadeFilters = _root.Q<VisualElement>("decadeFilters");
-            DisplayDecadeFilters(decadeFilters);
+            if (decadeFilters == null)
+            {
+                Debug.LogError("ScenariosController: decadeFilters not found in UXML.");
+                ShowStatus("Scenario UI is misconfigured: decade filters missing.", isError: true);
+                return;
+            }
 
             VisualElement categoryFilters = _root.Q<VisualElement>("categoryFilters");
-            DisplayCategoryFilters(categoryFilters);
+            if (categoryFilters == null)
+            {
+                Debug.LogError("ScenariosController: categoryFilters not found in UXML.");
+                ShowStatus("Scenario UI is misconfigured: category filters missing.", isError: true);
+                return;
+            }
 
+            DisplayDecadeFilters(decadeFilters);
+            DisplayCategoryFilters(categoryFilters);
             DisplayScenarios();
+
+            _hasRenderedUi = true;
+            Debug.Log($"ScenariosController: rendered scenario UI with {ScenarioState.Instance.Scenarios.Count} scenarios.");
+        }
+        private void ClearDynamicUi()
+        {
+            _scenariosList?.Clear();
+
+            VisualElement decadeFilters = _root?.Q<VisualElement>("decadeFilters");
+            decadeFilters?.Clear();
+
+            VisualElement categoryFilters = _root?.Q<VisualElement>("categoryFilters");
+            categoryFilters?.Clear();
+
+            _decadeToggleGroup = null;
+            _categoryToggleGroup = null;
+            _hasRenderedUi = false;
+        }
+
+        private void EnsureStatusLabelExists()
+        {
+            if (_lblErrorMessage != null)
+            {
+                return;
+            }
+
+            _lblErrorMessage = new Label
+            {
+                name = "lblErrorMessage"
+            };
+            _lblErrorMessage.AddToClassList("status-label");
+            _root.Add(_lblErrorMessage);
+        }
+
+        private void ShowStatus(string message, bool isError = false)
+        {
+            EnsureStatusLabelExists();
+            _lblErrorMessage.text = message;
+            _lblErrorMessage.style.display = DisplayStyle.Flex;
+
+            if (isError)
+            {
+                _lblErrorMessage.AddToClassList("status-label-error");
+            }
+            else
+            {
+                _lblErrorMessage.RemoveFromClassList("status-label-error");
+            }
+
+            Debug.Log($"ScenariosController: status shown. Error={isError}. Message={message}");
+        }
+
+        private void HideStatus()
+        {
+            if (_lblErrorMessage != null)
+            {
+                _lblErrorMessage.style.display = DisplayStyle.None;
+            }
         }
 
         private void OnFilterChanged(ChangeEvent<ToggleButtonGroupState> evt)
@@ -93,6 +198,12 @@ namespace Assets.Scripts.UI
         private HashSet<string> GetActiveFilters(ToggleButtonGroup group, List<string> values)
         {
             HashSet<string> active = new();
+
+            if (group == null || values == null || values.Count == 0)
+            {
+                return active;
+            }
+
             ToggleButtonGroupState state = group.value;
             for (int i = 0; i < values.Count; i++)
             {
@@ -108,20 +219,21 @@ namespace Assets.Scripts.UI
         {
             _scenariosList.Clear();
 
-            HashSet<string> activeDecades = GetActiveFilters(_decadeToggleGroup, _decades);
-            HashSet<string> activeCategories = GetActiveFilters(_categoryToggleGroup, _categories);
-
             IEnumerable<Scenario> filtered = ScenarioState.Instance.Scenarios;
 
+            HashSet<string> activeDecades = GetActiveFilters(_decadeToggleGroup, _decades);
             if (activeDecades.Count > 0)
             {
                 filtered = filtered.Where(s => activeDecades.Contains(s.era));
             }
 
+            HashSet<string> activeCategories = GetActiveFilters(_categoryToggleGroup, _categories);
             if (activeCategories.Count > 0)
             {
                 filtered = filtered.Where(s => activeCategories.Contains(s.category));
             }
+
+            int count = 0;
 
             foreach (Scenario scenario in filtered)
             {
@@ -142,12 +254,29 @@ namespace Assets.Scripts.UI
                 card.Add(selectButton);
 
                 _scenariosList.Add(card);
+                count++;
+            }
+
+            if (count == 0)
+            {
+                ShowStatus("No scenarios match the selected filters.");
+            }
+            else
+            {
+                HideStatus();
             }
         }
 
         private void SelectScenario(Scenario scenario)
         {
+            if (scenario == null)
+            {
+                Debug.LogError("ScenariosController: attempted to select a null scenario.");
+                return;
+            }
+
             ScenarioState.Instance.ActiveScenario = scenario;
+            Debug.Log($"ScenariosController: selected scenario '{scenario.name}'.");
             SceneManager.LoadScene(GameConstants.WardrobeScene);
         }
 
@@ -165,7 +294,12 @@ namespace Assets.Scripts.UI
         /// <param name="decadeFilters">The VisualElement container for decade filter buttons.</param>
         private void DisplayDecadeFilters(VisualElement decadeFilters)
         {
-            _decades = ScenarioState.Instance.Scenarios.Select(s => s.era).Distinct().ToList();
+            _decades = ScenarioState.Instance.Scenarios
+                .Select(s => s.era)
+                .Where(s => !string.IsNullOrWhiteSpace(s))
+                .Distinct()
+                .OrderBy(s => s)
+                .ToList();
 
             _decadeToggleGroup = new ToggleButtonGroup()
             {
@@ -193,7 +327,12 @@ namespace Assets.Scripts.UI
         /// <param name="categoryFilters">The VisualElement container for category filter buttons.</param>
         private void DisplayCategoryFilters(VisualElement categoryFilters)
         {
-            _categories = ScenarioState.Instance.Scenarios.Select(s => s.category).Distinct().ToList();
+            _categories = ScenarioState.Instance.Scenarios
+                .Select(s => s.category)
+                .Where(s => !string.IsNullOrWhiteSpace(s))
+                .Distinct()
+                .OrderBy(s => s)
+                .ToList();
 
             _categoryToggleGroup = new ToggleButtonGroup()
             {

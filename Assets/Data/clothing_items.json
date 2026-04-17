@@ -28,292 +28,220 @@
       "description": "A pair of open-toed sandals with a wedge heel."
     },
     {
-      "id": "jacket_90s_denim",
-      "name": "Oversized Denim Jacket",
-      "slot": "jacket",
-      "gender": "unisex",
+      "id": "1980sBusinessBottom",
+      "name": "",
+      "slot": "bottoms",
+      "gender": "",
       "coversBottoms": false,
-      "sprite": "Jackets/90s_denim_jacket.png",
-      "description": "A loose-fitting, light-wash denim jacket often decorated with patches or pins. A casual layering staple worn across many subcultures."
+      "sprite": "Bottoms/1980sBusinessBottom",
+      "description": ""
     },
     {
-      "id": "jacket_00s_hoodie",
-      "name": "Zip-Up Hoodie",
-      "slot": "jacket",
-      "gender": "unisex",
+      "id": "1980sCasualBottom",
+      "name": "",
+      "slot": "bottoms",
+      "gender": "",
       "coversBottoms": false,
-      "sprite": "Jackets/00s_hoodie.png",
-      "description": "A fitted zip-front hooded sweatshirt, worn everywhere from skate parks to shopping malls. A casual youth culture staple."
+      "sprite": "Bottoms/1980sCasualBottom",
+      "description": ""
     },
     {
-      "id": "jacket_00s_velour_track",
-      "name": "Velour Track Jacket",
+      "id": "1990sCasualBottom",
+      "name": "",
+      "slot": "bottoms",
+      "gender": "",
+      "coversBottoms": false,
+      "sprite": "Bottoms/1990sCasualBottom",
+      "description": ""
+    },
+    {
+      "id": "2000sBusinessBottom",
+      "name": "",
+      "slot": "bottoms",
+      "gender": "",
+      "coversBottoms": false,
+      "sprite": "Bottoms/2000sBusinessBottom",
+      "description": ""
+    },
+    {
+      "id": "2010sCasualBottomF",
+      "name": "",
+      "slot": "bottoms",
+      "gender": "female",
+      "coversBottoms": false,
+      "sprite": "Bottoms/2010sCasualBottomF",
+      "description": ""
+    },
+    {
+      "id": "2010sCasualBottomM",
+      "name": "",
+      "slot": "bottoms",
+      "gender": "male",
+      "coversBottoms": false,
+      "sprite": "Bottoms/2010sCasualBottomM",
+      "description": ""
+    },
+    {
+      "id": "1980sBusinessJacket",
+      "name": "",
       "slot": "jacket",
       "gender": "female",
       "coversBottoms": false,
-      "sprite": "Jackets/00s_velour_track.png",
-      "description": "A fitted velour zip-up track jacket with a plush texture. Popularized by celebrities as a casual luxury statement piece."
+      "sprite": "Jackets/1980sBusinessJacket",
+      "description": ""
     },
     {
-      "id": "jacket_10s_bomber",
-      "name": "Bomber Jacket",
+      "id": "1990sCasualJacket",
+      "name": "",
       "slot": "jacket",
-      "gender": "unisex",
+      "gender": "",
       "coversBottoms": false,
-      "sprite": "Jackets/10s_bomber.png",
-      "description": "A lightweight jacket with ribbed cuffs and collar, originally designed for military pilots. Adopted by streetwear culture as a versatile outer layer."
+      "sprite": "Jackets/1990sCasualJacket",
+      "description": ""
     },
     {
-      "id": "jacket_10s_oversized_blazer",
-      "name": "Oversized Blazer",
+      "id": "2000sBusinessJacket",
+      "name": "",
+      "slot": "jacket",
+      "gender": "",
+      "coversBottoms": false,
+      "sprite": "Jackets/2000sBusinessJacket",
+      "description": ""
+    },
+    {
+      "id": "2010sCasualJacketF",
+      "name": "",
       "slot": "jacket",
       "gender": "female",
       "coversBottoms": false,
-      "sprite": "Jackets/10s_oversized_blazer.png",
-      "description": "A relaxed, boyfriend-fit blazer with rolled sleeves. Blends menswear tailoring with an effortless, gender-fluid sensibility."
+      "sprite": "Jackets/2010sCasualJacketF",
+      "description": ""
     },
     {
-      "id": "top_80s_neon_crop",
-      "name": "Neon Crop Top",
+      "id": "1980sBusinessShoes",
+      "name": "",
+      "slot": "shoes",
+      "gender": "",
+      "coversBottoms": false,
+      "sprite": "Shoes/1980sBusinessShoes",
+      "description": ""
+    },
+    {
+      "id": "1980sCasualShoes",
+      "name": "",
+      "slot": "shoes",
+      "gender": "",
+      "coversBottoms": false,
+      "sprite": "Shoes/1980sCasualShoes",
+      "description": ""
+    },
+    {
+      "id": "1990sCasualShoes",
+      "name": "",
+      "slot": "shoes",
+      "gender": "",
+      "coversBottoms": false,
+      "sprite": "Shoes/1990sCasualShoes",
+      "description": ""
+    },
+    {
+      "id": "2000sBusinessShoes",
+      "name": "",
+      "slot": "shoes",
+      "gender": "",
+      "coversBottoms": false,
+      "sprite": "Shoes/2000sBusinessShoes",
+      "description": ""
+    },
+    {
+      "id": "2000sFormalShoes",
+      "name": "",
+      "slot": "shoes",
+      "gender": "",
+      "coversBottoms": false,
+      "sprite": "Shoes/2000sFormalShoes",
+      "description": ""
+    },
+    {
+      "id": "2010sCasualShoesF",
+      "name": "",
+      "slot": "shoes",
+      "gender": "",
+      "coversBottoms": false,
+      "sprite": "Shoes/2010sCasualShoesF",
+      "description": ""
+    },
+    {
+      "id": "2010sCasualShoesM",
+      "name": "",
+      "slot": "shoes",
+      "gender": "",
+      "coversBottoms": false,
+      "sprite": "Shoes/2010sCasualShoesM",
+      "description": ""
+    },
+    {
+      "id": "1980sCasualTop",
+      "name": "",
+      "slot": "top",
+      "gender": "",
+      "coversBottoms": false,
+      "sprite": "Tops/1980sCasualTop",
+      "description": ""
+    },
+    {
+      "id": "1990sCasualTop",
+      "name": "",
+      "slot": "top",
+      "gender": "",
+      "coversBottoms": false,
+      "sprite": "Tops/1990sCasualTop",
+      "description": ""
+    },
+    {
+      "id": "2000sBusinessTop",
+      "name": "",
+      "slot": "top",
+      "gender": "",
+      "coversBottoms": false,
+      "sprite": "Tops/2000sBusinessTop",
+      "description": ""
+    },
+    {
+      "id": "2000sFormalTop",
+      "name": "",
+      "slot": "top",
+      "gender": "",
+      "coversBottoms": true,
+      "sprite": "Tops/2000sFormalTop",
+      "description": ""
+    },
+    {
+      "id": "2010sCasualTopF",
+      "name": "",
       "slot": "top",
       "gender": "female",
       "coversBottoms": false,
-      "sprite": "Tops/80s_neon_crop.png",
-      "description": "A bright neon crop top in stretchy spandex, cut above the waist. Popular for aerobics, dance, and nights out where bold color was king."
+      "sprite": "Tops/2010sCasualTopF",
+      "description": ""
     },
     {
-      "id": "top_80s_polo",
-      "name": "Polo Shirt",
+      "id": "2010sCasualTopM",
+      "name": "",
       "slot": "top",
       "gender": "male",
       "coversBottoms": false,
-      "sprite": "Tops/80s_polo.png",
-      "description": "A pastel-colored polo shirt worn with the collar popped. A preppy staple associated with brands like Lacoste and Ralph Lauren."
+      "sprite": "Tops/2010sCasualTopM",
+      "description": ""
     },
     {
-      "id": "top_80s_band_tee",
-      "name": "Band T-Shirt",
-      "slot": "top",
-      "gender": "unisex",
-      "coversBottoms": false,
-      "sprite": "Tops/80s_band_tee.png",
-      "description": "A black concert tee featuring a rock or metal band logo, often cut or customized. A badge of musical identity and youth culture."
-    },
-    {
-      "id": "top_90s_babydoll_dress",
-      "name": "Babydoll Dress",
+      "id": "2010sFormalTop",
+      "name": "",
       "slot": "top",
       "gender": "female",
       "coversBottoms": true,
-      "sprite": "Tops/90s_babydoll_dress.png",
-      "description": "A short, loose-fitting dress with an empire waist and floral print. Often worn over a t-shirt or paired with combat boots for a contrasting look."
-    },
-    {
-      "id": "top_90s_graphic_tee",
-      "name": "Oversized Graphic Tee",
-      "slot": "top",
-      "gender": "unisex",
-      "coversBottoms": false,
-      "sprite": "Tops/90s_graphic_tee.png",
-      "description": "A baggy t-shirt with bold graphics, skate logos, or ironic slogans. The anti-fashion uniform of slacker culture."
-    },
-    {
-      "id": "top_90s_turtleneck",
-      "name": "Mock Turtleneck",
-      "slot": "top",
-      "gender": "unisex",
-      "coversBottoms": false,
-      "sprite": "Tops/90s_turtleneck.png",
-      "description": "A slim-fit mock turtleneck in black or neutral tones. A clean, minimalist essential that pairs well with almost anything."
-    },
-    {
-      "id": "top_00s_halter",
-      "name": "Halter Top",
-      "slot": "top",
-      "gender": "female",
-      "coversBottoms": false,
-      "sprite": "Tops/00s_halter.png",
-      "description": "A backless halter top, often metallic or sequined. A quintessential going-out piece designed to catch the light on the dance floor."
-    },
-    {
-      "id": "top_00s_polo_layered",
-      "name": "Layered Polo",
-      "slot": "top",
-      "gender": "male",
-      "coversBottoms": false,
-      "sprite": "Tops/00s_layered_polo.png",
-      "description": "Two polo shirts layered with both collars popped, often in contrasting colors. A bold preppy statement that doubles down on the collar."
-    },
-    {
-      "id": "top_00s_tube_dress",
-      "name": "Tube Dress",
-      "slot": "top",
-      "gender": "female",
-      "coversBottoms": true,
-      "sprite": "Tops/00s_tube_dress.png",
-      "description": "A strapless, body-hugging mini dress in a bold print or metallic fabric. Designed for nightlife and maximum visual impact."
-    },
-    {
-      "id": "top_10s_athleisure",
-      "name": "Athleisure Tank",
-      "slot": "top",
-      "gender": "female",
-      "coversBottoms": false,
-      "sprite": "Tops/10s_athleisure_tank.png",
-      "description": "A moisture-wicking tank top with mesh panels, suitable for both workouts and casual wear. Blurs the line between gym clothes and everyday fashion."
-    },
-    {
-      "id": "top_10s_longline_tee",
-      "name": "Longline T-Shirt",
-      "slot": "top",
-      "gender": "male",
-      "coversBottoms": false,
-      "sprite": "Tops/10s_longline_tee.png",
-      "description": "An extra-long, curved-hem t-shirt that extends past the waist. A streetwear staple influenced by high-fashion and hip-hop culture."
-    },
-    {
-      "id": "top_10s_slip_dress",
-      "name": "Slip Dress",
-      "slot": "top",
-      "gender": "female",
-      "coversBottoms": true,
-      "sprite": "Tops/10s_slip_dress.png",
-      "description": "A minimal satin slip dress with spaghetti straps. Can be worn alone or layered over a turtleneck for a contrasting high-low combination."
-    },
-    {
-      "id": "bottoms_80s_acid_wash",
-      "name": "Acid-Wash Jeans",
-      "slot": "bottoms",
-      "gender": "unisex",
-      "coversBottoms": false,
-      "sprite": "Bottoms/80s_acid_wash.png",
-      "description": "High-waisted jeans with a bleached, mottled pattern created by treating denim with chlorine and pumice stones. A bold, eye-catching wash."
-    },
-    {
-      "id": "bottoms_80s_miniskirt",
-      "name": "Denim Miniskirt",
-      "slot": "bottoms",
-      "gender": "female",
-      "coversBottoms": false,
-      "sprite": "Bottoms/80s_denim_miniskirt.png",
-      "description": "A high-waisted denim mini with a raw or bleached finish. A casual staple often paired with tights and leg warmers."
-    },
-    {
-      "id": "bottoms_90s_baggy_jeans",
-      "name": "Baggy Jeans",
-      "slot": "bottoms",
-      "gender": "unisex",
-      "coversBottoms": false,
-      "sprite": "Bottoms/90s_baggy_jeans.png",
-      "description": "Extremely wide-legged, low-slung jeans. Central to both hip-hop and skate culture, often worn with visible boxer shorts underneath."
-    },
-    {
-      "id": "bottoms_00s_low_rise",
-      "name": "Low-Rise Jeans",
-      "slot": "bottoms",
-      "gender": "female",
-      "coversBottoms": false,
-      "sprite": "Bottoms/00s_low_rise.png",
-      "description": "Ultra low-rise jeans sitting well below the navel, often bootcut or flared. A daring denim silhouette that prioritizes showing midriff."
-    },
-    {
-      "id": "bottoms_00s_cargo_shorts",
-      "name": "Cargo Shorts",
-      "slot": "bottoms",
-      "gender": "male",
-      "coversBottoms": false,
-      "sprite": "Bottoms/00s_cargo_shorts.png",
-      "description": "Knee-length cargo shorts with oversized utility pockets. A casual menswear staple popular in suburban and skate circles."
-    },
-    {
-      "id": "bottoms_10s_skinny_jeans",
-      "name": "Skinny Jeans",
-      "slot": "bottoms",
-      "gender": "unisex",
-      "coversBottoms": false,
-      "sprite": "Bottoms/10s_skinny_jeans.png",
-      "description": "Tight-fitting stretch denim that tapers to a narrow ankle. A slim, modern silhouette worn by all genders."
-    },
-    {
-      "id": "bottoms_10s_joggers",
-      "name": "Jogger Pants",
-      "slot": "bottoms",
-      "gender": "unisex",
-      "coversBottoms": false,
-      "sprite": "Bottoms/10s_joggers.png",
-      "description": "Tapered sweatpants with elasticized ankle cuffs. Bridges athletic and streetwear, part of the athleisure movement."
-    },
-    {
-      "id": "shoes_80s_high_tops",
-      "name": "High-Top Sneakers",
-      "slot": "shoes",
-      "gender": "unisex",
-      "coversBottoms": false,
-      "sprite": "Shoes/80s_high_tops.png",
-      "description": "Leather high-top basketball shoes in bold colors. Popularized by hip-hop culture and basketball stars, turning athletic shoes into fashion."
-    },
-    {
-      "id": "shoes_80s_pumps",
-      "name": "Stiletto Pumps",
-      "slot": "shoes",
-      "gender": "female",
-      "coversBottoms": false,
-      "sprite": "Shoes/80s_pumps.png",
-      "description": "Pointed-toe stiletto heels in bold colors. A power-dressing essential, projecting confidence from the ground up."
-    },
-    {
-      "id": "shoes_90s_combat_boots",
-      "name": "Combat Boots",
-      "slot": "shoes",
-      "gender": "unisex",
-      "coversBottoms": false,
-      "sprite": "Shoes/90s_combat_boots.png",
-      "description": "Chunky black lace-up boots, especially Dr. Martens. Worn by grunge fans, goths, and anyone rejecting polished mainstream fashion."
-    },
-    {
-      "id": "shoes_90s_platform_sneakers",
-      "name": "Platform Sneakers",
-      "slot": "shoes",
-      "gender": "female",
-      "coversBottoms": false,
-      "sprite": "Shoes/90s_platform_sneakers.png",
-      "description": "Chunky platform sneakers that add several inches of height. A playful, pop-culture-inspired shoe with a bold silhouette."
-    },
-    {
-      "id": "shoes_00s_ugg_boots",
-      "name": "Sheepskin Boots",
-      "slot": "shoes",
-      "gender": "female",
-      "coversBottoms": false,
-      "sprite": "Shoes/00s_ugg_boots.png",
-      "description": "Sheepskin-lined suede boots with a soft, unstructured look. Worn year-round with everything from jeans to miniskirts."
-    },
-    {
-      "id": "shoes_00s_skate_shoes",
-      "name": "Skate Shoes",
-      "slot": "shoes",
-      "gender": "unisex",
-      "coversBottoms": false,
-      "sprite": "Shoes/00s_skate_shoes.png",
-      "description": "Chunky, padded shoes with fat tongues and bold colorways, from brands like DC and Etnies. Built for skateboarding but worn as everyday footwear."
-    },
-    {
-      "id": "shoes_10s_white_sneakers",
-      "name": "Minimalist White Sneakers",
-      "slot": "shoes",
-      "gender": "unisex",
-      "coversBottoms": false,
-      "sprite": "Shoes/10s_white_sneakers.png",
-      "description": "Clean, all-white leather sneakers with a simple silhouette. Elevated simplicity — versatile enough for any outfit."
-    },
-    {
-      "id": "shoes_10s_ankle_boots",
-      "name": "Chelsea Ankle Boots",
-      "slot": "shoes",
-      "gender": "unisex",
-      "coversBottoms": false,
-      "sprite": "Shoes/10s_ankle_boots.png",
-      "description": "Sleek, elastic-sided ankle boots with a low heel. A versatile staple worn with everything from suits to jeans."
+      "sprite": "Tops/2010sFormalTop",
+      "description": ""
     }
   ]
 }

@@ -14,7 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: Jackets
   m_GUID: 4452e452c22de6a48ba2913d99e142a6
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 10e32cee56cfbb143ae1a4468dee11bb
+    m_Address: Jackets/2010sCasualJacketF
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1fab85e09c7a83f47a9a48fc3d09965f
+    m_Address: Jackets/2000sBusinessJacket
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3ee0c852121319040a3580c97659170e
+    m_Address: Jackets/1980sBusinessJacket
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9851f59990763be49bc25174a62ba98f
+    m_Address: Jackets/1990sCasualJacket
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: cb8f221f4801dcc4db2d548c1343015b, type: 2}
   m_SchemaSet:

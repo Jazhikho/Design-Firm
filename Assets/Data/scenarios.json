@@ -179,6 +179,32 @@
         "bottoms": { "itemId": "bottoms_00s_cargo_shorts", "commentary": "Cargo shorts represented early 2000s practicality-as-fashion. The more pockets, the better — even if you never used them." },
         "shoes": { "itemId": "shoes_00s_skate_shoes", "commentary": "Skate shoes with fat tongues and padded collars were non-negotiable. The brand on your feet was a social signal in middle school." }
       }
+    },
+    {
+      "name": "First Interview",
+      "description": "It's 2001 and it's your first day at a new middle school. You want to fit in without trying too hard. The hallways are ruled by TRL, pop-punk, and whatever's at the mall.",
+      "era": "2010s",
+      "category": "business", 
+      "backgroundImage": "Scenarios/90s_casual.png",
+      "avatarImage": "Avatars/90s_male_avatar.png",
+      "scoredItems": [
+        { "itemId": "jacket_00s_hoodie", "score": 1.0, "commentary": "A zip-up hoodie was the universal outerwear of early 2000s teens — worn to school, the mall, and everywhere in between." },
+        { "itemId": "top_90s_graphic_tee", "score": 0.8, "commentary": "Graphic tees carried over from the 90s and were still everywhere in 2001, though the logos shifted from grunge bands to skate brands." },
+        { "itemId": "bottoms_00s_cargo_shorts", "score": 1.0, "commentary": "Cargo shorts with a million pockets were the uniform of 2001 middle school boys. Absolutely essential." },
+        { "itemId": "shoes_00s_skate_shoes", "score": 1.0, "commentary": "Chunky DC or Etnies skate shoes were mandatory footwear in 2001, whether or not you actually owned a skateboard." }
+      ],
+      "incorrectSlotFeedback": {
+        "jacket": "A zip-up hoodie was the default outerwear for early 2000s teens. Simple, comfortable, and universally accepted.",
+        "top": "Graphic tees with skate brand logos, band names, or funny slogans were standard. Nothing too dressy, nothing too plain.",
+        "bottoms": "For boys: cargo shorts or baggy jeans. For girls: low-rise bootcut jeans. Comfort and brand logos mattered most.",
+        "shoes": "Chunky skate shoes from DC, Etnies, or Vans were the footwear that every kid wanted in 2001."
+      },
+      "idealOutfit": {
+        "jacket": { "itemId": "jacket_00s_hoodie", "commentary": "The zip-up hoodie was democratically cool — skaters, preps, and everyone in between wore one. Brand mattered (Billabong, Hurley, Element) but the basic form was universal." },
+        "top": { "itemId": "top_90s_graphic_tee", "commentary": "A graphic tee under the hoodie was standard layering. In 2001, the tees featured skate logos, video game references, or pop-punk bands." },
+        "bottoms": { "itemId": "bottoms_00s_cargo_shorts", "commentary": "Cargo shorts represented early 2000s practicality-as-fashion. The more pockets, the better — even if you never used them." },
+        "shoes": { "itemId": "shoes_00s_skate_shoes", "commentary": "Skate shoes with fat tongues and padded collars were non-negotiable. The brand on your feet was a social signal in middle school." }
+      }
     }
   ]
 }

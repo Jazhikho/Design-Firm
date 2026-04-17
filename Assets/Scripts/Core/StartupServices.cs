@@ -1,4 +1,5 @@
 using Assets.Scripts.Data;
+using System;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -7,6 +8,17 @@ namespace Assets.Scripts.Core
 {
     internal class StartupServices
     {
+        public static bool ScenariosLoaded { get; private set; }
+        public static bool WardrobeLoaded { get; private set; }
+
+        public static bool ScenariosFailed { get; private set; }
+        public static bool WardrobeFailed { get; private set; }
+
+        public static bool HasCriticalFailure => ScenariosFailed || WardrobeFailed;
+        public static bool IsFullyReady => ScenariosLoaded && WardrobeLoaded && !HasCriticalFailure;
+
+        public static string LastCriticalError { get; private set; } = string.Empty;
+
         /// <summary>
         /// Registers a method to load scenario and clothing item data from Addressables before the first scene loads.
         /// This ensures that all necessary data is available in the GameState before any gameplay begins.
@@ -14,11 +26,27 @@ namespace Assets.Scripts.Core
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void Initialize()
         {
-            AsyncOperationHandle<TextAsset> scenariosHandle = Addressables.LoadAssetAsync<TextAsset>("scenarios");
+            ResetStartupState();
+
+            Debug.Log("[StartupServices] Beginning startup data load.");
+
+            Debug.Log("[StartupServices] Requesting Addressables key: scenarios");
+            AsyncOperationHandle<TextAsset> scenariosHandle =
+                Addressables.LoadAssetAsync<TextAsset>("scenarios");
             scenariosHandle.Completed += OnScenariosLoaded;
 
-            AsyncOperationHandle<TextAsset> clothingHandle = Addressables.LoadAssetAsync<TextAsset>("clothing_items");
+            Debug.Log("[StartupServices] Requesting Addressables key: clothing_items");
+            AsyncOperationHandle<TextAsset> clothingHandle =
+                Addressables.LoadAssetAsync<TextAsset>("clothing_items");
             clothingHandle.Completed += OnClothingItemsLoaded;
+        }
+        private static void ResetStartupState()
+        {
+            ScenariosLoaded = false;
+            WardrobeLoaded = false;
+            ScenariosFailed = false;
+            WardrobeFailed = false;
+            LastCriticalError = string.Empty;
         }
 
         /// <summary>
@@ -32,16 +60,51 @@ namespace Assets.Scripts.Core
         /// Succeeded and contain a valid TextAsset result.</param>
         private static void OnScenariosLoaded(AsyncOperationHandle<TextAsset> handle)
         {
-            if (handle.Status != AsyncOperationStatus.Succeeded)
+            try
             {
-                Debug.LogError("StartupServices: failed to load scenarios.json from Addressables. " +
-                    "Ensure the asset is marked as Addressable with the key \"scenarios\".");
-                return;
-            }
+                Debug.Log(
+                    $"[StartupServices] scenarios load completed. " +
+                    $"Status={handle.Status}, IsDone={handle.IsDone}, " +
+                    $"PercentComplete={handle.PercentComplete:0.00}");
 
-            ScenarioState.Instance.Scenarios = DataLoader.LoadScenarios(handle.Result.text);
-            Addressables.Release(handle);
-            ScenarioState.Instance.NotifyScenariosLoaded();
+                if (handle.Status != AsyncOperationStatus.Succeeded || handle.Result == null)
+                {
+                    string details = BuildAddressablesFailureMessage("scenarios", handle);
+                    FailScenarios(details);
+                    return;
+                }
+
+                Debug.Log(
+                    $"[StartupServices] scenarios loaded successfully. " +
+                    $"Text length={handle.Result.text?.Length ?? 0}");
+
+                ScenarioState.Instance.Scenarios = DataLoader.LoadScenarios(handle.Result.text);
+
+                int scenarioCount = ScenarioState.Instance.Scenarios?.Count ?? 0;
+                Debug.Log($"[StartupServices] Parsed scenarios count={scenarioCount}");
+
+                if (scenarioCount == 0)
+                {
+                    FailScenarios(
+                        "[StartupServices] scenarios loaded from Addressables, " +
+                        "but zero scenarios were parsed. This is treated as a startup failure.");
+                    return;
+                }
+
+                ScenariosLoaded = true;
+                ScenarioState.Instance.NotifyScenariosLoaded();
+                Debug.Log("[StartupServices] ScenarioState updated and listeners notified.");
+            }
+            catch (Exception ex)
+            {
+                FailScenarios(
+                    "[StartupServices] Exception while processing scenarios: " + ex);
+            }
+            finally
+            {
+                SafeRelease(handle, "scenarios");
+                LogOverallStartupState();
+            }
         }
 
         /// <summary>
@@ -54,16 +117,113 @@ namespace Assets.Scripts.Core
         /// valid and successfully loaded TextAsset.</param>
         private static void OnClothingItemsLoaded(AsyncOperationHandle<TextAsset> handle)
         {
-            if (handle.Status != AsyncOperationStatus.Succeeded)
+            try
             {
-                Debug.LogError("StartupServices: failed to load clothing_items.json from Addressables. " +
-                    "Ensure the asset is marked as Addressable with the key \"clothing_items\".");
-                return;
-            }
+                Debug.Log(
+                    $"[StartupServices] clothing_items load completed. " +
+                    $"Status={handle.Status}, IsDone={handle.IsDone}, " +
+                    $"PercentComplete={handle.PercentComplete:0.00}");
 
-            DataLoader.LoadClothingItems(handle.Result.text);
-            Addressables.Release(handle);
-            WardrobeState.Instance.NotifyWardrobeItemsLoaded();
+                if (handle.Status != AsyncOperationStatus.Succeeded || handle.Result == null)
+                {
+                    string details = BuildAddressablesFailureMessage("clothing_items", handle);
+                    FailWardrobe(details);
+                    return;
+                }
+
+                Debug.Log(
+                    $"[StartupServices] clothing_items loaded successfully. " +
+                    $"Text length={handle.Result.text?.Length ?? 0}");
+
+                int addedCount = DataLoader.LoadClothingItems(handle.Result.text);
+
+                Debug.Log($"[StartupServices] Parsed clothing item count={addedCount}");
+
+                if (addedCount == 0)
+                {
+                    FailWardrobe(
+                        "[StartupServices] clothing_items loaded from Addressables, " +
+                        "but zero wardrobe items were parsed. This is treated as a startup failure.");
+                    return;
+                }
+
+                WardrobeLoaded = true;
+                WardrobeState.Instance.NotifyWardrobeItemsLoaded();
+                Debug.Log("[StartupServices] WardrobeState updated and listeners notified.");
+            }
+            catch (Exception ex)
+            {
+                FailWardrobe(
+                    "[StartupServices] Exception while processing clothing_items: " + ex);
+            }
+            finally
+            {
+                SafeRelease(handle, "clothing_items");
+                LogOverallStartupState();
+            }
+        }
+
+        private static string BuildAddressablesFailureMessage(
+            string key,
+            AsyncOperationHandle<TextAsset> handle)
+        {
+            string exceptionText = handle.OperationException != null
+                ? handle.OperationException.ToString()
+                : "<null>";
+
+            return
+                $"[StartupServices] Failed to load Addressables key '{key}'. " +
+                $"Status={handle.Status}, IsDone={handle.IsDone}, " +
+                $"PercentComplete={handle.PercentComplete:0.00}, " +
+                $"OperationException={exceptionText}. " +
+                $"Ensure the asset exists, is marked Addressable, and is reachable in the current catalog.";
+        }
+
+        private static void FailScenarios(string message)
+        {
+            ScenariosFailed = true;
+            LastCriticalError = message;
+            Debug.LogError(message);
+        }
+
+        private static void FailWardrobe(string message)
+        {
+            WardrobeFailed = true;
+            LastCriticalError = message;
+            Debug.LogError(message);
+        }
+
+        private static void SafeRelease(AsyncOperationHandle<TextAsset> handle, string key)
+        {
+            try
+            {
+                if (handle.IsValid())
+                {
+                    Addressables.Release(handle);
+                    Debug.Log($"[StartupServices] Released Addressables handle for '{key}'.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.LogWarning(
+                    $"[StartupServices] Failed to release handle for '{key}'. Exception: {ex}");
+            }
+        }
+
+        private static void LogOverallStartupState()
+        {
+            Debug.Log(
+                $"[StartupServices] State => " +
+                $"ScenariosLoaded={ScenariosLoaded}, WardrobeLoaded={WardrobeLoaded}, " +
+                $"ScenariosFailed={ScenariosFailed}, WardrobeFailed={WardrobeFailed}, " +
+                $"IsFullyReady={IsFullyReady}");
+
+            if (HasCriticalFailure)
+            {
+                Debug.LogError(
+                    $"[StartupServices] Critical startup failure detected. " +
+                    $"LastCriticalError={LastCriticalError}");
+            }
         }
     }
 }
