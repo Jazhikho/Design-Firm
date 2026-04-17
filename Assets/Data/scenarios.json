@@ -8,85 +8,47 @@
       "backgroundImage": "Scenarios/DressingRoom.png",
       "avatarImage": "Avatars/2000sFemModel.png",
       "scoredItems": [
-        { "itemId": "2000sCasualTop", "score": 1.0, "commentary": "Perfect! Bright colors and flowy fabrics fit in perfectly with boho trends of the 2000s." },
-        { "itemId": "2000sCasualBottom", "score": 1.0, "commentary": "That’s right! Miniskirts were a popular casual choice in the 2000s." },
-        { "itemId": "2000sCasualShoes", "score": 1.0, "commentary": "Great work! Wedge heels and ankle straps were popular design choices in the 2000s for casual footwear." }
       ],
       "incorrectSlotFeedback": {
+        "jacket": "",
         "top": "The 2000s embraced boho styles, consider experimenting with fun colors and flowy shapes!",
         "bottoms": "Miniskirts had a resurgence in 2000s, often in fabrics like denim.",
         "shoes": "Wedge heels were a popular choice in the 2000s, for both dressy and casual looks."
       },
       "idealOutfit": {
-        "top": { "itemId": "2000sCasualTop", "commentary": "Bright colors and flowy fabrics fit in perfectly with boho trends of the 2000s." },
-        "bottoms": { "itemId": "2000sCasualBottom", "commentary": "Miniskirts were a popular casual choice in the 2000s." },
-        "shoes": { "itemId": "2000sCasualShoes", "commentary": "Wedge heels and ankle straps were popular design choices in the 2000s for casual footwear." }
+        "top": { "itemId": "2000sCasualTop", "commentary": "Perfect! Bright colors and flowy fabrics fit in perfectly with boho trends of the 2000s." },
+        "bottoms": { "itemId": "2000sCasualBottom", "commentary": "That’s right! Miniskirts were a popular casual choice in the 2000s." },
+        "shoes": { "itemId": "2000sCasualShoes", "commentary": "Great work! Wedge heels and ankle straps were popular design choices in the 2000s for casual footwear." }
       }
     },
     {
-      "name": "Hanging Out at a Record Store",
-      "description": "It's 1994 in Seattle. You're meeting friends at a record store to browse for new albums and maybe catch a local band later. Dress the part — grunge is king.",
-      "era": "1990s",
-      "category": "casual", 
-      "backgroundImage": "Scenarios/90s_casual.png",
-      "avatarImage": "Avatars/90s_male_avatar.png",
+      "name": "2000s Formal",
+      "description": "Style a formal look for the 2000s, like getting dinner at a fancy restaurant! ",
+      "era": "2000s",
+      "category": "formal", 
+      "backgroundImage": "Scenarios/DressingRoom.png",
+      "avatarImage": "Avatars/2000sFemModel.png",
       "scoredItems": [
-        { "itemId": "jacket_90s_flannel", "score": 1.0, "commentary": "The open flannel shirt is THE grunge layer — Kurt Cobain's uniform and the defining garment of 90s Seattle culture." },
-        { "itemId": "jacket_90s_denim", "score": 0.8, "commentary": "A denim jacket fits the 90s casual vibe well, though flannel is more specifically grunge." },
-        { "itemId": "jacket_80s_blazer", "score": 0.0, "commentary": "A power blazer? Grunge was a direct rejection of 80s corporate excess. This couldn't be more wrong." },
-        { "itemId": "jacket_00s_hoodie", "score": 0.3, "commentary": "Hoodies existed in the 90s but the zip-up style is more associated with 2000s culture." },
-        { "itemId": "top_90s_graphic_tee", "score": 1.0, "commentary": "An oversized graphic tee was the base layer of every grunge outfit — the more faded and worn, the better." },
-        { "itemId": "top_90s_babydoll_dress", "score": 0.9, "commentary": "The babydoll dress was a key piece of 90s grunge fashion for women, especially paired with combat boots." },
-        { "itemId": "top_90s_turtleneck", "score": 0.5, "commentary": "A turtleneck is very 90s but more minimalist/normcore than grunge. You'd fit in at a gallery, not a mosh pit." },
-        { "itemId": "top_80s_neon_crop", "score": 0.0, "commentary": "Neon and grunge are mortal enemies. The 90s rejected 80s flash entirely." },
-        { "itemId": "top_00s_halter", "score": 0.1, "commentary": "A metallic halter top is Y2K, not grunge. Wrong decade, wrong subculture." },
-        { "itemId": "bottoms_90s_baggy_jeans", "score": 1.0, "commentary": "Baggy, worn-in jeans were essential to the grunge look — preferably ripped at the knee." },
-        { "itemId": "bottoms_80s_acid_wash", "score": 0.3, "commentary": "Acid wash is too 80s. Grunge preferred dark or faded natural denim, not processed treatments." },
-        { "itemId": "bottoms_00s_low_rise", "score": 0.1, "commentary": "Low-rise jeans are a 2000s trend. In the 90s, waistlines sat higher." },
-        { "itemId": "bottoms_10s_skinny_jeans", "score": 0.1, "commentary": "Skinny jeans are the opposite of the 90s baggy silhouette." },
-        { "itemId": "shoes_90s_combat_boots", "score": 1.0, "commentary": "Dr. Martens combat boots were the footwear of grunge. Scuffed and worn-in was the ideal." },
-        { "itemId": "shoes_90s_platform_sneakers", "score": 0.5, "commentary": "Platform sneakers are very 90s but more Spice Girls pop than Seattle grunge." },
-        { "itemId": "shoes_80s_high_tops", "score": 0.4, "commentary": "High-tops carry over from the 80s and work casually, but they're not the grunge shoe." },
-        { "itemId": "shoes_00s_skate_shoes", "score": 0.3, "commentary": "Chunky skate shoes are more early 2000s than mid-90s grunge." }
       ],
       "incorrectSlotFeedback": {
-        "jacket": "Grunge layering meant a flannel shirt or denim jacket — nothing structured, nothing shiny, nothing corporate.",
-        "top": "An oversized, worn-in graphic tee or band shirt was the grunge base layer. Comfort over style, always.",
-        "bottoms": "Baggy, ripped jeans were non-negotiable. The more worn-in, the more authentic.",
-        "shoes": "Doc Martens or similar chunky combat boots completed the grunge look."
+        "jacket": "",
+        "top": "",
+        "bottoms": "",
+        "shoes": ""
       },
       "idealOutfit": {
-        "jacket": { "itemId": "jacket_90s_flannel", "commentary": "Flannel became a symbol of Pacific Northwest working-class culture adopted by grunge musicians. It represented anti-fashion as fashion." },
-        "top": { "itemId": "top_90s_graphic_tee", "commentary": "A thrift-store graphic tee was the foundation. Band tees, vintage finds, and worn-out logos were all authentic choices." },
-        "bottoms": { "itemId": "bottoms_90s_baggy_jeans", "commentary": "Baggy jeans rejected the fitted styles of the 80s. Grunge embraced shapelessness as a form of comfort and anti-establishment style." },
-        "shoes": { "itemId": "shoes_90s_combat_boots", "commentary": "Dr. Martens 1460 boots became the unofficial footwear of grunge. Their working-class origins aligned with the subculture's values." }
+        "top": { "itemId": "2000sFormalTop", "commentary": "" },
+        "shoes": { "itemId": "2000sFormalShoes", "commentary": "" }
       }
     },
     {
-      "name": "A Night Out at the Club",
-      "description": "It's 2003 and you're getting ready for a Saturday night at the hottest club in town. Think Paris Hilton, Destiny's Child, and MTV's TRL. Your outfit needs to sparkle.",
+      "name": "2000s Business",
+      "description": "Let’s style a business look! How about a “casual” Friday at the office?",
       "era": "2000s",
-      "category": "casual", 
-      "backgroundImage": "Scenarios/90s_casual.png",
-      "avatarImage": "Avatars/90s_male_avatar.png",
+      "category": "business", 
+      "backgroundImage": "Scenarios/DressingRoom.png",
+      "avatarImage": "Avatars/MascModel.png",
       "scoredItems": [
-        { "itemId": "jacket_00s_velour_track", "score": 0.8, "commentary": "A velour track jacket is peak Y2K luxury casual, though you might ditch it once you're inside the club." },
-        { "itemId": "jacket_00s_hoodie", "score": 0.2, "commentary": "A hoodie is too casual for a club night. The 2000s club scene demanded glamour, not comfort." },
-        { "itemId": "jacket_80s_leather", "score": 0.4, "commentary": "A leather jacket works for edge, but the 2000s club look was more about flash and bling than punk attitude." },
-        { "itemId": "jacket_10s_bomber", "score": 0.2, "commentary": "The bomber jacket revival hasn't happened yet — that's a 2010s trend." },
-        { "itemId": "top_00s_halter", "score": 1.0, "commentary": "A metallic or sequined halter top was THE going-out top of the early 2000s. Maximum skin, maximum sparkle." },
-        { "itemId": "top_00s_tube_dress", "score": 1.0, "commentary": "A strapless tube dress in a bold print or metallic fabric was standard Y2K club wear. Iconic." },
-        { "itemId": "top_00s_polo_layered", "score": 0.7, "commentary": "Layered polos with popped collars were a 2000s look, though more frat party than dance floor." },
-        { "itemId": "top_90s_graphic_tee", "score": 0.1, "commentary": "A baggy graphic tee is grunge, not glam. The 2000s club demanded something more eye-catching." },
-        { "itemId": "top_10s_athleisure", "score": 0.0, "commentary": "Athleisure hasn't become a thing yet, and workout wear wouldn't fly at a 2003 club." },
-        { "itemId": "bottoms_00s_low_rise", "score": 1.0, "commentary": "Ultra low-rise jeans were the defining bottom of the early 2000s, often paired with a visible thong strap (yes, really)." },
-        { "itemId": "bottoms_00s_cargo_shorts", "score": 0.2, "commentary": "Cargo shorts are daytime casual at best. A nightclub demands something more polished." },
-        { "itemId": "bottoms_90s_baggy_jeans", "score": 0.2, "commentary": "Baggy jeans feel too 90s for a 2003 club. The Y2K look was more fitted and flashy." },
-        { "itemId": "bottoms_10s_skinny_jeans", "score": 0.3, "commentary": "Skinny jeans won't peak until the 2010s. In 2003, bootcut and flare were king." },
-        { "itemId": "shoes_00s_ugg_boots", "score": 0.1, "commentary": "UGGs are for the morning after, not the night of. No club would let you in wearing these." },
-        { "itemId": "shoes_00s_skate_shoes", "score": 0.2, "commentary": "Skate shoes are too casual for a nightclub. The 2000s club scene required heels or pointed-toe shoes." },
-        { "itemId": "shoes_90s_platform_sneakers", "score": 0.5, "commentary": "Platform shoes carry over from the late 90s but proper heels or strappy sandals were the 2003 move." },
-        { "itemId": "shoes_80s_pumps", "score": 0.6, "commentary": "Stilettos work for a club, but the 80s silhouette is slightly dated. 2000s heels were strappier and more open." }
       ],
       "incorrectSlotFeedback": {
         "jacket": "Y2K club outerwear was about casual luxury — think velour track jackets, cropped jackets, or fur-trimmed boleros.",
@@ -95,115 +57,73 @@
         "shoes": "Strappy heels, pointed-toe boots, or platform sandals were the club footwear of choice in the early 2000s."
       },
       "idealOutfit": {
-        "jacket": { "itemId": "jacket_00s_velour_track", "commentary": "Juicy Couture velour became a status symbol. The track jacket was worn to the club and taken off at the door — casual luxury personified." },
-        "top": { "itemId": "top_00s_halter", "commentary": "The halter top was the centerpiece of 2000s going-out fashion. Sparkle was mandatory, subtlety was not." },
-        "bottoms": { "itemId": "bottoms_00s_low_rise", "commentary": "Low-rise jeans defined Y2K fashion. The lower the waistband, the more on-trend you were. Fashion historians still debate how this happened." },
-        "shoes": { "itemId": "shoes_90s_platform_sneakers", "commentary": "Platform shoes bridged the late 90s and early 2000s. For a more authentic 2003 look, strappy heeled sandals would be perfect." }
+        "jacket": { "itemId": "2000sBusinessJacket", "commentary": "Juicy Couture velour became a status symbol. The track jacket was worn to the club and taken off at the door — casual luxury personified." },
+        "top": { "itemId": "2000sBusinessShirt", "commentary": "The halter top was the centerpiece of 2000s going-out fashion. Sparkle was mandatory, subtlety was not." },
+        "bottoms": { "itemId": "2000sBusinessBottom", "commentary": "Low-rise jeans defined Y2K fashion. The lower the waistband, the more on-trend you were. Fashion historians still debate how this happened." },
+        "shoes": { "itemId": "2000sBusinessShoes", "commentary": "Platform shoes bridged the late 90s and early 2000s. For a more authentic 2003 look, strappy heeled sandals would be perfect." }
       }
     },
     {
-      "name": "Weekend at a Music Festival",
-      "description": "It's 2015 and you're heading to Coachella. The look is 'effortlessly cool' — streetwear meets festival chic. Comfort matters because you'll be on your feet all day, but style is non-negotiable.",
-      "era": "2010s",
-      "category": "casual", 
-      "backgroundImage": "Scenarios/90s_casual.png",
-      "avatarImage": "Avatars/90s_male_avatar.png",
+      "name": "1980s Formal",
+      "description": "Let’s put together a formal look inspired by the 1980s! Give me your best red-carpet look!",
+      "era": "1980s",
+      "category": "formal", 
+      "backgroundImage": "Scenarios/DressingRoom.png",
+      "avatarImage": "Avatars/2000sFemModel.png",
       "scoredItems": [
-        { "itemId": "jacket_10s_bomber", "score": 1.0, "commentary": "A lightweight bomber jacket was the go-to festival layer in the mid-2010s — stylish, practical, and Instagram-ready." },
-        { "itemId": "jacket_10s_oversized_blazer", "score": 0.4, "commentary": "An oversized blazer is very 2010s but more suited to a gallery opening than a dusty festival field." },
-        { "itemId": "jacket_90s_denim", "score": 0.7, "commentary": "A denim jacket works at any festival and fits the 2010s vintage revival trend, though it's not peak 2015 style." },
-        { "itemId": "jacket_80s_leather", "score": 0.5, "commentary": "A leather jacket has festival edge but might be too hot for Coachella's desert setting." },
-        { "itemId": "top_10s_athleisure", "score": 0.8, "commentary": "An athleisure tank blends comfort and style perfectly for a festival — very on-trend for 2015." },
-        { "itemId": "top_10s_longline_tee", "score": 1.0, "commentary": "A longline tee is peak 2015 streetwear — relaxed, stylish, and right at home at Coachella." },
-        { "itemId": "top_10s_slip_dress", "score": 0.9, "commentary": "A slip dress is a great festival choice for 2015, channeling the 90s revival trend that was huge at the time." },
-        { "itemId": "top_00s_halter", "score": 0.4, "commentary": "A halter top works for a festival but feels more 2000s than 2010s. The vibe has shifted toward effortless over flashy." },
-        { "itemId": "top_90s_graphic_tee", "score": 0.6, "commentary": "A vintage graphic tee fits the 2010s thrift culture, but the oversized 90s fit isn't quite 2015's silhouette." },
-        { "itemId": "top_80s_neon_crop", "score": 0.3, "commentary": "Crop tops exist at festivals, but neon spandex reads costume rather than 2015 style." },
-        { "itemId": "bottoms_10s_skinny_jeans", "score": 0.8, "commentary": "Skinny jeans were still dominant in 2015, though denim cutoffs might be more practical for a hot festival." },
-        { "itemId": "bottoms_10s_joggers", "score": 1.0, "commentary": "Joggers perfectly capture the 2015 athleisure-meets-streetwear vibe. Comfortable and on-trend." },
-        { "itemId": "bottoms_00s_low_rise", "score": 0.2, "commentary": "Low-rise jeans were deeply uncool in 2015. High-waisted everything had taken over." },
-        { "itemId": "bottoms_90s_baggy_jeans", "score": 0.2, "commentary": "Baggy jeans hadn't been revived yet in 2015. Slim and tapered silhouettes ruled." },
-        { "itemId": "shoes_10s_white_sneakers", "score": 1.0, "commentary": "Clean white sneakers were the footwear of the 2010s — simple, versatile, and effortlessly cool at any festival." },
-        { "itemId": "shoes_10s_ankle_boots", "score": 0.9, "commentary": "Chelsea boots at a festival are a strong 2010s choice — stylish and sturdy enough for the terrain." },
-        { "itemId": "shoes_90s_combat_boots", "score": 0.6, "commentary": "Combat boots have festival cred but feel more 90s grunge than 2015 streetwear." },
-        { "itemId": "shoes_00s_ugg_boots", "score": 0.0, "commentary": "UGGs at Coachella in 2015? Absolutely not. They'd been a fashion punchline for years." },
-        { "itemId": "shoes_80s_high_tops", "score": 0.5, "commentary": "Retro high-tops have some appeal but aren't the 2015 festival shoe of choice." }
       ],
       "incorrectSlotFeedback": {
-        "jacket": "2015 festival outerwear was about lightweight layers — bomber jackets, denim jackets, or a casual kimono.",
-        "top": "Streetwear-influenced pieces like longline tees, crop tops, or vintage-revival slip dresses defined 2015 festival style.",
-        "bottoms": "Skinny jeans, joggers, or high-waisted shorts were the go-to. Everything was slim, tapered, or high-waisted.",
-        "shoes": "Minimalist white sneakers or Chelsea boots — comfortable enough to stand all day, stylish enough for Instagram."
+        "jacket": "",
+        "top": "",
+        "bottoms": "",
+        "shoes": ""
       },
       "idealOutfit": {
-        "jacket": { "itemId": "jacket_10s_bomber", "commentary": "The bomber jacket's 2015 revival turned it from military surplus into a streetwear staple. Lightweight versions were perfect for festivals." },
-        "top": { "itemId": "top_10s_longline_tee", "commentary": "The longline tee embodied 2015's streetwear-casual aesthetic. Extended hems and curved cuts were everywhere, from Coachella to city streets." },
-        "bottoms": { "itemId": "bottoms_10s_joggers", "commentary": "Joggers represented the athleisure revolution — the idea that comfort and style weren't mutually exclusive." },
-        "shoes": { "itemId": "shoes_10s_white_sneakers", "commentary": "The white sneaker trend peaked in the mid-2010s. Stan Smiths alone became a cultural phenomenon." }
+        "top": { "itemId": "1980sFormalTop", "commentary": "The longline tee embodied 2015's streetwear-casual aesthetic. Extended hems and curved cuts were everywhere, from Coachella to city streets." },
+        "bottoms": { "itemId": "1980sFormalBottom", "commentary": "An oversized blazer is very 2010s but more suited to a gallery opening than a dusty festival field." },
+        "shoes": { "itemId": "1980FormalShoes", "commentary": "The white sneaker trend peaked in the mid-2010s. Stan Smiths alone became a cultural phenomenon." }
       }
     },
     {
-      "name": "First Day at a New School",
-      "description": "It's 2001 and it's your first day at a new middle school. You want to fit in without trying too hard. The hallways are ruled by TRL, pop-punk, and whatever's at the mall.",
-      "era": "2000s",
+      "name": "1980s Casual",
+      "description": "Style a 1980s casual outfit! Consider taking inspiration from hip-hop and fitness trends!",
+      "era": "1980s",
       "category": "casual", 
-      "backgroundImage": "Scenarios/90s_casual.png",
-      "avatarImage": "Avatars/90s_male_avatar.png",
+      "backgroundImage": "Scenarios/DressingRoom.png",
+      "avatarImage": "Avatars/2000sFemModel.png",
       "scoredItems": [
-        { "itemId": "jacket_00s_hoodie", "score": 1.0, "commentary": "A zip-up hoodie was the universal outerwear of early 2000s teens — worn to school, the mall, and everywhere in between." },
-        { "itemId": "jacket_00s_velour_track", "score": 0.5, "commentary": "A velour track jacket is very 2000s but leans more glamorous than the typical middle school hallway vibe." },
-        { "itemId": "jacket_90s_flannel", "score": 0.3, "commentary": "Flannel feels leftover from the 90s. By 2001, grunge was over and pop-punk had taken its place." },
-        { "itemId": "jacket_10s_bomber", "score": 0.1, "commentary": "Bomber jackets won't be trendy again until the 2010s. In 2001, this looks random." },
-        { "itemId": "top_90s_graphic_tee", "score": 0.8, "commentary": "Graphic tees carried over from the 90s and were still everywhere in 2001, though the logos shifted from grunge bands to skate brands." },
-        { "itemId": "top_00s_polo_layered", "score": 0.7, "commentary": "Layered polos were emerging in the early 2000s, especially in preppy circles. Points for being ahead of the trend." },
-        { "itemId": "top_80s_band_tee", "score": 0.4, "commentary": "Band tees are always somewhat in play, but 80s metal bands aren't what middle schoolers were listening to in 2001." },
-        { "itemId": "top_10s_longline_tee", "score": 0.1, "commentary": "Longline tees are a 2010s streetwear trend. In 2001, this just looks like your shirt is too big." },
-        { "itemId": "bottoms_00s_cargo_shorts", "score": 1.0, "commentary": "Cargo shorts with a million pockets were the uniform of 2001 middle school boys. Absolutely essential." },
-        { "itemId": "bottoms_00s_low_rise", "score": 0.8, "commentary": "Low-rise jeans were taking over in 2001. For middle school, bootcut low-rise was the default." },
-        { "itemId": "bottoms_90s_baggy_jeans", "score": 0.5, "commentary": "Baggy jeans still had a presence in 2001, especially in skate and hip-hop circles, but the silhouette was evolving." },
-        { "itemId": "bottoms_10s_skinny_jeans", "score": 0.0, "commentary": "Skinny jeans would get you laughed out of a 2001 middle school. No one was wearing these yet." },
-        { "itemId": "shoes_00s_skate_shoes", "score": 1.0, "commentary": "Chunky DC or Etnies skate shoes were mandatory footwear in 2001, whether or not you actually owned a skateboard." },
-        { "itemId": "shoes_00s_ugg_boots", "score": 0.6, "commentary": "UGGs were just starting to appear in 2001, mainly among girls. They hadn't fully exploded yet." },
-        { "itemId": "shoes_10s_white_sneakers", "score": 0.2, "commentary": "Minimalist white sneakers are a 2010s aesthetic. In 2001, sneakers needed to be chunky and colorful." },
-        { "itemId": "shoes_90s_platform_sneakers", "score": 0.3, "commentary": "Platform sneakers are late 90s. By 2001 they were falling out of favor." }
       ],
       "incorrectSlotFeedback": {
-        "jacket": "A zip-up hoodie was the default outerwear for early 2000s teens. Simple, comfortable, and universally accepted.",
-        "top": "Graphic tees with skate brand logos, band names, or funny slogans were standard. Nothing too dressy, nothing too plain.",
-        "bottoms": "For boys: cargo shorts or baggy jeans. For girls: low-rise bootcut jeans. Comfort and brand logos mattered most.",
-        "shoes": "Chunky skate shoes from DC, Etnies, or Vans were the footwear that every kid wanted in 2001."
+        "jacket": "",
+        "top": "",
+        "bottoms": "",
+        "shoes": ""
       },
       "idealOutfit": {
-        "jacket": { "itemId": "jacket_00s_hoodie", "commentary": "The zip-up hoodie was democratically cool — skaters, preps, and everyone in between wore one. Brand mattered (Billabong, Hurley, Element) but the basic form was universal." },
-        "top": { "itemId": "top_90s_graphic_tee", "commentary": "A graphic tee under the hoodie was standard layering. In 2001, the tees featured skate logos, video game references, or pop-punk bands." },
-        "bottoms": { "itemId": "bottoms_00s_cargo_shorts", "commentary": "Cargo shorts represented early 2000s practicality-as-fashion. The more pockets, the better — even if you never used them." },
-        "shoes": { "itemId": "shoes_00s_skate_shoes", "commentary": "Skate shoes with fat tongues and padded collars were non-negotiable. The brand on your feet was a social signal in middle school." }
+        "top": { "itemId": "1980sCasualTop", "commentary": "A graphic tee under the hoodie was standard layering. In 2001, the tees featured skate logos, video game references, or pop-punk bands." },
+        "bottoms": { "itemId": "1980sCasualBottom", "commentary": "Cargo shorts represented early 2000s practicality-as-fashion. The more pockets, the better — even if you never used them." },
+        "shoes": { "itemId": "1980sCasualShoes", "commentary": "Skate shoes with fat tongues and padded collars were non-negotiable. The brand on your feet was a social signal in middle school." }
       }
     },
     {
-      "name": "First Interview",
-      "description": "It's 2001 and it's your first day at a new middle school. You want to fit in without trying too hard. The hallways are ruled by TRL, pop-punk, and whatever's at the mall.",
+      "name": "2010s Business",
+      "description": "Put together a 2010s business outfit. Try to capture the unique coolness of the 2010s!",
       "era": "2010s",
       "category": "business", 
-      "backgroundImage": "Scenarios/90s_casual.png",
-      "avatarImage": "Avatars/90s_male_avatar.png",
+      "backgroundImage": "Scenarios/DressingRoom.png",
+      "avatarImage": "Avatars/MascModel.png",
       "scoredItems": [
-        { "itemId": "jacket_00s_hoodie", "score": 1.0, "commentary": "A zip-up hoodie was the universal outerwear of early 2000s teens — worn to school, the mall, and everywhere in between." },
-        { "itemId": "top_90s_graphic_tee", "score": 0.8, "commentary": "Graphic tees carried over from the 90s and were still everywhere in 2001, though the logos shifted from grunge bands to skate brands." },
-        { "itemId": "bottoms_00s_cargo_shorts", "score": 1.0, "commentary": "Cargo shorts with a million pockets were the uniform of 2001 middle school boys. Absolutely essential." },
-        { "itemId": "shoes_00s_skate_shoes", "score": 1.0, "commentary": "Chunky DC or Etnies skate shoes were mandatory footwear in 2001, whether or not you actually owned a skateboard." }
       ],
       "incorrectSlotFeedback": {
-        "jacket": "A zip-up hoodie was the default outerwear for early 2000s teens. Simple, comfortable, and universally accepted.",
-        "top": "Graphic tees with skate brand logos, band names, or funny slogans were standard. Nothing too dressy, nothing too plain.",
-        "bottoms": "For boys: cargo shorts or baggy jeans. For girls: low-rise bootcut jeans. Comfort and brand logos mattered most.",
-        "shoes": "Chunky skate shoes from DC, Etnies, or Vans were the footwear that every kid wanted in 2001."
+        "jacket": "",
+        "top": "",
+        "bottoms": "",
+        "shoes": ""
       },
       "idealOutfit": {
-        "jacket": { "itemId": "jacket_00s_hoodie", "commentary": "The zip-up hoodie was democratically cool — skaters, preps, and everyone in between wore one. Brand mattered (Billabong, Hurley, Element) but the basic form was universal." },
-        "top": { "itemId": "top_90s_graphic_tee", "commentary": "A graphic tee under the hoodie was standard layering. In 2001, the tees featured skate logos, video game references, or pop-punk bands." },
-        "bottoms": { "itemId": "bottoms_00s_cargo_shorts", "commentary": "Cargo shorts represented early 2000s practicality-as-fashion. The more pockets, the better — even if you never used them." },
-        "shoes": { "itemId": "shoes_00s_skate_shoes", "commentary": "Skate shoes with fat tongues and padded collars were non-negotiable. The brand on your feet was a social signal in middle school." }
+        "top": { "itemId": "2010BusinessTop", "score": 1.0, "commentary": "" },
+        "bottoms": { "itemId": "2010BusinessBottom", "score": 1.0, "commentary": "" },
+        "shoes": { "itemId": "2010sBusinessShoes", "score": 1.0, "commentary": "" }
       }
     }
   ]

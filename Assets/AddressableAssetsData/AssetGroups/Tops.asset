@@ -16,42 +16,42 @@ MonoBehaviour:
   m_GUID: 8fa547764f41b8c4591f2d087cb8303b
   m_SerializeEntries:
   - m_GUID: 0546a4308f3bce64f99033ffe15a2fb5
-    m_Address: Tops/2000sCasualTop
+    m_Address: Tops/2000sCasualTop.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3e2da554d24274c41a778f5b0768c9a5
-    m_Address: Tops/2000sBusinessTop
+    m_Address: Tops/2000sBusinessTop.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5ced795d424a01b41b480365663d8084
-    m_Address: Tops/1980sCasualTop
+    m_Address: Tops/1980sCasualTop.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 756ea30ef932e2142ad3ff9846dd9f1f
-    m_Address: Tops/1990sCasualTop
+    m_Address: Tops/1990sCasualTop.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b144fa62cd469374597b0b1e9a781378
-    m_Address: Tops/2010sFormalTop
+    m_Address: Tops/2010sFormalTop.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b1e0a92d8e02984478433d78b73f6ac8
-    m_Address: Tops/2010sCasualTopM
+    m_Address: Tops/2010sCasualTopM.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c24bd635cd0ad4b4fbe2c001e58adca5
-    m_Address: Tops/2010sCasualTopF
+    m_Address: Tops/2010sCasualTopF.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cfb33597298dbf344a42cc3b20fb9f7c
-    m_Address: Tops/2000sFormalTop
+    m_Address: Tops/2000sFormalTop.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
