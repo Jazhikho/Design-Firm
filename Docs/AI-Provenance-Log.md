@@ -15,6 +15,17 @@ Disclosure and audit trail for AI-assisted work. Update when committing signific
 
 ---
 
+**Date:** 2026-04-16  
+**Tool or model used:** Claude Code (claude-sonnet-4-6, Claude Code CLI)  
+**Task purpose:** Introduce a cross-scene `AudioManager` singleton and wire `Universal_Button_SFX_2.wav` to the Play and Quit button click handlers in `MainMenuController`; SFX must fire before any other handler logic.  
+**Input materials used:** `Assets/Scripts/UI/MainMenuController.cs`; `Assets/Audio/SFX/Universal_Button_SFX_2.wav`; existing Addressables and controller patterns in `WardrobeController.cs`, `ResultsController.cs`, `StartupServices.cs`; user requirements and approval via plan-mode review.  
+**Summary of AI contribution:** Created `Assets/Scripts/Core/AudioManager.cs` — `[RequireComponent(typeof(AudioSource))]` singleton with `DontDestroyOnLoad`, serialized `_buttonSfx` AudioClip, `PlayButtonSfx()` via `PlayOneShot`, and `ButtonSfxLength` property; updated `MainMenuController.cs` to call `AudioManager.Instance.PlayButtonSfx()` as the first line of both `OnPlayClicked` and `OnQuitClicked`; replaced the immediate `Application.Quit()` call with a coroutine (`QuitAfterSfx`) that waits `ButtonSfxLength` seconds before quitting so the SFX is audible; added `using System.Collections` and `using Assets.Scripts.Core` to the using block; advised against making the SFX an Addressable (entry-scene async race condition, single tiny asset); documented cross-scene music extension pattern for future use.  
+**What the human accepted / rejected / changed:** Accepted plan as written after plan-mode review; no changes requested.  
+**Validation method used:** File review of both scripts; manual Unity Editor play-mode test required (see plan verification steps).  
+**Final approver:** Jeff Fattic  
+
+---
+
 **Date:** 2026-04-15  
 **Tool or model used:** Cursor agent (AI-assisted editing)  
 **Task purpose:** Merge GitHub PR #41 into `main` with a documented merge commit, then apply code-only follow-ups on `WardrobeController` (no layout polish); bump internal `VERSION.md` label; push `origin/main`.  
