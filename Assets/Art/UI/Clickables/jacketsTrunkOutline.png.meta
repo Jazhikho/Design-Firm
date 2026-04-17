@@ -5,9 +5,6 @@ TextureImporter:
   - first:
       213: -2137359043543207919
     second: jacketsTrunkOutline_0
-  - first:
-      213: -8899567829868537960
-    second: jacketsTrunkOutline_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -119,10 +116,10 @@ TextureImporter:
       name: jacketsTrunkOutline_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 483
-        width: 43
-        height: 43
+        x: 12
+        y: 2
+        width: 1085
+        height: 860
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,28 +130,6 @@ TextureImporter:
       bones: []
       spriteID: 110732c26439652e0800000000000000
       internalID: -2137359043543207919
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: jacketsTrunkOutline_1
-      rect:
-        serializedVersion: 2
-        x: 12
-        y: 1
-        width: 1089
-        height: 861
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 897113ee5326e7480800000000000000
-      internalID: -8899567829868537960
       vertices: []
       indices: 
       edges: []
@@ -174,7 +149,6 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       jacketsTrunkOutline_0: -2137359043543207919
-      jacketsTrunkOutline_1: -8899567829868537960
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
