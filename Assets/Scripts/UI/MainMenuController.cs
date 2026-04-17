@@ -67,7 +67,7 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void OnPlayClicked(ClickEvent e)
         {
-            AudioManager.Instance.PlayButtonSfx();
+            TryPlayButtonSfx();
             SceneManager.LoadScene(GameConstants.TaskScenarioScene);
         }
 
@@ -76,13 +76,39 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void OnQuitClicked(ClickEvent e)
         {
-            AudioManager.Instance.PlayButtonSfx();
+            TryPlayButtonSfx();
             StartCoroutine(QuitAfterSfx());
         }
 
+        /// <summary>
+        /// Plays the main menu button click sound when an AudioManager is present in the scene.
+        /// </summary>
+        private void TryPlayButtonSfx()
+        {
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayButtonSfx();
+            }
+            else
+            {
+                Debug.LogWarning(
+                    "MainMenuController: AudioManager.Instance is null; button SFX was skipped.");
+            }
+        }
+
+        /// <summary>
+        /// Waits for the configured button SFX length, then exits play mode or the built player.
+        /// </summary>
+        /// <returns>Coroutine iterator steps for Unity.</returns>
         private IEnumerator QuitAfterSfx()
         {
-            yield return new WaitForSeconds(AudioManager.Instance.ButtonSfxLength);
+            float waitSeconds = 0f;
+            if (AudioManager.Instance != null)
+            {
+                waitSeconds = AudioManager.Instance.ButtonSfxLength;
+            }
+
+            yield return new WaitForSeconds(waitSeconds);
             Application.Quit();
 
 #if UNITY_EDITOR

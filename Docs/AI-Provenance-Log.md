@@ -15,6 +15,17 @@ Disclosure and audit trail for AI-assisted work. Update when committing signific
 
 ---
 
+**Date:** 2026-04-17  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** Merge GitHub PR #44 into `main` after PRs #42 and #43 (GitHub reported an add/add conflict on `ProfileDataSourceSettings.asset`); then apply requested post-merge fixes: delete `Assets/_Recovery` Unity artifact, correct wardrobe timer calling `NextSceneScript` every frame after expiry, move default outfit logic to inventory-safe paths, and harden `MainMenuController` SFX calls against a missing `AudioManager`.  
+**Input materials used:** `origin/feat-first-audio`, `origin/main` after PR #42 and #43 merges; `ProfileDataSourceSettings.asset`, `WardrobeController.cs`, `MainMenuController.cs`, `AudioManager.cs.meta`, `VERSION.md`, this log.  
+**Summary of AI contribution:** Completed local merge of `feat-first-audio` into `main` keeping the full CCD-backed `ProfileDataSourceSettings` from PR #42; removed `_Recovery` scene assets; introduced `_wardrobeTimeExpiredHandled` so the wardrobe timer triggers a single transition; replaced unsafe `AllWardrobeItems[0]` / unguarded slot indexing with `TryApplyDefaultOutfitFromInventory` invoked from `RefreshUI`; added `TryPlayButtonSfx` plus null-safe wait duration in `QuitAfterSfx`; normalized `AudioManager.cs.meta` newline; bumped internal `VERSION.md` label to 0.0.5.0; added this entry.  
+**What the human accepted / rejected / changed:** Human directed merging all three PRs, resolving PR #44 via local merge when GitHub merge failed, and applying follow-up patches as described.  
+**Validation method used:** `read_lints` on edited C# scripts; `git status` / conflict marker verification on `ProfileDataSourceSettings.asset`.  
+**Final approver:** Chris (requesting user)  
+
+---
+
 **Date:** 2026-04-16  
 **Tool or model used:** Claude Code (claude-sonnet-4-6, Claude Code CLI)  
 **Task purpose:** Introduce a cross-scene `AudioManager` singleton and wire `Universal_Button_SFX_2.wav` to the Play and Quit button click handlers in `MainMenuController`; SFX must fire before any other handler logic.  

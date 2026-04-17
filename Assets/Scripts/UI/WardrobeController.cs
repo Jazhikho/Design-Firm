@@ -30,7 +30,8 @@ namespace Assets.Scripts.UI
         private Image _shoesImage;
 
         private string _nextScene;
-        private bool _isUiBuilt;
+
+        private bool _wardrobeTimeExpiredHandled;
 
         /// <summary>
         /// When true, submit returns to main menu instead of result scene.
@@ -53,15 +54,7 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void OnEnable()
         {
-            if (WardrobeState.Instance.AllWardrobeItems[0] == null)
-            {
-                Debug.LogError("WardrobeController: There are no items.");
-            }
-
-            WardrobeState.Instance.CurrentItemTop = WardrobeState.Instance.AvailableTops[0];
-            WardrobeState.Instance.CurrentItemJacket = WardrobeState.Instance.AvailableJackets[0];
-            WardrobeState.Instance.CurrentItemBottom = WardrobeState.Instance.AvailableBottoms[0];
-            WardrobeState.Instance.CurrentItemShoe = WardrobeState.Instance.AvailableShoes[0];
+            _wardrobeTimeExpiredHandled = false;
 
             _nextScene = _sandboxMode ? GameConstants.MainMenuScene : GameConstants.TaskResultScene;
 
@@ -131,8 +124,11 @@ namespace Assets.Scripts.UI
                 {
                     _wardrobeTimer = 0f;
 
-                    NextSceneScript(null);
-
+                    if (!_wardrobeTimeExpiredHandled)
+                    {
+                        _wardrobeTimeExpiredHandled = true;
+                        NextSceneScript(null);
+                    }
                 }
             }
             if (_timerLabel != null)
@@ -208,6 +204,8 @@ namespace Assets.Scripts.UI
 
         private void RefreshUI()
         {
+            TryApplyDefaultOutfitFromInventory();
+
             string avatarKey = ScenarioState.Instance.ActiveScenario?.avatarImage;
             if (string.IsNullOrEmpty(avatarKey))
             {
@@ -221,6 +219,55 @@ namespace Assets.Scripts.UI
             SetUpClothing("jacketsGrid", WardrobeState.Instance.AvailableJackets);
 
             SyncInitialSelectionVisuals();
+        }
+
+        /// <summary>
+        /// Sets each clothing slot to the first available item when inventory is present.
+        /// Logs an error and returns early if any required slot list is empty.
+        /// </summary>
+        private void TryApplyDefaultOutfitFromInventory()
+        {
+            List<WardrobeItem> allItems = WardrobeState.Instance.AllWardrobeItems;
+            if (allItems == null || allItems.Count == 0)
+            {
+                Debug.LogError(
+                    "WardrobeController: Wardrobe inventory is empty; cannot apply default outfit.");
+                return;
+            }
+
+            List<WardrobeItem> tops = WardrobeState.Instance.AvailableTops;
+            List<WardrobeItem> jackets = WardrobeState.Instance.AvailableJackets;
+            List<WardrobeItem> bottoms = WardrobeState.Instance.AvailableBottoms;
+            List<WardrobeItem> shoes = WardrobeState.Instance.AvailableShoes;
+
+            if (tops == null || tops.Count == 0)
+            {
+                Debug.LogError("WardrobeController: No tops available; cannot apply default outfit.");
+                return;
+            }
+
+            if (jackets == null || jackets.Count == 0)
+            {
+                Debug.LogError("WardrobeController: No jackets available; cannot apply default outfit.");
+                return;
+            }
+
+            if (bottoms == null || bottoms.Count == 0)
+            {
+                Debug.LogError("WardrobeController: No bottoms available; cannot apply default outfit.");
+                return;
+            }
+
+            if (shoes == null || shoes.Count == 0)
+            {
+                Debug.LogError("WardrobeController: No shoes available; cannot apply default outfit.");
+                return;
+            }
+
+            WardrobeState.Instance.CurrentItemTop = tops[0];
+            WardrobeState.Instance.CurrentItemJacket = jackets[0];
+            WardrobeState.Instance.CurrentItemBottom = bottoms[0];
+            WardrobeState.Instance.CurrentItemShoe = shoes[0];
         }
 
         private void OnWardrobeItemsLoaded()

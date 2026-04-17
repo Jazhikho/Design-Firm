@@ -2,4 +2,4 @@
 
 **Player-facing (Unity `ProjectSettings` bundle version, `Application.version`):** 0.2 — intentionally separate from the internal label below.
 
-**Internal / repo build label:** 0.0.4.1 — Merge PR #41 (`rushBranchNew`): wardrobe hover item description and sprite preview, scenario header label; post-merge controller hardening (null guards, `PointerEnterEvent`, scenario copy aligned with `_sandboxMode`). Player-facing bundle version unchanged at 0.2.
+**Internal / repo build label:** 0.0.5.0 — Merge PR #42 (midterm assets, CCD addressables, startup and scenario UI), PR #43 (wardrobe timer and default outfit), and PR #44 (main menu button SFX and `AudioManager`); merge PR #44 locally with `ProfileDataSourceSettings` conflict resolved in favor of CCD configuration from PR #42. Post-merge: remove accidental `Assets/_Recovery` scene, harden wardrobe timer transition and default-outfit application, and add main menu SFX null-safety. Player-facing bundle version unchanged at 0.2.
