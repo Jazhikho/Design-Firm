@@ -22,6 +22,14 @@ namespace Assets.Scripts.UI
         private UIDocument _uiDocument;
         private Button _nextSceneButton;
         private Button _backButton;
+        private Button _jacketsTrunk;
+        private Button _topsTrunk;
+        private Button _bottomsTrunk;
+        private Button _shoesRack;
+        private VisualElement _jacketsListContainer;
+        private VisualElement _topsListContainer;
+        private VisualElement _bottomsListContainer;
+        private VisualElement _shoesListContainer;
         private Label _timerLabel;
         private Image _avatarImage;
         private Image _jacketImage;
@@ -92,6 +100,41 @@ namespace Assets.Scripts.UI
                 _timerLabel.visible = false;
             }
 
+
+            // Gets clothing trunks/rack buttons and item lists
+            _jacketsListContainer = root.Q<VisualElement>("jacketsListContainer");
+            _jacketsTrunk = root.Q<Button>("btnJacketsRack");
+
+            _topsListContainer = root.Q<VisualElement>("topsListContainer");
+            _topsTrunk = root.Q<Button>("btnTopsRack");
+
+            _bottomsListContainer = root.Q<VisualElement>("bottomsListContainer");
+            _bottomsTrunk = root.Q<Button>("btnBottomsRack");
+
+            _shoesListContainer = root.Q<VisualElement>("shoesListContainer");
+            _shoesRack = root.Q<Button>("btnShoesRack");
+
+            
+            if (_jacketsTrunk != null)
+            {
+                _jacketsTrunk.RegisterCallback<ClickEvent>(OpenJackets);
+            }
+            if (_topsTrunk != null)
+            {
+                _topsTrunk.RegisterCallback<ClickEvent>(OpenTops);
+            }
+            if (_bottomsTrunk != null)
+            {
+                _bottomsTrunk.RegisterCallback<ClickEvent>(OpenBottoms);
+            }
+            if (_shoesRack != null)
+            {
+                _shoesRack.RegisterCallback<ClickEvent>(OpenShoes);
+            }
+            
+
+
+
             _avatarImage = root.Q<Image>("activeAvatar");
             _jacketImage = root.Q<Image>("activeJacket");
             _topImage = root.Q<Image>("activeTop");
@@ -150,6 +193,22 @@ namespace Assets.Scripts.UI
             if (_nextSceneButton != null)
             {
                 _nextSceneButton.UnregisterCallback<ClickEvent>(NextSceneScript);
+            }
+            if (_jacketsTrunk != null)
+            {
+                _jacketsTrunk.UnregisterCallback<ClickEvent>(OpenJackets);
+            }
+            if (_topsTrunk != null)
+            {
+                _topsTrunk.UnregisterCallback<ClickEvent>(OpenTops);
+            }
+            if (_bottomsTrunk != null)
+            {
+                _bottomsTrunk.UnregisterCallback<ClickEvent>(OpenBottoms);
+            }
+            if (_shoesRack != null)
+            {
+                _shoesRack.UnregisterCallback<ClickEvent>(OpenShoes);
             }
 
             foreach ((Button button, TileButtonData data) in _tileCallbacks)
@@ -572,7 +631,7 @@ namespace Assets.Scripts.UI
         }
 
         /// <summary>
-        /// When the pointer enters a clothing tile, shows that item's description and sprite preview in the bottom panel.
+        /// When the pointer enters a clothing tile, shows that item's description in the bottom panel.
         /// </summary>
         /// <param name="evt">Pointer enter event from the tile.</param>
         /// <param name="data">Tile item and grid name.</param>
@@ -587,31 +646,100 @@ namespace Assets.Scripts.UI
             VisualElement root = _uiDocument.rootVisualElement;
 
             Label displayDesc = root.Q<Label>("hoverItemDesc");
-            Label displayImage = root.Q<Label>("hoverItemImage");
-            if (displayDesc == null || displayImage == null)
+            
+            if (displayDesc == null)
             {
-                Debug.LogError("WardrobeController: hoverItemDesc or hoverItemImage not found in UXML.");
+                Debug.LogError("WardrobeController: hoverItemDesc not found in UXML.");
                 return;
             }
 
             displayDesc.text = data.Item.description ?? string.Empty;
+        }
 
-            Button evtButton = evt.currentTarget as Button;
-            if (evtButton == null)
+        /// <summary>
+        /// Applies visibility to each clothing list container when that element exists in UXML.
+        /// </summary>
+        /// <param name="jackets">Visibility for the jackets list container.</param>
+        /// <param name="tops">Visibility for the tops list container.</param>
+        /// <param name="bottoms">Visibility for the bottoms list container.</param>
+        /// <param name="shoes">Visibility for the shoes list container.</param>
+        private void SetListContainerVisibility(
+            Visibility jackets,
+            Visibility tops,
+            Visibility bottoms,
+            Visibility shoes)
+        {
+            if (_jacketsListContainer != null)
             {
-                Debug.LogError("WardrobeController: WardrobeTilePointerEntered expected currentTarget to be a Button.");
-                return;
+                _jacketsListContainer.style.visibility = jackets;
             }
 
-            VisualElement evtImage = evtButton.Q<VisualElement>(data.Item.id + "_sprite");
-            if (evtImage != null)
+            if (_topsListContainer != null)
             {
-                displayImage.style.backgroundImage = evtImage.style.backgroundImage;
+                _topsListContainer.style.visibility = tops;
             }
-            else
+
+            if (_bottomsListContainer != null)
             {
-                displayImage.style.backgroundImage = null;
+                _bottomsListContainer.style.visibility = bottoms;
             }
+
+            if (_shoesListContainer != null)
+            {
+                _shoesListContainer.style.visibility = shoes;
+            }
+        }
+
+        /// <summary>
+        /// Shows the jackets item list and hides the other slot lists.
+        /// </summary>
+        /// <param name="clickEvent">Click event from the jackets rack button.</param>
+        private void OpenJackets(ClickEvent clickEvent)
+        {
+            SetListContainerVisibility(
+                Visibility.Visible,
+                Visibility.Hidden,
+                Visibility.Hidden,
+                Visibility.Hidden);
+        }
+
+        /// <summary>
+        /// Shows the tops item list and hides the other slot lists.
+        /// </summary>
+        /// <param name="clickEvent">Click event from the tops rack button.</param>
+        private void OpenTops(ClickEvent clickEvent)
+        {
+            SetListContainerVisibility(
+                Visibility.Hidden,
+                Visibility.Visible,
+                Visibility.Hidden,
+                Visibility.Hidden);
+        }
+
+        /// <summary>
+        /// Shows the bottoms item list and hides the other slot lists.
+        /// </summary>
+        /// <param name="clickEvent">Click event from the bottoms rack button.</param>
+        private void OpenBottoms(ClickEvent clickEvent)
+        {
+            SetListContainerVisibility(
+                Visibility.Hidden,
+                Visibility.Hidden,
+                Visibility.Visible,
+                Visibility.Hidden);
+        }
+
+        /// <summary>
+        /// Shows the shoes item list and hides the other slot lists.
+        /// </summary>
+        /// <param name="clickEvent">Click event from the shoes rack button.</param>
+        private void OpenShoes(ClickEvent clickEvent)
+        {
+            SetListContainerVisibility(
+                Visibility.Hidden,
+                Visibility.Hidden,
+                Visibility.Hidden,
+                Visibility.Visible);
         }
     }
 }

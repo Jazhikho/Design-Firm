@@ -16,37 +16,37 @@ MonoBehaviour:
   m_GUID: 73f7e62bef9f2bf4eaeba91ab72bc579
   m_SerializeEntries:
   - m_GUID: 0bfa3dd050a782d42bb75c52de42e051
-    m_Address: Bottoms/1980sCasualBottom
+    m_Address: Bottoms/1980sCasualBottom.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1238353bfafd11f4b9d20ae4e83959a5
-    m_Address: Bottoms/2000sBusinessBottom
+    m_Address: Bottoms/2000sBusinessBottom.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4128de20fc13e7e448f158ad62156098
-    m_Address: Bottoms/2010sCasualBottomM
+    m_Address: Bottoms/2010sCasualBottomM.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 42cca1817ddc83f4f9422d4f43af06f5
-    m_Address: Bottoms/2010sCasualBottomF
+    m_Address: Bottoms/2010sCasualBottomF.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7f370a1c5182eec40b365ab16d3b4c84
-    m_Address: Bottoms/2000sCasualBottom
+    m_Address: Bottoms/2000sCasualBottom.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: afef279981a17fc4f87e37b1727a2010
-    m_Address: Bottoms/1990sCasualBottom
+    m_Address: Bottoms/1990sCasualBottom.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: bf291aacdd224904baa79508f67a46e5
-    m_Address: Bottoms/1980sBusinessBottom
+    m_Address: Bottoms/1980sBusinessBottom.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

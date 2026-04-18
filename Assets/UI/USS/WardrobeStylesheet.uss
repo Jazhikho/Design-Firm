@@ -151,6 +151,7 @@
     border-left-width: 0;
 }
 
+
 .clothingContainers {
     flex-grow: 1;
     flex-basis: 0;
@@ -159,4 +160,36 @@
 
 .scenario-description {
     background-color: rgb(255, 235, 205);
+}
+
+.btnJacketsRack {
+    background-image: url("project:/Assets/Art/UI/Clickables/jacketsTrunkPlain.png")
+}
+
+.btnJacketsRack:hover {
+    background-image: url("project:/Assets/Art/UI/Clickables/jacketsTrunkOutline.png");
+}
+
+.btnTopsRack {
+    background-image: url("project:/Assets/Art/UI/Clickables/shirtsTrunkPlain.png")
+}
+
+.btnTopsRack:hover {
+    background-image: url("project:/Assets/Art/UI/Clickables/shirtsTrunkOutline.png");
+}
+
+.btnBottomsRack {
+    background-image: url("project:/Assets/Art/UI/Clickables/pantsTrunkPlain.png")
+}
+
+.btnBottomsRack:hover {
+    background-image: url("project:/Assets/Art/UI/Clickables/pantsTrunkOutline.png");
+}
+
+.shoeRack {
+    background-image: url("project:/Assets/Art/UI/Clickables/shoeRackPlain.png")
+}
+
+.shoeRack:hover {
+    background-image: url("project:/Assets/Art/UI/Clickables/shoeRackOutline.png");
 }
