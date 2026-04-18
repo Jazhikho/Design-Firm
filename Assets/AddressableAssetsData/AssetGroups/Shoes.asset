@@ -16,42 +16,42 @@ MonoBehaviour:
   m_GUID: 25c287493a920824aa4eab94088aea84
   m_SerializeEntries:
   - m_GUID: 50eceee05f4e35d4b818208b762629f1
-    m_Address: Shoes/2000sCasualShoes
+    m_Address: Shoes/2000sCasualShoes.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 5cb1c53002bca9646aa64d047fc69655
-    m_Address: Shoes/2010sCasualShoesF
+    m_Address: Shoes/2010sCasualShoesF.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 85fb8bdad18ada94e8c3471dd7860b3b
-    m_Address: Shoes/2000sBusinessShoes
+    m_Address: Shoes/2000sBusinessShoes.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a280cc2f95fd7164ca3d85c173aa70be
-    m_Address: Shoes/1980sCasualShoes
+    m_Address: Shoes/1980sCasualShoes.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b4514c8084eebb540b7dd2d65a76602a
-    m_Address: Shoes/2000sFormalShoes
+    m_Address: Shoes/2000sFormalShoes.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c163cb48eecc62741a5577e928b720ca
-    m_Address: Shoes/2010sCasualShoesM
+    m_Address: Shoes/2010sCasualShoesM.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: c6bd96f5de54c1246a4ee10306bf7c33
-    m_Address: Shoes/1990sCasualShoes
+    m_Address: Shoes/1990sCasualShoes.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d534442c172549c4598e1789a108bab5
-    m_Address: Shoes/1980sBusinessShoes
+    m_Address: Shoes/1980sBusinessShoes.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
