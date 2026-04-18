@@ -15,6 +15,17 @@ Disclosure and audit trail for AI-assisted work. Update when committing signific
 
 ---
 
+**Date:** 2026-04-18  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** After merging PR #46 and PR #47 on `main`, apply a small follow-up on `WardrobeController`: guard list-container visibility when UXML elements are missing, remove dead hover pointer code, and correct the hover handler doc to match the current UI (no separate hover image).  
+**Input materials used:** `Assets/Scripts/UI/WardrobeController.cs`, `VERSION.md`, this log.  
+**Summary of AI contribution:** Introduced `SetListContainerVisibility` with per-container null checks; routed `OpenJackets` / `OpenTops` / `OpenBottoms` / `OpenShoes` through it with XML doc blocks; removed unused `evtButton` validation from `WardrobeTilePointerEntered`; updated hover summary text; bumped internal `VERSION.md` label to 0.0.5.1; added this entry.  
+**What the human accepted / rejected / changed:** Human merged PR #46 then PR #47 in order and asked for post-merge patches such as null checks, while keeping deliberate “lists hidden until rack click” behavior unchanged.  
+**Validation method used:** `read_lints` on `WardrobeController.cs`.  
+**Final approver:** (pending routine review)  
+
+---
+
 **Date:** 2026-04-17  
 **Tool or model used:** Cursor agent (AI-assisted editing)  
 **Task purpose:** Merge GitHub PR #44 into `main` after PRs #42 and #43 (GitHub reported an add/add conflict on `ProfileDataSourceSettings.asset`); then apply requested post-merge fixes: delete `Assets/_Recovery` Unity artifact, correct wardrobe timer calling `NextSceneScript` every frame after expiry, move default outfit logic to inventory-safe paths, and harden `MainMenuController` SFX calls against a missing `AudioManager`.  

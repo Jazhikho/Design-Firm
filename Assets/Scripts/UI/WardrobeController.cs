@@ -631,7 +631,7 @@ namespace Assets.Scripts.UI
         }
 
         /// <summary>
-        /// When the pointer enters a clothing tile, shows that item's description and sprite preview in the bottom panel.
+        /// When the pointer enters a clothing tile, shows that item's description in the bottom panel.
         /// </summary>
         /// <param name="evt">Pointer enter event from the tile.</param>
         /// <param name="data">Tile item and grid name.</param>
@@ -654,46 +654,92 @@ namespace Assets.Scripts.UI
             }
 
             displayDesc.text = data.Item.description ?? string.Empty;
+        }
 
-            Button evtButton = evt.currentTarget as Button;
-            if (evtButton == null)
+        /// <summary>
+        /// Applies visibility to each clothing list container when that element exists in UXML.
+        /// </summary>
+        /// <param name="jackets">Visibility for the jackets list container.</param>
+        /// <param name="tops">Visibility for the tops list container.</param>
+        /// <param name="bottoms">Visibility for the bottoms list container.</param>
+        /// <param name="shoes">Visibility for the shoes list container.</param>
+        private void SetListContainerVisibility(
+            Visibility jackets,
+            Visibility tops,
+            Visibility bottoms,
+            Visibility shoes)
+        {
+            if (_jacketsListContainer != null)
             {
-                Debug.LogError("WardrobeController: WardrobeTilePointerEntered expected currentTarget to be a Button.");
-                return;
+                _jacketsListContainer.style.visibility = jackets;
             }
 
+            if (_topsListContainer != null)
+            {
+                _topsListContainer.style.visibility = tops;
+            }
 
+            if (_bottomsListContainer != null)
+            {
+                _bottomsListContainer.style.visibility = bottoms;
+            }
+
+            if (_shoesListContainer != null)
+            {
+                _shoesListContainer.style.visibility = shoes;
+            }
         }
 
-
-        // Changes visibility of item lists based on what is clicked
+        /// <summary>
+        /// Shows the jackets item list and hides the other slot lists.
+        /// </summary>
+        /// <param name="clickEvent">Click event from the jackets rack button.</param>
         private void OpenJackets(ClickEvent clickEvent)
         {
-            _jacketsListContainer.style.visibility = Visibility.Visible;
-            _topsListContainer.style.visibility = Visibility.Hidden;
-            _bottomsListContainer.style.visibility = Visibility.Hidden;
-            _shoesListContainer.style.visibility = Visibility.Hidden;
+            SetListContainerVisibility(
+                Visibility.Visible,
+                Visibility.Hidden,
+                Visibility.Hidden,
+                Visibility.Hidden);
         }
+
+        /// <summary>
+        /// Shows the tops item list and hides the other slot lists.
+        /// </summary>
+        /// <param name="clickEvent">Click event from the tops rack button.</param>
         private void OpenTops(ClickEvent clickEvent)
         {
-            _jacketsListContainer.style.visibility = Visibility.Hidden;
-            _topsListContainer.style.visibility = Visibility.Visible;
-            _bottomsListContainer.style.visibility = Visibility.Hidden;
-            _shoesListContainer.style.visibility = Visibility.Hidden;
+            SetListContainerVisibility(
+                Visibility.Hidden,
+                Visibility.Visible,
+                Visibility.Hidden,
+                Visibility.Hidden);
         }
+
+        /// <summary>
+        /// Shows the bottoms item list and hides the other slot lists.
+        /// </summary>
+        /// <param name="clickEvent">Click event from the bottoms rack button.</param>
         private void OpenBottoms(ClickEvent clickEvent)
         {
-            _jacketsListContainer.style.visibility = Visibility.Hidden;
-            _topsListContainer.style.visibility = Visibility.Hidden;
-            _bottomsListContainer.style.visibility = Visibility.Visible;
-            _shoesListContainer.style.visibility = Visibility.Hidden;
+            SetListContainerVisibility(
+                Visibility.Hidden,
+                Visibility.Hidden,
+                Visibility.Visible,
+                Visibility.Hidden);
         }
+
+        /// <summary>
+        /// Shows the shoes item list and hides the other slot lists.
+        /// </summary>
+        /// <param name="clickEvent">Click event from the shoes rack button.</param>
         private void OpenShoes(ClickEvent clickEvent)
         {
-            _jacketsListContainer.style.visibility = Visibility.Hidden;
-            _topsListContainer.style.visibility = Visibility.Hidden;
-            _bottomsListContainer.style.visibility = Visibility.Hidden;
-            _shoesListContainer.style.visibility = Visibility.Visible;
+            SetListContainerVisibility(
+                Visibility.Hidden,
+                Visibility.Hidden,
+                Visibility.Hidden,
+                Visibility.Visible);
         }
     }
 }
