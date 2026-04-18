@@ -340,12 +340,12 @@ namespace Assets.Scripts.UI
             float bottomScore = ScoreItem(WardrobeState.Instance.CurrentItemBottom, idealOutfit?.bottoms, scoredItems, "lblFeedbackBottoms", fb.bottoms);
             Label lblBottomsScore = _root.Q<Label>("lblBottomsScore");
             if (lblBottomsScore != null)
-                lblBottomsScore.text = topScore.ToString("F1");
+                lblBottomsScore.text = bottomScore.ToString("F1");
 
             float shoesScore = ScoreItem(WardrobeState.Instance.CurrentItemShoe, idealOutfit?.shoes, scoredItems, "lblFeedbackShoes", fb.shoes);
             Label lblShoesScore = _root.Q<Label>("lblShoesScore");
             if (lblShoesScore != null)
-                lblShoesScore.text = topScore.ToString("F1");
+                lblShoesScore.text = shoesScore.ToString("F1");
 
             Label totalScoreDisplay = _root.Q<Label>("lblTotalScore");
             if (totalScoreDisplay != null)
