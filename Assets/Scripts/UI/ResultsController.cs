@@ -19,47 +19,31 @@ namespace Assets.Scripts.UI
         private Button _retryScenarioButton;
 
         private VisualElement _root;
-        private Scenario _currentScenario;
-        private float _totalScore;
         private readonly List<AsyncOperationHandle<Sprite>> _spriteHandles = new();
 
         /// <summary>
-        /// Caches result buttons, runs TEMP scenario fill, then binds wardrobe and scenario text to the UI.
+        /// Initialize the results UI when this component becomes active.
+        ///
+        /// This method caches references to UI controls and registers click handlers for the retry, main menu 
+        /// and new scenario buttons. It then loads avatar and clothing sprites, populates the equipped item 
+        /// labels, and runs the scenario result pass (scoring + ideal-item hints).
         /// </summary>
+        /// <remarks>
+        /// Called by Unity when the GameObject is enabled. Assumes a <see cref="UIDocument"/> component is 
+        /// present on the same GameObject and that global state objects (ScenarioState, WardrobeState) are available.
+        /// </remarks>
         private void OnEnable()
         {
             _root = GetComponent<UIDocument>().rootVisualElement;
 
             _retryButton = _root.Q<Button>("btnRetry");
-            if (_retryButton == null)
-            {
-                Debug.LogError("ResultsController: btnRetry not found in UXML.");
-                return;
-            }
-            _retryButton.RegisterCallback<ClickEvent>(GoToWardrobe);
+            _retryButton?.RegisterCallback<ClickEvent>(GoToWardrobe);
 
             _mainMenuButton = _root.Q<Button>("btnMainMenu");
-            if (_mainMenuButton == null)
-            {
-                Debug.LogError("ResultsController: btnMainMenu not found in UXML.");
-                return;
-            }
-            _mainMenuButton.RegisterCallback<ClickEvent>(GoToMainMenu);
+            _mainMenuButton?.RegisterCallback<ClickEvent>(GoToMainMenu);
 
             _retryScenarioButton = _root.Q<Button>("btnNewScenario");
-            if (_retryScenarioButton == null)
-            {
-                Debug.LogError("ResultsController: btnNewScenario not found in UXML.");
-                return;
-            }
-            _retryScenarioButton.RegisterCallback<ClickEvent>(NewScenario);
-
-            _totalScore = 0f;
-            _currentScenario = ScenarioState.Instance.ActiveScenario;
-            if (_currentScenario == null)
-            {
-                Debug.LogWarning("ResultsController: There is no current scenario.");
-            }
+            _retryScenarioButton?.RegisterCallback<ClickEvent>(NewScenario);
 
             LoadAvatarImages();
             ReadWardrobeItems();
@@ -67,24 +51,18 @@ namespace Assets.Scripts.UI
         }
 
         /// <summary>
-        /// Unbinds result screen button handlers.
+        /// Tear down UI bindings and release runtime resources when the component is disabled.
+        /// This unregisters click callbacks registered in <see cref="OnEnable"/> and
+        /// releases any Addressables sprite handles that were loaded so they do not leak
+        /// memory.
         /// </summary>
         private void OnDisable()
         {
-            if (_retryButton != null)
-            {
-                _retryButton.UnregisterCallback<ClickEvent>(GoToWardrobe);
-            }
+            _retryButton?.UnregisterCallback<ClickEvent>(GoToWardrobe);
 
-            if (_mainMenuButton != null)
-            {
-                _mainMenuButton.UnregisterCallback<ClickEvent>(GoToMainMenu);
-            }
+            _mainMenuButton?.UnregisterCallback<ClickEvent>(GoToMainMenu);
 
-            if (_retryScenarioButton != null)
-            {
-                _retryScenarioButton.UnregisterCallback<ClickEvent>(NewScenario);
-            }
+            _retryScenarioButton?.UnregisterCallback<ClickEvent>(NewScenario);
 
             foreach (AsyncOperationHandle<Sprite> handle in _spriteHandles)
             {
@@ -94,35 +72,40 @@ namespace Assets.Scripts.UI
         }
 
         /// <summary>
-        /// Loads the wardrobe scene for another outfit attempt.
+        /// Navigate to the wardrobe scene so the player can try a different outfit.
         /// </summary>
+        /// <param name="e">The UI click event that triggered navigation.</param>
         private void GoToWardrobe(ClickEvent e)
         {
             SceneManager.LoadScene(GameConstants.WardrobeScene);
         }
 
         /// <summary>
-        /// Returns to the main menu scene.
+        /// Navigate back to the main menu scene.
         /// </summary>
+        /// <param name="e">The UI click event that triggered navigation.</param>
         private void GoToMainMenu(ClickEvent e)
         {
             SceneManager.LoadScene(GameConstants.MainMenuScene);
         }
 
         /// <summary>
-        /// Loads another scenario prompt.
+        /// Load a new scenario prompt (task) so the user can attempt a different challenge.
         /// </summary>
+        /// <param name="e">The UI click event that triggered loading a new scenario.</param>
         private void NewScenario(ClickEvent e)
         {
             SceneManager.LoadScene(GameConstants.TaskScenarioScene);
         }
 
         /// <summary>
-        /// Loads avatar and clothing sprites from Addressables into the stacked result images.
+        /// Populate the stacked avatar and clothing image elements with sprites from Addressables.
+        /// This uses <see cref="SetSlotSprite"/> for each of the avatar and equipped clothing
+        /// slots. If a sprite key is missing the corresponding image will be cleared.
         /// </summary>
         private void LoadAvatarImages()
         {
-            SetSlotSprite("activeAvatar", _currentScenario?.avatarImage);
+            SetSlotSprite("activeAvatar", ScenarioState.Instance.ActiveScenario?.avatarImage);
             SetSlotSprite("activeJacket", WardrobeState.Instance.CurrentItemJacket?.sprite);
             SetSlotSprite("activeTop", WardrobeState.Instance.CurrentItemTop?.sprite);
             SetSlotSprite("activeBottoms", WardrobeState.Instance.CurrentItemBottom?.sprite);
@@ -130,9 +113,16 @@ namespace Assets.Scripts.UI
         }
 
         /// <summary>
-        /// Loads a sprite from Addressables by key and sets it on the named Image element.
-        /// Clears the sprite if the key is null or empty.
+        /// Load a Sprite asset from Addressables and assign it to a UI Image element.
         /// </summary>
+        /// <param name="elementName">The UXML name of the Image element to update.</param>
+        /// <param name="spriteKey">The Addressables key for the Sprite to load. If null or empty
+        /// the target Image will be cleared.</param>
+        /// <remarks>
+        /// Performs a resource-location pre-check before requesting the asset and uses
+        /// <see cref="LoadSprite"/> to perform the asynchronous load. Loaded handles are
+        /// tracked for later release in <see cref="OnDisable"/>.
+        /// </remarks>
         private void SetSlotSprite(string elementName, string spriteKey)
         {
             Image slotImage = _root.Q<Image>(elementName);
@@ -155,8 +145,15 @@ namespace Assets.Scripts.UI
         }
 
         /// <summary>
-        /// Loads a sprite from Addressables with a location pre-check, tracks the handle for cleanup.
+        /// Asynchronously load a Sprite from Addressables after verifying there is a resource location.
         /// </summary>
+        /// <param name="key">Addressables key for the Sprite asset.</param>
+        /// <param name="onSuccess">Callback invoked with the loaded Sprite when the operation succeeds.</param>
+        /// <remarks>
+        /// This method first queries resource locations for the given key to avoid unnecessary
+        /// load attempts. If successful it starts an asset load and adds the returned handle
+        /// to <see cref="_spriteHandles"/> so the handle can be released later.
+        /// </remarks>
         private void LoadSprite(string key, Action<Sprite> onSuccess)
         {
             AsyncOperationHandle<IList<IResourceLocation>> locHandle =
@@ -191,8 +188,12 @@ namespace Assets.Scripts.UI
         }
 
         /// <summary>
-        /// Sets label text for each equipped wardrobe slot.
+        /// Populate the UI labels that list the player's currently equipped wardrobe items.
         /// </summary>
+        /// <remarks>
+        /// Each label is updated via <see cref="ReadItem"/>. Missing UI elements or
+        /// missing equipped items are logged as errors.
+        /// </remarks>
         public void ReadWardrobeItems()
         {
             ReadItem("lblYourJacketName", "Jacket", WardrobeState.Instance.CurrentItemJacket);
@@ -202,11 +203,12 @@ namespace Assets.Scripts.UI
         }
 
         /// <summary>
-        /// Sets one outfit line label from a wardrobe item.
+        /// Update a single UI label with the provided wardrobe item information.
         /// </summary>
-        /// <param name="slotLabel">UXML name of the label.</param>
-        /// <param name="slotStr">Human-readable slot name for copy.</param>
-        /// <param name="itemSlot">Equipped item, if any.</param>
+        /// <param name="slotLabel">UXML name of the label element to update.</param>
+        /// <param name="slotStr">Human-readable slot name used in the displayed text (e.g. "Jacket").</param>
+        /// <param name="itemSlot">The equipped <see cref="WardrobeItem"/> for the slot. If null
+        /// the method logs an error and does not update the label.</param>
         public void ReadItem(string slotLabel, string slotStr, WardrobeItem itemSlot)
         {
             Label itemDisplay = _root.Q<Label>(slotLabel);
@@ -226,8 +228,12 @@ namespace Assets.Scripts.UI
         }
 
         /// <summary>
-        /// Runs scoring and ideal-hint UI pass for the current scenario.
+        /// Execute the scenario result pass: compute scores and populate ideal-item hints.
         /// </summary>
+        /// <remarks>
+        /// This is a convenience wrapper that invokes <see cref="Scoring"/> followed by
+        /// <see cref="IdealItemsHint"/> so both score labels and hint labels are updated.
+        /// </remarks>
         public void ReadScenario()
         {
             Scoring();
@@ -235,17 +241,21 @@ namespace Assets.Scripts.UI
         }
 
         /// <summary>
-        /// Fills ideal-item hint labels from the scenario.
+        /// Populate the ideal-item hint labels using the active scenario's <see cref="IdealOutfit"/>.
         /// </summary>
+        /// <remarks>
+        /// If there is no active scenario or the scenario does not define an ideal outfit,
+        /// a diagnostic error is logged and no UI is updated.
+        /// </remarks>
         public void IdealItemsHint()
         {
-            if (_currentScenario == null || _currentScenario.idealOutfit == null)
+            if (ScenarioState.Instance.ActiveScenario == null || ScenarioState.Instance.ActiveScenario.idealOutfit == null)
             {
                 Debug.LogError("ResultsController: IdealItemsHint missing scenario or idealOutfit.");
                 return;
             }
 
-            IdealOutfit outfit = _currentScenario.idealOutfit;
+            IdealOutfit outfit = ScenarioState.Instance.ActiveScenario.idealOutfit;
             IdealItemHint("lblHintIdealJacket", outfit.jacket);
             IdealItemHint("lblHintIdealTop", outfit.top);
             IdealItemHint("lblHintIdealBottoms", outfit.bottoms);
@@ -253,10 +263,12 @@ namespace Assets.Scripts.UI
         }
 
         /// <summary>
-        /// Sets hint text for one ideal slot when data exists.
+        /// Set the hint text for a single ideal-item label.
         /// </summary>
-        /// <param name="label">UXML label name.</param>
-        /// <param name="ideal">Ideal row, may be null.</param>
+        /// <param name="label">UXML name of the label element to update.</param>
+        /// <param name="ideal">The <see cref="IdealOutfitItem"/> that supplies the hint text.
+        /// If null or if <see cref="IdealOutfitItem.commentary"/> is empty the label is set to
+        /// a "no hints" fallback string.</param>
         public void IdealItemHint(string label, IdealOutfitItem ideal)
         {
             Label hintLabel = _root.Q<Label>(label);
@@ -268,7 +280,7 @@ namespace Assets.Scripts.UI
 
             if (ideal == null || string.IsNullOrEmpty(ideal.commentary))
             {
-                hintLabel.text = "Hint: ";
+                hintLabel.text = "Hint: no hints";
                 return;
             }
 
@@ -276,16 +288,14 @@ namespace Assets.Scripts.UI
         }
 
         /// <summary>
-        /// Sets feedback label text for a slot.
+        /// Update a feedback label with the given commentary text.
         /// </summary>
+        /// <param name="label">UXML name of the label element to update.</param>
+        /// <param name="commentary">The text to display. If null the method treats it as an empty string.</param>
         public void FeedBackItem(string label, string commentary)
         {
             Label feedbackLabel = _root.Q<Label>(label);
-            if (feedbackLabel == null)
-            {
-                Debug.LogError("ResultsController: Could not find label for FeedBackItem.");
-                return;
-            }
+            if (feedbackLabel == null) return;
 
             if (commentary == null)
             {
@@ -296,82 +306,101 @@ namespace Assets.Scripts.UI
         }
 
         /// <summary>
-        /// Scores each slot against scenario rows and shows total.
+        /// Compute and display per-slot scores and the overall total score for the active scenario.
         /// </summary>
+        /// <remarks>
+        /// This method reads the currently equipped wardrobe items and the active scenario's
+        /// ideal outfit, uses <see cref="ScoreItem(WardrobeItem, IdealOutfitItem, List{ScoredItem}, string, string)"/>
+        /// to compute each slot's score, updates the UI labels for each slot, and computes
+        /// the displayed total.
+        /// </remarks>
         public void Scoring()
         {
-            if (_currentScenario == null)
+            Scenario activeScenario = ScenarioState.Instance.ActiveScenario;
+            if (activeScenario == null)
             {
-                Debug.LogError("ResultsController: Scoring requires scenario.");
+                Debug.LogWarning("ResultsController: Scoring requires scenario.");
                 return;
             }
 
-            IncorrectSlotFeedback fb = _currentScenario.incorrectSlotFeedback;
-            ScoreItem("lblJacketScore", WardrobeState.Instance.CurrentItemJacket, "lblFeedbackJacket", fb.jacket);
-            ScoreItem("lblTopScore", WardrobeState.Instance.CurrentItemTop, "lblFeedbackTop", fb.top);
-            ScoreItem("lblBottomsScore", WardrobeState.Instance.CurrentItemBottom, "lblFeedbackBottoms", fb.bottoms);
-            ScoreItem("lblShoesScore", WardrobeState.Instance.CurrentItemShoe, "lblFeedbackShoes", fb.shoes);
+            IdealOutfit idealOutfit = activeScenario.idealOutfit;
+            List<ScoredItem> scoredItems = activeScenario.scoredItems;
+            IncorrectSlotFeedback fb = activeScenario.incorrectSlotFeedback;
+
+            float jacketScore = ScoreItem(WardrobeState.Instance.CurrentItemJacket, idealOutfit?.jacket, scoredItems, "lblFeedbackJacket", fb.jacket);
+            Label lblJacketScore = _root.Q<Label>("lblJacketScore");
+            if (lblJacketScore != null)
+                lblJacketScore.text = jacketScore.ToString("F1");
+
+            float topScore = ScoreItem(WardrobeState.Instance.CurrentItemTop, idealOutfit?.top, scoredItems, "lblFeedbackTop", fb.top);
+            Label lblTopScore = _root.Q<Label>("lblTopScore");
+            if (lblTopScore != null)
+                lblTopScore.text = topScore.ToString("F1");
+
+            float bottomScore = ScoreItem(WardrobeState.Instance.CurrentItemBottom, idealOutfit?.bottoms, scoredItems, "lblFeedbackBottoms", fb.bottoms);
+            Label lblBottomsScore = _root.Q<Label>("lblBottomsScore");
+            if (lblBottomsScore != null)
+                lblBottomsScore.text = topScore.ToString("F1");
+
+            float shoesScore = ScoreItem(WardrobeState.Instance.CurrentItemShoe, idealOutfit?.shoes, scoredItems, "lblFeedbackShoes", fb.shoes);
+            Label lblShoesScore = _root.Q<Label>("lblShoesScore");
+            if (lblShoesScore != null)
+                lblShoesScore.text = topScore.ToString("F1");
 
             Label totalScoreDisplay = _root.Q<Label>("lblTotalScore");
-            if (totalScoreDisplay == null)
+            if (totalScoreDisplay != null)
             {
-                Debug.LogError("ResultsController: Could not find lblTotalScore. Current score is: " + _totalScore.ToString());
-                return;
+                float totalScore = jacketScore + topScore + bottomScore + shoesScore;
+                totalScoreDisplay.text = totalScore.ToString("F1") + "/4.0";
             }
-
-            totalScoreDisplay.text = _totalScore.ToString("F1") + "/4.0";
         }
 
         /// <summary>
-        /// Matches one equipped item to scored rows; otherwise shows slot fallback feedback.
+        /// Evaluate the score for a single wardrobe slot.
         /// </summary>
-        private void ScoreItem(string label, WardrobeItem item, string commentaryLabel, string slotFeedback)
+        /// <param name="selectedItem">The equipped <see cref="WardrobeItem"/> for the slot. May be null.</param>
+        /// <param name="idealItem">The scenario's <see cref="IdealOutfitItem"/> for this slot. May be null.</param>
+        /// <param name="scoredItems">A list of <see cref="ScoredItem"/> entries used to provide partial credit.</param>
+        /// <param name="commentaryLabel">UXML name of the label element where feedback/commentary should be written.</param>
+        /// <param name="slotFeedback">Fallback feedback string to use when no match is found.</param>
+        /// <returns>
+        /// A floating point score for the slot in the range [0.0, 1.0]. The method also updates the feedback label with the 
+        /// appropriate commentary for full, partial, or no credit cases.
+        /// </returns>
+        private float ScoreItem(
+            WardrobeItem selectedItem, IdealOutfitItem idealItem, List<ScoredItem> scoredItems, string commentaryLabel, string slotFeedback)
         {
-            Label scoreDisplay = _root.Q<Label>(label);
-            if (scoreDisplay == null)
+            string selectedId = selectedItem?.id;
+            // Treat "nothing_*" selection items as an empty slot
+            if (selectedId != null && selectedId.StartsWith("nothing_"))
+                selectedId = null;
+
+            string idealId = idealItem?.itemId;
+
+            // Full point: both empty/null, or both match the same non-empty id
+            if ((string.IsNullOrEmpty(idealId) && string.IsNullOrEmpty(selectedId)) ||
+                (!string.IsNullOrEmpty(idealId) && selectedId == idealId))
             {
-                string slotTagForLog = item != null ? item.slot : "unknown";
-                Debug.LogError("ResultsController: Could not find scoreDisplay label for ScoreItem: " + slotTagForLog);
-                return;
+                FeedBackItem(commentaryLabel, idealItem?.commentary);
+                return 1f;
             }
 
-            if (item == null)
+            // Partial credit from scoredItems
+            if (!string.IsNullOrEmpty(selectedId) && scoredItems != null)
             {
-                scoreDisplay.text = "0.0";
-                FeedBackItem(commentaryLabel, slotFeedback);
-                return;
-            }
-
-            if (_currentScenario == null || _currentScenario.scoredItems == null)
-            {
-                Debug.LogError("ResultsController: ScoreItem requires ScoredItems list.");
-                scoreDisplay.text = "0.0";
-                FeedBackItem(commentaryLabel, slotFeedback);
-                return;
-            }
-
-            bool anyFeedback = false;
-            foreach (ScoredItem scoredRow in _currentScenario.scoredItems)
-            {
-                if (scoredRow == null)
+                foreach (ScoredItem scoredRow in scoredItems)
                 {
-                    Debug.LogError("ResultsController: Null entry in ScoredItems for slot " + item.slot);
-                    continue;
-                }
-
-                if (scoredRow.itemId == item.id)
-                {
-                    _totalScore += scoredRow.score;
-                    scoreDisplay.text = scoredRow.score.ToString("F1");
-                    anyFeedback = true;
-                    FeedBackItem(commentaryLabel, scoredRow.commentary);
+                    if (scoredRow.itemId == selectedId)
+                    {
+                        FeedBackItem(commentaryLabel, scoredRow.commentary);
+                        return scoredRow.score;
+                    }
                 }
             }
 
-            if (!anyFeedback)
-            {
-                FeedBackItem(commentaryLabel, slotFeedback);
-            }
+            // No match
+            FeedBackItem(commentaryLabel, slotFeedback);
+            return 0f;
         }
     }
 }
