@@ -25,6 +25,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3265905c0943041439390e715c4e7b08
+    m_Address: Jackets/1980sFormalJacket.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3ee0c852121319040a3580c97659170e
     m_Address: Jackets/1980sBusinessJacket.png
     m_ReadOnly: 0

@@ -30,6 +30,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8a870746b3213fc4db3f24292869f2dc
+    m_Address: Shoes/1980sFormalShoes.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: a280cc2f95fd7164ca3d85c173aa70be
     m_Address: Shoes/1980sCasualShoes.png
     m_ReadOnly: 0

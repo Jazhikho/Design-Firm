@@ -15,6 +15,11 @@ MonoBehaviour:
   m_GroupName: Bottoms
   m_GUID: 73f7e62bef9f2bf4eaeba91ab72bc579
   m_SerializeEntries:
+  - m_GUID: 04c576da53ef2894c9d7fcfc2355cc9a
+    m_Address: Assets/Art/Clothing/Bottoms/1980sFormalBottom.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 0bfa3dd050a782d42bb75c52de42e051
     m_Address: Bottoms/1980sCasualBottom.png
     m_ReadOnly: 0
