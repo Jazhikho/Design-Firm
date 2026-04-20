@@ -1,3 +1,7 @@
 ﻿<Solution>
-  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="SewItGoes.Data.csproj" />
+  <Project Path="SewItGoes.Core.csproj" />
+  <Project Path="SewItGoes.UI.csproj" />
+  <Project Path="PlayMode.csproj" />
+  <Project Path="EditMode.csproj" />
 </Solution>

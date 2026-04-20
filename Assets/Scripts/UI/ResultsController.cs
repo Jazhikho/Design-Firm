@@ -1,4 +1,5 @@
 using Assets.Scripts.Core;
+using Assets.Scripts.Core.Scoring;
 using Assets.Scripts.Data;
 using System;
 using System.Collections.Generic;
@@ -370,37 +371,15 @@ namespace Assets.Scripts.UI
         private float ScoreItem(
             WardrobeItem selectedItem, IdealOutfitItem idealItem, List<ScoredItem> scoredItems, string commentaryLabel, string slotFeedback)
         {
-            string selectedId = selectedItem?.id;
-            // Treat "nothing_*" selection items as an empty slot
-            if (selectedId != null && selectedId.StartsWith("nothing_"))
-                selectedId = null;
+            var result = WardrobeScoringService.ScoreItem(
+                selectedItem?.id,
+                idealItem?.itemId,
+                idealItem?.commentary,
+                scoredItems,
+                slotFeedback);
 
-            string idealId = idealItem?.itemId;
-
-            // Full point: both empty/null, or both match the same non-empty id
-            if ((string.IsNullOrEmpty(idealId) && string.IsNullOrEmpty(selectedId)) ||
-                (!string.IsNullOrEmpty(idealId) && selectedId == idealId))
-            {
-                FeedBackItem(commentaryLabel, idealItem?.commentary);
-                return 1f;
-            }
-
-            // Partial credit from scoredItems
-            if (!string.IsNullOrEmpty(selectedId) && scoredItems != null)
-            {
-                foreach (ScoredItem scoredRow in scoredItems)
-                {
-                    if (scoredRow.itemId == selectedId)
-                    {
-                        FeedBackItem(commentaryLabel, scoredRow.commentary);
-                        return scoredRow.score;
-                    }
-                }
-            }
-
-            // No match
-            FeedBackItem(commentaryLabel, slotFeedback);
-            return 0f;
+            FeedBackItem(commentaryLabel, result.Commentary);
+            return result.Score;
         }
     }
 }

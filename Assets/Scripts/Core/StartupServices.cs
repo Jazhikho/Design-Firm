@@ -1,12 +1,13 @@
 using Assets.Scripts.Data;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Assets.Scripts.Core
 {
-    internal class StartupServices
+    public class StartupServices
     {
         public static bool ScenariosLoaded { get; private set; }
         public static bool WardrobeLoaded { get; private set; }
@@ -135,8 +136,13 @@ namespace Assets.Scripts.Core
                     $"[StartupServices] clothing_items loaded successfully. " +
                     $"Text length={handle.Result.text?.Length ?? 0}");
 
-                int addedCount = DataLoader.LoadClothingItems(handle.Result.text);
-
+                List<WardrobeItem> wardrobeItems = DataLoader.LoadClothingItems(handle.Result.text);
+                int addedCount = 0;
+                for (int i = 0; i < wardrobeItems.Count; i++)
+                {
+                    WardrobeState.Instance.AddItem(wardrobeItems[i].id, wardrobeItems[i].slot, wardrobeItems[i].name, wardrobeItems[i].description, wardrobeItems[i].sprite, wardrobeItems[i].coversBottoms);
+                    addedCount++;
+                }
                 Debug.Log($"[StartupServices] Parsed clothing item count={addedCount}");
 
                 if (addedCount == 0)

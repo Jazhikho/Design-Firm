@@ -1,6 +1,6 @@
-using Assets.Scripts.Core;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Scripts.Data
@@ -9,12 +9,12 @@ namespace Assets.Scripts.Data
     /// This class provides methods to load and deserialize scenario data from JSON strings.
     /// It is used by StartupServices to populate the GameState with scenario data after loading from Addressables.
     /// </summary>
-    internal static class DataLoader
+    public static class DataLoader
     {
         /// <summary>
         /// Deserializes a JSON string containing a "scenarios" array into a list of <see cref="Scenario"/> objects.
         /// </summary>
-        internal static List<Scenario> LoadScenarios(string json)
+        public static List<Scenario> LoadScenarios(string json)
         {
             if (string.IsNullOrWhiteSpace(json))
             {
@@ -68,12 +68,12 @@ namespace Assets.Scripts.Data
         /// </summary>
         /// <param name="json">The JSON string containing the clothing items data.</param>
         /// <returns>The number of clothing items successfully loaded.</returns>
-        internal static int LoadClothingItems(string json)
+        public static List<WardrobeItem> LoadClothingItems(string json)
         {
             if (string.IsNullOrWhiteSpace(json))
             {
                 Debug.LogError("[DataLoader] clothing_items JSON is null, empty, or whitespace.");
-                return 0;
+                return new List<WardrobeItem>();
             }
 
             try
@@ -87,7 +87,7 @@ namespace Assets.Scripts.Data
                     Debug.LogError(
                         "[DataLoader] JsonUtility returned null for clothing_items JSON. " +
                         $"Preview: {Preview(json)}");
-                    return 0;
+                    return new List<WardrobeItem>();
                 }
 
                 if (itemsInFile.clothingItems == null)
@@ -95,39 +95,13 @@ namespace Assets.Scripts.Data
                     Debug.LogError(
                         "[DataLoader] clothing_items wrapper deserialized, but clothingItems is null. " +
                         $"Preview: {Preview(json)}");
-                    return 0;
+                    return new List<WardrobeItem>();
                 }
 
-                int addedCount = 0;
-
-                foreach (WardrobeItem newItem in itemsInFile.clothingItems)
-                {
-                    if (newItem == null)
-                    {
-                        Debug.LogWarning("[DataLoader] Encountered null WardrobeItem entry. Skipping.");
-                        continue;
-                    }
-
-                    if (string.IsNullOrWhiteSpace(newItem.id))
-                    {
-                        Debug.LogWarning(
-                            "[DataLoader] Encountered wardrobe item with missing id. Skipping.");
-                        continue;
-                    }
-
-                    WardrobeState.Instance.AddItem(
-                        newItem.id,
-                        newItem.slot,
-                        newItem.name,
-                        newItem.description,
-                        newItem.sprite,
-                        newItem.coversBottoms);
-
-                    addedCount++;
-                }
-
+                int addedCount = itemsInFile.clothingItems.Count();
                 Debug.Log($"[DataLoader] Parsed clothing items successfully. Count={addedCount}");
-                return addedCount;
+
+                return itemsInFile.clothingItems.ToList();
             }
             catch (Exception ex)
             {
@@ -135,16 +109,13 @@ namespace Assets.Scripts.Data
                     "[DataLoader] Exception while deserializing clothing_items JSON: " + ex +
                     Environment.NewLine +
                     $"Preview: {Preview(json)}");
-                return 0;
+                return new List<WardrobeItem>();
             }
         }
 
         private static string Preview(string json, int maxLength = 300)
         {
-            if (string.IsNullOrEmpty(json))
-            {
-                return "<empty>";
-            }
+            if (string.IsNullOrEmpty(json)) return "<empty>";
 
             string sanitized = json.Replace("\r", "\\r").Replace("\n", "\\n");
             return sanitized.Length <= maxLength

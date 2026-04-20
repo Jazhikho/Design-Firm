@@ -20,8 +20,6 @@ namespace Assets.Scripts.UI
         private List<string> _categories;
         private Label _lblErrorMessage;
 
-        private bool _hasRenderedUi;
-
         /// <summary>
         /// Caches scenario screen buttons, binds handlers, and subscribes to scenario data loading.
         /// </summary>
@@ -131,7 +129,6 @@ namespace Assets.Scripts.UI
             DisplayCategoryFilters(categoryFilters);
             DisplayScenarios();
 
-            _hasRenderedUi = true;
             Debug.Log($"ScenariosController: rendered scenario UI with {ScenarioState.Instance.Scenarios.Count} scenarios.");
         }
         private void ClearDynamicUi()
@@ -146,7 +143,6 @@ namespace Assets.Scripts.UI
 
             _decadeToggleGroup = null;
             _categoryToggleGroup = null;
-            _hasRenderedUi = false;
         }
 
         private void EnsureStatusLabelExists()

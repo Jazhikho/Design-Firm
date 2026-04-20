@@ -9,37 +9,36 @@ namespace Assets.Scripts.Core
     /// Static runtime store for wardrobe items loaded from JSON and current slot selections.
     /// Setting a CurrentItem property raises the corresponding change event.
     /// </summary>
-    internal sealed class WardrobeState
+    public sealed class WardrobeState
     {
-        internal static WardrobeState Instance { get; } = new();
+        public static WardrobeState Instance { get; } = new();
 
         /// <summary>
         /// Raised once after wardrobe items have been loaded from Addressables.
         /// </summary>
-        internal event Action WardrobeItemsLoaded;
+        public event Action WardrobeItemsLoaded;
 
         /// <summary>
         /// Raised whenever a slot's current item changes. The parameter is the newly assigned <see cref="WardrobeItem"/>.
         /// </summary>
-        internal event Action<WardrobeItem> CurrentTopChanged;
-        internal event Action<WardrobeItem> CurrentBottomChanged;
-        internal event Action<WardrobeItem> CurrentShoeChanged;
-        internal event Action<WardrobeItem> CurrentJacketChanged;
+        public event Action<WardrobeItem> CurrentTopChanged;
+        public event Action<WardrobeItem> CurrentBottomChanged;
+        public event Action<WardrobeItem> CurrentShoeChanged;
+        public event Action<WardrobeItem> CurrentJacketChanged;
 
-        internal bool IsWardrobeItemsLoaded { get; private set; }
+        public bool IsWardrobeItemsLoaded { get; private set; }
 
-        internal List<WardrobeItem> AllWardrobeItems { get; } = new();
-        internal List<WardrobeItem> AvailableTops => AllWardrobeItems.Where(i => i.SlotType == ClothingSlot.Top).ToList();
-        internal List<WardrobeItem> AvailableBottoms => AllWardrobeItems.Where(i => i.SlotType == ClothingSlot.Bottoms).ToList();
-        internal List<WardrobeItem> AvailableShoes => AllWardrobeItems.Where(i => i.SlotType == ClothingSlot.Shoes).ToList();
-        internal List<WardrobeItem> AvailableJackets => AllWardrobeItems.Where(i => i.SlotType == ClothingSlot.Jacket).ToList();
-
+        public List<WardrobeItem> AllWardrobeItems { get; } = new();
+        public List<WardrobeItem> AvailableTops => AllWardrobeItems.Where(i => i.SlotType == ClothingSlot.Top).ToList();
+        public List<WardrobeItem> AvailableBottoms => AllWardrobeItems.Where(i => i.SlotType == ClothingSlot.Bottoms).ToList();
+        public List<WardrobeItem> AvailableShoes => AllWardrobeItems.Where(i => i.SlotType == ClothingSlot.Shoes).ToList();
+        public List<WardrobeItem> AvailableJackets => AllWardrobeItems.Where(i => i.SlotType == ClothingSlot.Jacket).ToList();
         private WardrobeItem _currentItemTop;
         private WardrobeItem _currentItemBottom;
         private WardrobeItem _currentItemShoe;
         private WardrobeItem _currentItemJacket;
 
-        internal WardrobeItem CurrentItemTop
+        public WardrobeItem CurrentItemTop
         {
             get => _currentItemTop;
             set
@@ -49,7 +48,7 @@ namespace Assets.Scripts.Core
             }
         }
 
-        internal WardrobeItem CurrentItemBottom
+        public WardrobeItem CurrentItemBottom
         {
             get => _currentItemBottom;
             set
@@ -59,7 +58,7 @@ namespace Assets.Scripts.Core
             }
         }
 
-        internal WardrobeItem CurrentItemShoe
+        public WardrobeItem CurrentItemShoe
         {
             get => _currentItemShoe;
             set
@@ -69,7 +68,7 @@ namespace Assets.Scripts.Core
             }
         }
 
-        internal WardrobeItem CurrentItemJacket
+        public WardrobeItem CurrentItemJacket
         {
             get => _currentItemJacket;
             set
