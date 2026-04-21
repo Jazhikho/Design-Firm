@@ -128,3 +128,14 @@ InitTestScene*.unity*
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 
 .plastic/
+
+# Addressables
+/ServerData/
+/CCDBuildData/
+
+# Addressables generated files
+/Assets/AddressableAssetsData/*/*.bin*
+/Assets/AddressableAssetsData/*/*.json*
+/Assets/AddressableAssetsData/*/*.hash
+/Assets/AddressableAssetsData/*/buildlayout*.txt
+/Assets/AddressableAssetsData/link.xml

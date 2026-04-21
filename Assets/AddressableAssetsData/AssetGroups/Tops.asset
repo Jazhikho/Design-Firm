@@ -20,6 +20,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 11111c0958b833142afdf7328475c4f5
+    m_Address: Tops/1980sFormalTop.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3e2da554d24274c41a778f5b0768c9a5
     m_Address: Tops/2000sBusinessTop.png
     m_ReadOnly: 0
