@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
   m_GroupName: Default Local Group
   m_GUID: 11b6115f0ae39df4fad064a39b077d73
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 65017f07c58e9124db3e11aac9915070
+    m_Address: Scenarios/DressingRoom.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: cb8f221f4801dcc4db2d548c1343015b, type: 2}
   m_SchemaSet:

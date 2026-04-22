@@ -45,6 +45,13 @@ namespace Assets.Scripts.UI
             _retryScenarioButton = _root.Q<Button>("btnNewScenario");
             _retryScenarioButton?.RegisterCallback<ClickEvent>(NewScenario);
 
+            Scenario activeScenario = ScenarioState.Instance.ActiveScenario;
+            if (activeScenario != null)
+            {
+                UpdateBackground(activeScenario.backgroundImage);
+                UpdateIdealAvatar(activeScenario.avatarImage, activeScenario.idealOutfit);
+            }
+
             LoadAvatarImages();
             ReadWardrobeItems();
             ReadScenario();
@@ -401,6 +408,91 @@ namespace Assets.Scripts.UI
             // No match
             FeedBackItem(commentaryLabel, slotFeedback);
             return 0f;
+        }
+
+        /// <summary>
+        /// Loads the results screen background sprite from Addressables and applies it to the root background image.
+        /// </summary>
+        /// <param name="backgroundSpriteKey">Addressables key from the active scenario, or null to use the default dressing-room key.</param>
+        private void UpdateBackground(string backgroundSpriteKey)
+        {
+            Image backgroundElement = _root.Q<Image>("imgBackground");
+            if (backgroundElement == null)
+            {
+                Debug.LogError("ResultsController: imgBackground Image not found in UXML.");
+                return;
+            }
+
+            string resolvedKey;
+            if (string.IsNullOrEmpty(backgroundSpriteKey))
+            {
+                resolvedKey = "Scenarios/DressingRoom.png";
+            }
+            else
+            {
+                resolvedKey = backgroundSpriteKey;
+            }
+
+            LoadSprite(resolvedKey, loadedSprite =>
+            {
+                backgroundElement.style.backgroundImage = new StyleBackground(loadedSprite);
+            });
+        }
+
+        /// <summary>
+        /// Loads the ideal-outfit avatar preview and populates ideal slot images from wardrobe data.
+        /// </summary>
+        /// <param name="avatarSpriteKey">Addressables key for the scenario avatar sprite shown behind ideal clothing.</param>
+        /// <param name="idealOutfit">Ideal outfit rows from the active scenario; may be null.</param>
+        private void UpdateIdealAvatar(string avatarSpriteKey, IdealOutfit idealOutfit)
+        {
+            const string idealAvatarElementName = "idealAvatar";
+
+            Image idealAvatarElement = _root.Q<Image>(idealAvatarElementName);
+            if (idealAvatarElement == null)
+            {
+                Debug.LogError("ResultsController: idealAvatar Image not found in UXML.");
+            }
+            else if (!string.IsNullOrEmpty(avatarSpriteKey))
+            {
+                LoadSprite(avatarSpriteKey, loadedSprite =>
+                {
+                    idealAvatarElement.style.backgroundImage = new StyleBackground(loadedSprite);
+                });
+            }
+
+            if (idealOutfit == null)
+            {
+                return;
+            }
+
+            SetSlotSprite("idealTop", GetItemById(idealOutfit.top?.itemId)?.sprite);
+            SetSlotSprite("idealJacket", GetItemById(idealOutfit.jacket?.itemId)?.sprite);
+            SetSlotSprite("idealBottoms", GetItemById(idealOutfit.bottoms?.itemId)?.sprite);
+            SetSlotSprite("idealShoes", GetItemById(idealOutfit.shoes?.itemId)?.sprite);
+        }
+
+        /// <summary>
+        /// Returns the first wardrobe item matching the given clothing item id.
+        /// </summary>
+        /// <param name="itemId">Clothing item id from scenario JSON, or null.</param>
+        /// <returns>The matching item, or null if not found or id is null.</returns>
+        private WardrobeItem GetItemById(string itemId)
+        {
+            if (itemId == null)
+            {
+                return null;
+            }
+
+            foreach (WardrobeItem item in WardrobeState.Instance.AllWardrobeItems)
+            {
+                if (item.id == itemId)
+                {
+                    return item;
+                }
+            }
+
+            return null;
         }
     }
 }

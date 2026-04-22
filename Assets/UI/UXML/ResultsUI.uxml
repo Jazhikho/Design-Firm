@@ -2,6 +2,15 @@
     <Style src="project://database/Assets/UI/USS/CommonStylesheet.uss?fileID=7433441132597879392&amp;guid=8e23400638b471247abded66e2e9521e&amp;type=3#CommonStylesheet"/>
     <Style src="project://database/Assets/UI/USS/ResultsStylesheet.uss?fileID=7433441132597879392&amp;guid=59f5a80705eb3a24daaff36c9dbb1ed9&amp;type=3#ResultsStylesheet"/>
     <ui:Image name="imgBackground" class="background-runway"/>
+    <ui:VisualElement name="IdealStuffs" style="flex-grow: 1; position: absolute; height: 75%; width: 35%; top: 10%; left: 60%;">
+        <ui:VisualElement name="colIdealOutfitVisual" class="middle-column">
+            <ui:Image name="idealAvatar" class="stacked-image"/>
+            <ui:Image name="idealShoes" class="stacked-image"/>
+            <ui:Image name="idealBottoms" class="stacked-image"/>
+            <ui:Image name="idealTop" class="stacked-image"/>
+            <ui:Image name="idealJacket" class="stacked-image"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
     <ui:VisualElement name="topRow">
         <ui:Button text="Retry Scenario" name="btnRetry" class="button-common"/>
     </ui:VisualElement>
