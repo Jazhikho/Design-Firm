@@ -429,7 +429,9 @@ namespace Assets.Scripts.UI
             }
             );
         }
-        //THIS FUNCTION HAS A LOT OF TEMP STUFF; TELL ME WHEN RIVER FINISHES UP THEIR WORK ON RESULTS.
+        /// <summary>
+        /// Changes the Ideal Avatar and respective items to those sepcified by the JSON file
+        /// </summary>
         private void UpdateIdealAvatar(string key)
         {
             
@@ -460,7 +462,9 @@ namespace Assets.Scripts.UI
             SetSlotSprite("idealShoes", getItemByID(ScenarioState.Instance.ActiveScenario.idealOutfit.shoes.itemId)?.sprite);
             //
         }
-
+        /// <summary>
+        /// Returns an item according to it's ID
+        /// </summary>
         //Probably should put this in WardrobeItem but its here for now.
         private WardrobeItem getItemByID(string ID)
         {
@@ -476,7 +480,6 @@ namespace Assets.Scripts.UI
                     return item;
                 }
             }
-            Debug.LogError("getItemByID: No item found for ID: " + ID);
             return null;
         }
         //
