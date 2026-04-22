@@ -5,4 +5,11 @@
     <ui:Label text="Sew It Goes" emoji-fallback-support="false" class="game-title"/>
     <ui:Button text="Play" name="PlayButton" class="button-common"/>
     <ui:Button text="Quit" name="QuitButton" class="button-common"/>
+    <ui:Button text="Sandbox" name="SandboxButton" style="width: 100px; height: 32px;">
+        <ui:VisualElement name="SubMenu" style="flex-grow: 1; width: 150%; height: 500%; left: 125%; min-height: 500%; min-width: 150%; background-color: rgb(144, 144, 144); bottom: 200%; visibility: hidden;">
+            <ui:Button text="F" name="sandboxF" style="width: 40%; height: 40%; top: 0; left: 0;"/>
+            <ui:Button text="M" name="sandboxM" style="width: 40%; height: 40%; position: absolute; top: 0; right: 0;"/>
+        </ui:VisualElement>
+    </ui:Button>
+    <ui:Button text="Settings" name="SettingsButton" style="width: 100px; height: 32px;"/>
 </ui:UXML>
