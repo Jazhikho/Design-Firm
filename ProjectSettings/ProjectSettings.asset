@@ -706,11 +706,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 1
   windowsGamepadBackendHint: 0
-  cloudProjectId: 4a9737ed-1fe2-4e0e-8adf-7c4f2220a2c2
+  cloudProjectId: 872a18b8-c5f0-474e-9b1b-eb771339acee
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Design-Firm
-  organizationId: icymark13
+  projectName: Sew It Goes
+  organizationId: jfattic
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}

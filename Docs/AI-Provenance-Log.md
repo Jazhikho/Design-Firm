@@ -17,6 +17,17 @@ Disclosure and audit trail for AI-assisted work. Update when committing signific
 
 **Date:** 2026-04-22  
 **Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** After human-approved merges of GitHub PR #57, #58, and #59, revert unintended Unity Services fields in `ProjectSettings.asset`; fix sandbox wardrobe null-order bug, main menu sandbox UI null-safety and `ClickEvent.currentTarget` usage, results summary counting for partial scores, and `AudioManager` default `_buttonSfx` reference; sync `VERSION.md` and this log.  
+**Input materials used:** `origin/main` post-merge; `ProjectSettings/ProjectSettings.asset`; `WardrobeController.cs`; `MainMenuController.cs`; `ResultsController.cs`; `AudioManager.cs.meta`; `Assets/Audio/SFX/Universal_Button_SFX_2.wav.meta`; `VERSION.md`; this log.  
+**Summary of AI contribution:** Restored `cloudProjectId`, `projectName`, and `organizationId` to pre–PR #59 values; changed `AudioManager.cs.meta` default clip GUID from main-menu music to `Universal_Button_SFX_2.wav`; reordered `ActiveScenario` null check before `name` in `WardrobeController`; guarded sandbox submenu queries, optional sandbox registration, submenu toggle, and gender navigation using `evt.currentTarget as Button`; replaced rounded sum of slot scores with a count of slots where `Mathf.Approximately(score, 1f)` for the “out of 4 items correct” string; aligned XML summaries for `OnEnable`, `ReadScenario`, `Scoring`, and `ScoreItem`; bumped internal label to 0.0.5.3; appended this entry.  
+**What the human accepted / rejected / changed:** Human directed merging PRs #57–#59, treating `Design-Firm.slnx` deletion as intentional, dropping PR #59’s `ProjectSettings` identity churn, and consolidating remaining review fixes into one follow-up commit.  
+**Validation method used:** `read_lints` on edited C# scripts.  
+**Final approver:** (pending routine review)  
+
+---
+
+**Date:** 2026-04-22  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
 **Task purpose:** Merge PR #54 then PR #55 then PR #56 on `main`; before merging PR #55, reconcile it with PR #54’s dressing-room asset GUID and harden `ResultsController`; after merges, follow up with a defensive null check in `ScoreItem` and sync `VERSION.md`.  
 **Input materials used:** `origin/main` after PR #54 merge; `rushBranchNew` (PR #55); `Assets/Art/Backgrounds/dressingRoom.jpg.meta`; `Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset`; `Assets/Scripts/UI/ResultsController.cs`; `VERSION.md`; this log.  
 **Summary of AI contribution:** Merged PR #54 via GitHub; merged `origin/main` into PR #55 branch and updated Default Local Group entry from old PNG GUID to `dressingRoom.jpg` import GUID while keeping Addressables address `Scenarios/DressingRoom.png`; rewrote `UpdateBackground` / `UpdateIdealAvatar` to guard `ActiveScenario`, UXML elements, and `idealOutfit` slots; corrected error log context; replaced `getItemByID` with `GetItemById` and removed per-match `Debug.Log`; pushed branch and merged PR #55; merged PR #56 (scenario header uses `name`); on `main` added null-row skip in `ScoreItem`’s `scoredItems` loop; bumped internal label to 0.0.5.2; added this entry.  

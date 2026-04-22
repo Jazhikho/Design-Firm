@@ -62,7 +62,8 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void OnEnable()
         {
-            if (ScenarioState.Instance.ActiveScenario.name == "sandbox" || ScenarioState.Instance.ActiveScenario == null)
+            Scenario activeScenarioForSandbox = ScenarioState.Instance.ActiveScenario;
+            if (activeScenarioForSandbox == null || activeScenarioForSandbox.name == "sandbox")
             {
                 _sandboxMode = true;
             }

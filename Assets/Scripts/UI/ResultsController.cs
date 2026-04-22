@@ -24,9 +24,8 @@ namespace Assets.Scripts.UI
         /// <summary>
         /// Initialize the results UI when this component becomes active.
         ///
-        /// This method caches references to UI controls and registers click handlers for the retry, main menu 
-        /// and new scenario buttons. It then loads avatar and clothing sprites, populates the equipped item 
-        /// labels, and runs the scenario result pass (scoring + ideal-item hints).
+        /// This method caches references to UI controls and registers click handlers for the retry, main menu,
+        /// and new scenario buttons. It then loads avatar and clothing sprites and runs scoring for the results summary.
         /// </summary>
         /// <remarks>
         /// Called by Unity when the GameObject is enabled. Assumes a <see cref="UIDocument"/> component is 
@@ -52,7 +51,7 @@ namespace Assets.Scripts.UI
                 UpdateIdealAvatar(activeScenario.avatarImage, activeScenario.idealOutfit);
             }
 
-            LoadAvatarImages();            
+            LoadAvatarImages();
             ReadScenario();
         }
 
@@ -196,17 +195,15 @@ namespace Assets.Scripts.UI
 
 
         /// <summary>
-        /// Execute the scenario result pass: compute scores and populate ideal-item hints.
+        /// Runs scoring so the results summary label reflects the latest outfit versus the active scenario.
         /// </summary>
         /// <remarks>
-        /// This is a convenience wrapper that invokes <see cref="Scoring"/> 
+        /// Invokes <see cref="Scoring"/> after sprites are loaded in <see cref="OnEnable"/>.
         /// </remarks>
         public void ReadScenario()
         {
-            Scoring();            
-        }     
-
-   
+            Scoring();
+        }
 
 
         /// <summary>
@@ -214,9 +211,8 @@ namespace Assets.Scripts.UI
         /// </summary>
         /// <remarks>
         /// This method reads the currently equipped wardrobe items and the active scenario's
-        /// ideal outfit, uses <see cref="ScoreItem(WardrobeItem, IdealOutfitItem, List{ScoredItem}, string, string)"/>
-        /// to compute each slot's score, updates the UI labels for each slot, and computes
-        /// the displayed total.
+        /// ideal outfit, uses <see cref="ScoreItem(WardrobeItem, IdealOutfitItem, List{ScoredItem})"/>
+        /// for each slot, then updates the total summary label with a count of fully correct slots (partial credit excluded).
         /// </remarks>
         public void Scoring()
         {
@@ -238,12 +234,33 @@ namespace Assets.Scripts.UI
             float bottomScore = ScoreItem(WardrobeState.Instance.CurrentItemBottom, idealOutfit?.bottoms, scoredItems);
             
             float shoesScore = ScoreItem(WardrobeState.Instance.CurrentItemShoe, idealOutfit?.shoes, scoredItems);
-            
+
             Label totalScoreDisplay = _root.Q<Label>("lblTotalScore");
             if (totalScoreDisplay != null)
             {
-                float totalScore = jacketScore + topScore + bottomScore + shoesScore;
-                totalScoreDisplay.text = " Let's see... you got " + totalScore.ToString("F0") + " out of 4 items correct.";
+                int correctItems = 0;
+                if (Mathf.Approximately(jacketScore, 1f))
+                {
+                    correctItems++;
+                }
+
+                if (Mathf.Approximately(topScore, 1f))
+                {
+                    correctItems++;
+                }
+
+                if (Mathf.Approximately(bottomScore, 1f))
+                {
+                    correctItems++;
+                }
+
+                if (Mathf.Approximately(shoesScore, 1f))
+                {
+                    correctItems++;
+                }
+
+                totalScoreDisplay.text =
+                    " Let's see... you got " + correctItems.ToString() + " out of 4 items correct.";
             }
         }
 
@@ -252,13 +269,8 @@ namespace Assets.Scripts.UI
         /// </summary>
         /// <param name="selectedItem">The equipped <see cref="WardrobeItem"/> for the slot. May be null.</param>
         /// <param name="idealItem">The scenario's <see cref="IdealOutfitItem"/> for this slot. May be null.</param>
-        /// <param name="scoredItems">A list of <see cref="ScoredItem"/> entries used to provide partial credit.</param>
-        /// <param name="commentaryLabel">UXML name of the label element where feedback/commentary should be written.</param>
-        /// <param name="slotFeedback">Fallback feedback string to use when no match is found.</param>
-        /// <returns>
-        /// A floating point score for the slot in the range [0.0, 1.0]. The method also updates the feedback label with the 
-        /// appropriate commentary for full, partial, or no credit cases.
-        /// </returns>
+        /// <param name="scoredItems">Optional list of <see cref="ScoredItem"/> rows used for partial credit when the selection does not match the ideal id.</param>
+        /// <returns>Floating-point score for the slot in the range [0.0, 1.0].</returns>
         private float ScoreItem(
             WardrobeItem selectedItem, IdealOutfitItem idealItem, List<ScoredItem> scoredItems)
         {

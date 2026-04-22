@@ -25,14 +25,20 @@ namespace Assets.Scripts.UI
             UIDocument uiDocument = GetComponent<UIDocument>();
             VisualElement root = uiDocument.rootVisualElement;
 
-
             _playButton = root.Q<Button>("PlayButton");
             _quitButton = root.Q<Button>("QuitButton");
             _sandboxButton = root.Q<Button>("SandboxButton");
-
             _sandboxSubMenu = root.Q<VisualElement>("SubMenu");
-            _sandboxFButton = _sandboxSubMenu.Q<Button>("sandboxF");
-            _sandboxMButton = _sandboxSubMenu.Q<Button>("sandboxM");
+            if (_sandboxSubMenu != null)
+            {
+                _sandboxFButton = _sandboxSubMenu.Q<Button>("sandboxF");
+                _sandboxMButton = _sandboxSubMenu.Q<Button>("sandboxM");
+            }
+            else
+            {
+                _sandboxFButton = null;
+                _sandboxMButton = null;
+            }
 
             if (_playButton == null)
             {
@@ -47,10 +53,18 @@ namespace Assets.Scripts.UI
             }
 
             _playButton.RegisterCallback<ClickEvent>(OnPlayClicked);
-            _sandboxButton.RegisterCallback<ClickEvent>(OnSandboxClicked);
 
-            _sandboxFButton.RegisterCallback<ClickEvent>(OnSandboxSubMenuButtonClick);
-            _sandboxMButton.RegisterCallback<ClickEvent>(OnSandboxSubMenuButtonClick);
+            if (_sandboxButton != null && _sandboxSubMenu != null && _sandboxFButton != null && _sandboxMButton != null)
+            {
+                _sandboxButton.RegisterCallback<ClickEvent>(OnSandboxClicked);
+                _sandboxFButton.RegisterCallback<ClickEvent>(OnSandboxSubMenuButtonClick);
+                _sandboxMButton.RegisterCallback<ClickEvent>(OnSandboxSubMenuButtonClick);
+            }
+            else
+            {
+                Debug.LogError(
+                    "MainMenuController: Sandbox UI incomplete (SandboxButton, SubMenu, sandboxF, or sandboxM missing). Sandbox controls were not bound.");
+            }
 
             if (Application.platform == RuntimePlatform.WebGLPlayer)
             {
@@ -150,6 +164,12 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void OnSandboxClicked(ClickEvent evt)
         {
+            if (_sandboxSubMenu == null)
+            {
+                Debug.LogError("MainMenuController: Sandbox submenu is missing; cannot toggle visibility.");
+                return;
+            }
+
             TryPlayButtonSfx();
             if (SandboxSubMenuVis)
             {
@@ -168,24 +188,33 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void OnSandboxSubMenuButtonClick(ClickEvent evt)
         {
-            if (SandboxSubMenuVis)
+            if (!SandboxSubMenuVis)
             {
-                Button button = evt.target as Button;
-                Data.Scenario sandboxScenario = new();
-                sandboxScenario.name = "sandbox";
-                sandboxScenario.description = button.name;
-                if (button.name == "sandboxF")
-                {
-                    sandboxScenario.avatarImage = "Avatars/2000sFemModel.png";
-                }
-                else
-                {
-                    sandboxScenario.avatarImage = "Avatars/MascModel.png";
-                }
-                ScenarioState.Instance.ActiveScenario = sandboxScenario;
-                TryPlayButtonSfx();
-                SceneManager.LoadScene(GameConstants.WardrobeScene);
+                return;
             }
+
+            Button button = evt.currentTarget as Button;
+            if (button == null)
+            {
+                Debug.LogError("MainMenuController: Sandbox gender click did not resolve to a Button.");
+                return;
+            }
+
+            Data.Scenario sandboxScenario = new();
+            sandboxScenario.name = "sandbox";
+            sandboxScenario.description = button.name;
+            if (button.name == "sandboxF")
+            {
+                sandboxScenario.avatarImage = "Avatars/2000sFemModel.png";
+            }
+            else
+            {
+                sandboxScenario.avatarImage = "Avatars/MascModel.png";
+            }
+
+            ScenarioState.Instance.ActiveScenario = sandboxScenario;
+            TryPlayButtonSfx();
+            SceneManager.LoadScene(GameConstants.WardrobeScene);
         }
     }
 }
