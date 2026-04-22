@@ -62,6 +62,11 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void OnEnable()
         {
+            if (ScenarioState.Instance.ActiveScenario.name == "sandbox" || ScenarioState.Instance.ActiveScenario == null)
+            {
+                _sandboxMode = true;
+            }
+
             _wardrobeTimeExpiredHandled = false;
 
             _nextScene = _sandboxMode ? GameConstants.MainMenuScene : GameConstants.TaskResultScene;
