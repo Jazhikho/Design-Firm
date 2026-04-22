@@ -1,8 +1,8 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/USS/CommonStylesheet.uss?fileID=7433441132597879392&amp;guid=8e23400638b471247abded66e2e9521e&amp;type=3#CommonStylesheet"/>
     <Style src="project://database/Assets/UI/USS/ResultsStylesheet.uss?fileID=7433441132597879392&amp;guid=59f5a80705eb3a24daaff36c9dbb1ed9&amp;type=3#ResultsStylesheet"/>
-    <ui:Image name="imgBackground" class="background-runway"/>
-    <ui:VisualElement name="IdealStuffs" style="flex-grow: 1; position: absolute; height: 75%; width: 35%; top: 10%; left: 60%;">
+    <ui:Image name="imgBackground" source="project://database/Assets/Art/Backgrounds/RunwayBlockout.jpg?fileID=2800000&amp;guid=f18ea575f83278347a4688f400d99869&amp;type=3#RunwayBlockout" class="background-runway" style="top: 0; bottom: 0; right: -1px; left: 2px;"/>
+    <ui:VisualElement name="IdealStuffs" style="flex-grow: 1; position: absolute; height: 94%; width: 35%; top: 4%; left: 32%;">
         <ui:VisualElement name="colIdealOutfitVisual" class="middle-column">
             <ui:Image name="idealAvatar" class="stacked-image"/>
             <ui:Image name="idealShoes" class="stacked-image"/>
@@ -12,64 +12,27 @@
         </ui:VisualElement>
     </ui:VisualElement>
     <ui:VisualElement name="topRow">
-        <ui:Button text="Retry Scenario" name="btnRetry" class="button-common"/>
+        <ui:Button text="Main Menu" name="btnMainMenu" class="button-common" style="-unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;);"/>
     </ui:VisualElement>
     <ui:VisualElement name="middleRow" style="flex-grow: 1; flex-direction: row;">
-        <ui:VisualElement name="colYourOutfit" class="outfitContainer">
-            <ui:Label text="Your Outfit" name="lblYourOutfitHeader" class="outfit-header" style="font-size: 18px;"/>
-            <ui:Label text="Your Jacket: [Name]" name="lblYourJacketName" class="your-outfit-h2"/>
-            <ui:VisualElement class="feedbackContainer">
-                <ui:Label text="Feedback on your jacket" name="lblFeedbackJacket" class="item-feedback"/>
-                <ui:Label text="0.0" name="lblJacketScore" class="item-score"/>
+        <ui:VisualElement name="colFeedback" style="flex-grow: 1; bottom: 0;">
+            <ui:VisualElement style="flex-grow: 1; bottom: 0; top: 0; height: 100%; position: absolute; right: 0; left: 0; align-items: flex-end;">
+                <ui:Image name="Image" source="project://database/Assets/Art/UI/NPC/speechBox.png?fileID=2800000&amp;guid=61160630018804a4db35887fca7806df&amp;type=3#speechBox" scale-mode="ScaleToFit" style="background-image: none; flex-grow: 1; bottom: auto; top: auto; right: auto; left: auto; position: relative; padding-bottom: 64%; width: 64%;">
+                    <ui:Label text="Let&apos;s see... only x out of y correct." name="lblTotalScore" style="bottom: -35%; font-size: 40px; white-space: normal; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;); padding-right: 80px; padding-left: 80px; padding-top: 0; -unity-text-align: lower-center;"/>
+                </ui:Image>
             </ui:VisualElement>
-            <ui:Label text="Your Top: [Name]" name="lblYourTopName"/>
-            <ui:VisualElement class="feedbackContainer">
-                <ui:Label text="Feedback on your top" name="lblFeedbackTop" class="item-feedback"/>
-                <ui:Label text="0.0" name="lblTopScore" class="item-score"/>
-            </ui:VisualElement>
-            <ui:Label text="Your Bottoms: [Name]" name="lblYourBottomsName" class="your-outfit-h2"/>
-            <ui:VisualElement class="feedbackContainer">
-                <ui:Label text="Feedback on your bottoms" name="lblFeedbackBottoms" class="item-feedback"/>
-                <ui:Label text="0.0" name="lblBottomsScore" class="item-score"/>
-            </ui:VisualElement>
-            <ui:Label text="Your Shoes: [Name]" name="lblYourShoesName" class="your-outfit-h2"/>
-            <ui:VisualElement class="feedbackContainer">
-                <ui:Label text="Feedback on your shoes" name="lblFeedbackShoes" class="item-feedback"/>
-                <ui:Label text="0.0" name="lblShoesScore" class="item-score"/>
-            </ui:VisualElement>
-            <ui:Label text="0.0/4.0" name="lblTotalScore" class="total-score"/>
+            <ui:Image source="" scale-mode="ScaleToFit" name="gianna" style="bottom: 0; background-image: url(&quot;project://database/Assets/Art/UI/NPC/Gianna%201.png?fileID=2800000&amp;guid=efbbc363b80a57643acf0efa90608d5d&amp;type=3#Gianna 1&quot;); height: -51%; top: auto; left: auto; right: auto; flex-grow: 1; aspect-ratio: 0.5; width: 111%; margin-top: 40%;"/>
         </ui:VisualElement>
-        <ui:VisualElement name="colYourOutfitVisual" class="middle-column">
-            <ui:Image name="activeAvatar" class="stacked-image"/>
-            <ui:Image name="activeShoes" class="stacked-image"/>
-            <ui:Image name="activeBottoms" class="stacked-image"/>
-            <ui:Image name="activeTop" class="stacked-image"/>
-            <ui:Image name="activeJacket" class="stacked-image"/>
+        <ui:VisualElement name="colYourOutfitVisual" class="middle-column" style="visibility: visible; display: flex; min-width: 45%; max-height: 74%; flex-grow: 1; bottom: -7%; top: auto; height: 1320%; padding-left: 0%;">
+            <ui:Image name="activeAvatar" class="stacked-image" style="padding-left: 20%;"/>
+            <ui:Image name="activeShoes" class="stacked-image" style="padding-left: 20%;"/>
+            <ui:Image name="activeBottoms" class="stacked-image" style="padding-left: 20%;"/>
+            <ui:Image name="activeTop" class="stacked-image" style="padding-left: 20%;"/>
+            <ui:Image name="activeJacket" class="stacked-image" style="padding-left: 20%;"/>
         </ui:VisualElement>
-        <ui:VisualElement name="colIdealOutfit" class="outfitContainer">
-            <ui:Label text="Ideal Outfit" name="lblIdealOutfitHeader" class="outfit-header" style="-unity-font-style: bold; font-size: 18px; -unity-text-align: upper-right;"/>
-            <ui:Label text="Ideal Jacket" name="lblIdealJacket" class="ideal-outfit-h2" style="-unity-text-align: upper-right;"/>
-            <ui:VisualElement class="hintContainer">
-                <ui:Label text="Hint: ideal jacket" name="lblHintIdealJacket" class="item-hint"/>
-            </ui:VisualElement>
-            <ui:Label text="Ideal Top" name="lblIdealTop" class="ideal-outfit-h2" style="-unity-text-align: upper-right;"/>
-            <ui:VisualElement class="hintContainer">
-                <ui:Label text="Hint: ideal top" name="lblHintIdealTop" class="item-hint"/>
-            </ui:VisualElement>
-            <ui:Label text="Ideal Bottoms" name="lblIdealBottoms" class="ideal-outfit-h2" style="-unity-text-align: upper-right;"/>
-            <ui:VisualElement class="hintContainer">
-                <ui:Label text="Hint: ideal bottoms" name="lblHintIdealBottoms" class="item-hint"/>
-            </ui:VisualElement>
-            <ui:Label text="Ideal Shoes" name="lblIdealShoes" class="ideal-outfit-h2" style="-unity-text-align: upper-right;"/>
-            <ui:VisualElement class="hintContainer">
-                <ui:Label text="Hint: ideal shoes" name="lblHintIdealShoes" class="item-hint"/>
-            </ui:VisualElement>
+        <ui:VisualElement name="colButtons" style="flex-grow: 1; justify-content: center;">
+            <ui:Button text="New&#10;Scenario" name="btnNewScenario" class="button-common" style="-unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;); width: 55%; height: 85px; left: 0; right: auto; font-size: 39px; margin-bottom: 5%; background-color: rgb(249, 143, 156);"/>
+            <ui:Button text="Retry&#10;Scenario" name="btnRetry" class="button-common" style="-unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;); font-size: 39px; width: 55%; height: auto; background-color: rgb(249, 143, 156);"/>
         </ui:VisualElement>
-    </ui:VisualElement>
-    <ui:VisualElement name="bottomRow" style="flex-direction: row;">
-        <ui:Label text="Sew It Goes" name="lblGameTitle" class="game-title"/>
-        <ui:VisualElement style="flex-grow: 1;"/>
-        <ui:Button text="Main Menu" name="btnMainMenu" class="button-common"/>
-        <ui:Button text="New Scenario" name="btnNewScenario" class="button-common"/>
     </ui:VisualElement>
 </ui:UXML>
