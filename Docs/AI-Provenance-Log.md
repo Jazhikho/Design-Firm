@@ -15,6 +15,17 @@ Disclosure and audit trail for AI-assisted work. Update when committing signific
 
 ---
 
+**Date:** 2026-04-22  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** Merge PR #54 then PR #55 then PR #56 on `main`; before merging PR #55, reconcile it with PR #54’s dressing-room asset GUID and harden `ResultsController`; after merges, follow up with a defensive null check in `ScoreItem` and sync `VERSION.md`.  
+**Input materials used:** `origin/main` after PR #54 merge; `rushBranchNew` (PR #55); `Assets/Art/Backgrounds/dressingRoom.jpg.meta`; `Assets/AddressableAssetsData/AssetGroups/Default Local Group.asset`; `Assets/Scripts/UI/ResultsController.cs`; `VERSION.md`; this log.  
+**Summary of AI contribution:** Merged PR #54 via GitHub; merged `origin/main` into PR #55 branch and updated Default Local Group entry from old PNG GUID to `dressingRoom.jpg` import GUID while keeping Addressables address `Scenarios/DressingRoom.png`; rewrote `UpdateBackground` / `UpdateIdealAvatar` to guard `ActiveScenario`, UXML elements, and `idealOutfit` slots; corrected error log context; replaced `getItemByID` with `GetItemById` and removed per-match `Debug.Log`; pushed branch and merged PR #55; merged PR #56 (scenario header uses `name`); on `main` added null-row skip in `ScoreItem`’s `scoredItems` loop; bumped internal label to 0.0.5.2; added this entry.  
+**What the human accepted / rejected / changed:** Human directed merge order and split “reconcile 55 with 54 before merge” vs “remaining PR #55 issues in follow-up”; follow-up covered the `scoredItems` null iteration edge case plus version log sync.  
+**Validation method used:** `read_lints` on `ResultsController.cs`; restored a corrupted local `Assets/Art/Backgrounds` working tree from `HEAD` before editing.  
+**Final approver:** (pending routine review)  
+
+---
+
 **Date:** 2026-04-18  
 **Tool or model used:** Cursor agent (AI-assisted editing)  
 **Task purpose:** After merging PR #46 and PR #47 on `main`, apply a small follow-up on `WardrobeController`: guard list-container visibility when UXML elements are missing, remove dead hover pointer code, and correct the hover handler doc to match the current UI (no separate hover image).  

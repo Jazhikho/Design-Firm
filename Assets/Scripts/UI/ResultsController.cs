@@ -397,6 +397,11 @@ namespace Assets.Scripts.UI
             {
                 foreach (ScoredItem scoredRow in scoredItems)
                 {
+                    if (scoredRow == null)
+                    {
+                        continue;
+                    }
+
                     if (scoredRow.itemId == selectedId)
                     {
                         FeedBackItem(commentaryLabel, scoredRow.commentary);
