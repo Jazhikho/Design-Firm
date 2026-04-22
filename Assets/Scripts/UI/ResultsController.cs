@@ -45,10 +45,12 @@ namespace Assets.Scripts.UI
             _retryScenarioButton = _root.Q<Button>("btnNewScenario");
             _retryScenarioButton?.RegisterCallback<ClickEvent>(NewScenario);
 
-            //
-            UpdateBackground(ScenarioState.Instance.ActiveScenario.backgroundImage);
-            UpdateIdealAvatar(ScenarioState.Instance.ActiveScenario.avatarImage);
-            //
+            Scenario activeScenario = ScenarioState.Instance.ActiveScenario;
+            if (activeScenario != null)
+            {
+                UpdateBackground(activeScenario.backgroundImage);
+                UpdateIdealAvatar(activeScenario.avatarImage, activeScenario.idealOutfit);
+            }
 
             LoadAvatarImages();
             ReadWardrobeItems();
@@ -409,80 +411,88 @@ namespace Assets.Scripts.UI
         }
 
         /// <summary>
-        /// Changes the background in the UI
+        /// Loads the results screen background sprite from Addressables and applies it to the root background image.
         /// </summary>
-        private void UpdateBackground(string key = "Assets/Art/Backgrounds/dressingRoom.PNG")
+        /// <param name="backgroundSpriteKey">Addressables key from the active scenario, or null to use the default dressing-room key.</param>
+        private void UpdateBackground(string backgroundSpriteKey)
         {
-            if (_root.Q<Image>("imgBackground") == null)
+            Image backgroundElement = _root.Q<Image>("imgBackground");
+            if (backgroundElement == null)
             {
-                Debug.LogError("WardrobeController: Could not find imgBackground element");
+                Debug.LogError("ResultsController: imgBackground Image not found in UXML.");
+                return;
             }
-            if (key == null)
-            {
-                Debug.LogError("WardrobeController: Null key in UpdateBackground");
-            }
-            VisualElement UIBackground = _root.Q<Image>("imgBackground");
-            //get image
-            LoadSprite(key, loadedSprite =>
-            {
-                UIBackground.style.backgroundImage = new StyleBackground(loadedSprite);
-            }
-            );
-        }
-        /// <summary>
-        /// Changes the Ideal Avatar and respective items to those sepcified by the JSON file
-        /// </summary>
-        private void UpdateIdealAvatar(string key)
-        {
-            
-            //TEMPSTUFF
-            string IdealAvatarElement = "idealAvatar";
-            //
-            if (_root.Q<Image>(IdealAvatarElement) == null)
-            {
-                Debug.LogError("WardrobeController: Could not find imgBackground element");
-            }
-            if (key == null)
-            {
-                Debug.LogError("WardrobeController: Null key in UpdateBackground");
-            }
-            VisualElement UIAvatar = _root.Q<Image>(IdealAvatarElement);
-            //get image
-            LoadSprite(key, loadedSprite =>
-            {
-                UIAvatar.style.backgroundImage = new StyleBackground(loadedSprite);
-            }
-            );
-            
 
-            //IdealItems for IdealAvatar; should be changed to a more appropriate area
-            SetSlotSprite("idealTop", getItemByID(ScenarioState.Instance.ActiveScenario.idealOutfit.top.itemId)?.sprite);
-            SetSlotSprite("idealJacket", getItemByID(ScenarioState.Instance.ActiveScenario.idealOutfit.jacket.itemId)?.sprite);
-            SetSlotSprite("idealBottoms", getItemByID(ScenarioState.Instance.ActiveScenario.idealOutfit.bottoms.itemId)?.sprite);
-            SetSlotSprite("idealShoes", getItemByID(ScenarioState.Instance.ActiveScenario.idealOutfit.shoes.itemId)?.sprite);
-            //
+            string resolvedKey;
+            if (string.IsNullOrEmpty(backgroundSpriteKey))
+            {
+                resolvedKey = "Scenarios/DressingRoom.png";
+            }
+            else
+            {
+                resolvedKey = backgroundSpriteKey;
+            }
+
+            LoadSprite(resolvedKey, loadedSprite =>
+            {
+                backgroundElement.style.backgroundImage = new StyleBackground(loadedSprite);
+            });
         }
+
         /// <summary>
-        /// Returns an item according to it's ID
+        /// Loads the ideal-outfit avatar preview and populates ideal slot images from wardrobe data.
         /// </summary>
-        //Probably should put this in WardrobeItem but its here for now.
-        private WardrobeItem getItemByID(string ID)
+        /// <param name="avatarSpriteKey">Addressables key for the scenario avatar sprite shown behind ideal clothing.</param>
+        /// <param name="idealOutfit">Ideal outfit rows from the active scenario; may be null.</param>
+        private void UpdateIdealAvatar(string avatarSpriteKey, IdealOutfit idealOutfit)
         {
-            if (ID == null)
+            const string idealAvatarElementName = "idealAvatar";
+
+            Image idealAvatarElement = _root.Q<Image>(idealAvatarElementName);
+            if (idealAvatarElement == null)
+            {
+                Debug.LogError("ResultsController: idealAvatar Image not found in UXML.");
+            }
+            else if (!string.IsNullOrEmpty(avatarSpriteKey))
+            {
+                LoadSprite(avatarSpriteKey, loadedSprite =>
+                {
+                    idealAvatarElement.style.backgroundImage = new StyleBackground(loadedSprite);
+                });
+            }
+
+            if (idealOutfit == null)
+            {
+                return;
+            }
+
+            SetSlotSprite("idealTop", GetItemById(idealOutfit.top?.itemId)?.sprite);
+            SetSlotSprite("idealJacket", GetItemById(idealOutfit.jacket?.itemId)?.sprite);
+            SetSlotSprite("idealBottoms", GetItemById(idealOutfit.bottoms?.itemId)?.sprite);
+            SetSlotSprite("idealShoes", GetItemById(idealOutfit.shoes?.itemId)?.sprite);
+        }
+
+        /// <summary>
+        /// Returns the first wardrobe item matching the given clothing item id.
+        /// </summary>
+        /// <param name="itemId">Clothing item id from scenario JSON, or null.</param>
+        /// <returns>The matching item, or null if not found or id is null.</returns>
+        private WardrobeItem GetItemById(string itemId)
+        {
+            if (itemId == null)
             {
                 return null;
             }
+
             foreach (WardrobeItem item in WardrobeState.Instance.AllWardrobeItems)
             {
-                if (item.id == ID)
+                if (item.id == itemId)
                 {
-                    Debug.Log(item.name);
                     return item;
                 }
             }
+
             return null;
         }
-        //
-
     }
 }
