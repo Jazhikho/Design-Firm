@@ -52,8 +52,7 @@ namespace Assets.Scripts.UI
                 UpdateIdealAvatar(activeScenario.avatarImage, activeScenario.idealOutfit);
             }
 
-            LoadAvatarImages();
-            ReadWardrobeItems();
+            LoadAvatarImages();            
             ReadScenario();
         }
 
@@ -194,123 +193,21 @@ namespace Assets.Scripts.UI
             };
         }
 
-        /// <summary>
-        /// Populate the UI labels that list the player's currently equipped wardrobe items.
-        /// </summary>
-        /// <remarks>
-        /// Each label is updated via <see cref="ReadItem"/>. Missing UI elements or
-        /// missing equipped items are logged as errors.
-        /// </remarks>
-        public void ReadWardrobeItems()
-        {
-            ReadItem("lblYourJacketName", "Jacket", WardrobeState.Instance.CurrentItemJacket);
-            ReadItem("lblYourTopName", "Top", WardrobeState.Instance.CurrentItemTop);
-            ReadItem("lblYourBottomsName", "Bottoms", WardrobeState.Instance.CurrentItemBottom);
-            ReadItem("lblYourShoesName", "Shoes", WardrobeState.Instance.CurrentItemShoe);
-        }
 
-        /// <summary>
-        /// Update a single UI label with the provided wardrobe item information.
-        /// </summary>
-        /// <param name="slotLabel">UXML name of the label element to update.</param>
-        /// <param name="slotStr">Human-readable slot name used in the displayed text (e.g. "Jacket").</param>
-        /// <param name="itemSlot">The equipped <see cref="WardrobeItem"/> for the slot. If null
-        /// the method logs an error and does not update the label.</param>
-        public void ReadItem(string slotLabel, string slotStr, WardrobeItem itemSlot)
-        {
-            Label itemDisplay = _root.Q<Label>(slotLabel);
-            if (itemDisplay == null)
-            {
-                Debug.LogError("ResultsController: Could not find itemDisplay for ReadItem " + slotStr);
-                return;
-            }
-
-            if (itemSlot == null)
-            {
-                Debug.LogError("ResultsController: Could not find the item for ReadItem " + slotStr);
-                return;
-            }
-
-            itemDisplay.text = "Your " + slotStr + ": " + itemSlot.name;
-        }
 
         /// <summary>
         /// Execute the scenario result pass: compute scores and populate ideal-item hints.
         /// </summary>
         /// <remarks>
-        /// This is a convenience wrapper that invokes <see cref="Scoring"/> followed by
-        /// <see cref="IdealItemsHint"/> so both score labels and hint labels are updated.
+        /// This is a convenience wrapper that invokes <see cref="Scoring"/> 
         /// </remarks>
         public void ReadScenario()
         {
-            Scoring();
-            IdealItemsHint();
-        }
+            Scoring();            
+        }     
 
-        /// <summary>
-        /// Populate the ideal-item hint labels using the active scenario's <see cref="IdealOutfit"/>.
-        /// </summary>
-        /// <remarks>
-        /// If there is no active scenario or the scenario does not define an ideal outfit,
-        /// a diagnostic error is logged and no UI is updated.
-        /// </remarks>
-        public void IdealItemsHint()
-        {
-            if (ScenarioState.Instance.ActiveScenario == null || ScenarioState.Instance.ActiveScenario.idealOutfit == null)
-            {
-                Debug.LogError("ResultsController: IdealItemsHint missing scenario or idealOutfit.");
-                return;
-            }
+   
 
-            IdealOutfit outfit = ScenarioState.Instance.ActiveScenario.idealOutfit;
-            IdealItemHint("lblHintIdealJacket", outfit.jacket);
-            IdealItemHint("lblHintIdealTop", outfit.top);
-            IdealItemHint("lblHintIdealBottoms", outfit.bottoms);
-            IdealItemHint("lblHintIdealShoes", outfit.shoes);
-        }
-
-        /// <summary>
-        /// Set the hint text for a single ideal-item label.
-        /// </summary>
-        /// <param name="label">UXML name of the label element to update.</param>
-        /// <param name="ideal">The <see cref="IdealOutfitItem"/> that supplies the hint text.
-        /// If null or if <see cref="IdealOutfitItem.commentary"/> is empty the label is set to
-        /// a "no hints" fallback string.</param>
-        public void IdealItemHint(string label, IdealOutfitItem ideal)
-        {
-            Label hintLabel = _root.Q<Label>(label);
-            if (hintLabel == null)
-            {
-                Debug.LogError("ResultsController: Could not find label for IdealItemHint.");
-                return;
-            }
-
-            if (ideal == null || string.IsNullOrEmpty(ideal.commentary))
-            {
-                hintLabel.text = "Hint: no hints";
-                return;
-            }
-
-            hintLabel.text = "Hint: " + ideal.commentary;
-        }
-
-        /// <summary>
-        /// Update a feedback label with the given commentary text.
-        /// </summary>
-        /// <param name="label">UXML name of the label element to update.</param>
-        /// <param name="commentary">The text to display. If null the method treats it as an empty string.</param>
-        public void FeedBackItem(string label, string commentary)
-        {
-            Label feedbackLabel = _root.Q<Label>(label);
-            if (feedbackLabel == null) return;
-
-            if (commentary == null)
-            {
-                commentary = string.Empty;
-            }
-
-            feedbackLabel.text = commentary;
-        }
 
         /// <summary>
         /// Compute and display per-slot scores and the overall total score for the active scenario.
@@ -332,33 +229,21 @@ namespace Assets.Scripts.UI
 
             IdealOutfit idealOutfit = activeScenario.idealOutfit;
             List<ScoredItem> scoredItems = activeScenario.scoredItems;
-            IncorrectSlotFeedback fb = activeScenario.incorrectSlotFeedback;
+            
 
-            float jacketScore = ScoreItem(WardrobeState.Instance.CurrentItemJacket, idealOutfit?.jacket, scoredItems, "lblFeedbackJacket", fb.jacket);
-            Label lblJacketScore = _root.Q<Label>("lblJacketScore");
-            if (lblJacketScore != null)
-                lblJacketScore.text = jacketScore.ToString("F1");
-
-            float topScore = ScoreItem(WardrobeState.Instance.CurrentItemTop, idealOutfit?.top, scoredItems, "lblFeedbackTop", fb.top);
-            Label lblTopScore = _root.Q<Label>("lblTopScore");
-            if (lblTopScore != null)
-                lblTopScore.text = topScore.ToString("F1");
-
-            float bottomScore = ScoreItem(WardrobeState.Instance.CurrentItemBottom, idealOutfit?.bottoms, scoredItems, "lblFeedbackBottoms", fb.bottoms);
-            Label lblBottomsScore = _root.Q<Label>("lblBottomsScore");
-            if (lblBottomsScore != null)
-                lblBottomsScore.text = bottomScore.ToString("F1");
-
-            float shoesScore = ScoreItem(WardrobeState.Instance.CurrentItemShoe, idealOutfit?.shoes, scoredItems, "lblFeedbackShoes", fb.shoes);
-            Label lblShoesScore = _root.Q<Label>("lblShoesScore");
-            if (lblShoesScore != null)
-                lblShoesScore.text = shoesScore.ToString("F1");
-
+            float jacketScore = ScoreItem(WardrobeState.Instance.CurrentItemJacket, idealOutfit?.jacket, scoredItems);            
+          
+            float topScore = ScoreItem(WardrobeState.Instance.CurrentItemTop, idealOutfit?.top, scoredItems);
+           
+            float bottomScore = ScoreItem(WardrobeState.Instance.CurrentItemBottom, idealOutfit?.bottoms, scoredItems);
+            
+            float shoesScore = ScoreItem(WardrobeState.Instance.CurrentItemShoe, idealOutfit?.shoes, scoredItems);
+            
             Label totalScoreDisplay = _root.Q<Label>("lblTotalScore");
             if (totalScoreDisplay != null)
             {
                 float totalScore = jacketScore + topScore + bottomScore + shoesScore;
-                totalScoreDisplay.text = totalScore.ToString("F1") + "/4.0";
+                totalScoreDisplay.text = " Let's see... you got " + totalScore.ToString("F0") + " out of 4 items correct.";
             }
         }
 
@@ -375,7 +260,7 @@ namespace Assets.Scripts.UI
         /// appropriate commentary for full, partial, or no credit cases.
         /// </returns>
         private float ScoreItem(
-            WardrobeItem selectedItem, IdealOutfitItem idealItem, List<ScoredItem> scoredItems, string commentaryLabel, string slotFeedback)
+            WardrobeItem selectedItem, IdealOutfitItem idealItem, List<ScoredItem> scoredItems)
         {
             string selectedId = selectedItem?.id;
             // Treat "nothing_*" selection items as an empty slot
@@ -387,8 +272,7 @@ namespace Assets.Scripts.UI
             // Full point: both empty/null, or both match the same non-empty id
             if ((string.IsNullOrEmpty(idealId) && string.IsNullOrEmpty(selectedId)) ||
                 (!string.IsNullOrEmpty(idealId) && selectedId == idealId))
-            {
-                FeedBackItem(commentaryLabel, idealItem?.commentary);
+            {                
                 return 1f;
             }
 
@@ -403,15 +287,14 @@ namespace Assets.Scripts.UI
                     }
 
                     if (scoredRow.itemId == selectedId)
-                    {
-                        FeedBackItem(commentaryLabel, scoredRow.commentary);
+                    {                        
                         return scoredRow.score;
                     }
                 }
             }
 
             // No match
-            FeedBackItem(commentaryLabel, slotFeedback);
+           
             return 0f;
         }
 
