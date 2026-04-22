@@ -1,7 +1,7 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/USS/CommonStylesheet.uss?fileID=7433441132597879392&amp;guid=8e23400638b471247abded66e2e9521e&amp;type=3#CommonStylesheet"/>
     <Style src="project://database/Assets/UI/USS/WardrobeStylesheet.uss?fileID=7433441132597879392&amp;guid=81c303d3ec7a30445a00a6fbc3330ab1&amp;type=3#WardrobeStylesheet"/>
-    <ui:Image name="imgBackground" class="background-runway" style="background-image: url(&quot;project://database/Assets/Art/Backgrounds/dressingRoom.PNG?fileID=-2523708559601355463&amp;guid=2e6c6f56a169e494aaee32375fc45e18&amp;type=3#dressingRoom_0&quot;);"/>
+    <ui:Image name="imgBackground" class="background-runway" style="background-image: url(&quot;project://database/Assets/Art/Backgrounds/dressingRoom.jpg?fileID=2800000&amp;guid=65017f07c58e9124db3e11aac9915070&amp;type=3#dressingRoom&quot;);"/>
     <ui:VisualElement name="root" class="root">
         <ui:VisualElement name="topRow" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; flex-direction: row; align-items: center; justify-content: space-between; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;">
             <ui:VisualElement style="flex-grow: 1; flex-direction: row;">

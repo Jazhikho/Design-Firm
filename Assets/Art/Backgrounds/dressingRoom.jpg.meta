@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2e6c6f56a169e494aaee32375fc45e18
+guid: 65017f07c58e9124db3e11aac9915070
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2523708559601355463
-    second: dressingRoom_0
+      213: -1171698205529512216
+    second: IMG_4358_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dressingRoom_0
+      name: IMG_4358_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 2420
-        height: 1668
+        width: 2560
+        height: 1440
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 935395caf6cf9fcd0800000000000000
-      internalID: -2523708559601355463
+      spriteID: 8e66373a0ba4dbfe0800000000000000
+      internalID: -1171698205529512216
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      dressingRoom_0: -2523708559601355463
+      IMG_4358_0: -1171698205529512216
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
