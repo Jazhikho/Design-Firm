@@ -615,7 +615,7 @@ namespace Assets.Scripts.UI
             string scenarioDescText;
             if (ScenarioState.Instance.ActiveScenario != null)
             {
-                scenarioDescText = ScenarioState.Instance.ActiveScenario.description ?? string.Empty;
+                scenarioDescText = ScenarioState.Instance.ActiveScenario.name ?? string.Empty;
             }
             else if (_sandboxMode)
             {
