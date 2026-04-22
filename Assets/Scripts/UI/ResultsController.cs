@@ -45,6 +45,11 @@ namespace Assets.Scripts.UI
             _retryScenarioButton = _root.Q<Button>("btnNewScenario");
             _retryScenarioButton?.RegisterCallback<ClickEvent>(NewScenario);
 
+            //
+            UpdateBackground(ScenarioState.Instance.ActiveScenario.backgroundImage);
+            UpdateIdealAvatar(ScenarioState.Instance.ActiveScenario.avatarImage);
+            //
+
             LoadAvatarImages();
             ReadWardrobeItems();
             ReadScenario();
@@ -402,5 +407,79 @@ namespace Assets.Scripts.UI
             FeedBackItem(commentaryLabel, slotFeedback);
             return 0f;
         }
+
+        /// <summary>
+        /// Changes the background in the UI
+        /// </summary>
+        private void UpdateBackground(string key = "Assets/Art/Backgrounds/dressingRoom.PNG")
+        {
+            if (_root.Q<Image>("imgBackground") == null)
+            {
+                Debug.LogError("WardrobeController: Could not find imgBackground element");
+            }
+            if (key == null)
+            {
+                Debug.LogError("WardrobeController: Null key in UpdateBackground");
+            }
+            VisualElement UIBackground = _root.Q<Image>("imgBackground");
+            //get image
+            LoadSprite(key, loadedSprite =>
+            {
+                UIBackground.style.backgroundImage = new StyleBackground(loadedSprite);
+            }
+            );
+        }
+        //THIS FUNCTION HAS A LOT OF TEMP STUFF; TELL ME WHEN RIVER FINISHES UP THEIR WORK ON RESULTS.
+        private void UpdateIdealAvatar(string key)
+        {
+            
+            //TEMPSTUFF
+            string IdealAvatarElement = "idealAvatar";
+            //
+            if (_root.Q<Image>(IdealAvatarElement) == null)
+            {
+                Debug.LogError("WardrobeController: Could not find imgBackground element");
+            }
+            if (key == null)
+            {
+                Debug.LogError("WardrobeController: Null key in UpdateBackground");
+            }
+            VisualElement UIAvatar = _root.Q<Image>(IdealAvatarElement);
+            //get image
+            LoadSprite(key, loadedSprite =>
+            {
+                UIAvatar.style.backgroundImage = new StyleBackground(loadedSprite);
+            }
+            );
+            
+
+            //IdealItems for IdealAvatar; should be changed to a more appropriate area
+            SetSlotSprite("idealTop", getItemByID(ScenarioState.Instance.ActiveScenario.idealOutfit.top.itemId)?.sprite);
+            SetSlotSprite("idealJacket", getItemByID(ScenarioState.Instance.ActiveScenario.idealOutfit.jacket.itemId)?.sprite);
+            SetSlotSprite("idealBottoms", getItemByID(ScenarioState.Instance.ActiveScenario.idealOutfit.bottoms.itemId)?.sprite);
+            SetSlotSprite("idealShoes", getItemByID(ScenarioState.Instance.ActiveScenario.idealOutfit.shoes.itemId)?.sprite);
+            //
+        }
+
+        //Probably should put this in WardrobeItem but its here for now.
+        private WardrobeItem getItemByID(string ID)
+        {
+            if (ID == null)
+            {
+                return null;
+            }
+            foreach (WardrobeItem item in WardrobeState.Instance.AllWardrobeItems)
+            {
+                if (item.id == ID)
+                {
+                    Debug.Log(item.name);
+                    return item;
+                }
+            }
+            Debug.LogError("getItemByID: No item found for ID: " + ID);
+            return null;
+        }
+        //
+
     }
 }
