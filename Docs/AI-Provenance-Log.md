@@ -15,6 +15,17 @@ Disclosure and audit trail for AI-assisted work. Update when committing signific
 
 ---
 
+**Date:** 2026-04-23  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** Before merging GitHub PR #61, remove committed `Assets/_Recovery` artifacts, add ignore rule, deduplicate button-SFX helpers into `AudioManager.TryPlayButtonSfx()`, push to branch `Markus2`, then merge PR #61 and PR #62; sync `VERSION.md` and this log on `main`.  
+**Input materials used:** `origin/pull/61/head`; `Assets/_Recovery/*`; `.gitignore`; `AudioManager.cs`; `MainMenuController.cs`; `ScenariosController.cs`; `WardrobeController.cs`; `VERSION.md`; this log.  
+**Summary of AI contribution:** Checked out PR #61 ref, merged current `origin/main`, deleted recovery scene and meta, added `/[Aa]ssets/_Recovery/` to `.gitignore`, introduced static `AudioManager.TryPlayButtonSfx()` with XML summary, routed main menu and back-navigation callers through it, removed per-controller duplicates and incorrect log prefixes, committed and pushed `pr61-fix` to `Markus2`; merged PR #61 and #62 via GitHub CLI; fast-forwarded local `main`, bumped internal label to 0.0.5.4 in `VERSION.md`, appended this entry.  
+**What the human accepted / rejected / changed:** Human asked to apply PR #61 fixes pre-merge and merge both PR #61 and #62.  
+**Validation method used:** `read_lints` on edited C# files.  
+**Final approver:** (pending routine review)  
+
+---
+
 **Date:** 2026-04-22  
 **Tool or model used:** Cursor agent (AI-assisted editing)  
 **Task purpose:** After human-approved merges of GitHub PR #57, #58, and #59, revert unintended Unity Services fields in `ProjectSettings.asset`; fix sandbox wardrobe null-order bug, main menu sandbox UI null-safety and `ClickEvent.currentTarget` usage, results summary counting for partial scores, and `AudioManager` default `_buttonSfx` reference; sync `VERSION.md` and this log.  
