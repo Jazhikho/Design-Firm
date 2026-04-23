@@ -264,23 +264,8 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void GoToScenarios(ClickEvent e)
         {
-            TryPlayButtonSfx();
+            AudioManager.TryPlayButtonSfx();
             SceneManager.LoadScene(GameConstants.TaskScenarioScene);
-        }
-        /// <summary>
-        /// Plays the main menu button click sound when an AudioManager is present in the scene.
-        /// </summary>
-        private void TryPlayButtonSfx()
-        {
-            if (AudioManager.Instance != null)
-            {
-                AudioManager.Instance.PlayButtonSfx();
-            }
-            else
-            {
-                Debug.LogWarning(
-                    "MainMenuController: AudioManager.Instance is null; button SFX was skipped.");
-            }
         }
 
         private void RefreshUI()

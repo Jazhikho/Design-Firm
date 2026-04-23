@@ -285,21 +285,8 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void BackScene(ClickEvent e)
         {
-            TryPlayButtonSfx();
+            AudioManager.TryPlayButtonSfx();
             SceneManager.LoadScene(GameConstants.MainMenuScene);
-
-        }
-        private void TryPlayButtonSfx()
-        {
-            if (AudioManager.Instance != null)
-            {
-                AudioManager.Instance.PlayButtonSfx();
-            }
-            else
-            {
-                Debug.LogWarning(
-                    "MainMenuController: AudioManager.Instance is null; button SFX was skipped.");
-            }
         }
 
         /// <summary>

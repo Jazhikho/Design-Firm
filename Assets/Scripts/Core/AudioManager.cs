@@ -60,5 +60,23 @@ namespace Assets.Scripts.Core
             if (_buttonSfx != null)
                 _audioSource.PlayOneShot(_buttonSfx);
         }
+
+        /// <summary>
+        /// Invokes <see cref="PlayButtonSfx"/> on the live singleton when present; otherwise logs a warning.
+        /// </summary>
+        /// <remarks>
+        /// Use from UI controllers so button feedback stays consistent without duplicating null checks.
+        /// </remarks>
+        public static void TryPlayButtonSfx()
+        {
+            if (Instance != null)
+            {
+                Instance.PlayButtonSfx();
+            }
+            else
+            {
+                Debug.LogWarning("AudioManager.Instance is null; button SFX was skipped.");
+            }
+        }
     }
 }
