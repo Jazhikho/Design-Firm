@@ -285,6 +285,7 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void BackScene(ClickEvent e)
         {
+            AudioManager.TryPlayButtonSfx();
             SceneManager.LoadScene(GameConstants.MainMenuScene);
         }
 

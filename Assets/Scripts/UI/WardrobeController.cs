@@ -264,6 +264,7 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void GoToScenarios(ClickEvent e)
         {
+            AudioManager.TryPlayButtonSfx();
             SceneManager.LoadScene(GameConstants.TaskScenarioScene);
         }
 

@@ -52,6 +52,9 @@ desktop.ini
 # venv/
 # *.pyc
 
+# Unity editor recovery scenes (should not be versioned)
+/[Aa]ssets/_Recovery/
+
 # --- Unity (https://github.com/github/gitignore/blob/main/Unity.gitignore) ---
 # Place the Unity project at repo root, or duplicate these paths under your Unity folder.
 .utmp/

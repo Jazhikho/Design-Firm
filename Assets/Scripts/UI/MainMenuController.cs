@@ -110,7 +110,7 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void OnPlayClicked(ClickEvent e)
         {
-            TryPlayButtonSfx();
+            AudioManager.TryPlayButtonSfx();
             SceneManager.LoadScene(GameConstants.TaskScenarioScene);
         }
 
@@ -119,24 +119,8 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void OnQuitClicked(ClickEvent e)
         {
-            TryPlayButtonSfx();
+            AudioManager.TryPlayButtonSfx();
             StartCoroutine(QuitAfterSfx());
-        }
-
-        /// <summary>
-        /// Plays the main menu button click sound when an AudioManager is present in the scene.
-        /// </summary>
-        private void TryPlayButtonSfx()
-        {
-            if (AudioManager.Instance != null)
-            {
-                AudioManager.Instance.PlayButtonSfx();
-            }
-            else
-            {
-                Debug.LogWarning(
-                    "MainMenuController: AudioManager.Instance is null; button SFX was skipped.");
-            }
         }
 
         /// <summary>
@@ -170,7 +154,7 @@ namespace Assets.Scripts.UI
                 return;
             }
 
-            TryPlayButtonSfx();
+            AudioManager.TryPlayButtonSfx();
             if (SandboxSubMenuVis)
             {
                 SandboxSubMenuVis = false;
@@ -213,7 +197,7 @@ namespace Assets.Scripts.UI
             }
 
             ScenarioState.Instance.ActiveScenario = sandboxScenario;
-            TryPlayButtonSfx();
+            AudioManager.TryPlayButtonSfx();
             SceneManager.LoadScene(GameConstants.WardrobeScene);
         }
     }
