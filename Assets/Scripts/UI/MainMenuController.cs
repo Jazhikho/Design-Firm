@@ -15,6 +15,7 @@ namespace Assets.Scripts.UI
         private Button _sandboxButton;
         private Button _sandboxFButton;
         private Button _sandboxMButton;
+        private Button _settingsButton;
         private bool SandboxSubMenuVis;
         private VisualElement _sandboxSubMenu;
         /// <summary>
@@ -29,6 +30,7 @@ namespace Assets.Scripts.UI
             _quitButton = root.Q<Button>("QuitButton");
             _sandboxButton = root.Q<Button>("SandboxButton");
             _sandboxSubMenu = root.Q<VisualElement>("SubMenu");
+            _settingsButton = root.Q<Button>("SettingsButton");
             if (_sandboxSubMenu != null)
             {
                 _sandboxFButton = _sandboxSubMenu.Q<Button>("sandboxF");
@@ -65,6 +67,14 @@ namespace Assets.Scripts.UI
                 Debug.LogError(
                     "MainMenuController: Sandbox UI incomplete (SandboxButton, SubMenu, sandboxF, or sandboxM missing). Sandbox controls were not bound.");
             }
+            if (_settingsButton != null)
+            {
+                _settingsButton.RegisterCallback<ClickEvent>(OnSettingsButtonClick);
+            }
+            else
+            {
+                Debug.LogError("MainMenuController: Settings Button not found.");
+            }
 
             if (Application.platform == RuntimePlatform.WebGLPlayer)
             {
@@ -97,6 +107,10 @@ namespace Assets.Scripts.UI
             if (_sandboxMButton != null)
             {
                 _sandboxMButton.UnregisterCallback<ClickEvent>(OnSandboxSubMenuButtonClick);
+            }
+            if (_settingsButton != null)
+            {
+                _settingsButton.UnregisterCallback<ClickEvent>(OnSettingsButtonClick);
             }
 
             if (_quitButton != null && Application.platform != RuntimePlatform.WebGLPlayer)
@@ -199,6 +213,12 @@ namespace Assets.Scripts.UI
             ScenarioState.Instance.ActiveScenario = sandboxScenario;
             AudioManager.TryPlayButtonSfx();
             SceneManager.LoadScene(GameConstants.WardrobeScene);
+        }
+
+        private void OnSettingsButtonClick(ClickEvent evt)
+        {
+            AudioManager.TryPlayButtonSfx();
+            SceneManager.LoadScene(GameConstants.SettingsScene);
         }
     }
 }
