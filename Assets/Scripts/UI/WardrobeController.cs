@@ -106,7 +106,6 @@ namespace Assets.Scripts.UI
                 _timerLabel.visible = false;
             }
 
-
             // Gets clothing trunks/rack buttons and item lists
             _jacketsListContainer = root.Q<VisualElement>("jacketsListContainer");
             _jacketsTrunk = root.Q<Button>("btnJacketsRack");
@@ -119,8 +118,7 @@ namespace Assets.Scripts.UI
 
             _shoesListContainer = root.Q<VisualElement>("shoesListContainer");
             _shoesRack = root.Q<Button>("btnShoesRack");
-
-            
+                        
             if (_jacketsTrunk != null)
             {
                 _jacketsTrunk.RegisterCallback<ClickEvent>(OpenJackets);
@@ -138,9 +136,6 @@ namespace Assets.Scripts.UI
                 _shoesRack.RegisterCallback<ClickEvent>(OpenShoes);
             }
             
-
-
-
             _avatarImage = root.Q<Image>("activeAvatar");
             _jacketImage = root.Q<Image>("activeJacket");
             _topImage = root.Q<Image>("activeTop");
@@ -479,7 +474,7 @@ namespace Assets.Scripts.UI
                 case ClothingSlot.Top:
                     WardrobeState.Instance.CurrentItemTop = item;
                     break;
-                case ClothingSlot.Bottoms:
+                case ClothingSlot.Bottom:
                     WardrobeState.Instance.CurrentItemBottom = item;
                     break;
                 case ClothingSlot.Shoes:

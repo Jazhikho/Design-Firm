@@ -231,7 +231,7 @@ namespace Assets.Scripts.UI
           
             float topScore = ScoreItem(WardrobeState.Instance.CurrentItemTop, idealOutfit?.top, scoredItems);
            
-            float bottomScore = ScoreItem(WardrobeState.Instance.CurrentItemBottom, idealOutfit?.bottoms, scoredItems);
+            float bottomScore = ScoreItem(WardrobeState.Instance.CurrentItemBottom, idealOutfit?.bottom, scoredItems);
             
             float shoesScore = ScoreItem(WardrobeState.Instance.CurrentItemShoe, idealOutfit?.shoes, scoredItems);
 
@@ -368,7 +368,7 @@ namespace Assets.Scripts.UI
 
             SetSlotSprite("idealTop", GetItemById(idealOutfit.top?.itemId)?.sprite);
             SetSlotSprite("idealJacket", GetItemById(idealOutfit.jacket?.itemId)?.sprite);
-            SetSlotSprite("idealBottoms", GetItemById(idealOutfit.bottoms?.itemId)?.sprite);
+            SetSlotSprite("idealBottoms", GetItemById(idealOutfit.bottom?.itemId)?.sprite);
             SetSlotSprite("idealShoes", GetItemById(idealOutfit.shoes?.itemId)?.sprite);
         }
 

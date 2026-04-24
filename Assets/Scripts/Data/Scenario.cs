@@ -48,7 +48,7 @@ namespace Assets.Scripts.Data
 
         public string top;
 
-        public string bottoms;
+        public string bottom;
 
         public string shoes;
     }
@@ -60,7 +60,7 @@ namespace Assets.Scripts.Data
 
         public IdealOutfitItem top;
 
-        public IdealOutfitItem bottoms;
+        public IdealOutfitItem bottom;
 
         public IdealOutfitItem shoes;
     }

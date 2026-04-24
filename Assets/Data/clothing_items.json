@@ -2,164 +2,164 @@
   "clothingItems": [
     {
       "id": "2000sCasualTop",
-      "name": "Flowy Strapless Top",
+      "name": "Oversized Jersey",
       "slot": "top",
       "gender": "female",
-      "coversBottoms": false,
+      "coversBottom": true,
       "sprite": "Tops/2000sCasualTop.png",
-      "description": "A flowy top made of soy silk."
-    },
-    {
-      "id": "2000sCasualBottom",
-      "name": "Denim Miniskirt",
-      "slot": "bottoms",
-      "gender": "female",
-      "coversBottoms": false,
-      "sprite": "Bottoms/2000sCasualBottom.png",
-      "description": "A short denim skirt."
+      "description": "A numbered jersey of a popular sports team paired with hoop earrings."
     },
     {
       "id": "2000sCasualShoes",
-      "name": "Open-toed Sandals",
+      "name": "Wrapped Sandals",
       "slot": "shoes",
       "gender": "female",
-      "coversBottoms": false,
+      "coversBottom": false,
       "sprite": "Shoes/2000sCasualShoes.png",
-      "description": "A pair of open-toed sandals with a wedge heel."
+      "description": "Black sandals with a heel and a wrap around the ankle."
     },
     {
       "id": "2000sFormalTop",
-      "name": "Satin Spaghetti Strap Dress",
+      "name": "Backless Dress",
       "slot": "top",
       "gender": "female",
-      "coversBottoms": true,
+      "coversBottom": true,
       "sprite": "Tops/2000sFormalTop.png",
-      "description": "A smooth, lightweight satin camisole-style dress with thin straps."
+      "description": "A body length, backless dress."
     },
     {
       "id": "2000sFormalShoes",
-      "name": "Clasic Pumps",
+      "name": "Formal Heels",
       "slot": "shoes",
       "gender": "female",
-      "coversBottoms": false,
+      "coversBottom": false,
       "sprite": "Shoes/2000sFormalShoes.png",
-      "description": "Closed-toe pumps with a slim heel and a smooth, polished finish."
+      "description": "A pair of stylish heels."
     },
     {
       "id": "2000sBusinessJacket",
-      "name": "Pinstripe Jacket",
+      "name": "Silken Suit Jacket",
       "slot": "jacket",
-      "gender": "male",
-      "coversBottoms": false,
+      "gender": "female",
+      "coversBottom": false,
       "sprite": "Jackets/2000sBusinessJacket.png",
-      "description": "A pinstripe suit jacket."
+      "description": "A brown suit jacket with art on the silken interior."
     },
     {
       "id": "2000sBusinessTop",
-      "name": "Long-Sleeve Button-Up",
+      "name": "Dress Shirt with Vest",
       "slot": "top",
-      "gender": "male",
-      "coversBottoms": false,
+      "gender": "female",
+      "coversBottom": false,
       "sprite": "Tops/2000sBusinessTop.png",
-      "description": " A button-up shirt with a banded collar."
+      "description": "A dress shirt and tie layered with a cross-body vest."
     },
     {
       "id": "2000sBusinessBottom",
-      "name": "Classic Jeans",
-      "slot": "bottoms",
-      "gender": "male",
-      "coversBottoms": false,
-      "sprite": "Bottoms/2000sBusinessBottom.png",
-      "description": "A pair of denim jeans, easy to dress up."
+      "name": "Women’s Slacks",
+      "slot": "bottom",
+      "gender": "female",
+      "coversBottom": false,
+      "sprite": "Bottom/2000sBusinessBottom.png",
+      "description": "A pair of tan slacks."
     },
     {
       "id": "2000sBusinessShoes",
-      "name": "Oxford Shoes",
+      "name": "Sensible Flats",
       "slot": "shoes",
-      "gender": "male",
-      "coversBottoms": false,
+      "gender": "female",
+      "coversBottom": false,
       "sprite": "Shoes/2000sBusinessShoes.png",
-      "description": "A classy pair of oxford shoes. "
+      "description": "A pair of sensible flats."
     },
     {
-      "id": "1980FormalDress",
-      "name": "Frilly Dress",
+      "id": "1980sFormalJacket",
+      "name": "Blazer with Shoulder Pads",
+      "slot": "jacket",
+      "gender": "female",
+      "coversBottom": false,
+      "sprite": "Jackets/1980sFormalJacket.png",
+      "description": "A pink blazer with shoulder pads."
+    },
+    {
+      "id": "1980sFormalTop",
+      "name": "White Turtleneck with Jewelry",
       "slot": "top",
       "gender": "female",
-      "coversBottoms": false,
+      "coversBottom": false,
       "sprite": "Tops/1980sFormalTop.png",
-      "description": "A dress adorned with sequins and frills."
+      "description": "A white turtleneck with gold jewelry."
     },
     {
-      "id": "1980sFormalTights",
-      "name": "Sheer Tights",
-      "slot": "bottoms",
+      "id": "1980sFormalBottom",
+      "name": "Pencil Skirt and Sheer Tights",
+      "slot": "bottom",
       "gender": "female",
-      "coversBottoms": false,
-      "sprite": "Bottoms/1980sFormalBottom.png",
-      "description": "A sheer pair of tights to wear under a dress."
+      "coversBottom": false,
+      "sprite": "Bottom/1980sFormalBottom.png",
+      "description": "A black pencil skirt over sheer tights."
     },
     {
-      "id": "1980FormalShoes",
-      "name": "Bow-Tie Heels",
+      "id": "1980sFormalShoes",
+      "name": "Black Heels with Ankle Strap",
       "slot": "shoes",
       "gender": "female",
-      "coversBottoms": false,
+      "coversBottom": false,
       "sprite": "Shoes/1980sFormalShoes.png",
-      "description": "A pair of heels with a bow."
+      "description": "A pair of black heels secured with an ankle strap."
     },
     {
-      "id": "2010sBusinessJacket",
-      "name": "Blazer with Sunglasses",
+      "id": "1980sBusinessJacket",
+      "name": "Wide Shouldered Blazer",
       "slot": "jacket",
       "gender": "male",
-      "coversBottoms": false,
-      "sprite": "Jackets/2010sBusinessJacket.png",
-      "description": "A suit jacket blazer paired with sunglasses."
+      "coversBottom": false,
+      "sprite": "Jackets/1980sBusinessJacket.png",
+      "description": "A yellow blazer with wide shoulders and rolled up sleeves."
     },
     {
-      "id": "2010sBusinessTop",
-      "name": "Shirt with Vest and Tie",
+      "id": "1980sBusinessTop",
+      "name": "Silk Shirt",
       "slot": "top",
-      "gender": "unisex",
-      "coversBottoms": false,
-      "sprite": "Tops/2010sBusinessTop.png",
-      "description": "A patterned long-sleeve shirt with a vest and tie."
-    },
-    {
-      "id": "2010sBusinessBottom",
-      "name": "Professional Slacks",
-      "slot": "bottoms",
       "gender": "male",
-      "coversBottoms": false,
-      "sprite": "Bottoms/2010sBusinessBottom.png",
-      "description": "A pair of slacks with a belt."
+      "coversBottom": false,
+      "sprite": "Tops/1980sBusinessTop.png",
+      "description": "A red short-sleeved silk shirt."
     },
     {
-      "id": "2010sBusinessShoes",
-      "name": "Dress Shoes",
+      "id": "1980sBusinessBottom",
+      "name": "Baggy Pleated Pants",
+      "slot": "bottom",
+      "gender": "male",
+      "coversBottom": false,
+      "sprite": "Bottom/1980sBusinessBottom.png",
+      "description": "A pair of baggy, sharply pleated pants."
+    },
+    {
+      "id": "1980sBusinessShoes",
+      "name": "Square-Toed Loafers",
       "slot": "shoes",
       "gender": "male",
-      "coversBottoms": false,
-      "sprite": "Shoes/2010sBusinessShoes.png",
-      "description": "Shiny dress shoes with visible socks."
+      "coversBottom": false,
+      "sprite": "Shoes/1980sBusinessShoes.png",
+      "description": "A pair of loafers with a square toe."
     },
     {
       "id": "1980sCasualTop",
       "name": "Colorful Track Jacket",
       "slot": "top",
       "gender": "female",
-      "coversBottoms": false,
+      "coversBottom": false,
       "sprite": "Tops/1980sCasualTop.png",
       "description": "A track jacket in bright colors."
     },
     {
       "id": "1980sCasualBottom",
       "name": "Baggy Jeans with Belt",
-      "slot": "bottoms",
+      "slot": "bottom",
       "gender": "female",
-      "coversBottoms": false,
-      "sprite": "Bottoms/1980sCasualBottom.png",
+      "coversBottom": false,
+      "sprite": "Bottom/1980sCasualBottom.png",
       "description": "A pair of baggy jeans held up with a belt."
     },
     {
@@ -167,54 +167,90 @@
       "name": "White Sneakers",
       "slot": "shoes",
       "gender": "female",
-      "coversBottoms": false,
+      "coversBottom": false,
       "sprite": "Shoes/1980sCasualShoes.png",
       "description": "A pair of white sneakers."
     },
     {
-      "id": "2010sFormalTop",
-      "name": "Slip Dress",
+      "id": "1990sFormalTop",
+      "name": "Oversized Blazer with Button-Up",
       "slot": "top",
-      "gender": "female",
-      "coversBottoms": true,
-      "sprite": "Tops/2010sFormalTop.png",
-      "description": "A minimal satin slip dress with spaghetti straps. Can be worn alone or layered over a turtleneck for a contrasting high-low combination."
+      "gender": "male",
+      "coversBottom": false,
+      "sprite": "Tops/1990sFormalTop.png",
+      "description": "An oversized blazer over a white button-up shirt."
     },
     {
-      "id": "1990sCasualBottom",
-      "name": "Denim jeans",
-      "slot": "bottoms",
-      "gender": "female",
-      "coversBottoms": false,
-      "sprite": "Bottoms/1990sCasualBottom.png",
-      "description": "A pair of shapely denim jeans. A common piece of everyday wear for ladies in the 90s."
+      "id": "1990sFormalBottom",
+      "name": "Loose Suit Pants",
+      "slot": "bottom",
+      "gender": "male",
+      "coversBottom": false,
+      "sprite": "Bottom/1990sFormalBottom.png",
+      "description": "A pair of loose slacks."
+    },
+    {
+      "id": "1990sFormalShoes",
+      "name": "Dark Dress Shoes",
+      "slot": "shoes",
+      "gender": "male",
+      "coversBottom": false,
+      "sprite": "Shoes/1990sFormalShoes.png",
+      "description": " A pair of dark dress shoes."
+    },
+     {
+      "id": "1990sBusinessTop",
+      "name": "Loose Fitting Blazer",
+      "slot": "top",
+      "gender": "male",
+      "coversBottom": false,
+      "sprite": "Tops/1990sBusinessTop.png",
+      "description": "A full cut blazer with a loose fit."
+    },
+    {
+      "id": "1990sBusinessBottom",
+      "name": "High-Waisted Trousers",
+      "slot": "bottom",
+      "gender": "male",
+      "coversBottom": false,
+      "sprite": "Bottom/1990sBusinessBottom.png",
+      "description": "Pleated trousers with a high-waist."
+    },
+    {
+      "id": "1990sBusinessShoes",
+      "name": "Oxford Loafers",
+      "slot": "shoes",
+      "gender": "male",
+      "coversBottom": false,
+      "sprite": "Shoes/1990sBusinessShoes.png",
+      "description": "A chunky pair of oxford loafers."
     },
     {
       "id": "1990sCasualTop",
-      "name": "White shirt",
+      "name": "Oversized Graphic Tee",
       "slot": "top",
       "gender": "female",
-      "coversBottoms": false,
+      "coversBottom": false,
       "sprite": "Tops/1990sCasualTop.png",
-      "description": "A white cotton shirt. A breathable and comfortable top that's easy to wear."
+      "description": "A loose short-sleeved shirt with colorful text and a scoop neckline."
+    },
+    {
+      "id": "1990sCasualBottom",
+      "name": "Grunge Pants",
+      "slot": "bottom",
+      "gender": "female",
+      "coversBottom": false,
+      "sprite": "Bottom/1990sCasualBottom.png",
+      "description": "Baggy straight-leg pants held up by a loose belt."
     },
     {
       "id": "1990sCasualShoes",
-      "name": "Hiking boots",
+      "name": "Combat Boots",
       "slot": "shoes",
-      "gender": "unisex",
-      "coversBottoms": false,
-      "sprite": "Shoes/1990sCasualShoes.png",
-      "description": "A pair of durable hiking boots. Key players in casual fashion during the 90s."
-    },
-    {
-      "id": "1990sCasualJacket",
-      "name": "Light jacket",
-      "slot": "jacket",
       "gender": "female",
-      "coversBottoms": false,
-      "sprite": "Tops/1990sCasualJacket.png",
-      "description": "A light cotton jacket for everyday wear. A staple for temperature regulation since the 90s."
+      "coversBottom": false,
+      "sprite": "Shoes/1990sCasualShoes.png",
+      "description": "A worn pair of combat boots, popularized by grunge fashion."
     }
   ]
 }

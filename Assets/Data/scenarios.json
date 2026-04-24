@@ -2,7 +2,7 @@
   "scenarios": [
     {
       "name": "2000s Casual",
-      "description": "Let's put together a casual 2000s look. Let's make it fun, like a girls day at the mall!",
+      "description": "Let's put together a casual 2000s look. Let's take inspiration from the sports trends of the era!",
       "era": "2000s",
       "category": "casual", 
       "backgroundImage": "Scenarios/DressingRoom.png",
