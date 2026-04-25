@@ -2,14 +2,14 @@
     <Style src="project://database/Assets/UI/USS/CommonStylesheet.uss?fileID=7433441132597879392&amp;guid=8e23400638b471247abded66e2e9521e&amp;type=3#CommonStylesheet"/>
     <Style src="project://database/Assets/UI/USS/MainMenuStylesheet.uss?fileID=7433441132597879392&amp;guid=7d161ed00ef895f4caf1c032a658e17b&amp;type=3#MainMenuStylesheet"/>
     <ui:Image name="imgBackground" class="background-runway"/>
-    <ui:Label text="Sew It Goes" emoji-fallback-support="false" class="game-title"/>
-    <ui:Button text="Play" name="PlayButton" class="button-common"/>
-    <ui:Button text="Quit" name="QuitButton" class="button-common"/>
-    <ui:Button text="Sandbox" name="SandboxButton" style="width: 100px; height: 32px;">
-        <ui:VisualElement name="SubMenu" style="flex-grow: 1; width: 150%; height: 500%; left: 125%; min-height: 500%; min-width: 150%; background-color: rgb(144, 144, 144); bottom: 200%; visibility: hidden;">
-            <ui:Button text="F" name="sandboxF" style="width: 40%; height: 40%; top: 0; left: 0;"/>
-            <ui:Button text="M" name="sandboxM" style="width: 40%; height: 40%; position: absolute; top: 0; right: 0;"/>
+    <ui:Label text="Sew It Goes" emoji-fallback-support="false" class="game-title" style="-unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Bonello-Regular.otf?fileID=12800000&amp;guid=ccc7d1b9793303e4592d61d7db81b149&amp;type=3#Bonello-Regular&quot;); font-size: 90%; align-self: center; width: auto; height: auto; text-shadow: 7.6px 4px 5.2px rgb(0, 0, 0); -unity-text-outline-color: rgb(0, 0, 0); -unity-text-outline-width: 2px; color: rgb(255, 200, 238); margin-top: 4%;"/>
+    <ui:Button text="Play" name="PlayButton" class="button-common" style="-unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;); align-self: center; width: 15%; height: auto; font-size: 60%; margin-bottom: 5%; margin-top: 5%;"/>
+    <ui:Button text="Sandbox" name="SandboxButton" class="button-common" style="width: 15%; height: auto; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;); align-self: center; font-size: 60%; margin-bottom: 5%;">
+        <ui:VisualElement name="SubMenu" style="flex-grow: 0; width: 136%; height: auto; left: 125%; min-height: 167%; min-width: 150%; background-color: rgba(255, 200, 238, 0); bottom: 200%; visibility: hidden; flex-shrink: 0;">
+            <ui:Button text="F" name="sandboxF" class="button-common" style="width: 40%; height: 100%; top: 0; left: 0;"/>
+            <ui:Button text="M" name="sandboxM" class="button-common" style="width: 40%; height: 100%; position: absolute; top: 0; right: 0;"/>
         </ui:VisualElement>
     </ui:Button>
-    <ui:Button text="Settings" name="SettingsButton" style="width: 100px; height: 32px;"/>
+    <ui:Button text="Settings" name="SettingsButton" class="button-common" style="width: 15%; height: auto; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;); align-self: center; font-size: 60%; margin-bottom: 5%;"/>
+    <ui:Button text="Quit" name="QuitButton" class="button-common" style="-unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;); align-self: center; width: 15%; height: auto; font-size: 60%; margin-bottom: 5%;"/>
 </ui:UXML>
