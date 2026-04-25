@@ -7,4 +7,5 @@ public static class GameConstants
     public const string TaskScenarioScene = "ScenarioScene";
     public const string TaskResultScene = "ResultsScene";
     public const string WardrobeScene = "WardrobeScene";
+    public const string SettingsScene = "SettingsScene";
 }
