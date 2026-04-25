@@ -106,7 +106,6 @@ namespace Assets.Scripts.UI
                 _timerLabel.visible = false;
             }
 
-
             // Gets clothing trunks/rack buttons and item lists
             _jacketsListContainer = root.Q<VisualElement>("jacketsListContainer");
             _jacketsTrunk = root.Q<Button>("btnJacketsRack");
@@ -119,8 +118,7 @@ namespace Assets.Scripts.UI
 
             _shoesListContainer = root.Q<VisualElement>("shoesListContainer");
             _shoesRack = root.Q<Button>("btnShoesRack");
-
-            
+                        
             if (_jacketsTrunk != null)
             {
                 _jacketsTrunk.RegisterCallback<ClickEvent>(OpenJackets);
@@ -138,9 +136,6 @@ namespace Assets.Scripts.UI
                 _shoesRack.RegisterCallback<ClickEvent>(OpenShoes);
             }
             
-
-
-
             _avatarImage = root.Q<Image>("activeAvatar");
             _jacketImage = root.Q<Image>("activeJacket");
             _topImage = root.Q<Image>("activeTop");
@@ -293,47 +288,22 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void TryApplyDefaultOutfitFromInventory()
         {
-            List<WardrobeItem> allItems = WardrobeState.Instance.AllWardrobeItems;
-            if (allItems == null || allItems.Count == 0)
-            {
-                Debug.LogError(
-                    "WardrobeController: Wardrobe inventory is empty; cannot apply default outfit.");
-                return;
-            }
-
             List<WardrobeItem> tops = WardrobeState.Instance.AvailableTops;
             List<WardrobeItem> jackets = WardrobeState.Instance.AvailableJackets;
             List<WardrobeItem> bottoms = WardrobeState.Instance.AvailableBottoms;
             List<WardrobeItem> shoes = WardrobeState.Instance.AvailableShoes;
 
-            if (tops == null || tops.Count == 0)
-            {
-                Debug.LogError("WardrobeController: No tops available; cannot apply default outfit.");
-                return;
-            }
+            if (tops != null && tops.Count > 0)
+                WardrobeState.Instance.CurrentItemTop = tops[0];
 
-            if (jackets == null || jackets.Count == 0)
-            {
-                Debug.LogError("WardrobeController: No jackets available; cannot apply default outfit.");
-                return;
-            }
+            if (jackets != null && jackets.Count > 0)
+                WardrobeState.Instance.CurrentItemJacket = jackets[0];
 
-            if (bottoms == null || bottoms.Count == 0)
-            {
-                Debug.LogError("WardrobeController: No bottoms available; cannot apply default outfit.");
-                return;
-            }
+            if (bottoms != null && bottoms.Count > 0)
+                WardrobeState.Instance.CurrentItemBottom = bottoms[0];
 
-            if (shoes == null || shoes.Count == 0)
-            {
-                Debug.LogError("WardrobeController: No shoes available; cannot apply default outfit.");
-                return;
-            }
-
-            WardrobeState.Instance.CurrentItemTop = tops[0];
-            WardrobeState.Instance.CurrentItemJacket = jackets[0];
-            WardrobeState.Instance.CurrentItemBottom = bottoms[0];
-            WardrobeState.Instance.CurrentItemShoe = shoes[0];
+            if (shoes != null & shoes.Count > 0)
+                WardrobeState.Instance.CurrentItemShoe = shoes[0];
         }
 
         private void OnWardrobeItemsLoaded()
@@ -479,7 +449,7 @@ namespace Assets.Scripts.UI
                 case ClothingSlot.Top:
                     WardrobeState.Instance.CurrentItemTop = item;
                     break;
-                case ClothingSlot.Bottoms:
+                case ClothingSlot.Bottom:
                     WardrobeState.Instance.CurrentItemBottom = item;
                     break;
                 case ClothingSlot.Shoes:

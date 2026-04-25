@@ -8,7 +8,7 @@ namespace Assets.Scripts.Data
     public enum ClothingSlot
     {
         Top,
-        Bottoms,
+        Bottom,
         Shoes,
         Jacket
     }
@@ -24,7 +24,7 @@ namespace Assets.Scripts.Data
         public string name;
         public string slot;
         public string gender;
-        public bool coversBottoms;
+        public bool coversBottom;
         public string sprite;
         public string description;
 
@@ -34,7 +34,7 @@ namespace Assets.Scripts.Data
         public ClothingSlot SlotType => slot switch
         {
             "top" => ClothingSlot.Top,
-            "bottoms" => ClothingSlot.Bottoms,
+            "bottom" => ClothingSlot.Bottom,
             "shoes" => ClothingSlot.Shoes,
             "jacket" => ClothingSlot.Jacket,
             _ => throw new ArgumentException($"Unknown clothing slot: '{slot}'")
