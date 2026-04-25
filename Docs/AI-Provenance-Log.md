@@ -15,6 +15,17 @@ Disclosure and audit trail for AI-assisted work. Update when committing signific
 
 ---
 
+**Date:** 2026-04-25  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** Merge open PRs #64, #65, #66, and #67 into `main`, then apply immediate post-merge stabilization fixes for scenario data consistency and settings volume handling.  
+**Input materials used:** GitHub PRs #64-#67; `Assets/Data/scenarios.json`; `Assets/Data/clothing_items.json`; `Assets/Scripts/Core/AudioManager.cs`; `Assets/Scripts/UI/SettingsController.cs`; `VERSION.md`; this log.  
+**Summary of AI contribution:** Merged PRs #66, #67, #64, and #65 via GitHub CLI; fast-forwarded local `main`; validated scenario `idealOutfit` IDs against merged clothing catalog; patched `scenarios.json` to replace invalid IDs (`2000sBusinessShirt` -> `2000sBusinessTop`, `1980FormalShoes` -> `1980sFormalShoes`) and corrected `1990s Casual` avatar key (`Avatars/2000sFemModel.png`); added `AudioManager` master-volume accessors (`MasterVolume`, `TryGetMasterVolume`, `TrySetMasterVolume`); updated `SettingsController` to avoid direct `GetComponent<AudioSource>()` access, unregister slider callbacks on disable, and guard missing audio manager cases; bumped internal label to 0.0.5.5 in `VERSION.md`.  
+**What the human accepted / rejected / changed:** Human requested immediate merge of open PRs with a most-urgent post-merge patch pass (not a final-live approval).  
+**Validation method used:** Data reference check script comparing `scenarios.json` `idealOutfit` references against `clothing_items.json` IDs; `read_lints` on scripts; git status review.  
+**Final approver:** (pending routine review)  
+
+---
+
 **Date:** 2026-04-23  
 **Tool or model used:** Cursor agent (AI-assisted editing)  
 **Task purpose:** Before merging GitHub PR #61, remove committed `Assets/_Recovery` artifacts, add ignore rule, deduplicate button-SFX helpers into `AudioManager.TryPlayButtonSfx()`, push to branch `Markus2`, then merge PR #61 and PR #62; sync `VERSION.md` and this log on `main`.  

@@ -2,4 +2,4 @@
 
 **Player-facing (Unity `ProjectSettings` bundle version, `Application.version`):** 0.2 — intentionally separate from the internal label below.
 
-**Internal / repo build label:** 0.0.5.4 — Merged PR #61 (back navigation plays button SFX; `AudioManager` instances in scenario and wardrobe scenes) with pre-merge cleanup: removed `Assets/_Recovery`, added `Assets/_Recovery/` to `.gitignore`, and centralized UI button SFX via `AudioManager.TryPlayButtonSfx()`. Merged PR #62 (`Swap_SFX.wav` asset). Player-facing bundle version unchanged at 0.2.
+**Internal / repo build label:** 0.0.5.5 — Merged PRs #64 (settings scene and slider), #65 (art/data/schema updates), #66 (new trunk visuals), and #67 (UI styling). Applied post-merge fixes on `main`: corrected broken scenario `itemId` references (`2000sBusinessTop`, `1980sFormalShoes`), fixed `1990s Casual` avatar key (`Avatars/2000sFemModel.png`), and hardened settings volume logic (`AudioManager` master-volume accessors plus callback unregistration). Player-facing bundle version unchanged at 0.2.

@@ -78,5 +78,49 @@ namespace Assets.Scripts.Core
                 Debug.LogWarning("AudioManager.Instance is null; button SFX was skipped.");
             }
         }
+
+        /// <summary>
+        /// Gets or sets the UI master volume on the managed audio source.
+        /// </summary>
+        public float MasterVolume
+        {
+            get
+            {
+                return _audioSource.volume;
+            }
+            set
+            {
+                _audioSource.volume = Mathf.Clamp01(value);
+            }
+        }
+
+        /// <summary>
+        /// Returns current master volume when an audio manager is available.
+        /// </summary>
+        public static bool TryGetMasterVolume(out float volume)
+        {
+            if (Instance != null)
+            {
+                volume = Instance.MasterVolume;
+                return true;
+            }
+
+            volume = 1f;
+            return false;
+        }
+
+        /// <summary>
+        /// Applies a new master volume when an audio manager is available.
+        /// </summary>
+        public static bool TrySetMasterVolume(float volume)
+        {
+            if (Instance != null)
+            {
+                Instance.MasterVolume = volume;
+                return true;
+            }
+
+            return false;
+        }
     }
 }
