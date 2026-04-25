@@ -17,6 +17,39 @@ Disclosure and audit trail for AI-assisted work. Update when committing signific
 
 **Date:** 2026-04-25  
 **Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** Credits re-grouped by function in `CreditsCatalog.TeamByFunctionSections`; settings scene `Back to main menu` on `button-common` inside panel; repository commit per request.  
+**Input materials used:** `CreditsCatalog.cs`, `MainMenuController.cs`, `SettingsUI.uxml`, `VERSION.md`, `Docs/Credits.md`, this log.  
+**Summary of AI contribution:** Replaced flat team list with functional sections; restyled `SettingsUI` for visible back; version note; staged full tree for commit.  
+**What the human accepted / rejected / changed:** (pending review)  
+**Validation method used:** C# lints.  
+**Final approver:** (if applicable)  
+
+---
+
+**Date:** 2026-04-25  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** Main menu: bottom/scroll insets, equal button width (sandbox flyout out of flow), game-style credits (centered name/role, optional third-party when `ThirdPartyAttributions` is non-empty; no in-game `Assets.md` text).  
+**Input materials used:** `MainMenuStylesheet.uss`, `MainMenuUI.uxml`, `MainMenuController.cs`, `CreditsCatalog.cs`, `VERSION.md`, `Docs/Credits.md`, this log.  
+**Summary of AI contribution:** USSt layout and credits reformat, catalog cleanup (empty `ThirdPartyAttributions` until team adds confirmed lines), documentation sync.  
+**What the human accepted / rejected / changed:** (pending review)  
+**Validation method used:** Linter on edited C#; Unity play mode not run here.  
+**Final approver:** (if applicable)  
+
+---
+
+**Date:** 2026-04-25  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** Add a main menu Credits button and a UI Toolkit credits modal (scrollable list, close/dismiss, Escape and navigation cancel, modal focus gating) using existing fonts/panel style; centralize in-game text in `CreditsCatalog`, with a third-party placeholder tied to `Docs/Assets.md`.  
+**Input materials used:** `MainMenuUI.uxml`, `MainMenuStylesheet.uss`, `MainMenuController.cs`, `ScenariosUI.uxml` (panel/scroll reference), `Docs/Assets.md`, `Docs/Credits.md`, `VERSION.md`, this log.  
+**Summary of AI contribution:** Authored `CreditsCatalog` with the provided team and AI lines; added overlay UXML, USS, controller wiring, and documentation version bump.  
+**What the human accepted / rejected / changed:** (pending review)  
+**Validation method used:** Linter on edited C#; Unity Editor play mode and UI checks not run in this environment.  
+**Final approver:** (if applicable)  
+
+---
+
+**Date:** 2026-04-25  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
 **Task purpose:** Merge open PRs #64, #65, #66, and #67 into `main`, then apply immediate post-merge stabilization fixes for scenario data consistency and settings volume handling.  
 **Input materials used:** GitHub PRs #64-#67; `Assets/Data/scenarios.json`; `Assets/Data/clothing_items.json`; `Assets/Scripts/Core/AudioManager.cs`; `Assets/Scripts/UI/SettingsController.cs`; `VERSION.md`; this log.  
 **Summary of AI contribution:** Merged PRs #66, #67, #64, and #65 via GitHub CLI; fast-forwarded local `main`; validated scenario `idealOutfit` IDs against merged clothing catalog; patched `scenarios.json` to replace invalid IDs (`2000sBusinessShirt` -> `2000sBusinessTop`, `1980FormalShoes` -> `1980sFormalShoes`) and corrected `1990s Casual` avatar key (`Avatars/2000sFemModel.png`); added `AudioManager` master-volume accessors (`MasterVolume`, `TryGetMasterVolume`, `TrySetMasterVolume`); updated `SettingsController` to avoid direct `GetComponent<AudioSource>()` access, unregister slider callbacks on disable, and guard missing audio manager cases; bumped internal label to 0.0.5.5 in `VERSION.md`.  

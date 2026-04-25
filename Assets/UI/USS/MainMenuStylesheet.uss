@@ -1,1 +1,244 @@
+/* Main menu: insets from top/bottom, column fills the space between, scroll if content exceeds viewport. */
+.main-menu-root {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    flex-grow: 1;
+    flex-direction: column;
+    flex-shrink: 0;
+}
 
+.main-menu-scroll {
+    flex-grow: 1;
+    min-height: 0;
+    width: 100%;
+    height: 100%;
+    flex-shrink: 1;
+    padding-top: 4.5%;
+    padding-bottom: 6.5%;
+    padding-left: 8px;
+    padding-right: 8px;
+    background-color: rgba(0, 0, 0, 0);
+    -unity-font-definition: url("project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&guid=cb230a455f9d47d41b5e9547def9fba4&type=3#Caldstone-SemiBold");
+}
+
+/* Fills the scroll viewport (C# minHeight). space-evenly keeps air above the title and below Quit. */
+.main-menu-content-wrap {
+    width: 100%;
+    min-height: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0.5%;
+    padding-bottom: 1.5%;
+    padding-left: 0;
+    padding-right: 0;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+.main-menu-title {
+    align-self: center;
+    width: auto;
+    height: auto;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(255, 200, 238);
+    -unity-font-definition: url("project://database/Assets/UI/Fonts/Bonello-Regular.otf?fileID=12800000&guid=ccc7d1b9793303e4592d61d7db81b149&type=3#Bonello-Regular");
+    font-size: 40px;
+    margin-top: 0;
+    margin-bottom: 0;
+    flex-shrink: 0;
+    -unity-text-align: middle-center;
+    text-shadow: 6px 3px 4px rgb(0, 0, 0);
+    -unity-text-outline-color: rgb(0, 0, 0);
+    -unity-text-outline-width: 2px;
+    white-space: normal;
+    -unity-font-style: bold-and-italic;
+}
+
+Button.main-menu-button {
+    position: relative;
+    overflow: visible;
+    align-self: center;
+    width: 32%;
+    min-width: 180px;
+    max-width: 480px;
+    height: auto;
+    min-height: 34px;
+    flex-shrink: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    -unity-font-definition: url("project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&guid=cb230a455f9d47d41b5e9547def9fba4&type=3#Caldstone-SemiBold");
+    font-size: 19px;
+}
+
+/* Sandbox F/M popout: absolute so the wide SubMenu does not change the button width. */
+.main-menu-sandbox-flyout {
+    position: absolute;
+    left: 125%;
+    bottom: 200%;
+    flex-grow: 0;
+    width: 136%;
+    height: auto;
+    min-height: 167%;
+    min-width: 150%;
+    background-color: rgba(255, 200, 238, 0);
+    visibility: hidden;
+    flex-shrink: 0;
+}
+
+#CreditsOverlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.62);
+    padding: 2%;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+#CreditsDialog {
+    width: 85%;
+    max-width: 900px;
+    max-height: 82%;
+    min-height: 200px;
+    flex-direction: column;
+    flex-grow: 0;
+    flex-shrink: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 24px;
+    background-image: url("project://database/Assets/Art/UI/Panels/UIPanel3.png?fileID=2800000&guid=139033b5b1bc28a47aeb7effa178cc12&type=3#UIPanel3");
+    -unity-slice-type: tiled;
+    -unity-slice-left: 526;
+    -unity-slice-top: 526;
+    -unity-slice-right: 526;
+    -unity-slice-bottom: 526;
+    -unity-slice-scale: 0.5px;
+}
+
+#CreditsTitle {
+    -unity-text-align: middle-center;
+    color: rgb(255, 200, 238);
+    font-size: 32px;
+    margin-bottom: 6px;
+    -unity-font-definition: url("project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&guid=cb230a455f9d47d41b5e9547def9fba4&type=3#Caldstone-SemiBold");
+    letter-spacing: 3px;
+}
+
+#CreditsScroll {
+    min-height: 0;
+    flex-grow: 1;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    -unity-font-definition: url("project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&guid=cb230a455f9d47d41b5e9547def9fba4&type=3#Caldstone-SemiBold");
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    padding: 6px 12px 8px 12px;
+    align-items: center;
+    align-self: center;
+    width: 100%;
+    max-width: 560px;
+}
+
+.credits-section-heading {
+    -unity-text-align: middle-center;
+    color: rgb(255, 243, 186);
+    font-size: 13px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    white-space: normal;
+    -unity-text-outline-color: rgba(0, 0, 0, 0.5);
+    -unity-text-outline-width: 0.3px;
+    width: 100%;
+    -unity-font-style: bold;
+    letter-spacing: 2.5px;
+}
+
+.credits-section-heading-first {
+    margin-top: 4px;
+}
+
+.credits-credit-block {
+    display: flex;
+    width: 100%;
+    max-width: 480px;
+    align-self: center;
+    margin-top: 2px;
+    margin-bottom: 10px;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.credits-credit-name {
+    -unity-text-align: middle-center;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    -unity-font-style: bold;
+    margin-top: 0;
+    margin-bottom: 1px;
+    width: 100%;
+    white-space: normal;
+}
+
+.credits-credit-role {
+    -unity-text-align: middle-center;
+    color: rgb(200, 205, 215);
+    font-size: 13px;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 100%;
+    white-space: normal;
+    -unity-text-outline-color: rgba(0, 0, 0, 0.4);
+    -unity-text-outline-width: 0.2px;
+}
+
+.credits-credit-line {
+    -unity-text-align: middle-center;
+    color: rgb(220, 224, 232);
+    font-size: 14px;
+    width: 100%;
+    max-width: 500px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    white-space: normal;
+    align-self: center;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.credits-ai-line {
+    -unity-text-align: middle-center;
+    color: rgb(230, 232, 238);
+    font-size: 14px;
+    width: 100%;
+    max-width: 500px;
+    margin-top: 0;
+    margin-bottom: 8px;
+    white-space: normal;
+    align-self: center;
+}
+
+#CreditsCloseButton {
+    align-self: center;
+    width: 28%;
+    min-width: 120px;
+    max-width: 200px;
+    margin-top: 4px;
+    margin-bottom: 0;
+    -unity-font-definition: url("project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&guid=cb230a455f9d47d41b5e9547def9fba4&type=3#Caldstone-SemiBold");
+    font-size: 16px;
+    flex-shrink: 0;
+}
