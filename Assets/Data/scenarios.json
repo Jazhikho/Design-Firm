@@ -11,19 +11,18 @@
       ],
       "incorrectSlotFeedback": {
         "jacket": "",
-        "top": "The 2000s embraced boho styles, consider experimenting with fun colors and flowy shapes!",
-        "bottoms": "Miniskirts had a resurgence in 2000s, often in fabrics like denim.",
-        "shoes": "Wedge heels were a popular choice in the 2000s, for both dressy and casual looks."
+        "top": "",
+        "bottom": "",
+        "shoes": ""
       },
       "idealOutfit": {
-        "top": { "itemId": "2000sCasualTop", "commentary": "Perfect! Bright colors and flowy fabrics fit in perfectly with boho trends of the 2000s." },
-        "bottoms": { "itemId": "2000sCasualBottom", "commentary": "That’s right! Miniskirts were a popular casual choice in the 2000s." },
-        "shoes": { "itemId": "2000sCasualShoes", "commentary": "Great work! Wedge heels and ankle straps were popular design choices in the 2000s for casual footwear." }
+        "top": { "itemId": "2000sCasualTop", "score": 1.0, "commentary": "" },
+        "shoes": { "itemId": "2000sCasualShoes", "score": 1.0,"commentary": "" }
       }
     },
     {
       "name": "2000s Formal",
-      "description": "Style a formal look for the 2000s, like getting dinner at a fancy restaurant! ",
+      "description": "Style a formal look for the 2000s, like for a red-carpet event!",
       "era": "2000s",
       "category": "formal", 
       "backgroundImage": "Scenarios/DressingRoom.png",
@@ -33,17 +32,17 @@
       "incorrectSlotFeedback": {
         "jacket": "",
         "top": "",
-        "bottoms": "",
+        "bottom": "",
         "shoes": ""
       },
       "idealOutfit": {
-        "top": { "itemId": "2000sFormalTop", "commentary": "" },
-        "shoes": { "itemId": "2000sFormalShoes", "commentary": "" }
+        "top": { "itemId": "2000sFormalTop", "score": 1.0, "commentary": "" },
+        "shoes": { "itemId": "2000sFormalShoes", "score": 1.0, "commentary": "" }
       }
     },
     {
       "name": "2000s Business",
-      "description": "Let’s style a business look! How about a “casual” Friday at the office?",
+      "description": "Let’s style a 2000s business look!",
       "era": "2000s",
       "category": "business", 
       "backgroundImage": "Scenarios/DressingRoom.png",
@@ -51,21 +50,21 @@
       "scoredItems": [
       ],
       "incorrectSlotFeedback": {
-        "jacket": "Y2K club outerwear was about casual luxury — think velour track jackets, cropped jackets, or fur-trimmed boleros.",
-        "top": "The early 2000s club demanded maximum impact: halter tops, tube tops, sequins, metallics, and lots of exposed skin.",
-        "bottoms": "Low-rise was non-negotiable in 2003. Bootcut or flared jeans, or a mini skirt, completed the look.",
-        "shoes": "Strappy heels, pointed-toe boots, or platform sandals were the club footwear of choice in the early 2000s."
+        "jacket": "",
+        "top": "",
+        "bottom": "",
+        "shoes": ""
       },
       "idealOutfit": {
-        "jacket": { "itemId": "2000sBusinessJacket", "commentary": "Juicy Couture velour became a status symbol. The track jacket was worn to the club and taken off at the door — casual luxury personified." },
-        "top": { "itemId": "2000sBusinessShirt", "commentary": "The halter top was the centerpiece of 2000s going-out fashion. Sparkle was mandatory, subtlety was not." },
-        "bottoms": { "itemId": "2000sBusinessBottom", "commentary": "Low-rise jeans defined Y2K fashion. The lower the waistband, the more on-trend you were. Fashion historians still debate how this happened." },
-        "shoes": { "itemId": "2000sBusinessShoes", "commentary": "Platform shoes bridged the late 90s and early 2000s. For a more authentic 2003 look, strappy heeled sandals would be perfect." }
+        "jacket": { "itemId": "2000sBusinessJacket", "score": 1.0, "commentary": "" },
+        "top": { "itemId": "2000sBusinessShirt", "score": 1.0, "commentary": "" },
+        "bottom": { "itemId": "2000sBusinessBottom", "score": 1.0, "commentary": "" },
+        "shoes": { "itemId": "2000sBusinessShoes", "score": 1.0, "commentary": "" }
       }
     },
     {
       "name": "1980s Formal",
-      "description": "Let’s put together a formal look inspired by the 1980s! Give me your best red-carpet look!",
+      "description": "Let’s put together a formal look inspired by the 1980s!",
       "era": "1980s",
       "category": "formal", 
       "backgroundImage": "Scenarios/DressingRoom.png",
@@ -75,13 +74,14 @@
       "incorrectSlotFeedback": {
         "jacket": "",
         "top": "",
-        "bottoms": "",
+        "bottom": "",
         "shoes": ""
       },
       "idealOutfit": {
-        "top": { "itemId": "1980sFormalTop", "commentary": "The longline tee embodied 2015's streetwear-casual aesthetic. Extended hems and curved cuts were everywhere, from Coachella to city streets." },
-        "bottoms": { "itemId": "1980sFormalBottom", "commentary": "An oversized blazer is very 2010s but more suited to a gallery opening than a dusty festival field." },
-        "shoes": { "itemId": "1980FormalShoes", "commentary": "The white sneaker trend peaked in the mid-2010s. Stan Smiths alone became a cultural phenomenon." }
+        "jacket": { "itemId": "1980sFormalJacket", "score": 1.0, "commentary": "" },
+        "top": { "itemId": "1980sFormalTop", "score": 1.0, "commentary": "" },
+        "bottom": { "itemId": "1980sFormalBottom", "score": 1.0, "commentary": "" },
+        "shoes": { "itemId": "1980FormalShoes", "score": 1.0, "commentary": "" }
       }
     },
     {
@@ -96,19 +96,19 @@
       "incorrectSlotFeedback": {
         "jacket": "",
         "top": "",
-        "bottoms": "",
+        "bottom": "",
         "shoes": ""
       },
       "idealOutfit": {
-        "top": { "itemId": "1980sCasualTop", "commentary": "A graphic tee under the hoodie was standard layering. In 2001, the tees featured skate logos, video game references, or pop-punk bands." },
-        "bottoms": { "itemId": "1980sCasualBottom", "commentary": "Cargo shorts represented early 2000s practicality-as-fashion. The more pockets, the better — even if you never used them." },
-        "shoes": { "itemId": "1980sCasualShoes", "commentary": "Skate shoes with fat tongues and padded collars were non-negotiable. The brand on your feet was a social signal in middle school." }
+        "top": { "itemId": "1980sCasualTop", "score": 1.0, "commentary": "" },
+        "bottom": { "itemId": "1980sCasualBottom", "score": 1.0, "commentary": "" },
+        "shoes": { "itemId": "1980sCasualShoes", "score": 1.0, "commentary": "" }
       }
     },
     {
-      "name": "2010s Business",
-      "description": "Put together a 2010s business outfit. Try to capture the unique coolness of the 2010s!",
-      "era": "2010s",
+      "name": "1980s Business",
+      "description": "Try to put together a men's business outfit from the 80s! Can you capture that signature silhouette?",
+      "era": "1980s",
       "category": "business", 
       "backgroundImage": "Scenarios/DressingRoom.png",
       "avatarImage": "Avatars/MascModel.png",
@@ -117,13 +117,77 @@
       "incorrectSlotFeedback": {
         "jacket": "",
         "top": "",
-        "bottoms": "",
+        "bottom": "",
         "shoes": ""
       },
       "idealOutfit": {
-        "top": { "itemId": "2010BusinessTop", "score": 1.0, "commentary": "" },
-        "bottoms": { "itemId": "2010BusinessBottom", "score": 1.0, "commentary": "" },
-        "shoes": { "itemId": "2010sBusinessShoes", "score": 1.0, "commentary": "" }
+        "jacket": { "itemId": "1980sBusinessJacket", "score": 1.0, "commentary": "" },
+        "top": { "itemId": "1980sBusinessTop", "score": 1.0, "commentary": "" },
+        "bottom": { "itemId": "1980sBusinessBottom", "score": 1.0, "commentary": "" },
+        "shoes": { "itemId": "1980sBusinessShoes", "score": 1.0, "commentary": "" }
+      }
+    },
+       {
+      "name": "1990s Casual",
+      "description": "Let’s put together a casual 1990s outfit, like hanging out with your friends at the record store!",
+      "era": "1990s",
+      "category": "casual", 
+      "backgroundImage": "Scenarios/DressingRoom.png",
+      "avatarImage": "Avatars/2000FemModel.png",
+      "scoredItems": [
+      ],
+      "incorrectSlotFeedback": {
+        "jacket": "",
+        "top": "",
+        "bottom": "",
+        "shoes": ""
+      },
+      "idealOutfit": {
+        "top": { "itemId": "1990sCasualTop", "score": 1.0, "commentary": "" },
+        "bottom": { "itemId": "1990sCasualBottom", "score": 1.0, "commentary": "" },
+        "shoes": { "itemId": "1990sCasualShoes", "score": 1.0, "commentary": "" }
+      }
+    },
+       {
+      "name": "1990s Formal",
+      "description": "Try to put together a men’s formal look for the 1990s! Embrace that looser silhouette!",
+      "era": "1990s",
+      "category": "formal", 
+      "backgroundImage": "Scenarios/DressingRoom.png",
+      "avatarImage": "Avatars/MascModel.png",
+      "scoredItems": [
+      ],
+      "incorrectSlotFeedback": {
+        "jacket": "",
+        "top": "",
+        "bottom": "",
+        "shoes": ""
+      },
+      "idealOutfit": {
+        "top": { "itemId": "1990sFormalTop", "score": 1.0, "commentary": "" },
+        "bottom": { "itemId": "1990sFormalBottom", "score": 1.0, "commentary": "" },
+        "shoes": { "itemId": "1990sFormalShoes", "score": 1.0, "commentary": "" }
+      }
+    },
+    {
+      "name": "1990s Business",
+      "description": "Try to put together a business ensemble based on the trends of the 1990s!",
+      "era": "1990s",
+      "category": "business", 
+      "backgroundImage": "Scenarios/DressingRoom.png",
+      "avatarImage": "Avatars/MascModel.png",
+      "scoredItems": [
+      ],
+      "incorrectSlotFeedback": {
+        "jacket": "",
+        "top": "",
+        "bottom": "",
+        "shoes": ""
+      },
+      "idealOutfit": {
+        "top": { "itemId": "1990sBusinessTop", "score": 1.0, "commentary": "" },
+        "bottom": { "itemId": "1990sBusinessBottom", "score": 1.0, "commentary": "" },
+        "shoes": { "itemId": "1990sBusinessShoes", "score": 1.0, "commentary": "" }
       }
     }
   ]

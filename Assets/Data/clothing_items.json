@@ -56,7 +56,7 @@
     },
     {
       "id": "2000sBusinessBottom",
-      "name": "Women’s Slacks",
+      "name": "Women's Slacks",
       "slot": "bottom",
       "gender": "female",
       "coversBottom": false,
