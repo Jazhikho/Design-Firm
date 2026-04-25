@@ -38,12 +38,12 @@
     },
     {
       "id": "2000sBusinessJacket",
-      "name": "Silken Suit Jacket",
+      "name": "Trenchcoat",
       "slot": "jacket",
       "gender": "female",
       "coversBottom": false,
       "sprite": "Jackets/2000sBusinessJacket.png",
-      "description": "A brown suit jacket with art on the silken interior."
+      "description": "A professional trenchcoat."
     },
     {
       "id": "2000sBusinessTop",
@@ -61,16 +61,16 @@
       "gender": "female",
       "coversBottom": false,
       "sprite": "Bottom/2000sBusinessBottom.png",
-      "description": "A pair of tan slacks."
+      "description": "A pair of gray slacks."
     },
     {
       "id": "2000sBusinessShoes",
-      "name": "Sensible Flats",
+      "name": "Classic Heels",
       "slot": "shoes",
       "gender": "female",
       "coversBottom": false,
       "sprite": "Shoes/2000sBusinessShoes.png",
-      "description": "A pair of sensible flats."
+      "description": "A pair of classic black heels."
     },
     {
       "id": "1980sFormalJacket",

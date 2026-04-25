@@ -29,10 +29,41 @@ namespace Assets.Scripts.Core
         internal bool IsWardrobeItemsLoaded { get; private set; }
 
         internal List<WardrobeItem> AllWardrobeItems { get; } = new();
-        internal List<WardrobeItem> AvailableTops => AllWardrobeItems.Where(i => i.SlotType == ClothingSlot.Top).ToList();
-        internal List<WardrobeItem> AvailableBottoms => AllWardrobeItems.Where(i => i.SlotType == ClothingSlot.Bottom).ToList();
-        internal List<WardrobeItem> AvailableShoes => AllWardrobeItems.Where(i => i.SlotType == ClothingSlot.Shoes).ToList();
-        internal List<WardrobeItem> AvailableJackets => AllWardrobeItems.Where(i => i.SlotType == ClothingSlot.Jacket).ToList();
+
+        private string GenderFilter
+        {
+            get
+            {
+                if (ScenarioState.Instance.ActiveScenario?.avatarImage == "Avatars/2000sFemModel.png")
+                    return "female";
+                else
+                    return "male";
+            }
+        }
+
+        internal List<WardrobeItem> AvailableTops =>
+            AllWardrobeItems
+                .Where(i => i.SlotType == ClothingSlot.Top
+                         && (string.IsNullOrEmpty(i.gender) || i.gender == GenderFilter))
+                .ToList();
+
+        internal List<WardrobeItem> AvailableBottoms =>
+            AllWardrobeItems
+                .Where(i => i.SlotType == ClothingSlot.Bottom
+                         && (string.IsNullOrEmpty(i.gender) || i.gender == GenderFilter))
+                .ToList();
+
+        internal List<WardrobeItem> AvailableShoes =>
+            AllWardrobeItems
+                .Where(i => i.SlotType == ClothingSlot.Shoes
+                         && (string.IsNullOrEmpty(i.gender) || i.gender == GenderFilter))
+                .ToList();
+
+        internal List<WardrobeItem> AvailableJackets =>
+            AllWardrobeItems
+                .Where(i => i.SlotType == ClothingSlot.Jacket
+                         && (string.IsNullOrEmpty(i.gender) || i.gender == GenderFilter))
+                .ToList();
 
         private WardrobeItem _currentItemTop;
         private WardrobeItem _currentItemBottom;
@@ -113,7 +144,8 @@ namespace Assets.Scripts.Core
             string newName = "Nothing",
             string newDesc = "No clothing",
             string newSprite = null,
-            bool newCover = false)
+            bool newCover = false,
+            string newGender = null)
         {
             AllWardrobeItems.Add(new WardrobeItem
             {
@@ -122,7 +154,8 @@ namespace Assets.Scripts.Core
                 slot = newSlot,
                 sprite = newSprite,
                 description = newDesc,
-                coversBottom = newCover
+                coversBottom = newCover,
+                gender = newGender
             });
         }
     }

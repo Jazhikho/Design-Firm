@@ -121,7 +121,8 @@ namespace Assets.Scripts.Data
                         newItem.name,
                         newItem.description,
                         newItem.sprite,
-                        newItem.coversBottom);
+                        newItem.coversBottom,
+                        newItem.gender);
 
                     addedCount++;
                 }
