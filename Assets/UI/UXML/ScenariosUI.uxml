@@ -11,12 +11,12 @@
             <ui:VisualElement name="decadeFilters"/>
             <ui:VisualElement name="categoryFilters"/>
         </ui:VisualElement>
-        <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-            <ui:ScrollView name="scrollScenariosList" mode="Horizontal"/>
+        <ui:VisualElement style="flex-grow: 1; flex-direction: row; visibility: visible; justify-content: center;">
+            <ui:ScrollView name="scrollScenariosList" mode="Horizontal" style="background-image: url(&quot;project://database/Assets/Art/UI/Panels/UIPanel3.png?fileID=2800000&amp;guid=139033b5b1bc28a47aeb7effa178cc12&amp;type=3#UIPanel3&quot;); -unity-slice-type: tiled; -unity-slice-left: 526; -unity-slice-top: 526; -unity-slice-right: 526; -unity-slice-bottom: 526; -unity-slice-scale: 0.6px; padding-left: 100px; padding-right: 100px; padding-top: 100px; padding-bottom: 100px; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;); color: rgb(255, 255, 255); font-size: 33px;"/>
         </ui:VisualElement>
     </ui:VisualElement>
     <ui:VisualElement name="bottomRow" style="flex-direction: row;">
-        <ui:Label text="Sew It Goes" name="lblGameTitle" class="game-title"/>
+        <ui:Label text="Sew It Goes" name="lblGameTitle" class="game-title" style="-unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Bonello-Regular.otf?fileID=12800000&amp;guid=ccc7d1b9793303e4592d61d7db81b149&amp;type=3#Bonello-Regular&quot;);"/>
         <ui:VisualElement style="flex-grow: 1;"/>
     </ui:VisualElement>
 </ui:UXML>

@@ -21,6 +21,48 @@
 .button-common {
     height: 32px;
     width: 100px;
+    background-color: rgb(249, 143, 156);
+    border-left-color: rgb(255, 243, 186);
+    border-right-color: rgb(255, 243, 186);
+    border-top-color: rgb(255, 243, 186);
+    border-bottom-color: rgb(255, 243, 186);
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-top-width: 3px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    transition-property: all;
+    transition-duration: 0s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+}
+
+.button-common:hover {
+    background-color: rgb(255, 200, 235);
+}
+
+.submit-button {
+    -unity-font-definition: url("project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&guid=cb230a455f9d47d41b5e9547def9fba4&type=3#Caldstone-SemiBold");
+    font-size: 314%;
+    background-color: rgb(255, 243, 186);
+    border-left-color: rgb(249, 143, 156);
+    border-right-color: rgb(249, 143, 156);
+    border-top-color: rgb(249, 143, 156);
+    border-bottom-color: rgb(249, 143, 156);
+    border-left-width: 11px;
+    border-right-width: 11px;
+    border-bottom-width: 11px;
+    border-top-width: 11px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
 }
 
 
+.submit-button:hover {
+    background-color: rgb(255, 200, 235);
+}

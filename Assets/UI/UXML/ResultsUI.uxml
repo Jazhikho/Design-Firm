@@ -12,7 +12,7 @@
         </ui:VisualElement>
     </ui:VisualElement>
     <ui:VisualElement name="topRow">
-        <ui:Button text="Main Menu" name="btnMainMenu" class="button-common" style="-unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;);"/>
+        <ui:Button text="Main Menu" name="btnMainMenu" class="button-common" style="-unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;); font-size: 29px; width: 11%; height: 123%;"/>
     </ui:VisualElement>
     <ui:VisualElement name="middleRow" style="flex-grow: 1; flex-direction: row;">
         <ui:VisualElement name="colFeedback" style="flex-grow: 1; bottom: 0;">
@@ -31,8 +31,8 @@
             <ui:Image name="activeJacket" class="stacked-image" style="padding-left: 20%;"/>
         </ui:VisualElement>
         <ui:VisualElement name="colButtons" style="flex-grow: 1; justify-content: center;">
-            <ui:Button text="New&#10;Scenario" name="btnNewScenario" class="button-common" style="-unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;); width: 55%; height: 85px; left: 0; right: auto; font-size: 39px; margin-bottom: 5%; background-color: rgb(249, 143, 156);"/>
-            <ui:Button text="Retry&#10;Scenario" name="btnRetry" class="button-common" style="-unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;); font-size: 39px; width: 55%; height: auto; background-color: rgb(249, 143, 156);"/>
+            <ui:Button text="New&#10;Scenario" name="btnNewScenario" class="button-common" style="-unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;); width: 55%; height: 85px; left: 0; right: auto; font-size: 39px; margin-bottom: 5%;"/>
+            <ui:Button text="Retry&#10;Scenario" name="btnRetry" class="button-common" style="-unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;); font-size: 39px; width: 55%; height: auto;"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
