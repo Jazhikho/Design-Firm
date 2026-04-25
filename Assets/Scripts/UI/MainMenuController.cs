@@ -39,11 +39,7 @@ namespace Assets.Scripts.UI
             UIDocument uiDocument = GetComponent<UIDocument>();
             VisualElement root = uiDocument.rootVisualElement;
             _root = root;
-            root.style.flexGrow = 1f;
-            root.style.flexShrink = 0f;
-            root.style.minHeight = 0f;
-            root.style.width = new Length(100f, LengthUnit.Percent);
-            root.style.height = new Length(100f, LengthUnit.Percent);
+            UiDocumentPanelRootStretch.ApplyToPanelRoot(root);
 
             RegisterMainMenuContentViewportLayout(root);
             RegisterCreditsInterface(root);
@@ -266,6 +262,13 @@ namespace Assets.Scripts.UI
             _creditsOverlay.style.right = 0f;
             _creditsOverlay.style.bottom = 0f;
             _creditsOverlay.style.display = DisplayStyle.None;
+            _creditsScroll.horizontalScrollerVisibility = ScrollerVisibility.Hidden;
+            _creditsScroll.verticalScrollerVisibility = ScrollerVisibility.Auto;
+            _creditsScroll.contentContainer.style.minWidth = 0f;
+            _creditsScroll.contentContainer.style.width = new Length(100f, LengthUnit.Percent);
+            _creditsScroll.contentContainer.style.maxWidth = new Length(100f, LengthUnit.Percent);
+            _creditsScroll.contentContainer.style.flexDirection = FlexDirection.Column;
+            _creditsScroll.contentContainer.style.alignItems = Align.Stretch;
             _creditsButton.RegisterCallback<ClickEvent>(OnCreditsButtonClick);
             _creditsCloseButton.RegisterCallback<ClickEvent>(OnCreditsCloseButtonClick);
             _creditsOverlay.RegisterCallback<ClickEvent>(OnCreditsOverlayClick, TrickleDown.TrickleDown);
@@ -296,7 +299,7 @@ namespace Assets.Scripts.UI
         }
 
         /// <summary>
-        /// Fills the credits scroll with a centered game-style team list (name/role) and subsections; third-party
+        /// Fills the credits scroll with section headings and one label per name (no role sub-lines); third-party
         /// lines appear only when <see cref="CreditsCatalog.ThirdPartyAttributions"/> has entries.
         /// </summary>
         private void BuildCreditsScrollContent()
@@ -311,15 +314,15 @@ namespace Assets.Scripts.UI
             {
                 AddCreditsSectionHeading(_creditsScroll.contentContainer, teamHeading, firstTeamSection);
                 firstTeamSection = false;
-                foreach (string line in teamLines)
+                foreach (string personName in teamLines)
                 {
-                    AddNameRoleOrSingleLine(_creditsScroll.contentContainer, line);
+                    AddCreditsNameLine(_creditsScroll.contentContainer, personName);
                 }
             }
             AddCreditsSectionHeading(_creditsScroll.contentContainer, CreditsCatalog.AiAssistanceSectionHeading, false);
-            foreach (string line in CreditsCatalog.AiAssistanceLines)
+            foreach (string toolName in CreditsCatalog.AiAssistanceNames)
             {
-                AddNameRoleOrSingleLine(_creditsScroll.contentContainer, line);
+                AddCreditsNameLine(_creditsScroll.contentContainer, toolName);
             }
             IReadOnlyList<string> thirdParty = CreditsCatalog.ThirdPartyAttributions;
             if (thirdParty.Count > 0)
@@ -337,7 +340,7 @@ namespace Assets.Scripts.UI
                         continue;
                     }
                     Label row = new Label(t);
-                    row.AddToClassList("credits-credit-line");
+                    row.AddToClassList("credits-name-line");
                     _creditsScroll.contentContainer.Add(row);
                 }
             }
@@ -358,45 +361,22 @@ namespace Assets.Scripts.UI
         }
 
         /// <summary>
-        /// Adds a name and role in two lines when the line contains the catalog em-dash separator; otherwise one centered line.
+        /// Adds a single centered name line for credits (team, AI tools, or third-party text).
         /// </summary>
-        private void AddNameRoleOrSingleLine(VisualElement parent, string line)
+        private void AddCreditsNameLine(VisualElement parent, string name)
         {
-            if (line == null)
+            if (name == null)
             {
                 return;
             }
-            string trimmed = line.Trim();
+            string trimmed = name.Trim();
             if (trimmed.Length == 0)
             {
                 return;
             }
-            int idx = trimmed.IndexOf(CreditsCatalog.NameRoleSeparator, StringComparison.Ordinal);
-            if (idx < 0)
-            {
-                Label one = new Label(trimmed);
-                one.AddToClassList("credits-credit-line");
-                parent.Add(one);
-                return;
-            }
-            string namePart = trimmed.Substring(0, idx).Trim();
-            int sepLen = CreditsCatalog.NameRoleSeparator.Length;
-            string rolePart = trimmed.Substring(idx + sepLen).Trim();
-            VisualElement block = new VisualElement();
-            block.AddToClassList("credits-credit-block");
-            if (namePart.Length > 0)
-            {
-                Label nameLabel = new Label(namePart);
-                nameLabel.AddToClassList("credits-credit-name");
-                block.Add(nameLabel);
-            }
-            if (rolePart.Length > 0)
-            {
-                Label roleLabel = new Label(rolePart);
-                roleLabel.AddToClassList("credits-credit-role");
-                block.Add(roleLabel);
-            }
-            parent.Add(block);
+            Label row = new Label(trimmed);
+            row.AddToClassList("credits-name-line");
+            parent.Add(row);
         }
 
         /// <summary>

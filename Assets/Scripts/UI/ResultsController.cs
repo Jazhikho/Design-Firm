@@ -34,6 +34,7 @@ namespace Assets.Scripts.UI
         private void OnEnable()
         {
             _root = GetComponent<UIDocument>().rootVisualElement;
+            UiDocumentPanelRootStretch.ApplyToPanelRootAndAppShell(_root);
 
             _retryButton = _root.Q<Button>("btnRetry");
             _retryButton?.RegisterCallback<ClickEvent>(GoToWardrobe);
@@ -225,14 +226,14 @@ namespace Assets.Scripts.UI
 
             IdealOutfit idealOutfit = activeScenario.idealOutfit;
             List<ScoredItem> scoredItems = activeScenario.scoredItems;
-            
 
-            float jacketScore = ScoreItem(WardrobeState.Instance.CurrentItemJacket, idealOutfit?.jacket, scoredItems);            
-          
+
+            float jacketScore = ScoreItem(WardrobeState.Instance.CurrentItemJacket, idealOutfit?.jacket, scoredItems);
+
             float topScore = ScoreItem(WardrobeState.Instance.CurrentItemTop, idealOutfit?.top, scoredItems);
-           
+
             float bottomScore = ScoreItem(WardrobeState.Instance.CurrentItemBottom, idealOutfit?.bottom, scoredItems);
-            
+
             float shoesScore = ScoreItem(WardrobeState.Instance.CurrentItemShoe, idealOutfit?.shoes, scoredItems);
 
             Label totalScoreDisplay = _root.Q<Label>("lblTotalScore");
@@ -284,7 +285,7 @@ namespace Assets.Scripts.UI
             // Full point: both empty/null, or both match the same non-empty id
             if ((string.IsNullOrEmpty(idealId) && string.IsNullOrEmpty(selectedId)) ||
                 (!string.IsNullOrEmpty(idealId) && selectedId == idealId))
-            {                
+            {
                 return 1f;
             }
 
@@ -299,14 +300,14 @@ namespace Assets.Scripts.UI
                     }
 
                     if (scoredRow.itemId == selectedId)
-                    {                        
+                    {
                         return scoredRow.score;
                     }
                 }
             }
 
             // No match
-           
+
             return 0f;
         }
 

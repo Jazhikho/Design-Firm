@@ -5,106 +5,106 @@ using System.Collections.Generic;
 namespace Assets.Scripts.Data
 {
     /// <summary>
-    /// In-game credit copy for the main menu credits overlay. Team entries are grouped by function (e.g. art, programming).
-    /// Shipped, player-visible third-party lines must match confirmed rows in <c>Docs/Assets.md</c> in the repository;
-    /// the <see cref="ThirdPartyAttributions"/> list is the ship source (game does not read markdown at runtime).
+    /// In-game credits: team names grouped by function. Each <see cref="TeamByFunctionSections"/> list entry is
+    /// a single person (names only, no per-person role sub-lines). The same name may appear in more than one section
+    /// when the person’s roles span those teams. Third-party and AI lists follow the same in-game string rules in code.
     /// </summary>
     public static class CreditsCatalog
     {
-        /// <summary>Separator used in source lines between display name and role (space, em dash, space).</summary>
-        public const string NameRoleSeparator = " \u2014 ";
-
         /// <summary>Display heading for the AI tool disclosure block.</summary>
         public const string AiAssistanceSectionHeading = "AI ASSISTANCE";
 
         /// <summary>Display heading for the optional third-party block (only if <see cref="ThirdPartyAttributions"/> is non-empty).</summary>
         public const string ThirdPartySectionHeading = "THIRD-PARTY ASSETS";
 
-        /// <summary>
-        /// Team credits by functional area, in display order. Each line remains &quot;Name [separator] role(s)&quot; for the credits UI.
-        /// </summary>
+        /// <summary>Team by function: section heading and a list of person names (one label per name).</summary>
         public static readonly (string Heading, IReadOnlyList<string> Lines)[] TeamByFunctionSections = new (string, IReadOnlyList<string>)[]
         {
             (
                 "PRODUCTION",
                 new ReadOnlyCollection<string>(new string[]
                 {
-                    "Kevin McGhee \u2014 Lead Producer, Research Assistant, Social Media Team",
-                    "Nouf Alhamoudi \u2014 Production Assistant",
-                    "River Vondi \u2014 Co-Design Team Lead, Project Manager"
+                    "Kevin McGhee",
+                    "Nouf Alhamoudi",
+                    "River Vondi"
                 })
             ),
             (
                 "DESIGN",
                 new ReadOnlyCollection<string>(new string[]
                 {
-                    "Prince Ukoha \u2014 Design Team Lead",
-                    "Alex Ford \u2014 Design Team",
-                    "Matthew Nichols \u2014 Design Team, QA, Repo Management"
+                    "Prince Ukoha",
+                    "Alex Ford",
+                    "Matthew Nichols",
+                    "River Vondi"
                 })
             ),
             (
                 "PROGRAMMING",
                 new ReadOnlyCollection<string>(new string[]
                 {
-                    "Jeff Fattic \u2014 Programming Lead",
-                    "Rush Doebelin \u2014 Programmer",
-                    "Markus Ross \u2014 Programmer"
+                    "Jeff Fattic",
+                    "Rush Doebelin",
+                    "Markus Ross"
                 })
             ),
             (
                 "ART",
                 new ReadOnlyCollection<string>(new string[]
                 {
-                    "Bella Howe \u2014 Art Team Lead, Writer, Narrative",
-                    "Rachel Bratton \u2014 Artist, Writer",
-                    "Bianca Darlington \u2014 Artist, Writer",
-                    "Jade Dorman \u2014 Artist, Audio",
-                    "Logan Hentschel \u2014 Artist",
-                    "Jamontae Martin \u2014 Artist",
-                    "Corey Miller \u2014 Artist",
-                    "Jack Murray \u2014 Artist, Writer",
-                    "Sam Nienaber \u2014 Artist",
-                    "Bri Ochab \u2014 Artist",
-                    "Tyler Rolwes \u2014 Artist",
-                    "Evan White \u2014 Artist",
-                    "Kaya Wilson \u2014 Artist"
+                    "Bella Howe",
+                    "Rachel Bratton",
+                    "Bianca Darlington",
+                    "Jade Dorman",
+                    "Logan Hentschel",
+                    "Jamontae Martin",
+                    "Corey Miller",
+                    "Jack Murray",
+                    "Sam Nienaber",
+                    "Bri Ochab",
+                    "Tyler Rolwes",
+                    "Evan White",
+                    "Kaya Wilson"
                 })
             ),
             (
                 "AUDIO",
                 new ReadOnlyCollection<string>(new string[]
                 {
-                    "Ashley Haberberger \u2014 Team lead for Audio, Research, Writing, and Narrative; Production Assistant"
+                    "Ashley Haberberger",
+                    "Jade Dorman"
                 })
             ),
             (
                 "WRITING & NARRATIVE",
                 new ReadOnlyCollection<string>(new string[]
                 {
-                    "Nicholas Best \u2014 Writer",
-                    "Matthew Glass \u2014 Writer, Narrative, Social Media Team"
+                    "Nicholas Best",
+                    "Matthew Glass",
+                    "Bella Howe",
+                    "Rachel Bratton",
+                    "Bianca Darlington",
+                    "Jack Murray"
                 })
             ),
             (
                 "OPERATIONS, QA & RELEASE",
                 new ReadOnlyCollection<string>(new string[]
                 {
-                    "Chris Del Gesso \u2014 Repo Manager, Product Release Lead, QA, Production Assistant, Assistant Project Manager"
+                    "Chris Del Gesso"
                 })
             )
         };
 
-        /// <summary>Disclosure lines for development tools, each &quot;Tool [separator] short role&quot;.</summary>
-        public static readonly IReadOnlyList<string> AiAssistanceLines = new ReadOnlyCollection<string>(new string[]
+        /// <summary>AI tools (name-only lines, same as team rows).</summary>
+        public static readonly IReadOnlyList<string> AiAssistanceNames = new ReadOnlyCollection<string>(new string[]
         {
-            "Cursor \u2014 repository management and merge-patching assistance",
-            "Composer 2 \u2014 credits screen prompt, support, and implementation assistance"
+            "Cursor",
+            "Composer 2"
         });
 
         /// <summary>
         /// Shipped, player-visible third-party credit lines. Leave empty to hide the in-game section.
-        /// Add entries that match the table in <c>Docs/Assets.md</c> (confirmed asset, source, license in repo docs; not a runtime <c>Assets.md</c> file).
         /// </summary>
         public static readonly IReadOnlyList<string> ThirdPartyAttributions = new ReadOnlyCollection<string>(Array.Empty<string>());
     }

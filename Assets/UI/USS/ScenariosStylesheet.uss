@@ -1,3 +1,47 @@
+#topRow {
+    flex-shrink: 0;
+    min-width: 0;
+}
+
+#middleRow {
+    flex-grow: 1;
+    min-height: 0;
+    min-width: 0;
+    flex-direction: column;
+}
+
+#bottomRow {
+    flex-shrink: 0;
+    min-width: 0;
+}
+
+#filtersRow {
+    flex-shrink: 0;
+    min-width: 0;
+    flex-wrap: wrap;
+}
+
+.status-label {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 38%;
+    bottom: auto;
+    -unity-text-align: middle-center;
+    white-space: normal;
+}
+
+.scenarios-list-scroll {
+    flex-grow: 1;
+    min-width: 0;
+    min-height: 0;
+    max-width: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 .filter-toggle-group {
     flex-direction: row;
     justify-content: center;

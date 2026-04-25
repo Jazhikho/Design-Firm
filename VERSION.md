@@ -1,5 +1,5 @@
 # Version
 
-**Player-facing (Unity `ProjectSettings` bundle version, `Application.version`):** 0.2 — intentionally separate from the internal label below.
+**Player-facing (Unity `ProjectSettings` bundle version, `Application.version`):** 1.0 — v1.0 product release.
 
-**Internal / repo build label:** 0.0.6.2 — Credits: team list grouped by function in `CreditsCatalog.TeamByFunctionSections` (build loop in `MainMenuController`). Settings: “Back to main menu” on `button-common` inside the sound panel (visible, high contrast). Player-facing bundle version unchanged at 0.2.
+**Internal / repo build label:** 1.0.0.0 — Aligned with v1.0; lower segments reset for the major release. Player-facing bundle version is **1.0**.

@@ -40,6 +40,6 @@ When listing assistant tools in in-game, marketing, or ship credits, use: **Curs
 
 ## Team and Role Credits
 
-The **in-game** main menu “Credits” screen reads team data from `Assets/Scripts/Data/CreditsCatalog.cs`, grouped by **function** (production, design, programming, art, and so on) via `TeamByFunctionSections`, plus the AI assistance block. A “Third-Party Assets” block appears in the build **only** when `ThirdPartyAttributions` in that file is non-empty; keep those entries in sync with confirmed rows in `Docs/Assets.md` (the game does not read `Docs/Assets.md` at runtime).
+The **in-game** main menu “Credits” screen reads team data from `Assets/Scripts/Data/CreditsCatalog.cs`, grouped by **function** via `TeamByFunctionSections`: each line is a **person’s name** (no role subtitle). The same name may appear in more than one section when their roles span those teams. The AI block uses `AiAssistanceNames` (tool names). A “Third-Party Assets” block appears **only** when `ThirdPartyAttributions` is non-empty, and should match confirmed `Docs/Assets.md` rows in the repository (the game does not read markdown at runtime).
 
 Current team names and role assignments in external team docs are also linked from `README.md` under **External Docs and Tools**.

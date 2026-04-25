@@ -186,7 +186,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c129d64c3a9eb942a875603e7c871c1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WardrobeButtonScripts
+  m_EditorClassIdentifier: Assembly-CSharp::WardrobeController
   _sandboxMode: 0
   _wardrobeTimer: 60
 --- !u!1 &687719120

@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 
 namespace Assets.Scripts.UI
 {
+    [RequireComponent(typeof(UIDocument))]
     public class SettingsController : MonoBehaviour
     {
         private Button _mainMenuButton;
@@ -15,6 +16,7 @@ namespace Assets.Scripts.UI
         {
             UIDocument uiDocument = GetComponent<UIDocument>();
             _root = uiDocument.rootVisualElement;
+            UiDocumentPanelRootStretch.ApplyToPanelRootAndAppShell(_root);
             _mainMenuButton = _root.Q<Button>("MainMenuButton");
             _slider = _root.Q<Slider>("MasterSlider");
 

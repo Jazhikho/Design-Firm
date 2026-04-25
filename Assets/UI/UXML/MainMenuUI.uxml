@@ -9,8 +9,8 @@
             <ui:Button text="Play" name="PlayButton" class="button-common main-menu-button"/>
             <ui:Button text="Sandbox" name="SandboxButton" class="button-common main-menu-button">
                 <ui:VisualElement name="SubMenu" class="main-menu-sandbox-flyout">
-                    <ui:Button text="F" name="sandboxF" class="button-common" style="width: 40%; height: 100%; top: 0; left: 0;"/>
-                    <ui:Button text="M" name="sandboxM" class="button-common" style="width: 40%; height: 100%; position: absolute; top: 0; right: 0;"/>
+                    <ui:Button text="F" name="sandboxF" class="button-common sandbox-option-button"/>
+                    <ui:Button text="M" name="sandboxM" class="button-common sandbox-option-button"/>
                 </ui:VisualElement>
             </ui:Button>
             <ui:Button text="Settings" name="SettingsButton" class="button-common main-menu-button"/>
@@ -21,7 +21,7 @@
         <ui:VisualElement name="CreditsOverlay">
             <ui:VisualElement name="CreditsDialog" style="flex-direction: column; flex-grow: 0; flex-shrink: 0;">
                 <ui:Label name="CreditsTitle" text="Credits" emoji-fallback-support="false"/>
-                <ui:ScrollView name="CreditsScroll" mode="Vertical">
+                <ui:ScrollView name="CreditsScroll" mode="Vertical" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Auto">
                 </ui:ScrollView>
                 <ui:Button name="CreditsCloseButton" text="Close" class="button-common"/>
             </ui:VisualElement>

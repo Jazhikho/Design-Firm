@@ -1,7 +1,8 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/USS/CommonStylesheet.uss?fileID=7433441132597879392&amp;guid=8e23400638b471247abded66e2e9521e&amp;type=3#CommonStylesheet"/>
     <Style src="project://database/Assets/UI/USS/ResultsStylesheet.uss?fileID=7433441132597879392&amp;guid=59f5a80705eb3a24daaff36c9dbb1ed9&amp;type=3#ResultsStylesheet"/>
-    <ui:Image name="imgBackground" source="project://database/Assets/Art/Backgrounds/RunwayBlockout.jpg?fileID=2800000&amp;guid=f18ea575f83278347a4688f400d99869&amp;type=3#RunwayBlockout" class="background-runway" style="top: 0; bottom: 0; right: -1px; left: 2px;"/>
+    <ui:VisualElement name="AppDocumentRoot" class="app-document-root">
+    <ui:Image name="imgBackground" source="project://database/Assets/Art/Backgrounds/RunwayBlockout.jpg?fileID=2800000&amp;guid=f18ea575f83278347a4688f400d99869&amp;type=3#RunwayBlockout" class="background-runway full-panel-background-scale" style="top: 0; bottom: 0; right: 0; left: 0;"/>
     <ui:VisualElement name="IdealStuffs" style="flex-grow: 1; position: absolute; height: 94%; width: 35%; top: 4%; left: 32%;">
         <ui:VisualElement name="colIdealOutfitVisual" class="middle-column">
             <ui:Image name="idealAvatar" class="stacked-image"/>
@@ -11,28 +12,29 @@
             <ui:Image name="idealJacket" class="stacked-image"/>
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:VisualElement name="topRow">
+    <ui:VisualElement name="topRow" style="flex-shrink: 0; min-width: 0;">
         <ui:Button text="Main Menu" name="btnMainMenu" class="button-common" style="-unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;); font-size: 29px; width: 11%; height: 123%;"/>
     </ui:VisualElement>
-    <ui:VisualElement name="middleRow" style="flex-grow: 1; flex-direction: row;">
-        <ui:VisualElement name="colFeedback" style="flex-grow: 1; bottom: 0;">
+    <ui:VisualElement name="middleRow" style="flex-grow: 1; min-height: 0; min-width: 0; flex-direction: row;">
+        <ui:VisualElement name="colFeedback" style="flex-grow: 1; min-width: 0; min-height: 0; bottom: 0;">
             <ui:VisualElement style="flex-grow: 1; bottom: 0; top: 0; height: 100%; position: absolute; right: 0; left: 0; align-items: flex-end;">
                 <ui:Image name="Image" source="project://database/Assets/Art/UI/NPC/speechBox.png?fileID=2800000&amp;guid=61160630018804a4db35887fca7806df&amp;type=3#speechBox" scale-mode="ScaleToFit" style="background-image: none; flex-grow: 1; bottom: auto; top: auto; right: auto; left: auto; position: relative; padding-bottom: 64%; width: 64%;">
                     <ui:Label text="Let&apos;s see... only x out of y correct." name="lblTotalScore" style="bottom: -35%; font-size: 40px; white-space: normal; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;); padding-right: 80px; padding-left: 80px; padding-top: 0; -unity-text-align: lower-center;"/>
                 </ui:Image>
             </ui:VisualElement>
-            <ui:Image source="" scale-mode="ScaleToFit" name="gianna" style="bottom: 0; background-image: url(&quot;project://database/Assets/Art/UI/NPC/Gianna%201.png?fileID=2800000&amp;guid=efbbc363b80a57643acf0efa90608d5d&amp;type=3#Gianna 1&quot;); height: -51%; top: auto; left: auto; right: auto; flex-grow: 1; aspect-ratio: 0.5; width: 111%; margin-top: 40%;"/>
+            <ui:Image source="" scale-mode="ScaleToFit" name="gianna" style="bottom: 0; background-image: url(&quot;project://database/Assets/Art/UI/NPC/Gianna%201.png?fileID=2800000&amp;guid=efbbc363b80a57643acf0efa90608d5d&amp;type=3#Gianna 1&quot;); top: auto; left: auto; right: auto; flex-grow: 1; aspect-ratio: 0.5; width: 100%; max-width: 100%; min-height: 0; margin-top: 40%;"/>
         </ui:VisualElement>
-        <ui:VisualElement name="colYourOutfitVisual" class="middle-column" style="visibility: visible; display: flex; min-width: 45%; max-height: 74%; flex-grow: 1; bottom: -7%; top: auto; height: 1320%; padding-left: 0%;">
+        <ui:VisualElement name="colYourOutfitVisual" class="middle-column" style="visibility: visible; display: flex; min-width: 45%; max-height: 100%; flex-grow: 1; min-height: 0; height: auto; bottom: 0; top: auto; padding-left: 0%;">
             <ui:Image name="activeAvatar" class="stacked-image" style="padding-left: 20%;"/>
             <ui:Image name="activeShoes" class="stacked-image" style="padding-left: 20%;"/>
             <ui:Image name="activeBottoms" class="stacked-image" style="padding-left: 20%;"/>
             <ui:Image name="activeTop" class="stacked-image" style="padding-left: 20%;"/>
             <ui:Image name="activeJacket" class="stacked-image" style="padding-left: 20%;"/>
         </ui:VisualElement>
-        <ui:VisualElement name="colButtons" style="flex-grow: 1; justify-content: center;">
+        <ui:VisualElement name="colButtons" style="flex-grow: 1; min-width: 0; justify-content: center;">
             <ui:Button text="New&#10;Scenario" name="btnNewScenario" class="button-common" style="-unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;); width: 55%; height: 85px; left: 0; right: auto; font-size: 39px; margin-bottom: 5%;"/>
             <ui:Button text="Retry&#10;Scenario" name="btnRetry" class="button-common" style="-unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;); font-size: 39px; width: 55%; height: auto;"/>
         </ui:VisualElement>
+    </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

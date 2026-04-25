@@ -80,6 +80,7 @@ namespace Assets.Scripts.UI
             }
 
             VisualElement root = _uiDocument.rootVisualElement;
+            UiDocumentPanelRootStretch.ApplyToPanelRootAndAppShell(root);
 
             _backButton = root.Q<Button>("btnBack");
             if (_backButton != null)
@@ -118,7 +119,7 @@ namespace Assets.Scripts.UI
 
             _shoesListContainer = root.Q<VisualElement>("shoesListContainer");
             _shoesRack = root.Q<Button>("btnShoesRack");
-                        
+
             if (_jacketsTrunk != null)
             {
                 _jacketsTrunk.RegisterCallback<ClickEvent>(OpenJackets);
@@ -135,7 +136,7 @@ namespace Assets.Scripts.UI
             {
                 _shoesRack.RegisterCallback<ClickEvent>(OpenShoes);
             }
-            
+
             _avatarImage = root.Q<Image>("activeAvatar");
             _jacketImage = root.Q<Image>("activeJacket");
             _topImage = root.Q<Image>("activeTop");
@@ -302,7 +303,7 @@ namespace Assets.Scripts.UI
             if (bottoms != null && bottoms.Count > 0)
                 WardrobeState.Instance.CurrentItemBottom = bottoms[0];
 
-            if (shoes != null & shoes.Count > 0)
+            if (shoes != null && shoes.Count > 0)
                 WardrobeState.Instance.CurrentItemShoe = shoes[0];
         }
 
@@ -623,7 +624,7 @@ namespace Assets.Scripts.UI
             VisualElement root = _uiDocument.rootVisualElement;
 
             Label displayDesc = root.Q<Label>("hoverItemDesc");
-            
+
             if (displayDesc == null)
             {
                 Debug.LogError("WardrobeController: hoverItemDesc not found in UXML.");

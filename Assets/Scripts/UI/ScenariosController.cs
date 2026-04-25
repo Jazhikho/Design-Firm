@@ -26,6 +26,7 @@ namespace Assets.Scripts.UI
         private void OnEnable()
         {
             _root = GetComponent<UIDocument>().rootVisualElement;
+            UiDocumentPanelRootStretch.ApplyToPanelRootAndAppShell(_root);
 
             _lblErrorMessage = _root.Q<Label>("lblErrorMessage");
             EnsureStatusLabelExists();
@@ -157,7 +158,15 @@ namespace Assets.Scripts.UI
                 name = "lblErrorMessage"
             };
             _lblErrorMessage.AddToClassList("status-label");
-            _root.Add(_lblErrorMessage);
+            VisualElement shell = _root.Q<VisualElement>(UiDocumentPanelRootStretch.AppDocumentRootName);
+            if (shell != null)
+            {
+                shell.Insert(0, _lblErrorMessage);
+            }
+            else
+            {
+                _root.Add(_lblErrorMessage);
+            }
         }
 
         private void ShowStatus(string message, bool isError = false)

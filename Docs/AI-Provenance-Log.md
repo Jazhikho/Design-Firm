@@ -17,6 +17,28 @@ Disclosure and audit trail for AI-assisted work. Update when committing signific
 
 **Date:** 2026-04-25  
 **Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** Release versioning: set product and builds to **v1.0** (`bundleVersion` 1.0, internal label 1.0.0.0 per major-release reset).  
+**Input materials used:** `ProjectSettings/ProjectSettings.asset`, `VERSION.md`, this log.  
+**Summary of AI contribution:** Updated Unity `bundleVersion` from 0.2 to 1.0; revised `VERSION.md` for v1.0 and internal 1.0.0.0.  
+**What the human accepted / rejected / changed:** (pending review)  
+**Validation method used:** Grep for `bundleVersion`; file review.  
+**Final approver:** (if applicable)  
+
+---
+
+**Date:** 2026-04-25  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** Credits: name-only lines per function (no per-name role subtitle), same person may repeat in multiple sections; remove unnecessary horizontal scroll on credits; `#CreditsDialog` `min-width: 0` and `overflow: hidden` to resist flex overflow.  
+**Input materials used:** `MainMenuController.cs`, `CreditsCatalog.cs`, `MainMenuUI.uxml`, `MainMenuStylesheet.uss`, `VERSION.md`, `Docs/Credits.md`, this log.  
+**Summary of AI contribution:** `AddCreditsNameLine` / `credits-name-line` styling, scroll view column layout and hidden horizontal scroller, catalog list-of-name-strings, internal version bump.  
+**What the human accepted / rejected / changed:** (pending review)  
+**Validation method used:** C# lints.  
+**Final approver:** (if applicable)  
+
+---
+
+**Date:** 2026-04-25  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
 **Task purpose:** Credits re-grouped by function in `CreditsCatalog.TeamByFunctionSections`; settings scene `Back to main menu` on `button-common` inside panel; repository commit per request.  
 **Input materials used:** `CreditsCatalog.cs`, `MainMenuController.cs`, `SettingsUI.uxml`, `VERSION.md`, `Docs/Credits.md`, this log.  
 **Summary of AI contribution:** Replaced flat team list with functional sections; restyled `SettingsUI` for visible back; version note; staged full tree for commit.  
