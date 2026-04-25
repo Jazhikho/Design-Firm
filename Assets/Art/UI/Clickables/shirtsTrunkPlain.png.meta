@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e883216977819094192458ce8ae4ceb4
+guid: 3320c62a4b34d504eae5d513dfb1944b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3212956851060018528
-    second: shirtsTrunkPlain_0
+      213: -7412495946125636110
+    second: Trunk (Shirts)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shirtsTrunkPlain_0
+      name: Trunk (Shirts)_0
       rect:
         serializedVersion: 2
-        x: 36
-        y: 27
-        width: 1039
-        height: 812
+        x: 0
+        y: 0
+        width: 1918
+        height: 1165
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 06d071aab37b69c20800000000000000
-      internalID: 3212956851060018528
+      spriteID: 2fd8828c536812990800000000000000
+      internalID: -7412495946125636110
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      shirtsTrunkPlain_0: 3212956851060018528
+      Trunk (Shirts)_0: -7412495946125636110
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
