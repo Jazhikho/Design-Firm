@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 08eec9a66e079004dac9bea27621cc7f
+guid: 207e6fddde04e8241a342041ff9184cc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -124116892942810947
-    second: jacketsTrunkPlain_0
+      213: -5325348902955536105
+    second: Trunk (Jackets)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: jacketsTrunkPlain_0
+      name: Trunk (Jackets)_0
       rect:
         serializedVersion: 2
-        x: 29
-        y: 21
-        width: 1052
-        height: 821
+        x: 0
+        y: 0
+        width: 1918
+        height: 1165
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: db0c48de75c074ef0800000000000000
-      internalID: -124116892942810947
+      spriteID: 711b15e336f8816b0800000000000000
+      internalID: -5325348902955536105
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      jacketsTrunkPlain_0: -124116892942810947
+      Trunk (Jackets)_0: -5325348902955536105
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
