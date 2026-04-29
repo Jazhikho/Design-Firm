@@ -83,6 +83,7 @@ namespace Assets.Scripts.UI
         /// <param name="e">The UI click event that triggered navigation.</param>
         private void GoToWardrobe(ClickEvent e)
         {
+            AudioManager.TryPlayButtonSfx();
             SceneManager.LoadScene(GameConstants.WardrobeScene);
         }
 
@@ -92,6 +93,7 @@ namespace Assets.Scripts.UI
         /// <param name="e">The UI click event that triggered navigation.</param>
         private void GoToMainMenu(ClickEvent e)
         {
+            AudioManager.TryPlayButtonSfx();
             SceneManager.LoadScene(GameConstants.MainMenuScene);
         }
 
@@ -101,6 +103,7 @@ namespace Assets.Scripts.UI
         /// <param name="e">The UI click event that triggered loading a new scenario.</param>
         private void NewScenario(ClickEvent e)
         {
+            AudioManager.TryPlayButtonSfx();
             SceneManager.LoadScene(GameConstants.TaskScenarioScene);
         }
 
