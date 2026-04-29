@@ -72,3 +72,43 @@
     width: 6%;
     height: 64%;
 }
+
+.main-menu-btn {
+    width: 188px;
+    -unity-font-definition: url("project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&guid=cb230a455f9d47d41b5e9547def9fba4&type=3#Caldstone-SemiBold");
+    margin-top: 0%;
+    margin-bottom: 1%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 12px;
+    padding-right: 12px;
+    margin-right: 4px;
+    margin-left: 4px;
+    height: auto;
+    background-color: rgb(255, 200, 238);
+    border-left-color: rgb(249, 143, 156);
+    border-right-color: rgb(249, 143, 156);
+    border-top-color: rgb(249, 143, 156);
+    border-bottom-color: rgb(249, 143, 156);
+    border-left-width: 3px;
+    border-right-width: 3px;
+    border-bottom-width: 3px;
+    border-top-width: 3px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    transition-property: all;
+    transition-duration: 0s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+    font-size: 38px;
+}
+
+.main-menu-btn:hover {
+    background-color: rgb(255, 243, 186);
+}
+
+.main-menu-btn:active {
+    background-color: rgb(249, 143, 156);
+}
