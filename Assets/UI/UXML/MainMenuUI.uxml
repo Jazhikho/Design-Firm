@@ -3,26 +3,25 @@
     <Style src="project://database/Assets/UI/USS/MainMenuStylesheet.uss?fileID=7433441132597879392&amp;guid=7d161ed00ef895f4caf1c032a658e17b&amp;type=3#MainMenuStylesheet"/>
     <ui:VisualElement name="MainMenuRoot" class="main-menu-root">
         <ui:Image name="imgBackground" class="background-runway"/>
-        <ui:ScrollView name="MenuScroll" class="main-menu-scroll" mode="Vertical">
-            <ui:VisualElement class="main-menu-content-wrap" name="MainMenuContentWrap">
-            <ui:Label text="Sew It Goes" emoji-fallback-support="false" class="main-menu-title"/>
-            <ui:Button text="Play" name="PlayButton" class="button-common main-menu-button"/>
-            <ui:Button text="Sandbox" name="SandboxButton" class="button-common main-menu-button">
-                <ui:VisualElement name="SubMenu" class="main-menu-sandbox-flyout">
-                    <ui:Button text="F" name="sandboxF" class="button-common sandbox-option-button"/>
-                    <ui:Button text="M" name="sandboxM" class="button-common sandbox-option-button"/>
-                </ui:VisualElement>
-            </ui:Button>
-            <ui:Button text="Settings" name="SettingsButton" class="button-common main-menu-button"/>
-            <ui:Button text="Credits" name="CreditsButton" class="button-common main-menu-button"/>
-            <ui:Button text="Quit" name="QuitButton" class="button-common main-menu-button"/>
+        <ui:ScrollView name="MenuScroll" mode="Vertical" class="main-menu-scroll">
+            <ui:VisualElement name="MainMenuContentWrap" class="main-menu-content-wrap">
+                <ui:Label text="Sew It Goes" emoji-fallback-support="false" class="main-menu-title" style="font-size: 102%;"/>
+                <ui:Button text="Play" name="PlayButton" class="button-common main-menu-button" style="width: 13%;"/>
+                <ui:Button text="Sandbox" name="SandboxButton" class="button-common main-menu-button">
+                    <ui:VisualElement name="SubMenu" class="main-menu-sandbox-flyout">
+                        <ui:Button text="F" name="sandboxF" class="button-common sandbox-option-button"/>
+                        <ui:Button text="M" name="sandboxM" class="button-common sandbox-option-button"/>
+                    </ui:VisualElement>
+                </ui:Button>
+                <ui:Button text="Settings" name="SettingsButton" class="button-common main-menu-button"/>
+                <ui:Button text="Credits" name="CreditsButton" class="button-common main-menu-button"/>
+                <ui:Button text="Quit" name="QuitButton" class="button-common main-menu-button"/>
             </ui:VisualElement>
         </ui:ScrollView>
         <ui:VisualElement name="CreditsOverlay">
             <ui:VisualElement name="CreditsDialog" style="flex-direction: column; flex-grow: 0; flex-shrink: 0;">
                 <ui:Label name="CreditsTitle" text="Credits" emoji-fallback-support="false"/>
-                <ui:ScrollView name="CreditsScroll" mode="Vertical" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Auto">
-                </ui:ScrollView>
+                <ui:ScrollView name="CreditsScroll" mode="Vertical" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Auto"/>
                 <ui:Button name="CreditsCloseButton" text="Close" class="button-common"/>
             </ui:VisualElement>
         </ui:VisualElement>

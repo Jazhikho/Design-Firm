@@ -2,23 +2,23 @@
     <Style src="project://database/Assets/UI/USS/CommonStylesheet.uss?fileID=7433441132597879392&amp;guid=8e23400638b471247abded66e2e9521e&amp;type=3#CommonStylesheet"/>
     <Style src="project://database/Assets/UI/USS/ScenariosStylesheet.uss?fileID=7433441132597879392&amp;guid=c5e026a4e12bf4141a5ef1113f39e2cb&amp;type=3#ScenariosStylesheet"/>
     <ui:VisualElement name="AppDocumentRoot" class="app-document-root">
-    <ui:Image name="imgBackground" class="background-runway full-panel-background-scale"/>
-    <ui:VisualElement name="topRow">
-        <ui:Button text="Back" name="btnBack" class="button-common"/>
-    </ui:VisualElement>
-    <ui:VisualElement name="middleRow" style="flex-grow: 1; min-height: 0; min-width: 0;">
-        <ui:Label text="Label" name="lblErrorMessage" style="color: rgb(255, 0, 0); -unity-text-align: upper-center; -unity-font-style: bold-and-italic; display: none;"/>
-        <ui:VisualElement name="filtersRow" style="flex-direction: row; justify-content: center;">
-            <ui:VisualElement name="decadeFilters"/>
-            <ui:VisualElement name="categoryFilters"/>
+        <ui:Image name="imgBackground" class="background-runway full-panel-background-scale"/>
+        <ui:VisualElement name="topRow" style="height: 6%;">
+            <ui:Button text="Back" name="btnBack" class="button-common button-back"/>
         </ui:VisualElement>
-        <ui:VisualElement style="flex-grow: 1; flex-direction: row; min-height: 0; min-width: 0; visibility: visible; justify-content: center;">
-            <ui:ScrollView name="scrollScenariosList" mode="Horizontal" class="scenarios-list-scroll" style="background-image: url(&quot;project://database/Assets/Art/UI/Panels/UIPanel3.png?fileID=2800000&amp;guid=139033b5b1bc28a47aeb7effa178cc12&amp;type=3#UIPanel3&quot;); -unity-slice-type: tiled; -unity-slice-left: 526; -unity-slice-top: 526; -unity-slice-right: 526; -unity-slice-bottom: 526; -unity-slice-scale: 0.6px; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;); color: rgb(255, 255, 255); font-size: 33px;"/>
+        <ui:VisualElement name="middleRow" style="flex-grow: 1; min-height: 0; min-width: 0;">
+            <ui:Label text="Label" name="lblErrorMessage" style="color: rgb(255, 0, 0); -unity-text-align: upper-center; -unity-font-style: bold-and-italic; display: none;"/>
+            <ui:VisualElement name="filtersRow" style="flex-direction: row; justify-content: center;">
+                <ui:VisualElement name="decadeFilters"/>
+                <ui:VisualElement name="categoryFilters"/>
+            </ui:VisualElement>
+            <ui:VisualElement style="flex-grow: 1; flex-direction: row; min-height: 0; min-width: 0; visibility: visible; justify-content: center;">
+                <ui:ScrollView name="scrollScenariosList" mode="Horizontal" class="scenarios-list-scroll" style="background-image: url(&quot;project://database/Assets/Art/UI/Panels/UIPanel3.png?fileID=2800000&amp;guid=139033b5b1bc28a47aeb7effa178cc12&amp;type=3#UIPanel3&quot;); -unity-slice-type: tiled; -unity-slice-left: 526; -unity-slice-top: 526; -unity-slice-right: 526; -unity-slice-bottom: 526; -unity-slice-scale: 0.3px; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;); color: rgb(255, 255, 255); font-size: 33px; border-left-width: 0; margin-left: 0%; padding-left: 3%; padding-bottom: 3%; padding-right: 3%; padding-top: 3%;"/>
+            </ui:VisualElement>
         </ui:VisualElement>
-    </ui:VisualElement>
-    <ui:VisualElement name="bottomRow" style="flex-direction: row; flex-shrink: 0; min-width: 0;">
-        <ui:Label text="Sew It Goes" name="lblGameTitle" class="game-title" style="-unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Bonello-Regular.otf?fileID=12800000&amp;guid=ccc7d1b9793303e4592d61d7db81b149&amp;type=3#Bonello-Regular&quot;);"/>
-        <ui:VisualElement style="flex-grow: 1;"/>
-    </ui:VisualElement>
+        <ui:VisualElement name="bottomRow" style="flex-direction: row; flex-shrink: 0; min-width: 0;">
+            <ui:Label text="Sew It Goes" name="lblGameTitle" class="game-title" style="-unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Bonello-Regular.otf?fileID=12800000&amp;guid=ccc7d1b9793303e4592d61d7db81b149&amp;type=3#Bonello-Regular&quot;);"/>
+            <ui:VisualElement style="flex-grow: 1;"/>
+        </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

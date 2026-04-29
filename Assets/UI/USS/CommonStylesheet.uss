@@ -1,4 +1,3 @@
-/* Full-viewport column shell: wrap each screen’s UXML content so flex height resolves under UIDocument. */
 .app-document-root {
     width: 100%;
     height: 100%;
@@ -10,7 +9,6 @@
     position: relative;
 }
 
-/* Optional: show entire background art without cropping (letterbox if aspect differs). */
 .full-panel-background-scale {
     -unity-background-scale-mode: scale-to-fit;
 }
@@ -38,11 +36,11 @@
 .button-common {
     height: 32px;
     width: 100px;
-    background-color: rgb(249, 143, 156);
-    border-left-color: rgb(255, 243, 186);
-    border-right-color: rgb(255, 243, 186);
-    border-top-color: rgb(255, 243, 186);
-    border-bottom-color: rgb(255, 243, 186);
+    background-color: rgb(255, 200, 238);
+    border-left-color: rgb(249, 143, 156);
+    border-right-color: rgb(249, 143, 156);
+    border-top-color: rgb(249, 143, 156);
+    border-bottom-color: rgb(249, 143, 156);
     border-left-width: 3px;
     border-right-width: 3px;
     border-bottom-width: 3px;
@@ -55,31 +53,22 @@
     transition-duration: 0s;
     transition-timing-function: ease;
     transition-delay: 0s;
+    -unity-font-definition: url("project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&guid=cb230a455f9d47d41b5e9547def9fba4&type=3#Caldstone-SemiBold");
 }
 
 .button-common:hover {
-    background-color: rgb(255, 200, 235);
-}
-
-.submit-button {
-    -unity-font-definition: url("project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&guid=cb230a455f9d47d41b5e9547def9fba4&type=3#Caldstone-SemiBold");
-    font-size: 314%;
     background-color: rgb(255, 243, 186);
-    border-left-color: rgb(249, 143, 156);
-    border-right-color: rgb(249, 143, 156);
-    border-top-color: rgb(249, 143, 156);
-    border-bottom-color: rgb(249, 143, 156);
-    border-left-width: 11px;
-    border-right-width: 11px;
-    border-bottom-width: 11px;
-    border-top-width: 11px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
 }
 
+.button-common:active {
+    background-color: rgb(249, 143, 156);
+}
 
-.submit-button:hover {
-    background-color: rgb(255, 200, 235);
+.button-back {
+    -unity-font-definition: url("project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&guid=cb230a455f9d47d41b5e9547def9fba4&type=3#Caldstone-SemiBold");
+    margin-left: 1%;
+    margin-top: 1%;
+    font-size: 25px;
+    width: 6%;
+    height: 64%;
 }
