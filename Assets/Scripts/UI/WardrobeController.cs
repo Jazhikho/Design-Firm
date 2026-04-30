@@ -789,7 +789,7 @@ namespace Assets.Scripts.UI
                         }
                     }
                 }
-                if (WardrobeState.Instance.CurrentItemTop.coversBottom == false || WardrobeState.Instance.CurrentItemJacket.coversBottom == false)
+                if (WardrobeState.Instance.CurrentItemTop.coversBottom == false && WardrobeState.Instance.CurrentItemJacket.coversBottom == false)
                 {
                     _BottomDisable = false;
                 }
