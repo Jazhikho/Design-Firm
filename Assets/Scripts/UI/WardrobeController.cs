@@ -457,7 +457,7 @@ namespace Assets.Scripts.UI
             {
                 return;
             }
-            ItemCoverBottomChecks(WardrobeState.Instance.CurrentItemTop, item);
+            ItemCoverBottomChecks(WardrobeState.Instance.GetCurrentItem(item.SlotType), item);
             switch (item.SlotType)
             {
                 case ClothingSlot.Top:
@@ -744,10 +744,29 @@ namespace Assets.Scripts.UI
         }
         
         /// <summary>
-        /// Checks if item should disable anything. Could be used later for item sounds.
+        /// Checks if item should disable anything. Also plays equip/unequip/swap sounds for items.
         /// </summary>
         private void ItemCoverBottomChecks(WardrobeItem currentItem, WardrobeItem newItem)
         {
+            //
+            string nothin = "Nothing";
+            if ((currentItem.name == nothin) && (newItem.name != nothin))
+            {
+                //equip
+                AudioManager.TryPlayOtherSFX("equip");
+            }
+            else if ((currentItem.name != nothin) && (newItem.name == nothin))
+            {
+                //unequip
+                AudioManager.TryPlayOtherSFX("unequip");
+            }
+            else if ((currentItem.name != nothin) && (newItem.name != nothin))
+            {
+                //swap
+                AudioManager.TryPlayOtherSFX("swap");
+            }
+            //
+
             if (newItem.coversBottom && !_BottomDisable)
             {
                 _BottomDisable = true;

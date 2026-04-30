@@ -158,5 +158,24 @@ namespace Assets.Scripts.Core
                 gender = newGender
             });
         }
+
+        /// <summary>
+        /// Gets the current item in a slot
+        /// </summary>
+        internal WardrobeItem GetCurrentItem(ClothingSlot slot)
+        {
+            switch (slot)
+            {
+                case ClothingSlot.Jacket:
+                    return Instance.CurrentItemJacket;
+                case ClothingSlot.Top:
+                    return Instance.CurrentItemTop;
+                case ClothingSlot.Bottom:
+                    return Instance.CurrentItemBottom;
+                case ClothingSlot.Shoes:
+                    return Instance.CurrentItemShoe;
+            }
+            return null;
+        }
     }
 }

@@ -17,6 +17,13 @@ namespace Assets.Scripts.Core
         [SerializeField]
         private AudioClip _buttonSfx;
 
+        [SerializeField]
+        private AudioClip _equipSfx;
+        [SerializeField]
+        private AudioClip _unequipSfx;
+        [SerializeField]
+        private AudioClip _swapSfx;
+
         private AudioSource _audioSource;
 
         /// <summary>
@@ -121,6 +128,43 @@ namespace Assets.Scripts.Core
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Plays a sound dependant on it's key.
+        /// </summary>
+        public void PlayOtherSFX(string soundKey)
+        {
+            AudioClip otherSound = null;
+
+            switch (soundKey)
+            {
+                case "equip":
+                    otherSound = _equipSfx;
+                    break;
+                case "unequip":
+                    otherSound = _unequipSfx;
+                    break;
+                case "swap":
+                    otherSound = _swapSfx;
+                    break;
+                
+            }
+            if (otherSound != null)
+            {
+                _audioSource.PlayOneShot(otherSound);
+            }
+        }
+        public static void TryPlayOtherSFX(string soundKey)
+        {
+            if (Instance != null)
+            {
+                Instance.PlayOtherSFX(soundKey);
+            }
+            else
+            {
+                Debug.LogWarning("AudioManager.Instance is null; Other SFX was skipped.");
+            }
         }
     }
 }
