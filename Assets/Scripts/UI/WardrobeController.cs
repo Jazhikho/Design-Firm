@@ -60,6 +60,8 @@ namespace Assets.Scripts.UI
         private readonly List<AsyncOperationHandle<Sprite>> _spriteHandles = new();
         private readonly List<(Button button, TileButtonData data)> _tileCallbacks = new();
 
+        private StyleColor whiteStyle = new();
+
         /// <summary>
         /// Chooses next-scene routing, caches UI references, and binds callbacks.
         /// </summary>
@@ -342,6 +344,7 @@ namespace Assets.Scripts.UI
                 Button tileButton = CreateClothingButton(item, gridName);
                 grid.Add(tileButton);
             }
+            whiteStyle = _tileCallbacks[0].button.style.borderBottomColor;
         }
 
         /// <summary>
@@ -767,6 +770,14 @@ namespace Assets.Scripts.UI
             }
             //
 
+            if (newItem == null)
+            {
+                Debug.LogError("WardrobeController: ItemCoverBottomChecks newItem is Null");
+            }
+            if (currentItem == null)
+            {
+                Debug.LogError("WardrobeController: ItemCoverBottomChecks currentItem is Null");
+            }
             if (newItem.coversBottom && !_BottomDisable)
             {
                 _BottomDisable = true;
@@ -795,8 +806,6 @@ namespace Assets.Scripts.UI
                 if (_DressDisable && (WardrobeState.Instance.CurrentItemBottom.id == "nothing_bottom" || newItem.id == "nothing_bottom"))
                 {
                     _DressDisable = false;
-                    StyleColor whiteStyle = new();
-                    whiteStyle = _tileCallbacks[0].button.style.borderBottomColor;
                     foreach ((Button button, TileButtonData data) in _tileCallbacks)
                     {
                         if (data.Item.coversBottom)
