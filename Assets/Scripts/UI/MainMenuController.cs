@@ -1,11 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Assets.Scripts.Core;
 using Assets.Scripts.Data;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 namespace Assets.Scripts.UI
@@ -13,14 +11,15 @@ namespace Assets.Scripts.UI
     [RequireComponent(typeof(UIDocument))]
     public class MainMenuController : MonoBehaviour
     {
+        private VisualElement _root;
         private Button _playButton;
         private Button _quitButton;
 
         private Button _sandboxButton;
         private Button _sandboxFButton;
         private Button _sandboxMButton;
+
         private Button _settingsButton;
-        private bool SandboxSubMenuVis;
         private VisualElement _sandboxSubMenu;
 
         private Button _creditsButton;
@@ -28,8 +27,6 @@ namespace Assets.Scripts.UI
         private VisualElement _creditsOverlay;
         private ScrollView _creditsScroll;
         private bool _creditsOpen;
-        private VisualElement _root;
-        private ScrollView _mainMenuScroll;
 
         /// <summary>
         /// Caches UI Toolkit buttons and binds click handlers.
@@ -37,75 +34,34 @@ namespace Assets.Scripts.UI
         private void OnEnable()
         {
             UIDocument uiDocument = GetComponent<UIDocument>();
-            VisualElement root = uiDocument.rootVisualElement;
-            _root = root;
-            UiDocumentPanelRootStretch.ApplyToPanelRoot(root);
+            _root = uiDocument.rootVisualElement;
 
-            RegisterMainMenuContentViewportLayout(root);
-            RegisterCreditsInterface(root);
-            if (_root != null)
-            {
-                _root.RegisterCallback<NavigationCancelEvent>(OnRootNavigationCancel, TrickleDown.TrickleDown);
-            }
+            RegisterCreditsInterface(_root);
+            _root?.RegisterCallback<NavigationCancelEvent>(OnRootNavigationCancel, TrickleDown.TrickleDown);
 
-            _playButton = root.Q<Button>("PlayButton");
-            _quitButton = root.Q<Button>("QuitButton");
-            _sandboxButton = root.Q<Button>("SandboxButton");
-            _sandboxSubMenu = root.Q<VisualElement>("SubMenu");
-            _settingsButton = root.Q<Button>("SettingsButton");
-            if (_sandboxSubMenu != null)
-            {
-                _sandboxFButton = _sandboxSubMenu.Q<Button>("sandboxF");
-                _sandboxMButton = _sandboxSubMenu.Q<Button>("sandboxM");
-            }
-            else
-            {
-                _sandboxFButton = null;
-                _sandboxMButton = null;
-            }
+            _playButton = _root.Q<Button>("PlayButton");
+            _playButton?.RegisterCallback<ClickEvent>(OnPlayClicked);
 
-            if (_playButton == null)
-            {
-                Debug.LogError("MainMenuScript: PlayButton not found in UXML.");
-                return;
-            }
+            _sandboxButton = _root.Q<Button>("SandboxButton");
+            _sandboxButton?.RegisterCallback<ClickEvent>(OnSandboxClicked);
 
-            if (_quitButton == null)
-            {
-                Debug.LogError("MainMenuScript: QuitButton not found in UXML.");
-                return;
-            }
+            _sandboxSubMenu = _root.Q<VisualElement>("SubMenu");
+            _sandboxSubMenu.visible = false;
 
-            _playButton.RegisterCallback<ClickEvent>(OnPlayClicked);
+            _sandboxFButton = _root.Q<Button>("sandboxF");
+            _sandboxFButton?.RegisterCallback<ClickEvent>(OnSandboxSubMenuButtonClick);
 
-            if (_sandboxButton != null && _sandboxSubMenu != null && _sandboxFButton != null && _sandboxMButton != null)
-            {
-                _sandboxButton.RegisterCallback<ClickEvent>(OnSandboxClicked);
-                _sandboxFButton.RegisterCallback<ClickEvent>(OnSandboxSubMenuButtonClick);
-                _sandboxMButton.RegisterCallback<ClickEvent>(OnSandboxSubMenuButtonClick);
-            }
-            else
-            {
-                Debug.LogError(
-                    "MainMenuController: Sandbox UI incomplete (SandboxButton, SubMenu, sandboxF, or sandboxM missing). Sandbox controls were not bound.");
-            }
-            if (_settingsButton != null)
-            {
-                _settingsButton.RegisterCallback<ClickEvent>(OnSettingsButtonClick);
-            }
-            else
-            {
-                Debug.LogError("MainMenuController: Settings Button not found.");
-            }
+            _sandboxMButton = _root.Q<Button>("sandboxM");
+            _sandboxMButton?.RegisterCallback<ClickEvent>(OnSandboxSubMenuButtonClick);
 
+            _settingsButton = _root.Q<Button>("SettingsButton");
+            _settingsButton?.RegisterCallback<ClickEvent>(OnSettingsButtonClick);
+
+            _quitButton = _root.Q<Button>("QuitButton");
             if (Application.platform == RuntimePlatform.WebGLPlayer)
-            {
                 _quitButton.style.display = DisplayStyle.None;
-            }
             else
-            {
-                _quitButton.RegisterCallback<ClickEvent>(OnQuitClicked);
-            }
+                _quitButton?.RegisterCallback<ClickEvent>(OnQuitClicked);
         }
 
         /// <summary>
@@ -113,49 +69,22 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void OnDisable()
         {
-            if (_mainMenuScroll != null)
-            {
-                _mainMenuScroll.UnregisterCallback<GeometryChangedEvent>(OnMainMenuScrollGeometryChanged);
-            }
-            _mainMenuScroll = null;
-            if (_root != null)
-            {
-                _root.UnregisterCallback<NavigationCancelEvent>(OnRootNavigationCancel, TrickleDown.TrickleDown);
-            }
+            _root?.UnregisterCallback<NavigationCancelEvent>(OnRootNavigationCancel, TrickleDown.TrickleDown);
             _root = null;
             SetMainMenuButtonsEnabledForModal(false);
             _creditsOpen = false;
             if (_creditsOverlay != null)
-            {
                 _creditsOverlay.style.display = DisplayStyle.None;
-            }
-            UnregisterCreditsInterface();
-            if (_playButton != null)
-            {
-                _playButton.UnregisterCallback<ClickEvent>(OnPlayClicked);
-            }
 
-            if (_sandboxButton != null)
-            {
-                _sandboxButton.UnregisterCallback<ClickEvent>(OnSandboxClicked);
-            }
-            if (_sandboxFButton != null)
-            {
-                _sandboxFButton.UnregisterCallback<ClickEvent>(OnSandboxSubMenuButtonClick);
-            }
-            if (_sandboxMButton != null)
-            {
-                _sandboxMButton.UnregisterCallback<ClickEvent>(OnSandboxSubMenuButtonClick);
-            }
-            if (_settingsButton != null)
-            {
-                _settingsButton.UnregisterCallback<ClickEvent>(OnSettingsButtonClick);
-            }
+            UnregisterCreditsInterface();
+            _playButton?.UnregisterCallback<ClickEvent>(OnPlayClicked);
+            _sandboxButton?.UnregisterCallback<ClickEvent>(OnSandboxClicked);
+            _sandboxFButton?.UnregisterCallback<ClickEvent>(OnSandboxSubMenuButtonClick);
+            _sandboxMButton?.UnregisterCallback<ClickEvent>(OnSandboxSubMenuButtonClick);
+            _settingsButton?.UnregisterCallback<ClickEvent>(OnSettingsButtonClick);
 
             if (_quitButton != null && Application.platform != RuntimePlatform.WebGLPlayer)
-            {
                 _quitButton.UnregisterCallback<ClickEvent>(OnQuitClicked);
-            }
         }
 
         /// <summary>
@@ -164,19 +93,13 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void Update()
         {
-            if (!_creditsOpen)
-            {
-                return;
-            }
+            if (!_creditsOpen) return;
+
             Keyboard keyboard = Keyboard.current;
-            if (keyboard == null)
-            {
-                return;
-            }
+            if (keyboard == null) return;
+
             if (keyboard.escapeKey.wasPressedThisFrame)
-            {
                 CloseCredits();
-            }
         }
 
         /// <summary>
@@ -184,60 +107,10 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void OnRootNavigationCancel(NavigationCancelEvent evt)
         {
-            if (!_creditsOpen)
-            {
-                return;
-            }
+            if (!_creditsOpen) return;
+
             CloseCredits();
             evt.StopPropagation();
-        }
-
-        /// <summary>
-        /// Sets the main menu content column to at least the scroll viewport height so layout can stretch the stack
-        /// between the top and bottom of the view (insets on the scroll view sit against the screen edges).
-        /// </summary>
-        private void RegisterMainMenuContentViewportLayout(VisualElement root)
-        {
-            ScrollView menuScroll = root.Q<ScrollView>("MenuScroll");
-            if (menuScroll == null)
-            {
-                return;
-            }
-            _mainMenuScroll = menuScroll;
-            _mainMenuScroll.RegisterCallback<GeometryChangedEvent>(OnMainMenuScrollGeometryChanged);
-            SyncMainMenuContentWrapToViewport();
-        }
-
-        private void OnMainMenuScrollGeometryChanged(GeometryChangedEvent evt)
-        {
-            SyncMainMenuContentWrapToViewport();
-        }
-
-        private void SyncMainMenuContentWrapToViewport()
-        {
-            if (_root == null)
-            {
-                return;
-            }
-            ScrollView menuScroll = _root.Q<ScrollView>("MenuScroll");
-            VisualElement wrap = _root.Q<VisualElement>("MainMenuContentWrap");
-            if (menuScroll == null || wrap == null)
-            {
-                return;
-            }
-            float h = 0f;
-            if (menuScroll.contentViewport != null)
-            {
-                h = menuScroll.contentViewport.resolvedStyle.height;
-            }
-            if (h < 1f)
-            {
-                h = menuScroll.resolvedStyle.height;
-            }
-            if (h > 1f)
-            {
-                wrap.style.minHeight = h;
-            }
         }
 
         /// <summary>
@@ -280,18 +153,10 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void UnregisterCreditsInterface()
         {
-            if (_creditsButton != null)
-            {
-                _creditsButton.UnregisterCallback<ClickEvent>(OnCreditsButtonClick);
-            }
-            if (_creditsCloseButton != null)
-            {
-                _creditsCloseButton.UnregisterCallback<ClickEvent>(OnCreditsCloseButtonClick);
-            }
-            if (_creditsOverlay != null)
-            {
-                _creditsOverlay.UnregisterCallback<ClickEvent>(OnCreditsOverlayClick, TrickleDown.TrickleDown);
-            }
+            _creditsButton?.UnregisterCallback<ClickEvent>(OnCreditsButtonClick);
+            _creditsCloseButton?.UnregisterCallback<ClickEvent>(OnCreditsCloseButtonClick);
+            _creditsOverlay?.UnregisterCallback<ClickEvent>(OnCreditsOverlayClick, TrickleDown.TrickleDown);
+
             _creditsButton = null;
             _creditsCloseButton = null;
             _creditsOverlay = null;
@@ -304,10 +169,8 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void BuildCreditsScrollContent()
         {
-            if (_creditsScroll == null)
-            {
-                return;
-            }
+            if (_creditsScroll == null) return;
+
             _creditsScroll.contentContainer.Clear();
             bool firstTeamSection = true;
             foreach ((string teamHeading, IReadOnlyList<string> teamLines) in CreditsCatalog.TeamByFunctionSections)
@@ -339,7 +202,7 @@ namespace Assets.Scripts.UI
                     {
                         continue;
                     }
-                    Label row = new Label(t);
+                    Label row = new(t);
                     row.AddToClassList("credits-name-line");
                     _creditsScroll.contentContainer.Add(row);
                 }
@@ -351,12 +214,11 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void AddCreditsSectionHeading(VisualElement parent, string title, bool isFirst)
         {
-            Label heading = new Label(title);
+            Label heading = new(title);
             heading.AddToClassList("credits-section-heading");
             if (isFirst)
-            {
                 heading.AddToClassList("credits-section-heading-first");
-            }
+
             parent.Add(heading);
         }
 
@@ -365,16 +227,12 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void AddCreditsNameLine(VisualElement parent, string name)
         {
-            if (name == null)
-            {
-                return;
-            }
+            if (name == null) return;
+
             string trimmed = name.Trim();
-            if (trimmed.Length == 0)
-            {
-                return;
-            }
-            Label row = new Label(trimmed);
+            if (trimmed.Length == 0) return;
+
+            Label row = new(trimmed);
             row.AddToClassList("credits-name-line");
             parent.Add(row);
         }
@@ -400,10 +258,8 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void OnCreditsOverlayClick(ClickEvent evt)
         {
-            if (evt.target != _creditsOverlay)
-            {
-                return;
-            }
+            if (evt.target != _creditsOverlay) return;
+
             CloseCredits();
         }
 
@@ -412,24 +268,18 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void OpenCredits()
         {
-            if (_creditsOverlay == null || _creditsScroll == null)
-            {
-                return;
-            }
+            if (_creditsOverlay == null || _creditsScroll == null) return;
+
             AudioManager.TryPlayButtonSfx();
-            if (SandboxSubMenuVis && _sandboxSubMenu != null)
+            if (_sandboxSubMenu.visible && _sandboxSubMenu != null)
             {
-                SandboxSubMenuVis = false;
                 _sandboxSubMenu.visible = false;
             }
             _creditsOpen = true;
             SetMainMenuButtonsEnabledForModal(true);
             _creditsOverlay.BringToFront();
             _creditsOverlay.style.display = DisplayStyle.Flex;
-            if (_creditsCloseButton != null)
-            {
-                _creditsCloseButton.Focus();
-            }
+            _creditsCloseButton?.Focus();
         }
 
         /// <summary>
@@ -437,22 +287,15 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void CloseCredits()
         {
-            if (_creditsOverlay == null)
-            {
-                return;
-            }
-            if (!_creditsOpen)
-            {
-                return;
-            }
+            if (_creditsOverlay == null) return;
+
+            if (!_creditsOpen) return;
+
             AudioManager.TryPlayButtonSfx();
             _creditsOpen = false;
             _creditsOverlay.style.display = DisplayStyle.None;
             SetMainMenuButtonsEnabledForModal(false);
-            if (_creditsButton != null)
-            {
-                _creditsButton.Focus();
-            }
+            _creditsButton?.Focus();
         }
 
         /// <summary>
@@ -461,26 +304,12 @@ namespace Assets.Scripts.UI
         private void SetMainMenuButtonsEnabledForModal(bool isModalOpen)
         {
             bool isEnabled = !isModalOpen;
-            if (_playButton != null)
-            {
-                _playButton.SetEnabled(isEnabled);
-            }
-            if (_quitButton != null)
-            {
-                _quitButton.SetEnabled(isEnabled);
-            }
-            if (_sandboxButton != null)
-            {
-                _sandboxButton.SetEnabled(isEnabled);
-            }
-            if (_settingsButton != null)
-            {
-                _settingsButton.SetEnabled(isEnabled);
-            }
-            if (_creditsButton != null)
-            {
-                _creditsButton.SetEnabled(isEnabled);
-            }
+
+            _playButton?.SetEnabled(isEnabled);
+            _quitButton?.SetEnabled(isEnabled);
+            _sandboxButton?.SetEnabled(isEnabled);
+            _settingsButton?.SetEnabled(isEnabled);
+            _creditsButton?.SetEnabled(isEnabled);
         }
 
         /// <summary>
@@ -489,7 +318,7 @@ namespace Assets.Scripts.UI
         private void OnPlayClicked(ClickEvent e)
         {
             AudioManager.TryPlayButtonSfx();
-            SceneManager.LoadScene(GameConstants.TaskScenarioScene);
+            NavigationManager.Instance.NavigateToScene(GameConstants.TaskScenarioScene);
         }
 
         /// <summary>
@@ -509,9 +338,7 @@ namespace Assets.Scripts.UI
         {
             float waitSeconds = 0f;
             if (AudioManager.Instance != null)
-            {
                 waitSeconds = AudioManager.Instance.ButtonSfxLength;
-            }
 
             yield return new WaitForSeconds(waitSeconds);
             Application.Quit();
@@ -533,16 +360,7 @@ namespace Assets.Scripts.UI
             }
 
             AudioManager.TryPlayButtonSfx();
-            if (SandboxSubMenuVis)
-            {
-                SandboxSubMenuVis = false;
-                _sandboxSubMenu.visible = false;
-            }
-            else
-            {
-                SandboxSubMenuVis = true;
-                _sandboxSubMenu.visible = true;
-            }
+            _sandboxSubMenu.visible = !_sandboxSubMenu.visible;
         }
 
         /// <summary>
@@ -550,10 +368,7 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void OnSandboxSubMenuButtonClick(ClickEvent evt)
         {
-            if (!SandboxSubMenuVis)
-            {
-                return;
-            }
+            if (!_sandboxSubMenu.visible) return;
 
             Button button = evt.currentTarget as Button;
             if (button == null)
@@ -562,27 +377,25 @@ namespace Assets.Scripts.UI
                 return;
             }
 
-            Data.Scenario sandboxScenario = new();
-            sandboxScenario.name = "sandbox";
-            sandboxScenario.description = button.name;
+            Scenario sandboxScenario = new()
+            {
+                name = "sandbox",
+                description = button.name
+            };
             if (button.name == "sandboxF")
-            {
                 sandboxScenario.avatarImage = "Avatars/2000sFemModel.png";
-            }
             else
-            {
                 sandboxScenario.avatarImage = "Avatars/MascModel.png";
-            }
 
             ScenarioState.Instance.ActiveScenario = sandboxScenario;
             AudioManager.TryPlayButtonSfx();
-            SceneManager.LoadScene(GameConstants.WardrobeScene);
+            NavigationManager.Instance.NavigateToScene(GameConstants.WardrobeScene);
         }
 
         private void OnSettingsButtonClick(ClickEvent evt)
         {
             AudioManager.TryPlayButtonSfx();
-            SceneManager.LoadScene(GameConstants.SettingsScene);
+            NavigationManager.Instance.NavigateToScene(GameConstants.SettingsScene);
         }
     }
 }

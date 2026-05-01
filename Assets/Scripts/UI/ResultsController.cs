@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.ResourceManagement.ResourceLocations;
-using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 namespace Assets.Scripts.UI
@@ -34,7 +33,6 @@ namespace Assets.Scripts.UI
         private void OnEnable()
         {
             _root = GetComponent<UIDocument>().rootVisualElement;
-            UiDocumentPanelRootStretch.ApplyToPanelRootAndAppShell(_root);
 
             _retryButton = _root.Q<Button>("btnRetry");
             _retryButton?.RegisterCallback<ClickEvent>(GoToWardrobe);
@@ -48,12 +46,11 @@ namespace Assets.Scripts.UI
             Scenario activeScenario = ScenarioState.Instance.ActiveScenario;
             if (activeScenario != null)
             {
-                UpdateBackground(activeScenario.backgroundImage);
                 UpdateIdealAvatar(activeScenario.avatarImage, activeScenario.idealOutfit);
             }
 
             LoadAvatarImages();
-            ReadScenario();
+            CalculateScore();
         }
 
         /// <summary>
@@ -84,7 +81,7 @@ namespace Assets.Scripts.UI
         private void GoToWardrobe(ClickEvent e)
         {
             AudioManager.TryPlayButtonSfx();
-            SceneManager.LoadScene(GameConstants.WardrobeScene);
+            NavigationManager.Instance.NavigateToScene(GameConstants.WardrobeScene);
         }
 
         /// <summary>
@@ -94,7 +91,7 @@ namespace Assets.Scripts.UI
         private void GoToMainMenu(ClickEvent e)
         {
             AudioManager.TryPlayButtonSfx();
-            SceneManager.LoadScene(GameConstants.MainMenuScene);
+            NavigationManager.Instance.NavigateToScene(GameConstants.MainMenuScene);
         }
 
         /// <summary>
@@ -104,7 +101,7 @@ namespace Assets.Scripts.UI
         private void NewScenario(ClickEvent e)
         {
             AudioManager.TryPlayButtonSfx();
-            SceneManager.LoadScene(GameConstants.TaskScenarioScene);
+            NavigationManager.Instance.NavigateToScene(GameConstants.TaskScenarioScene);
         }
 
         /// <summary>
@@ -196,20 +193,6 @@ namespace Assets.Scripts.UI
             };
         }
 
-
-
-        /// <summary>
-        /// Runs scoring so the results summary label reflects the latest outfit versus the active scenario.
-        /// </summary>
-        /// <remarks>
-        /// Invokes <see cref="Scoring"/> after sprites are loaded in <see cref="OnEnable"/>.
-        /// </remarks>
-        public void ReadScenario()
-        {
-            Scoring();
-        }
-
-
         /// <summary>
         /// Compute and display per-slot scores and the overall total score for the active scenario.
         /// </summary>
@@ -218,7 +201,7 @@ namespace Assets.Scripts.UI
         /// ideal outfit, uses <see cref="ScoreItem(WardrobeItem, IdealOutfitItem, List{ScoredItem})"/>
         /// for each slot, then updates the total summary label with a count of fully correct slots (partial credit excluded).
         /// </remarks>
-        public void Scoring()
+        public void CalculateScore()
         {
             Scenario activeScenario = ScenarioState.Instance.ActiveScenario;
             if (activeScenario == null)
@@ -230,42 +213,39 @@ namespace Assets.Scripts.UI
             IdealOutfit idealOutfit = activeScenario.idealOutfit;
             List<ScoredItem> scoredItems = activeScenario.scoredItems;
 
-
             float jacketScore = ScoreItem(WardrobeState.Instance.CurrentItemJacket, idealOutfit?.jacket, scoredItems);
+            AssignStarImage(jacketScore, _root.Q<Image>("imgJacketStarScore"));
 
             float topScore = ScoreItem(WardrobeState.Instance.CurrentItemTop, idealOutfit?.top, scoredItems);
+            AssignStarImage(topScore, _root.Q<Image>("imgTopStarScore"));
 
             float bottomScore = ScoreItem(WardrobeState.Instance.CurrentItemBottom, idealOutfit?.bottom, scoredItems);
+            AssignStarImage(bottomScore, _root.Q<Image>("imgBottomStarScore"));
 
             float shoesScore = ScoreItem(WardrobeState.Instance.CurrentItemShoe, idealOutfit?.shoes, scoredItems);
+            AssignStarImage(shoesScore, _root.Q<Image>("imgShoesStarScore"));
+        }
 
-            Label totalScoreDisplay = _root.Q<Label>("lblTotalScore");
-            if (totalScoreDisplay != null)
+        private void AssignStarImage(float score, Image starImagePlaceholder)
+        {
+            if (starImagePlaceholder == null) return;
+
+            const string emptyStarSpriteKey = "UI/Icon_EmptyStar.png";
+            const string halfFilledStarSpriteKey = "UI/Icon_HalfFilledStar.png";
+            const string filledStarSpriteKey = "UI/Icon_FilledStar.png";
+
+            string starSpriteKey = string.Empty;
+            if (score <= 0) 
+                starSpriteKey = emptyStarSpriteKey;
+            else if (score < 1.0f) 
+                starSpriteKey = halfFilledStarSpriteKey;
+            else 
+                starSpriteKey = filledStarSpriteKey;
+
+            LoadSprite(starSpriteKey, loadedSprite =>
             {
-                int correctItems = 0;
-                if (Mathf.Approximately(jacketScore, 1f))
-                {
-                    correctItems++;
-                }
-
-                if (Mathf.Approximately(topScore, 1f))
-                {
-                    correctItems++;
-                }
-
-                if (Mathf.Approximately(bottomScore, 1f))
-                {
-                    correctItems++;
-                }
-
-                if (Mathf.Approximately(shoesScore, 1f))
-                {
-                    correctItems++;
-                }
-
-                totalScoreDisplay.text =
-                    " Let's see... you got " + correctItems.ToString() + " out of 4 items correct.";
-            }
+                starImagePlaceholder.sprite = loadedSprite;
+            });
         }
 
         /// <summary>
@@ -297,50 +277,15 @@ namespace Assets.Scripts.UI
             {
                 foreach (ScoredItem scoredRow in scoredItems)
                 {
-                    if (scoredRow == null)
-                    {
-                        continue;
-                    }
+                    if (scoredRow == null) continue;
 
-                    if (scoredRow.itemId == selectedId)
-                    {
+                    if (scoredRow.itemId == selectedId) 
                         return scoredRow.score;
-                    }
                 }
             }
 
             // No match
-
             return 0f;
-        }
-
-        /// <summary>
-        /// Loads the results screen background sprite from Addressables and applies it to the root background image.
-        /// </summary>
-        /// <param name="backgroundSpriteKey">Addressables key from the active scenario, or null to use the default dressing-room key.</param>
-        private void UpdateBackground(string backgroundSpriteKey)
-        {
-            Image backgroundElement = _root.Q<Image>("imgBackground");
-            if (backgroundElement == null)
-            {
-                Debug.LogError("ResultsController: imgBackground Image not found in UXML.");
-                return;
-            }
-
-            string resolvedKey;
-            if (string.IsNullOrEmpty(backgroundSpriteKey))
-            {
-                resolvedKey = "Scenarios/DressingRoom.png";
-            }
-            else
-            {
-                resolvedKey = backgroundSpriteKey;
-            }
-
-            LoadSprite(resolvedKey, loadedSprite =>
-            {
-                backgroundElement.style.backgroundImage = new StyleBackground(loadedSprite);
-            });
         }
 
         /// <summary>
@@ -365,10 +310,7 @@ namespace Assets.Scripts.UI
                 });
             }
 
-            if (idealOutfit == null)
-            {
-                return;
-            }
+            if (idealOutfit == null) return;
 
             SetSlotSprite("idealTop", GetItemById(idealOutfit.top?.itemId)?.sprite);
             SetSlotSprite("idealJacket", GetItemById(idealOutfit.jacket?.itemId)?.sprite);
@@ -383,10 +325,7 @@ namespace Assets.Scripts.UI
         /// <returns>The matching item, or null if not found or id is null.</returns>
         private WardrobeItem GetItemById(string itemId)
         {
-            if (itemId == null)
-            {
-                return null;
-            }
+            if (itemId == null) return null;
 
             foreach (WardrobeItem item in WardrobeState.Instance.AllWardrobeItems)
             {

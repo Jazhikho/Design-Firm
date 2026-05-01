@@ -1,6 +1,5 @@
 using Assets.Scripts.Core;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 namespace Assets.Scripts.UI
@@ -16,7 +15,7 @@ namespace Assets.Scripts.UI
         {
             UIDocument uiDocument = GetComponent<UIDocument>();
             _root = uiDocument.rootVisualElement;
-            UiDocumentPanelRootStretch.ApplyToPanelRootAndAppShell(_root);
+
             _mainMenuButton = _root.Q<Button>("MainMenuButton");
             _slider = _root.Q<Slider>("MasterSlider");
 
@@ -50,21 +49,15 @@ namespace Assets.Scripts.UI
 
         private void OnDisable()
         {
-            if (_mainMenuButton != null)
-            {
-                _mainMenuButton.UnregisterCallback<ClickEvent>(OnBackButton);
-            }
+            _mainMenuButton?.UnregisterCallback<ClickEvent>(OnBackButton);
 
-            if (_slider != null)
-            {
-                _slider.UnregisterCallback<ChangeEvent<float>>(SliderValueChange);
-            }
+            _slider?.UnregisterCallback<ChangeEvent<float>>(SliderValueChange);
         }
 
         private void OnBackButton(ClickEvent evt)
         {
             AudioManager.TryPlayButtonSfx();
-            SceneManager.LoadScene(GameConstants.MainMenuScene);
+            NavigationManager.Instance.NavigateToScene(GameConstants.MainMenuScene);
         }
 
         private void SliderValueChange(ChangeEvent<float> evt)

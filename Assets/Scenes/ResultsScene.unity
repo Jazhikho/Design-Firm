@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 2084994871}
   - component: {fileID: 2084994870}
   - component: {fileID: 2084994872}
+  - component: {fileID: 2084994873}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -324,6 +325,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719f48469d46d874e96bdf0e587144c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ResultsController
+--- !u!114 &2084994873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084994869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec77b0d0763d14749b3a01b2d6982b2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NavigationManager
+  fadeColor: {r: 0.8784314, g: 0.4392157, b: 0.5647059, a: 1}
+  fadeDuration: 0.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

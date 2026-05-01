@@ -117,22 +117,8 @@ namespace Assets.Scripts.Core
         internal void NotifyWardrobeItemsLoaded()
         {
             IsWardrobeItemsLoaded = true;
-            CurrentItemTop = AvailableTops.FirstOrDefault(i => i.id == "nothing_top");
-            CurrentItemBottom = AvailableBottoms.FirstOrDefault(i => i.id == "nothing_bottom");
-            CurrentItemShoe = AvailableShoes.FirstOrDefault(i => i.id == "nothing_shoes");
-            CurrentItemJacket = AvailableJackets.FirstOrDefault(i => i.id == "nothing_jacket");
-            WardrobeItemsLoaded?.Invoke();
-        }
 
-        /// <summary>
-        /// Seeds each slot with a placeholder "Nothing" item.
-        /// </summary>
-        private WardrobeState()
-        {
-            AddItem("nothing_top", "top");
-            AddItem("nothing_jacket", "jacket");
-            AddItem("nothing_bottom", "bottom");
-            AddItem("nothing_shoes", "shoes");
+            WardrobeItemsLoaded?.Invoke();
         }
 
         /// <summary>

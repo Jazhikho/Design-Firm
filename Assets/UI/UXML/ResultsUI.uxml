@@ -2,39 +2,53 @@
     <Style src="project://database/Assets/UI/USS/CommonStylesheet.uss?fileID=7433441132597879392&amp;guid=8e23400638b471247abded66e2e9521e&amp;type=3#CommonStylesheet"/>
     <Style src="project://database/Assets/UI/USS/ResultsStylesheet.uss?fileID=7433441132597879392&amp;guid=59f5a80705eb3a24daaff36c9dbb1ed9&amp;type=3#ResultsStylesheet"/>
     <ui:VisualElement name="AppDocumentRoot" class="app-document-root">
-    <ui:Image name="imgBackground" source="project://database/Assets/Art/Backgrounds/RunwayBlockout.jpg?fileID=2800000&amp;guid=f18ea575f83278347a4688f400d99869&amp;type=3#RunwayBlockout" class="background-runway full-panel-background-scale" style="top: 0; bottom: 0; right: 0; left: 0;"/>
-    <ui:VisualElement name="IdealStuffs" style="flex-grow: 1; position: absolute; height: 94%; width: 35%; top: 4%; left: 32%;">
-        <ui:VisualElement name="colIdealOutfitVisual" class="middle-column">
-            <ui:Image name="idealAvatar" class="stacked-image"/>
-            <ui:Image name="idealShoes" class="stacked-image"/>
-            <ui:Image name="idealBottoms" class="stacked-image"/>
-            <ui:Image name="idealTop" class="stacked-image"/>
-            <ui:Image name="idealJacket" class="stacked-image"/>
+        <ui:Image name="imgBackground" class="background-runway"/>
+        <ui:VisualElement name="topRow" class="topRow" style="flex-shrink: 0; min-width: 0; flex-direction: row; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;">
+            <ui:Button text="Main Menu" name="btnMainMenu" class="button-common results-button"/>
+            <ui:Button text="New Scenario" name="btnNewScenario" class="button-common results-button"/>
+            <ui:Button text="Retry Scenario" name="btnRetry" class="button-common results-button"/>
         </ui:VisualElement>
-    </ui:VisualElement>
-    <ui:VisualElement name="topRow" style="flex-shrink: 0; min-width: 0;">
-        <ui:Button text="Main Menu" name="btnMainMenu" class="button-common" style="-unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;); font-size: 29px; width: 11%; height: 123%;"/>
-    </ui:VisualElement>
-    <ui:VisualElement name="middleRow" style="flex-grow: 1; min-height: 0; min-width: 0; flex-direction: row;">
-        <ui:VisualElement name="colFeedback" style="flex-grow: 1; min-width: 0; min-height: 0; bottom: 0;">
-            <ui:VisualElement style="flex-grow: 1; bottom: 0; top: 0; height: 100%; position: absolute; right: 0; left: 0; align-items: flex-end;">
-                <ui:Image name="Image" source="project://database/Assets/Art/UI/NPC/speechBox.png?fileID=2800000&amp;guid=61160630018804a4db35887fca7806df&amp;type=3#speechBox" scale-mode="ScaleToFit" style="background-image: none; flex-grow: 1; bottom: auto; top: auto; right: auto; left: auto; position: relative; padding-bottom: 64%; width: 64%;">
-                    <ui:Label text="Let&apos;s see... only x out of y correct." name="lblTotalScore" style="bottom: -35%; font-size: 40px; white-space: normal; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;); padding-right: 80px; padding-left: 80px; padding-top: 0; -unity-text-align: lower-center;"/>
-                </ui:Image>
+        <ui:VisualElement name="middleRow" style="flex-grow: 1; min-height: 0; min-width: 0; flex-direction: row; margin-left: 20px; margin-right: 20px;">
+            <ui:VisualElement name="colFeedback" style="flex-direction: column; flex-grow: 1;">
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
+                    <ui:VisualElement name="jacketScoreContainer" class="clothing-score-tile">
+                        <ui:Image name="imgJacketSlotIcon" source="project://database/Assets/Art/UI/Icon_Jacket.png?fileID=21300000&amp;guid=918a5d551a3c9a347b21da20cfd21956&amp;type=3#Icon_Jacket"/>
+                        <ui:Image name="imgJacketStarScore" source="project://database/Assets/Art/UI/Icon_EmptyStar.png?fileID=21300000&amp;guid=0465afbfb5b4b1840ad282b64eb45169&amp;type=3#Icon_EmptyStar"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="topScoreContainer" class="clothing-score-tile">
+                        <ui:Image name="imgTopSlotIcon" source="project://database/Assets/Art/UI/Icon_Top.png?fileID=21300000&amp;guid=c1b90039a05b1e848917f0f986a388b1&amp;type=3#Icon_Top"/>
+                        <ui:Image name="imgTopStarScore" source="project://database/Assets/Art/UI/Icon_EmptyStar.png?fileID=21300000&amp;guid=0465afbfb5b4b1840ad282b64eb45169&amp;type=3#Icon_EmptyStar"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="bottomScoreContainer" class="clothing-score-tile">
+                        <ui:Image name="imgBottomSlotIcon" source="project://database/Assets/Art/UI/Icon_Bottom.png?fileID=21300000&amp;guid=20c20bdd65300dd49a62bbca0f7288a0&amp;type=3#Icon_Bottom"/>
+                        <ui:Image name="imgBottomStarScore" source="project://database/Assets/Art/UI/Icon_EmptyStar.png?fileID=21300000&amp;guid=0465afbfb5b4b1840ad282b64eb45169&amp;type=3#Icon_EmptyStar"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="shoesScoreContainer" class="clothing-score-tile">
+                        <ui:Image name="imgShoesSlotIcon" source="project://database/Assets/Art/UI/Icon_Shoes.png?fileID=21300000&amp;guid=55818cd3e51e7a24590e7162f17c885b&amp;type=3#Icon_Shoes"/>
+                        <ui:Image name="imgShoesStarScore" source="project://database/Assets/Art/UI/Icon_EmptyStar.png?fileID=21300000&amp;guid=0465afbfb5b4b1840ad282b64eb45169&amp;type=3#Icon_EmptyStar"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:Image name="gianna" source="project://database/Assets/Art/UI/NPC/Gianna%201.png?fileID=-4055394126004016499&amp;guid=efbbc363b80a57643acf0efa90608d5d&amp;type=3#Gianna 1_0" style="height: auto; width: 75px; align-self: center;"/>
             </ui:VisualElement>
-            <ui:Image source="" scale-mode="ScaleToFit" name="gianna" style="bottom: 0; background-image: url(&quot;project://database/Assets/Art/UI/NPC/Gianna%201.png?fileID=2800000&amp;guid=efbbc363b80a57643acf0efa90608d5d&amp;type=3#Gianna 1&quot;); top: auto; left: auto; right: auto; flex-grow: 1; aspect-ratio: 0.5; width: 100%; max-width: 100%; min-height: 0; margin-top: 40%;"/>
+            <ui:VisualElement name="colYourOutfitVisual" style="flex-grow: 1;">
+                <ui:Image name="activeAvatar" class="stacked-image" style="padding-left: 20%;"/>
+                <ui:Image name="activeShoes" class="stacked-image" style="padding-left: 20%;"/>
+                <ui:Image name="activeBottoms" class="stacked-image" style="padding-left: 20%;"/>
+                <ui:Image name="activeTop" class="stacked-image" style="padding-left: 20%;"/>
+                <ui:Image name="activeJacket" class="stacked-image" style="padding-left: 20%;"/>
+                <ui:Label text="Your Outfit" class="label-avatar"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="colIdealOutfitVisual" style="flex-grow: 1;">
+                <ui:Image name="idealAvatar" class="stacked-image"/>
+                <ui:Image name="idealShoes" class="stacked-image"/>
+                <ui:Image name="idealBottoms" class="stacked-image"/>
+                <ui:Image name="idealTop" class="stacked-image"/>
+                <ui:Image name="idealJacket" class="stacked-image"/>
+                <ui:Label text="Ideal Outfit" class="label-avatar"/>
+            </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="colYourOutfitVisual" class="middle-column" style="visibility: visible; display: flex; min-width: 45%; max-height: 100%; flex-grow: 1; min-height: 0; height: auto; bottom: 0; top: auto; padding-left: 0%;">
-            <ui:Image name="activeAvatar" class="stacked-image" style="padding-left: 20%;"/>
-            <ui:Image name="activeShoes" class="stacked-image" style="padding-left: 20%;"/>
-            <ui:Image name="activeBottoms" class="stacked-image" style="padding-left: 20%;"/>
-            <ui:Image name="activeTop" class="stacked-image" style="padding-left: 20%;"/>
-            <ui:Image name="activeJacket" class="stacked-image" style="padding-left: 20%;"/>
+        <ui:VisualElement name="bottomRow" class="bottomRow">
+            <ui:Image name="Image" source="project://database/Assets/Art/UI/Sew%20It%20Goes%20Logo-small.png?fileID=21300000&amp;guid=118a4da3414f6e44a9f87cdf843ce0b1&amp;type=3#Sew It Goes Logo-small" class="game-logo-small" />
         </ui:VisualElement>
-        <ui:VisualElement name="colButtons" style="flex-grow: 1; min-width: 0; justify-content: center;">
-            <ui:Button text="New&#10;Scenario" name="btnNewScenario" class="button-common" style="-unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;); width: 55%; height: 85px; left: 0; right: auto; font-size: 39px; margin-bottom: 5%;"/>
-            <ui:Button text="Retry&#10;Scenario" name="btnRetry" class="button-common" style="-unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;); font-size: 39px; width: 55%; height: auto;"/>
-        </ui:VisualElement>
-    </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

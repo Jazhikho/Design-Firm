@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: UI
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: UI
+  m_GUID: 6e08aaec78a310f428799761e516067b
+  m_SerializeEntries:
+  - m_GUID: 0465afbfb5b4b1840ad282b64eb45169
+    m_Address: UI/Icon_EmptyStar.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 106fb9a9bfcc2a7468cfc6237e8f01e4
+    m_Address: UI/Icon_Dress.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 118a4da3414f6e44a9f87cdf843ce0b1
+    m_Address: Assets/Art/UI/Sew It Goes Logo-small.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 20c20bdd65300dd49a62bbca0f7288a0
+    m_Address: UI/Icon_Bottom.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 29365ce3c4b4f2d4f8ddcc1d36ba93d1
+    m_Address: UI/Icon_FilledStar.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3cb41c076ba23e141a7305055afd53a0
+    m_Address: UI/Sew It Goes Logo.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 55818cd3e51e7a24590e7162f17c885b
+    m_Address: UI/Icon_Shoes.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 918a5d551a3c9a347b21da20cfd21956
+    m_Address: UI/Icon_Jacket.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a480ff07d6b0e2542b880729bc09ecc8
+    m_Address: UI/Icon_HalfFilledStar.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c1b90039a05b1e848917f0f986a388b1
+    m_Address: UI/Icon_Top.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: cb8f221f4801dcc4db2d548c1343015b, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: b8441ccb1a77f4e419047beaf011fbfd, type: 2}
+    - {fileID: 11400000, guid: 9c9772bce69c12c47b68f069598922f9, type: 2}

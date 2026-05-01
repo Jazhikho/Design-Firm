@@ -50,16 +50,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: b1e0a92d8e02984478433d78b73f6ac8
-    m_Address: Tops/2010sCasualTopM.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c24bd635cd0ad4b4fbe2c001e58adca5
-    m_Address: Tops/2010sCasualTopF.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: cfb33597298dbf344a42cc3b20fb9f7c
     m_Address: Tops/2000sFormalTop.png
     m_ReadOnly: 0

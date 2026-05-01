@@ -18,7 +18,6 @@ namespace Assets.Scripts.UI
         private ToggleButtonGroup _categoryToggleGroup;
         private List<string> _decades;
         private List<string> _categories;
-        private Label _lblErrorMessage;
 
         /// <summary>
         /// Caches scenario screen buttons, binds handlers, and subscribes to scenario data loading.
@@ -26,10 +25,6 @@ namespace Assets.Scripts.UI
         private void OnEnable()
         {
             _root = GetComponent<UIDocument>().rootVisualElement;
-            UiDocumentPanelRootStretch.ApplyToPanelRootAndAppShell(_root);
-
-            _lblErrorMessage = _root.Q<Label>("lblErrorMessage");
-            EnsureStatusLabelExists();
 
             _backButton = _root.Q<Button>("btnBack");
             if (_backButton == null)
@@ -42,13 +37,9 @@ namespace Assets.Scripts.UI
             _scenariosList = _root.Q<ScrollView>("scrollScenariosList");
 
             if (ScenarioState.Instance.IsScenariosLoaded)
-            {
                 RefreshViewState();
-            }
             else
-            {
                 ScenarioState.Instance.ScenariosLoaded += OnScenariosLoaded;
-            }
         }
 
         /// <summary>
@@ -56,20 +47,11 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void OnDisable()
         {
-            if (_backButton != null)
-            {
-                _backButton.UnregisterCallback<ClickEvent>(BackScene);
-            }
+            _backButton?.UnregisterCallback<ClickEvent>(BackScene);
 
-            if (_decadeToggleGroup != null)
-            {
-                _decadeToggleGroup.UnregisterValueChangedCallback(OnFilterChanged);
-            }
+            _decadeToggleGroup?.UnregisterValueChangedCallback(OnFilterChanged);
 
-            if (_categoryToggleGroup != null)
-            {
-                _categoryToggleGroup.UnregisterValueChangedCallback(OnFilterChanged);
-            }
+            _categoryToggleGroup?.UnregisterValueChangedCallback(OnFilterChanged);
 
             ScenarioState.Instance.ScenariosLoaded -= OnScenariosLoaded;
         }
@@ -86,26 +68,22 @@ namespace Assets.Scripts.UI
 
             if (StartupServices.HasCriticalFailure)
             {
-                ShowStatus(
-                    "Failed to load scenario data.\n\n" +
-                    StartupServices.LastCriticalError,
-                    isError: true);
+                Debug.LogError($"ScenariosController: failed to load scenario data.\n\n{StartupServices.LastCriticalError}");
                 return;
             }
 
             if (!StartupServices.ScenariosLoaded)
             {
-                ShowStatus("Loading scenarios...");
+                Debug.Log("ScenariosController: loading scenarios...");
                 return;
             }
 
             if (ScenarioState.Instance.Scenarios == null || ScenarioState.Instance.Scenarios.Count == 0)
             {
-                ShowStatus("No scenarios were loaded.", isError: true);
+                Debug.LogError("ScenariosController: no scenarios were loaded.");
                 return;
             }
 
-            HideStatus();
             RenderScenarioUi();
         }
         private void RenderScenarioUi()
@@ -114,7 +92,6 @@ namespace Assets.Scripts.UI
             if (decadeFilters == null)
             {
                 Debug.LogError("ScenariosController: decadeFilters not found in UXML.");
-                ShowStatus("Scenario UI is misconfigured: decade filters missing.", isError: true);
                 return;
             }
 
@@ -122,7 +99,6 @@ namespace Assets.Scripts.UI
             if (categoryFilters == null)
             {
                 Debug.LogError("ScenariosController: categoryFilters not found in UXML.");
-                ShowStatus("Scenario UI is misconfigured: category filters missing.", isError: true);
                 return;
             }
 
@@ -144,55 +120,6 @@ namespace Assets.Scripts.UI
 
             _decadeToggleGroup = null;
             _categoryToggleGroup = null;
-        }
-
-        private void EnsureStatusLabelExists()
-        {
-            if (_lblErrorMessage != null)
-            {
-                return;
-            }
-
-            _lblErrorMessage = new Label
-            {
-                name = "lblErrorMessage"
-            };
-            _lblErrorMessage.AddToClassList("status-label");
-            VisualElement shell = _root.Q<VisualElement>(UiDocumentPanelRootStretch.AppDocumentRootName);
-            if (shell != null)
-            {
-                shell.Insert(0, _lblErrorMessage);
-            }
-            else
-            {
-                _root.Add(_lblErrorMessage);
-            }
-        }
-
-        private void ShowStatus(string message, bool isError = false)
-        {
-            EnsureStatusLabelExists();
-            _lblErrorMessage.text = message;
-            _lblErrorMessage.style.display = DisplayStyle.Flex;
-
-            if (isError)
-            {
-                _lblErrorMessage.AddToClassList("status-label-error");
-            }
-            else
-            {
-                _lblErrorMessage.RemoveFromClassList("status-label-error");
-            }
-
-            Debug.Log($"ScenariosController: status shown. Error={isError}. Message={message}");
-        }
-
-        private void HideStatus()
-        {
-            if (_lblErrorMessage != null)
-            {
-                _lblErrorMessage.style.display = DisplayStyle.None;
-            }
         }
 
         private void OnFilterChanged(ChangeEvent<ToggleButtonGroupState> evt)
@@ -228,15 +155,11 @@ namespace Assets.Scripts.UI
 
             HashSet<string> activeDecades = GetActiveFilters(_decadeToggleGroup, _decades);
             if (activeDecades.Count > 0)
-            {
                 filtered = filtered.Where(s => activeDecades.Contains(s.era));
-            }
 
             HashSet<string> activeCategories = GetActiveFilters(_categoryToggleGroup, _categories);
             if (activeCategories.Count > 0)
-            {
                 filtered = filtered.Where(s => activeCategories.Contains(s.category));
-            }
 
             int count = 0;
 
@@ -253,7 +176,8 @@ namespace Assets.Scripts.UI
                 descriptionLabel.AddToClassList("scenario-card-description");
                 card.Add(descriptionLabel);
 
-                Button selectButton = new() { text = ">>" };
+                Button selectButton = new() { text = "Play" };
+                selectButton.AddToClassList("button-common");
                 selectButton.AddToClassList("scenario-card-select");
                 selectButton.clicked += () => SelectScenario(scenario);
                 card.Add(selectButton);
@@ -263,13 +187,7 @@ namespace Assets.Scripts.UI
             }
 
             if (count == 0)
-            {
-                ShowStatus("No scenarios match the selected filters.");
-            }
-            else
-            {
-                HideStatus();
-            }
+                Debug.Log("ScenariosController: no scenarios match the selected filters.");
         }
 
         private void SelectScenario(Scenario scenario)
@@ -282,7 +200,7 @@ namespace Assets.Scripts.UI
 
             ScenarioState.Instance.ActiveScenario = scenario;
             Debug.Log($"ScenariosController: selected scenario '{scenario.name}'.");
-            SceneManager.LoadScene(GameConstants.WardrobeScene);
+            NavigationManager.Instance.NavigateToScene(GameConstants.WardrobeScene);
         }
 
         /// <summary>
@@ -291,7 +209,7 @@ namespace Assets.Scripts.UI
         private void BackScene(ClickEvent e)
         {
             AudioManager.TryPlayButtonSfx();
-            SceneManager.LoadScene(GameConstants.MainMenuScene);
+            NavigationManager.Instance.NavigateToScene(GameConstants.MainMenuScene);
         }
 
         /// <summary>
@@ -322,6 +240,7 @@ namespace Assets.Scripts.UI
                     text = decade,
                     name = $"toggle{decade}"
                 };
+                decadeButton.AddToClassList("button-common");
                 decadeButton.AddToClassList("filter-button");
                 _decadeToggleGroup.Add(decadeButton);
             }
@@ -355,6 +274,7 @@ namespace Assets.Scripts.UI
                     text = category,
                     name = $"toggle{category}"
                 };
+                categoryButton.AddToClassList("button-common");
                 categoryButton.AddToClassList("filter-button");
                 _categoryToggleGroup.Add(categoryButton);
             }

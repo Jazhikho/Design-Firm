@@ -1,0 +1,70 @@
+#root {
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    min-width: 0;
+    flex-direction: column;
+}
+
+#SliderElement {
+    flex-direction: column;
+    position: absolute;
+    top: 22%;
+    right: 16%;
+    left: 16%;
+    bottom: 18%;
+    min-width: 280px;
+    min-height: 160px;
+    background-color: rgba(200, 200, 200, 0.9);
+    border-width: 2px;
+    border-color: rgb(200, 200, 200);
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 16px;
+    padding-bottom: 20px;
+}
+
+#labelSound {
+    -unity-text-align: middle-center;
+    font-size: 22px;
+    color: rgb(50, 50, 55);
+    margin-bottom: 8px;
+    -unity-font-definition: url("project://database/Assets/UI/Fonts/DMSans-VariableFont_opsz,wght.ttf?fileID=12800000&guid=67849e8619a53d749898b7e60ed76be0&type=3#DMSans-VariableFont_opsz,wght");
+}
+
+#MasterSlider {
+    min-height: 32px;
+    margin-top: 4px;
+    -unity-font-definition: url("project://database/Assets/UI/Fonts/DMSans-VariableFont_opsz,wght.ttf?fileID=12800000&guid=67849e8619a53d749898b7e60ed76be0&type=3#DMSans-VariableFont_opsz,wght");
+}
+
+/* ── Slider track ── */
+#MasterSlider .unity-base-slider__tracker {
+    background-color: rgb(42, 42, 42);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+}
+
+/* ── Slider thumb ── */
+#MasterSlider .unity-base-slider__dragger {
+    background-color: rgb(240, 128, 152);
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-top-width: 0;
+    border-bottom-width: 0;
+}

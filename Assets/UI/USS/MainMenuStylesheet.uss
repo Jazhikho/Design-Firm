@@ -1,4 +1,3 @@
-/* Main menu: insets from top/bottom, column fills the space between, scroll if content exceeds viewport. */
 .main-menu-root {
     width: 100%;
     height: 100%;
@@ -16,15 +15,14 @@
     width: 100%;
     height: 100%;
     flex-shrink: 1;
-    padding-top: 4.5%;
-    padding-bottom: 6.5%;
-    padding-left: 8px;
-    padding-right: 8px;
     background-color: rgba(0, 0, 0, 0);
-    -unity-font-definition: url("project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&guid=cb230a455f9d47d41b5e9547def9fba4&type=3#Caldstone-SemiBold");
+    -unity-font-definition: url("project://database/Assets/UI/Fonts/DMSans-VariableFont_opsz,wght.ttf?fileID=12800000&guid=67849e8619a53d749898b7e60ed76be0&type=3#DMSans-VariableFont_opsz,wght");
+    padding-top: 0%;
+    padding-right: 0%;
+    padding-bottom: 0%;
+    padding-left: 0%;
 }
 
-/* Fills the scroll viewport (C# minHeight). space-evenly keeps air above the title and below Quit. */
 .main-menu-content-wrap {
     width: 100%;
     min-height: 100%;
@@ -33,75 +31,35 @@
     align-items: center;
     margin-top: 0;
     margin-bottom: 0;
-    padding-top: 0.5%;
-    padding-bottom: 1.5%;
-    padding-left: 0;
-    padding-right: 0;
     flex-grow: 0;
     flex-shrink: 0;
-}
-
-.main-menu-title {
-    align-self: center;
-    width: auto;
-    height: auto;
-    background-color: rgba(0, 0, 0, 0);
-    color: rgb(255, 200, 238);
-    -unity-font-definition: url("project://database/Assets/UI/Fonts/Bonello-Regular.otf?fileID=12800000&guid=ccc7d1b9793303e4592d61d7db81b149&type=3#Bonello-Regular");
-    font-size: 40px;
-    margin-top: 0;
-    margin-bottom: 0;
-    flex-shrink: 0;
-    -unity-text-align: middle-center;
-    text-shadow: 6px 3px 4px rgb(0, 0, 0);
-    -unity-text-outline-color: rgb(0, 0, 0);
-    -unity-text-outline-width: 2px;
-    white-space: normal;
-    -unity-font-style: bold-and-italic;
+    padding-top: 0%;
+    padding-right: 0%;
+    padding-bottom: 0%;
+    padding-left: 0%;
 }
 
 Button.main-menu-button {
     position: relative;
     overflow: visible;
     align-self: center;
-    width: 90%;
+    width: 320px;
     min-width: 140px;
-    max-width: 480px;
-    height: auto;
-    min-height: 34px;
+    max-width: 320px;
+    height: 48px;
     flex-shrink: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    -unity-font-definition: url("project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&guid=cb230a455f9d47d41b5e9547def9fba4&type=3#Caldstone-SemiBold");
-    font-size: 19px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    -unity-font-definition: url("project://database/Assets/UI/Fonts/DMSans-VariableFont_opsz,wght.ttf?fileID=12800000&guid=67849e8619a53d749898b7e60ed76be0&type=3#DMSans-VariableFont_opsz,wght");
+    font-size: 15px;
 }
 
-/* Sandbox F/M popout: absolute so the wide SubMenu does not change the button width. */
 .main-menu-sandbox-flyout {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 110%;
-    bottom: auto;
-    flex-grow: 0;
-    width: 100%;
-    height: auto;
-    min-height: 0;
-    min-width: 0;
-    background-color: rgba(255, 200, 238, 0);
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    column-gap: 8px;
-    visibility: hidden;
-    flex-shrink: 0;
+    align-self: center;
 }
 
 .sandbox-option-button {
-    flex-grow: 1;
-    width: auto;
-    min-width: 0;
-    max-width: none;
 }
 
 #CreditsOverlay {
@@ -110,7 +68,6 @@ Button.main-menu-button {
     top: 0;
     right: 0;
     bottom: 0;
-    z-index: 100;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -146,10 +103,10 @@ Button.main-menu-button {
 
 #CreditsTitle {
     -unity-text-align: middle-center;
-    color: rgb(255, 200, 238);
+    color: rgb(244, 167, 188);
     font-size: 32px;
     margin-bottom: 6px;
-    -unity-font-definition: url("project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&guid=cb230a455f9d47d41b5e9547def9fba4&type=3#Caldstone-SemiBold");
+    -unity-font-definition: url("project://database/Assets/UI/Fonts/DMSans-VariableFont_opsz,wght.ttf?fileID=12800000&guid=67849e8619a53d749898b7e60ed76be0&type=3#DMSans-VariableFont_opsz,wght");
     letter-spacing: 3px;
 }
 
@@ -159,7 +116,7 @@ Button.main-menu-button {
     flex-grow: 1;
     margin-top: 4px;
     margin-bottom: 8px;
-    -unity-font-definition: url("project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&guid=cb230a455f9d47d41b5e9547def9fba4&type=3#Caldstone-SemiBold");
+    -unity-font-definition: url("project://database/Assets/UI/Fonts/DMSans-VariableFont_opsz,wght.ttf?fileID=12800000&guid=67849e8619a53d749898b7e60ed76be0&type=3#DMSans-VariableFont_opsz,wght");
     color: rgb(255, 255, 255);
     font-size: 14px;
     padding: 6px 12px 8px 12px;
@@ -173,7 +130,7 @@ Button.main-menu-button {
 
 .credits-section-heading {
     -unity-text-align: middle-center;
-    color: rgb(255, 243, 186);
+    color: rgb(240, 208, 128);
     font-size: 13px;
     margin-top: 20px;
     margin-bottom: 10px;
@@ -211,7 +168,14 @@ Button.main-menu-button {
     max-width: 200px;
     margin-top: 4px;
     margin-bottom: 0;
-    -unity-font-definition: url("project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&guid=cb230a455f9d47d41b5e9547def9fba4&type=3#Caldstone-SemiBold");
+    -unity-font-definition: url("project://database/Assets/UI/Fonts/DMSans-VariableFont_opsz,wght.ttf?fileID=12800000&guid=67849e8619a53d749898b7e60ed76be0&type=3#DMSans-VariableFont_opsz,wght");
     font-size: 16px;
     flex-shrink: 0;
+}
+
+.logo-image {
+    width: 50%;
+    height: 50%;
+    align-self: center;
+    margin-top: 75px;
 }

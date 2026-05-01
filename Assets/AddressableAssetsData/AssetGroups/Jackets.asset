@@ -15,18 +15,13 @@ MonoBehaviour:
   m_GroupName: Jackets
   m_GUID: 4452e452c22de6a48ba2913d99e142a6
   m_SerializeEntries:
-  - m_GUID: 10e32cee56cfbb143ae1a4468dee11bb
-    m_Address: Jackets/2010sCasualJacketF.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 1fab85e09c7a83f47a9a48fc3d09965f
     m_Address: Jackets/2000sBusinessJacket.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3265905c0943041439390e715c4e7b08
-    m_Address: Jacket/1980sFormalJacket.png
+    m_Address: Jackets/1980sFormalJacket.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
