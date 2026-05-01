@@ -41,7 +41,9 @@ namespace Assets.Scripts.UI
 
         private bool _wardrobeTimeExpiredHandled;
 
+        //If this is true then that means a coversbottom item is equipped.
         private bool _BottomDisable;
+        //If this is true then that means a bottom item is equipped.
         private bool _DressDisable;
 
         /// <summary>
@@ -751,6 +753,14 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void ItemCoverBottomChecks(WardrobeItem currentItem, WardrobeItem newItem)
         {
+            if (newItem == null)
+            {
+                Debug.LogError("WardrobeController: ItemCoverBottomChecks newItem is Null");
+            }
+            if (currentItem == null)
+            {
+                Debug.LogError("WardrobeController: ItemCoverBottomChecks currentItem is Null");
+            }
             //
             string nothin = "Nothing";
             if ((currentItem.name == nothin) && (newItem.name != nothin))
@@ -769,20 +779,13 @@ namespace Assets.Scripts.UI
                 AudioManager.TryPlayOtherSFX("swap");
             }
             //
-
-            if (newItem == null)
-            {
-                Debug.LogError("WardrobeController: ItemCoverBottomChecks newItem is Null");
-            }
-            if (currentItem == null)
-            {
-                Debug.LogError("WardrobeController: ItemCoverBottomChecks currentItem is Null");
-            }
             if (newItem.coversBottom && !_BottomDisable)
             {
+                //If the new item covers bottom disable bottom trunk
                 _BottomDisable = true;
             }
             else if(newItem.slot == "bottom" && newItem.id != "nothing_bottom" && !_DressDisable){
+                //If the new item is a bottom item disable dresses and highlight dresses in red.
                 _DressDisable = true;
                 Color redColor = new();
                 redColor.r = 255;
@@ -805,6 +808,7 @@ namespace Assets.Scripts.UI
             {
                 if (_DressDisable && (WardrobeState.Instance.CurrentItemBottom.id == "nothing_bottom" || newItem.id == "nothing_bottom"))
                 {
+                    //If the dresses are disabled and the new item is nothing bottom than enable dresses and remove highlight.
                     _DressDisable = false;
                     foreach ((Button button, TileButtonData data) in _tileCallbacks)
                     {
@@ -817,8 +821,9 @@ namespace Assets.Scripts.UI
                         }
                     }
                 }
-                if (WardrobeState.Instance.CurrentItemTop.coversBottom == false && WardrobeState.Instance.CurrentItemJacket.coversBottom == false)
+                if ((WardrobeState.Instance.CurrentItemTop.coversBottom == false || (newItem.slot == "top" && newItem.coversBottom == false)) && (WardrobeState.Instance.CurrentItemJacket.coversBottom == false || (newItem.slot == "jacket" && newItem.coversBottom == false)))
                 {
+                    //If the current top and jacket or new top and jacket do not cover bottom re-enable the bottom trunk.
                     _BottomDisable = false;
                 }
             }
