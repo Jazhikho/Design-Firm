@@ -2,77 +2,79 @@
     <Style src="project://database/Assets/UI/USS/CommonStylesheet.uss?fileID=7433441132597879392&amp;guid=8e23400638b471247abded66e2e9521e&amp;type=3#CommonStylesheet"/>
     <Style src="project://database/Assets/UI/USS/WardrobeStylesheet.uss?fileID=7433441132597879392&amp;guid=81c303d3ec7a30445a00a6fbc3330ab1&amp;type=3#WardrobeStylesheet"/>
     <ui:VisualElement name="AppDocumentRoot" class="app-document-root">
-    <ui:Image name="imgBackground" class="wardrobe-room-background" style="background-image: url(&quot;project://database/Assets/Art/Backgrounds/dressingRoom.jpg?fileID=2800000&amp;guid=65017f07c58e9124db3e11aac9915070&amp;type=3#dressingRoom&quot;);"/>
-    <ui:VisualElement name="root" class="root">
-        <ui:VisualElement name="topRow" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; flex-direction: row; align-items: center; justify-content: space-between; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;">
-            <ui:VisualElement style="flex-grow: 1; flex-direction: row;">
-                <ui:Button text="&lt; Back" name="btnBack" class="button-common" style="-unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;); font-size: 25px;"/>
-                <ui:Label text="" name="scenarioDesc" class="scenario-description" style="background-color: rgba(255, 235, 205, 0); background-image: url(&quot;project://database/Assets/Art/UI/Panels/UIPanel1.png?fileID=2800000&amp;guid=f08f96d1ee06bf045a24fab765205359&amp;type=3#UIPanel1&quot;); -unity-slice-left: 334; -unity-slice-top: 334; -unity-slice-right: 334; -unity-slice-bottom: 334; -unity-slice-type: tiled; -unity-slice-scale: 0.07px; color: rgb(255, 255, 255); font-size: 30%; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;); padding-top: 1%; padding-bottom: 1%; padding-left: 1%; padding-right: 2%; -unity-text-align: middle-center; align-self: center; align-items: center;"/>
+        <ui:Image name="imgBackground" class="wardrobe-room-background" style="background-image: url(&quot;project://database/Assets/Art/Backgrounds/dressingRoom.jpg?fileID=2800000&amp;guid=65017f07c58e9124db3e11aac9915070&amp;type=3#dressingRoom&quot;);"/>
+        <ui:VisualElement name="root" class="root">
+            <ui:VisualElement name="topRow" style="padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; flex-direction: row; align-items: center; justify-content: space-between; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; height: 6%;">
+                <ui:VisualElement picking-mode="Ignore" style="align-items: center; justify-content: space-between; position: absolute; top: 0; left: 0; bottom: 0; right: 0; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;); flex-grow: 1;">
+                    <ui:Label text="0:00" name="lblTimer" style="font-size: 45px; -unity-text-align: middle-center; color: rgb(255, 255, 255); -unity-text-outline-width: 3px; -unity-text-outline-color: rgb(0, 0, 0); align-items: center; justify-content: center; -unity-font-style: bold; margin-right: 2%;"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="VisualElement" style="flex-grow: 1; position: absolute; right: 0; top: 0; left: 0; bottom: -59px; height: 313%; justify-content: flex-start; align-self: stretch; align-items: flex-end; padding-right: 1%; padding-top: 1%;">
+                    <ui:VisualElement name="clothingInfoElement" style="flex-grow: 0; background-color: rgba(255, 239, 213, 0); width: 27%; top: 0; bottom: 0; left: 0; right: auto; background-image: url(&quot;project://database/Assets/Art/UI/Panels/UIPanel1.png?fileID=2800000&amp;guid=f08f96d1ee06bf045a24fab765205359&amp;type=3#UIPanel1&quot;); -unity-slice-left: 334; -unity-slice-top: 334; -unity-slice-right: 334; -unity-slice-bottom: 334; -unity-slice-type: tiled; -unity-slice-scale: 0.07px; height: 59%; margin-bottom: 1%;">
+                        <ui:Label text="" name="hoverItemDesc" style="font-size: 30%; width: 100%; height: 100%; white-space: pre-wrap; align-self: center; -unity-text-align: middle-center; padding-left: 0; margin-left: 0; margin-top: 0; padding-top: 0; padding-right: 0; margin-right: 0; padding-bottom: 0; margin-bottom: 0; bottom: 0; right: 0; top: 0; left: 0; background-image: none; -unity-slice-left: 334; -unity-slice-type: tiled; -unity-slice-top: 334; -unity-slice-scale: 0.07px; -unity-slice-right: 334; -unity-slice-bottom: 334; color: rgb(255, 255, 255); -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;);"/>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="scenarioInfoPanel" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Art/UI/Panels/UIPanel1.png?fileID=2800000&amp;guid=f08f96d1ee06bf045a24fab765205359&amp;type=3#UIPanel1&quot;); -unity-background-scale-mode: scale-to-fit; width: 15%; height: 37%; -unity-slice-left: 334; -unity-slice-top: 334; -unity-slice-right: 334; -unity-slice-bottom: 334; -unity-slice-scale: 0.07px; background-size: 100% 100%;">
+                        <ui:Label text="" name="scenarioDesc" class="scenario-description" style="color: rgb(255, 255, 255); font-size: 30%; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;); padding-top: 1%; padding-bottom: 1%; padding-left: 1%; padding-right: 1%; -unity-text-align: middle-center; width: 92%; background-color: rgba(55, 55, 55, 0); margin-left: 4%; margin-top: 4%; margin-right: 4%; margin-bottom: 4%; flex-grow: 1; flex-shrink: 1;"/>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:Button text="&lt; Back" name="btnBack" class="button-common button-back" style="-unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;); font-size: 25px; width: 6%; height: 64%; position: absolute; margin-left: 1%; margin-top: 1%;"/>
             </ui:VisualElement>
-            <ui:VisualElement picking-mode="Ignore" style="align-items: center; justify-content: center; position: absolute; top: 0; left: 0; bottom: 0; right: 0; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;);">
-                <ui:Label text="0:00" name="lblTimer" style="font-size: 32px; -unity-text-align: middle-center; color: rgb(255, 255, 255); -unity-text-outline-width: 1px; -unity-text-outline-color: rgb(0, 0, 0);"/>
+            <ui:VisualElement name="middleRow" style="flex-direction: row; flex-grow: 1; min-height: 0; min-width: 0;">
+                <ui:VisualElement name="leftColumn" class="side-column">
+                    <ui:VisualElement name="jacketsContainer" class="clothingContainers">
+                        <ui:VisualElement name="jacketsListContainer" style="flex-grow: 1; max-height: 70%; visibility: hidden;">
+                            <ui:ScrollView name="jacketsList" class="half-list">
+                                <ui:VisualElement name="jacketsGrid" class="wardrobe-grid"/>
+                            </ui:ScrollView>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="jacketsRackContainer" style="flex-grow: 0; height: 29%;">
+                            <ui:Button name="btnJacketsRack" class="btnRack btnJacketsRack" style="top: 0; align-self: auto; align-items: stretch; width: 100%; height: auto; flex-grow: 1; padding-right: 0; padding-left: 0; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="topsContainer" class="clothingContainers">
+                        <ui:VisualElement name="topsListContainer" style="flex-grow: 1; max-height: 70%; visibility: hidden;">
+                            <ui:ScrollView name="topsList" class="half-list">
+                                <ui:VisualElement name="topsGrid" class="wardrobe-grid"/>
+                            </ui:ScrollView>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="topsRackContainer" style="flex-grow: 0; height: 29%;">
+                            <ui:Button name="btnTopsRack" class="btnRack btnTopsRack" style="top: 0; bottom: 0; justify-content: flex-start; align-self: auto; align-items: stretch; align-content: flex-start; aspect-ratio: auto; width: 100%; height: auto; flex-grow: 1; margin-right: 0; margin-left: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; margin-bottom: 0; margin-top: 0;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="middleColumn" class="middle-column">
+                    <ui:Image name="activeAvatar" class="stacked-image"/>
+                    <ui:Image name="activeShoes" class="stacked-image"/>
+                    <ui:Image name="activeBottoms" class="stacked-image"/>
+                    <ui:Image name="activeTop" enabled="true" class="stacked-image"/>
+                    <ui:Image name="activeJacket" enabled="true" class="stacked-image"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="rightColumn" class="side-column">
+                    <ui:VisualElement name="bottomsContainer" class="clothingContainers">
+                        <ui:VisualElement name="bottomsListContainer" style="flex-grow: 1; max-height: 70%; visibility: hidden;">
+                            <ui:ScrollView name="bottomsList" class="half-list">
+                                <ui:VisualElement name="bottomsGrid" class="wardrobe-grid"/>
+                            </ui:ScrollView>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="bottomsRackContainer" style="flex-grow: 0; height: 29%;">
+                            <ui:Button name="btnBottomsRack" class="btnRack btnBottomsRack" style="top: 0; bottom: 0; align-items: stretch; align-self: auto; width: 100%; height: auto; flex-grow: 1; margin-left: 0; margin-right: 0;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="shoesContainer" enabled="true" class="clothingContainers" style="justify-content: space-between; visibility: visible;">
+                        <ui:VisualElement name="shoesListContainer" style="flex-grow: 1; min-height: 0; max-height: 70%; visibility: hidden;">
+                            <ui:ScrollView name="shoesList" class="half-list" style="top: 0; right: 0; align-content: center; padding-bottom: 0%; flex-grow: 1; min-height: 0;">
+                                <ui:VisualElement name="shoesGrid" class="wardrobe-grid" style="padding-bottom: 8px;"/>
+                            </ui:ScrollView>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="shoeRackContainer" style="height: 23%; flex-grow: 0; width: 100%;">
+                            <ui:Button name="btnShoesRack" enabled="true" class="btnRack shoeRack" style="top: 0; flex-grow: 1; height: auto;"/>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement name="rushTempRight" style="flex-grow: 0; position: relative; bottom: 0; right: 0; padding-left: 0; padding-right: 0; margin-left: 0; margin-top: 0; margin-right: 0;"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="bottomRow" style="flex-direction: row; justify-content: center; align-items: center; align-self: stretch; width: 100%; min-height: 10%; align-content: center; bottom: 0; top: auto; left: auto; right: auto;">
+                <ui:Button text="&gt; Submit Outfit &lt;" name="nextSceneButton" class="button-common" style="width: 24%; min-width: 180px; max-width: 320px; align-self: center; justify-content: center; margin-left: 2%; margin-right: 2%; padding-left: 0; padding-right: 0; height: 68%; font-size: 35%; border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px; margin-bottom: 1%;"/>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="middleRow" style="flex-direction: row; flex-grow: 1; min-height: 0; min-width: 0;">
-            <ui:VisualElement name="leftColumn" class="side-column">
-                <ui:VisualElement name="jacketsContainer" class="clothingContainers">
-                    <ui:VisualElement name="jacketsListContainer" style="flex-grow: 1; max-height: 70%; visibility: hidden;">
-                        <ui:ScrollView name="jacketsList" class="half-list">
-                            <ui:VisualElement name="jacketsGrid" class="wardrobe-grid"/>
-                        </ui:ScrollView>
-                    </ui:VisualElement>
-                    <ui:VisualElement name="jacketsRackContainer" style="flex-grow: 0; height: 29%;">
-                        <ui:Button name="btnJacketsRack" class="btnRack btnJacketsRack" style="top: 0; align-self: auto; align-items: stretch; width: 100%; height: auto; flex-grow: 1; padding-right: 0; padding-left: 0; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0;"/>
-                    </ui:VisualElement>
-                </ui:VisualElement>
-                <ui:VisualElement name="topsContainer" class="clothingContainers">
-                    <ui:VisualElement name="topsListContainer" style="flex-grow: 1; max-height: 70%; visibility: hidden;">
-                        <ui:ScrollView name="topsList" class="half-list">
-                            <ui:VisualElement name="topsGrid" class="wardrobe-grid"/>
-                        </ui:ScrollView>
-                    </ui:VisualElement>
-                    <ui:VisualElement name="topsRackContainer" style="flex-grow: 0; height: 29%;">
-                        <ui:Button name="btnTopsRack" class="btnRack btnTopsRack" style="top: 0; bottom: 0; justify-content: flex-start; align-self: auto; align-items: stretch; align-content: flex-start; aspect-ratio: auto; width: 100%; height: auto; flex-grow: 1; margin-right: 0; margin-left: 0; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 0; margin-bottom: 0; margin-top: 0;"/>
-                    </ui:VisualElement>
-                </ui:VisualElement>
-            </ui:VisualElement>
-            <ui:VisualElement name="middleColumn" class="middle-column">
-                <ui:Image name="activeAvatar" class="stacked-image"/>
-                <ui:Image name="activeShoes" class="stacked-image"/>
-                <ui:Image name="activeBottoms" class="stacked-image"/>
-                <ui:Image name="activeTop" enabled="true" class="stacked-image"/>
-                <ui:Image name="activeJacket" enabled="true" class="stacked-image"/>
-            </ui:VisualElement>
-            <ui:VisualElement name="rightColumn" class="side-column">
-                <ui:VisualElement name="bottomsContainer" class="clothingContainers">
-                    <ui:VisualElement name="bottomsListContainer" style="flex-grow: 1; max-height: 70%; visibility: hidden;">
-                        <ui:ScrollView name="bottomsList" class="half-list">
-                            <ui:VisualElement name="bottomsGrid" class="wardrobe-grid"/>
-                        </ui:ScrollView>
-                    </ui:VisualElement>
-                    <ui:VisualElement name="bottomsRackContainer" style="flex-grow: 0; height: 29%;">
-                        <ui:Button name="btnBottomsRack" class="btnRack btnBottomsRack" style="top: 0; bottom: 0; align-items: stretch; align-self: auto; width: 100%; height: auto; flex-grow: 1; margin-left: 0; margin-right: 0;"/>
-                    </ui:VisualElement>
-                </ui:VisualElement>
-                <ui:VisualElement name="shoesContainer" enabled="true" class="clothingContainers" style="justify-content: space-between; visibility: visible;">
-                    <ui:VisualElement name="shoesListContainer" style="flex-grow: 1; min-height: 0; max-height: 70%; visibility: hidden;">
-                        <ui:ScrollView name="shoesList" class="half-list" style="top: 0; right: 0; align-content: center; padding-bottom: 0%; flex-grow: 1; min-height: 0;">
-                            <ui:VisualElement name="shoesGrid" class="wardrobe-grid" style="padding-bottom: 8px;"/>
-                        </ui:ScrollView>
-                    </ui:VisualElement>
-                    <ui:VisualElement name="shoeRackContainer" style="height: 23%; flex-grow: 0; width: 100%;">
-                        <ui:Button name="btnShoesRack" enabled="true" class="btnRack shoeRack" style="top: 0; flex-grow: 1; height: auto;"/>
-                    </ui:VisualElement>
-                </ui:VisualElement>
-                <ui:VisualElement name="rushTempRight" style="flex-grow: 0; position: relative; bottom: 0; right: 0; padding-left: 0; padding-right: 0; margin-left: 0; margin-top: 0; margin-right: 0;"/>
-            </ui:VisualElement>
-        </ui:VisualElement>
-        <ui:VisualElement name="bottomRow" style="flex-direction: row; justify-content: flex-start; align-items: center; align-self: stretch; width: 100%; min-height: 64px; align-content: center; bottom: 0; top: auto; left: auto; right: auto;">
-            <ui:VisualElement name="clothingInfoElement" style="flex-grow: 0; align-self: stretch; background-color: rgba(255, 239, 213, 0); width: 30%; align-items: flex-start; justify-content: flex-start; align-content: flex-start; top: 0; bottom: 0; left: 0; right: auto; background-image: url(&quot;project://database/Assets/Art/UI/Panels/UIPanel1.png?fileID=2800000&amp;guid=f08f96d1ee06bf045a24fab765205359&amp;type=3#UIPanel1&quot;); -unity-slice-left: 334; -unity-slice-top: 334; -unity-slice-right: 334; -unity-slice-bottom: 334; -unity-slice-type: tiled; -unity-slice-scale: 0.07px;">
-                <ui:Label text="" name="hoverItemDesc" style="font-size: 20%; width: 100%; height: 100%; white-space: pre-wrap; align-self: center; -unity-text-align: middle-center; padding-left: 0; margin-left: 0; margin-top: 0; padding-top: 0; padding-right: 0; margin-right: 0; padding-bottom: 0; margin-bottom: 0; bottom: 0; right: 0; top: 0; left: 0; background-image: none; -unity-slice-left: 334; -unity-slice-type: tiled; -unity-slice-top: 334; -unity-slice-scale: 0.07px; -unity-slice-right: 334; -unity-slice-bottom: 334; color: rgb(255, 255, 255); -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;);"/>
-            </ui:VisualElement>
-            <ui:Button text="Submit Outfit" name="nextSceneButton" class="submit-button" style="width: 24%; min-width: 180px; max-width: 320px; align-self: center; justify-content: center; margin-left: 2%; margin-right: 2%; padding-left: 0; padding-right: 0;"/>
-        </ui:VisualElement>
-    </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
