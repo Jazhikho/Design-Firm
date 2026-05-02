@@ -310,6 +310,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Core.AudioManager
   _buttonSfx: {fileID: 8300000, guid: 5404e3eed0b05f24493e8f3b56038d09, type: 3}
+  _equipSfx: {fileID: 8300000, guid: a03e4df61bc040a4fbd9036a1e507e93, type: 3}
+  _unequipSfx: {fileID: 8300000, guid: b533bc66017c58b419f56d785c99ccea, type: 3}
+  _swapSfx: {fileID: 8300000, guid: 3f7b7082c048c2b46b8824b634939364, type: 3}
 --- !u!82 &1685619526
 AudioSource:
   m_ObjectHideFlags: 0

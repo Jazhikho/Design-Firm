@@ -15,6 +15,83 @@ Disclosure and audit trail for AI-assisted work. Update when committing signific
 
 ---
 
+**Date:** 2026-05-02  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** Credits scrollbar another small inward nudge (USS margins/padding; internal 1.0.0.7).  
+**Input materials used:** `MainMenuStylesheet.uss`, `VERSION.md`, this log.  
+**Summary of AI contribution:** `#CreditsDialog` padding 56/64px; `#CreditsScroll` margin-right 54px; vertical-scroller margin-right 26px.  
+**What the human accepted / rejected / changed:** (pending review)  
+**Validation method used:** USS-only.  
+**Final approver:** (if applicable)  
+
+---
+
+**Date:** 2026-05-02  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** Credits scrollbar micro-nudge: increase `#CreditsDialog` horizontal padding and `#CreditsScroll` / vertical-scroller right margins slightly (internal 1.0.0.6).  
+**Input materials used:** `MainMenuStylesheet.uss`, `VERSION.md`, this log.  
+**Summary of AI contribution:** padding-right 56px on dialog; CreditsScroll margin-right 44px; vertical-scroller margin-right 18px.  
+**What the human accepted / rejected / changed:** (pending review)  
+**Validation method used:** USS-only tweak.  
+**Final approver:** (if applicable)  
+
+---
+
+**Date:** 2026-05-02  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** Credits scrollbar: remove overlapping squished arrow buttons via USS `display: none`; increase `#CreditsDialog` and `#CreditsScroll` margins so thumb clears nine-slice frame.  
+**Input materials used:** `MainMenuStylesheet.uss`, `VERSION.md`, this log.  
+**Summary of AI contribution:** Inset ScrollView with margin-left/right; wider vertical scroller track; hide `.unity-scroller__low-button` / `high-button`; internal label 1.0.0.5.  
+**What the human accepted / rejected / changed:** (pending review)  
+**Validation method used:** USS review (Unity UI Toolkit Scroller class names).  
+**Final approver:** (if applicable)  
+
+---
+
+**Date:** 2026-05-02  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** Credits third-party UX: replace URL-heavy strings with `ThirdPartyCreditEntry` (asset, source, license, use); widen dialog/scroll padding and inset scrollbar; USS blocks for third-party fields.  
+**Input materials used:** `CreditsCatalog.cs`, `MainMenuController.cs`, `MainMenuStylesheet.uss`, `VERSION.md`, `Docs/Credits.md`, this log.  
+**Summary of AI contribution:** Structured catalog rows without raw links in-game; `AddThirdPartyCreditBlock`; content-container and `#CreditsDialog` horizontal inset; internal label 1.0.0.4.  
+**What the human accepted / rejected / changed:** (pending review)  
+**Validation method used:** C# lints on edited scripts.  
+**Final approver:** (if applicable)  
+
+---
+
+**Date:** 2026-05-02  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** Credits content and presentation: multi-section team names, Pixabay/font third-party lines, Claude in AI list; inset themed scrollbar and Close button styling; sync `Docs/Assets.md` / `Docs/Credits.md`.  
+**Input materials used:** User-provided role mapping and asset URLs; `CreditsCatalog.cs`, `MainMenuStylesheet.uss`, `MainMenuController.cs`, `VERSION.md`, `Docs/Assets.md`, `Docs/Credits.md`, this log.  
+**Summary of AI contribution:** Rebuilt `TeamByFunctionSections` with duplicate names across teams; populated `ThirdPartyAttributions` and `AiAssistanceNames` (added Claude); USS for `#CreditsScroll` vertical scroller margins and slider track/dragger/low-high buttons; `#CreditsCloseButton` sizing/color atop `.button-common`; documentation sync; internal label 1.0.0.3.  
+**What the human accepted / rejected / changed:** (pending review)  
+**Validation method used:** C# lints on edited scripts; USS class names per Unity ScrollView manual (vertical scroller / base slider).  
+**Final approver:** (if applicable)  
+
+---
+
+**Date:** 2026-05-02  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** Clear UI Toolkit USS validator warnings: unsupported CSS-style properties; fix empty Image `source` semantic warning in Results UXML.  
+**Input materials used:** `WardrobeStylesheet.uss`, `MainMenuStylesheet.uss`, `ResultsUI.uxml`, `VERSION.md`, this log.  
+**Summary of AI contribution:** Removed `box-sizing`, `column-gap`, `z-index`; replaced gap with `#sandboxF { margin-right: 8px }`; documented overlay draw order; removed `source=""` from Gianna `ui:Image`; internal label 1.0.0.2.  
+**What the human accepted / rejected / changed:** (pending review)  
+**Validation method used:** File review against UI Toolkit USS supported properties.  
+**Final approver:** (if applicable)  
+
+---
+
+**Date:** 2026-05-02  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** Hardening and style pass on wardrobe covers-bottom and equip/unequip/swap SFX (PR #75 follow-up); update `VERSION.md` and this log; merge PR.  
+**Input materials used:** `AudioManager.cs`, `WardrobeController.cs`, `WardrobeState.cs`, `VERSION.md`, this log; prior PR review notes.  
+**Summary of AI contribution:** Unity `Color` 0–1 for red highlight; per-session default border from first created tile; renamed private fields to `_camelCase`; `AudioManager` public SFX key constants; null early-return in `ItemCoverBottomChecks`; XML comment and `GetCurrentItem` default branch; internal version 1.0.0.1.  
+**What the human accepted / rejected / changed:** (pending review)  
+**Validation method used:** C# lints on edited files.  
+**Final approver:** (if applicable)  
+
+---
+
 **Date:** 2026-04-25  
 **Tool or model used:** Cursor agent (AI-assisted editing)  
 **Task purpose:** Release versioning: set product and builds to **v1.0** (`bundleVersion` 1.0, internal label 1.0.0.0 per major-release reset).  
