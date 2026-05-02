@@ -133,7 +133,7 @@
       "era": "1990s",
       "category": "casual", 
       "backgroundImage": "Scenarios/DressingRoom.png",
-      "avatarImage": "Avatars/2000sFemModel.png",
+      "avatarImage": "Avatars/2000FemModel.png",
       "scoredItems": [
       ],
       "incorrectSlotFeedback": {
@@ -154,7 +154,7 @@
       "era": "1990s",
       "category": "formal", 
       "backgroundImage": "Scenarios/DressingRoom.png",
-      "avatarImage": "Avatars/MascModel.png",
+      "avatarImage": "Avatars/2000FemModel.png",
       "scoredItems": [
       ],
       "incorrectSlotFeedback": {

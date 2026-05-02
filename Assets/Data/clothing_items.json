@@ -20,21 +20,21 @@
     },
     {
       "id": "2000sFormalTop",
-      "name": "Backless Dress",
+      "name": "Spaghetti Strap Dress",
       "slot": "top",
       "gender": "female",
       "coversBottom": true,
       "sprite": "Tops/2000sFormalTop.png",
-      "description": "A body length, backless dress."
+      "description": "A full length dress held up with spaghetti straps."
     },
     {
       "id": "2000sFormalShoes",
-      "name": "Formal Heels",
+      "name": "Chunky Heels",
       "slot": "shoes",
       "gender": "female",
       "coversBottom": false,
       "sprite": "Shoes/2000sFormalShoes.png",
-      "description": "A pair of stylish heels."
+      "description": "A pair of chunky green heels."
     },
     {
       "id": "2000sBusinessJacket",
