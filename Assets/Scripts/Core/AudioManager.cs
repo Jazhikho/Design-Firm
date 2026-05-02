@@ -17,7 +17,23 @@ namespace Assets.Scripts.Core
         [SerializeField]
         private AudioClip _buttonSfx;
 
+        [SerializeField]
+        private AudioClip _equipSfx;
+        [SerializeField]
+        private AudioClip _unequipSfx;
+        [SerializeField]
+        private AudioClip _swapSfx;
+
         private AudioSource _audioSource;
+
+        /// <summary>Key for <see cref="PlayOtherSFX"/> equip clip.</summary>
+        public const string OtherSfxEquipKey = "equip";
+
+        /// <summary>Key for <see cref="PlayOtherSFX"/> unequip clip.</summary>
+        public const string OtherSfxUnequipKey = "unequip";
+
+        /// <summary>Key for <see cref="PlayOtherSFX"/> swap clip.</summary>
+        public const string OtherSfxSwapKey = "swap";
 
         /// <summary>
         /// Duration of the button SFX in seconds.
@@ -121,6 +137,47 @@ namespace Assets.Scripts.Core
             }
 
             return false;
+        }
+
+        /// <summary>
+        /// Plays a sound identified by <paramref name="soundKey"/> (see <see cref="OtherSfxEquipKey"/>, <see cref="OtherSfxUnequipKey"/>, <see cref="OtherSfxSwapKey"/>).
+        /// </summary>
+        /// <param name="soundKey">Which wardrobe interaction clip to play.</param>
+        public void PlayOtherSFX(string soundKey)
+        {
+            AudioClip otherSound = null;
+
+            switch (soundKey)
+            {
+                case OtherSfxEquipKey:
+                    otherSound = _equipSfx;
+                    break;
+                case OtherSfxUnequipKey:
+                    otherSound = _unequipSfx;
+                    break;
+                case OtherSfxSwapKey:
+                    otherSound = _swapSfx;
+                    break;
+            }
+            if (otherSound != null)
+            {
+                _audioSource.PlayOneShot(otherSound);
+            }
+        }
+        /// <summary>
+        /// Calls <see cref="PlayOtherSFX"/> when <see cref="Instance"/> exists; otherwise logs a warning.
+        /// </summary>
+        /// <param name="soundKey">Same keys as <see cref="PlayOtherSFX"/>.</param>
+        public static void TryPlayOtherSFX(string soundKey)
+        {
+            if (Instance != null)
+            {
+                Instance.PlayOtherSFX(soundKey);
+            }
+            else
+            {
+                Debug.LogWarning("AudioManager.Instance is null; other SFX was skipped.");
+            }
         }
     }
 }

@@ -158,5 +158,27 @@ namespace Assets.Scripts.Core
                 gender = newGender
             });
         }
+
+        /// <summary>
+        /// Returns the item currently assigned to <paramref name="slot"/>.
+        /// </summary>
+        /// <param name="slot">Which equipment slot to read.</param>
+        /// <returns>The equipped item, or null if the slot is unrecognized.</returns>
+        internal WardrobeItem GetCurrentItem(ClothingSlot slot)
+        {
+            switch (slot)
+            {
+                case ClothingSlot.Jacket:
+                    return CurrentItemJacket;
+                case ClothingSlot.Top:
+                    return CurrentItemTop;
+                case ClothingSlot.Bottom:
+                    return CurrentItemBottom;
+                case ClothingSlot.Shoes:
+                    return CurrentItemShoe;
+                default:
+                    return null;
+            }
+        }
     }
 }

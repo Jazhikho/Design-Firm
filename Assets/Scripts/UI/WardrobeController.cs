@@ -41,6 +41,12 @@ namespace Assets.Scripts.UI
 
         private bool _wardrobeTimeExpiredHandled;
 
+        // If true, a covers-bottom top/jacket is equipped and the bottoms trunk stays closed.
+        private bool _bottomDisable;
+
+        // If true, a non-placeholder bottom is equipped and covers-bottom tiles are highlighted.
+        private bool _dressDisable;
+
         /// <summary>
         /// When true, submit returns to main menu instead of result scene.
         /// </summary>
@@ -57,6 +63,11 @@ namespace Assets.Scripts.UI
         private readonly List<AsyncOperationHandle<Sprite>> _spriteHandles = new();
         private readonly List<(Button button, TileButtonData data)> _tileCallbacks = new();
 
+        /// <summary>Resolved default border color from the first wardrobe tile (USS-driven).</summary>
+        private StyleColor _defaultTileBorderStyleColor;
+
+        private bool _defaultTileBorderCaptured;
+
         /// <summary>
         /// Chooses next-scene routing, caches UI references, and binds callbacks.
         /// </summary>
@@ -69,6 +80,7 @@ namespace Assets.Scripts.UI
             }
 
             _wardrobeTimeExpiredHandled = false;
+            _defaultTileBorderCaptured = false;
 
             _nextScene = _sandboxMode ? GameConstants.MainMenuScene : GameConstants.TaskResultScene;
 
@@ -85,7 +97,14 @@ namespace Assets.Scripts.UI
             _backButton = root.Q<Button>("btnBack");
             if (_backButton != null)
             {
-                _backButton.RegisterCallback<ClickEvent>(GoToScenarios);
+                if (_sandboxMode)
+                {
+                    _backButton.RegisterCallback<ClickEvent>(NextSceneScript);
+                }
+                else
+                {
+                    _backButton.RegisterCallback<ClickEvent>(GoToScenarios);
+                }
             }
 
             _nextSceneButton = root.Q<Button>("nextSceneButton");
@@ -104,6 +123,7 @@ namespace Assets.Scripts.UI
             }
             if (_sandboxMode)
             {
+                _nextSceneButton.text = ">Finish<";
                 _timerLabel.visible = false;
             }
 
@@ -189,7 +209,14 @@ namespace Assets.Scripts.UI
         {
             if (_backButton != null)
             {
-                _backButton.UnregisterCallback<ClickEvent>(GoToScenarios);
+                if (_sandboxMode)
+                {
+                    _backButton.UnregisterCallback<ClickEvent>(NextSceneScript);
+                }
+                else
+                {
+                    _backButton.UnregisterCallback<ClickEvent>(GoToScenarios);
+                }
             }
 
             if (_nextSceneButton != null)
@@ -338,6 +365,11 @@ namespace Assets.Scripts.UI
             {
                 Button tileButton = CreateClothingButton(item, gridName);
                 grid.Add(tileButton);
+                if (!_defaultTileBorderCaptured)
+                {
+                    _defaultTileBorderStyleColor = tileButton.style.borderBottomColor;
+                    _defaultTileBorderCaptured = true;
+                }
             }
         }
 
@@ -445,6 +477,16 @@ namespace Assets.Scripts.UI
         private void WardrobeItemClicked(ClickEvent evt, TileButtonData data)
         {
             WardrobeItem item = data.Item;
+
+            if (item.coversBottom && _dressDisable)
+            {
+                return;
+            }
+            if (item.slot == "bottom" && _bottomDisable && item.id != "nothing_bottom")
+            {
+                return;
+            }
+            ItemCoverBottomChecks(WardrobeState.Instance.GetCurrentItem(item.SlotType), item);
             switch (item.SlotType)
             {
                 case ClothingSlot.Top:
@@ -630,8 +672,15 @@ namespace Assets.Scripts.UI
                 Debug.LogError("WardrobeController: hoverItemDesc not found in UXML.");
                 return;
             }
-
-            displayDesc.text = data.Item.description ?? string.Empty;
+            if (data.Item.coversBottom)
+            {
+                string baseDesc = data.Item.description ?? string.Empty;
+                displayDesc.text = baseDesc + " (Disables bottom clothing)";
+            }
+            else
+            {
+                displayDesc.text = data.Item.description ?? string.Empty;
+            }
         }
 
         /// <summary>
@@ -700,6 +749,10 @@ namespace Assets.Scripts.UI
         /// <param name="clickEvent">Click event from the bottoms rack button.</param>
         private void OpenBottoms(ClickEvent clickEvent)
         {
+            if (_bottomDisable)
+            {
+                return;
+            }
             SetListContainerVisibility(
                 Visibility.Hidden,
                 Visibility.Hidden,
@@ -718,6 +771,93 @@ namespace Assets.Scripts.UI
                 Visibility.Hidden,
                 Visibility.Hidden,
                 Visibility.Visible);
+        }
+
+        /// <summary>
+        /// Updates covers-bottom UI flags, tile highlights, and wardrobe slot sounds for the pending selection.
+        /// Runs before the clicked slot is written on <see cref="WardrobeState"/> so equip, swap, and unequip sounds describe the transition from previous to new item.
+        /// </summary>
+        /// <param name="currentItem">Equipped item in <paramref name="newItem"/>'s slot before this click.</param>
+        /// <param name="newItem">Item the player selected.</param>
+        private void ItemCoverBottomChecks(WardrobeItem currentItem, WardrobeItem newItem)
+        {
+            if (newItem == null)
+            {
+                Debug.LogError("WardrobeController: ItemCoverBottomChecks newItem is null.");
+                return;
+            }
+
+            if (currentItem == null)
+            {
+                Debug.LogError("WardrobeController: ItemCoverBottomChecks currentItem is null.");
+                return;
+            }
+
+            const string placeholderItemName = "Nothing";
+            if ((currentItem.name == placeholderItemName) && (newItem.name != placeholderItemName))
+            {
+                AudioManager.TryPlayOtherSFX(AudioManager.OtherSfxEquipKey);
+            }
+            else if ((currentItem.name != placeholderItemName) && (newItem.name == placeholderItemName))
+            {
+                AudioManager.TryPlayOtherSFX(AudioManager.OtherSfxUnequipKey);
+            }
+            else if ((currentItem.name != placeholderItemName) && (newItem.name != placeholderItemName))
+            {
+                AudioManager.TryPlayOtherSFX(AudioManager.OtherSfxSwapKey);
+            }
+
+            StyleColor redBorderStyle = new(new Color(1f, 0f, 0f, 1f));
+
+            if (newItem.coversBottom && !_bottomDisable)
+            {
+                _bottomDisable = true;
+            }
+            else if (newItem.slot == "bottom" && newItem.id != "nothing_bottom" && !_dressDisable)
+            {
+                _dressDisable = true;
+                foreach ((Button button, TileButtonData data) in _tileCallbacks)
+                {
+                    if (data.Item.coversBottom)
+                    {
+                        button.style.borderBottomColor = redBorderStyle;
+                        button.style.borderRightColor = redBorderStyle;
+                        button.style.borderLeftColor = redBorderStyle;
+                        button.style.borderTopColor = redBorderStyle;
+                    }
+                }
+            }
+            else
+            {
+                if (_dressDisable && (WardrobeState.Instance.CurrentItemBottom.id == "nothing_bottom" || newItem.id == "nothing_bottom"))
+                {
+                    _dressDisable = false;
+                    foreach ((Button button, TileButtonData data) in _tileCallbacks)
+                    {
+                        if (data.Item.coversBottom)
+                        {
+                            button.style.borderBottomColor = _defaultTileBorderStyleColor;
+                            button.style.borderRightColor = _defaultTileBorderStyleColor;
+                            button.style.borderLeftColor = _defaultTileBorderStyleColor;
+                            button.style.borderTopColor = _defaultTileBorderStyleColor;
+                        }
+                    }
+                }
+
+                WardrobeItem currentTop = WardrobeState.Instance.CurrentItemTop;
+                WardrobeItem currentJacket = WardrobeState.Instance.CurrentItemJacket;
+                bool topAllowsBottoms =
+                    (currentTop != null && currentTop.coversBottom == false)
+                    || (newItem.slot == "top" && newItem.coversBottom == false);
+                bool jacketAllowsBottoms =
+                    (currentJacket != null && currentJacket.coversBottom == false)
+                    || (newItem.slot == "jacket" && newItem.coversBottom == false);
+
+                if (topAllowsBottoms && jacketAllowsBottoms)
+                {
+                    _bottomDisable = false;
+                }
+            }
         }
     }
 }
