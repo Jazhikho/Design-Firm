@@ -1,9 +1,7 @@
 using Assets.Scripts.Core;
 using Assets.Scripts.Data;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 namespace Assets.Scripts.UI
@@ -23,10 +21,6 @@ namespace Assets.Scripts.UI
         private VisualElement _sandboxSubMenu;
 
         private Button _creditsButton;
-        private Button _creditsCloseButton;
-        private VisualElement _creditsOverlay;
-        private ScrollView _creditsScroll;
-        private bool _creditsOpen;
 
         /// <summary>
         /// Caches UI Toolkit buttons and binds click handlers.
@@ -35,9 +29,6 @@ namespace Assets.Scripts.UI
         {
             UIDocument uiDocument = GetComponent<UIDocument>();
             _root = uiDocument.rootVisualElement;
-
-            RegisterCreditsInterface(_root);
-            _root?.RegisterCallback<NavigationCancelEvent>(OnRootNavigationCancel, TrickleDown.TrickleDown);
 
             _playButton = _root.Q<Button>("PlayButton");
             _playButton?.RegisterCallback<ClickEvent>(OnPlayClicked);
@@ -69,172 +60,15 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void OnDisable()
         {
-            _root?.UnregisterCallback<NavigationCancelEvent>(OnRootNavigationCancel, TrickleDown.TrickleDown);
-            _root = null;
-            SetMainMenuButtonsEnabledForModal(false);
-            _creditsOpen = false;
-            if (_creditsOverlay != null)
-                _creditsOverlay.style.display = DisplayStyle.None;
-
-            UnregisterCreditsInterface();
             _playButton?.UnregisterCallback<ClickEvent>(OnPlayClicked);
             _sandboxButton?.UnregisterCallback<ClickEvent>(OnSandboxClicked);
             _sandboxFButton?.UnregisterCallback<ClickEvent>(OnSandboxSubMenuButtonClick);
             _sandboxMButton?.UnregisterCallback<ClickEvent>(OnSandboxSubMenuButtonClick);
             _settingsButton?.UnregisterCallback<ClickEvent>(OnSettingsButtonClick);
+            _creditsButton?.UnregisterCallback<ClickEvent>(OnCreditsButtonClick);
 
             if (_quitButton != null && Application.platform != RuntimePlatform.WebGLPlayer)
                 _quitButton.UnregisterCallback<ClickEvent>(OnQuitClicked);
-        }
-
-        /// <summary>
-        /// When the main menu is shown, Escape closes the credits overlay if it is open.
-        /// Uses the Input System package, consistent with active input handling in Player Settings.
-        /// </summary>
-        private void Update()
-        {
-            if (!_creditsOpen) return;
-
-            Keyboard keyboard = Keyboard.current;
-            if (keyboard == null) return;
-
-            if (keyboard.escapeKey.wasPressedThisFrame)
-                CloseCredits();
-        }
-
-        /// <summary>
-        /// Routes UI Toolkit navigation cancel (e.g. gamepad B) to closing the credits overlay when it is open.
-        /// </summary>
-        private void OnRootNavigationCancel(NavigationCancelEvent evt)
-        {
-            if (!_creditsOpen) return;
-
-            CloseCredits();
-            evt.StopPropagation();
-        }
-
-        /// <summary>
-        /// Locates the credits UI, fills the scroll view from <see cref="CreditsCatalog"/>, and registers handlers.
-        /// </summary>
-        private void RegisterCreditsInterface(VisualElement root)
-        {
-            _creditsButton = root.Q<Button>("CreditsButton");
-            _creditsCloseButton = root.Q<Button>("CreditsCloseButton");
-            _creditsOverlay = root.Q<VisualElement>("CreditsOverlay");
-            _creditsScroll = root.Q<ScrollView>("CreditsScroll");
-            if (_creditsButton == null || _creditsCloseButton == null || _creditsOverlay == null || _creditsScroll == null)
-            {
-                Debug.LogError("MainMenuController: Credits UI incomplete (CreditsButton, CreditsCloseButton, CreditsOverlay, or CreditsScroll missing).");
-                return;
-            }
-            _creditsOpen = false;
-            _creditsOverlay.pickingMode = PickingMode.Position;
-            _creditsOverlay.style.position = Position.Absolute;
-            _creditsOverlay.style.left = 0f;
-            _creditsOverlay.style.top = 0f;
-            _creditsOverlay.style.right = 0f;
-            _creditsOverlay.style.bottom = 0f;
-            _creditsOverlay.style.display = DisplayStyle.None;
-            _creditsScroll.horizontalScrollerVisibility = ScrollerVisibility.Hidden;
-            _creditsScroll.verticalScrollerVisibility = ScrollerVisibility.Auto;
-            _creditsScroll.contentContainer.style.minWidth = 0f;
-            _creditsScroll.contentContainer.style.width = new Length(100f, LengthUnit.Percent);
-            _creditsScroll.contentContainer.style.maxWidth = new Length(100f, LengthUnit.Percent);
-            _creditsScroll.contentContainer.style.flexDirection = FlexDirection.Column;
-            _creditsScroll.contentContainer.style.alignItems = Align.Stretch;
-            _creditsButton.RegisterCallback<ClickEvent>(OnCreditsButtonClick);
-            _creditsCloseButton.RegisterCallback<ClickEvent>(OnCreditsCloseButtonClick);
-            _creditsOverlay.RegisterCallback<ClickEvent>(OnCreditsOverlayClick, TrickleDown.TrickleDown);
-            BuildCreditsScrollContent();
-        }
-
-        /// <summary>
-        /// Removes credits-related callbacks; called when the component disables.
-        /// </summary>
-        private void UnregisterCreditsInterface()
-        {
-            _creditsButton?.UnregisterCallback<ClickEvent>(OnCreditsButtonClick);
-            _creditsCloseButton?.UnregisterCallback<ClickEvent>(OnCreditsCloseButtonClick);
-            _creditsOverlay?.UnregisterCallback<ClickEvent>(OnCreditsOverlayClick, TrickleDown.TrickleDown);
-
-            _creditsButton = null;
-            _creditsCloseButton = null;
-            _creditsOverlay = null;
-            _creditsScroll = null;
-        }
-
-        /// <summary>
-        /// Fills the credits scroll with section headings and one label per name (no role sub-lines); third-party
-        /// lines appear only when <see cref="CreditsCatalog.ThirdPartyAttributions"/> has entries.
-        /// </summary>
-        private void BuildCreditsScrollContent()
-        {
-            if (_creditsScroll == null) return;
-
-            _creditsScroll.contentContainer.Clear();
-            bool firstTeamSection = true;
-            foreach ((string teamHeading, IReadOnlyList<string> teamLines) in CreditsCatalog.TeamByFunctionSections)
-            {
-                AddCreditsSectionHeading(_creditsScroll.contentContainer, teamHeading, firstTeamSection);
-                firstTeamSection = false;
-                foreach (string personName in teamLines)
-                {
-                    AddCreditsNameLine(_creditsScroll.contentContainer, personName);
-                }
-            }
-            AddCreditsSectionHeading(_creditsScroll.contentContainer, CreditsCatalog.AiAssistanceSectionHeading, false);
-            foreach (string toolName in CreditsCatalog.AiAssistanceNames)
-            {
-                AddCreditsNameLine(_creditsScroll.contentContainer, toolName);
-            }
-            IReadOnlyList<string> thirdParty = CreditsCatalog.ThirdPartyAttributions;
-            if (thirdParty.Count > 0)
-            {
-                AddCreditsSectionHeading(_creditsScroll.contentContainer, CreditsCatalog.ThirdPartySectionHeading, false);
-                foreach (string line in thirdParty)
-                {
-                    if (line == null)
-                    {
-                        continue;
-                    }
-                    string t = line.Trim();
-                    if (t.Length == 0)
-                    {
-                        continue;
-                    }
-                    Label row = new(t);
-                    row.AddToClassList("credits-name-line");
-                    _creditsScroll.contentContainer.Add(row);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Adds a centered, all-caps section label for the credits panel.
-        /// </summary>
-        private void AddCreditsSectionHeading(VisualElement parent, string title, bool isFirst)
-        {
-            Label heading = new(title);
-            heading.AddToClassList("credits-section-heading");
-            if (isFirst)
-                heading.AddToClassList("credits-section-heading-first");
-
-            parent.Add(heading);
-        }
-
-        /// <summary>
-        /// Adds a single centered name line for credits (team, AI tools, or third-party text).
-        /// </summary>
-        private void AddCreditsNameLine(VisualElement parent, string name)
-        {
-            if (name == null) return;
-
-            string trimmed = name.Trim();
-            if (trimmed.Length == 0) return;
-
-            Label row = new(trimmed);
-            row.AddToClassList("credits-name-line");
-            parent.Add(row);
         }
 
         /// <summary>
@@ -242,74 +76,8 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void OnCreditsButtonClick(ClickEvent _)
         {
-            OpenCredits();
-        }
-
-        /// <summary>
-        /// Dismisses the credits overlay when Close is used.
-        /// </summary>
-        private void OnCreditsCloseButtonClick(ClickEvent _)
-        {
-            CloseCredits();
-        }
-
-        /// <summary>
-        /// Closes the credits overlay when the dimmed backdrop is pressed (not the panel content).
-        /// </summary>
-        private void OnCreditsOverlayClick(ClickEvent evt)
-        {
-            if (evt.target != _creditsOverlay) return;
-
-            CloseCredits();
-        }
-
-        /// <summary>
-        /// Shows the credits overlay and hides the sandbox flyout.
-        /// </summary>
-        private void OpenCredits()
-        {
-            if (_creditsOverlay == null || _creditsScroll == null) return;
-
-            AudioManager.TryPlayButtonSfx();
-            if (_sandboxSubMenu.visible && _sandboxSubMenu != null)
-            {
-                _sandboxSubMenu.visible = false;
-            }
-            _creditsOpen = true;
-            SetMainMenuButtonsEnabledForModal(true);
-            _creditsOverlay.BringToFront();
-            _creditsOverlay.style.display = DisplayStyle.Flex;
-            _creditsCloseButton?.Focus();
-        }
-
-        /// <summary>
-        /// Hides the credits overlay and returns focus to the main Credits menu button.
-        /// </summary>
-        private void CloseCredits()
-        {
-            if (_creditsOverlay == null) return;
-
-            if (!_creditsOpen) return;
-
-            AudioManager.TryPlayButtonSfx();
-            _creditsOpen = false;
-            _creditsOverlay.style.display = DisplayStyle.None;
-            SetMainMenuButtonsEnabledForModal(false);
-            _creditsButton?.Focus();
-        }
-
-        /// <summary>
-        /// Disables the primary main menu buttons so focus and navigation stay inside the credits modal while it is open.
-        /// </summary>
-        private void SetMainMenuButtonsEnabledForModal(bool isModalOpen)
-        {
-            bool isEnabled = !isModalOpen;
-
-            _playButton?.SetEnabled(isEnabled);
-            _quitButton?.SetEnabled(isEnabled);
-            _sandboxButton?.SetEnabled(isEnabled);
-            _settingsButton?.SetEnabled(isEnabled);
-            _creditsButton?.SetEnabled(isEnabled);
+            AudioManager.Instance.PlayButtonSfx();
+            NavigationManager.Instance.NavigateToScene(GameConstants.CreditsScene);
         }
 
         /// <summary>
@@ -318,7 +86,7 @@ namespace Assets.Scripts.UI
         private void OnPlayClicked(ClickEvent e)
         {
             AudioManager.TryPlayButtonSfx();
-            NavigationManager.Instance.NavigateToScene(GameConstants.TaskScenarioScene);
+            NavigationManager.Instance.NavigateToScene(GameConstants.ScenarioScene);
         }
 
         /// <summary>

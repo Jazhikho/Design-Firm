@@ -101,7 +101,7 @@ namespace Assets.Scripts.UI
         private void NewScenario(ClickEvent e)
         {
             AudioManager.TryPlayButtonSfx();
-            NavigationManager.Instance.NavigateToScene(GameConstants.TaskScenarioScene);
+            NavigationManager.Instance.NavigateToScene(GameConstants.ScenarioScene);
         }
 
         /// <summary>

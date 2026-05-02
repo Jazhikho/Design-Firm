@@ -79,6 +79,7 @@ namespace Assets.Scripts.Data
                 "WRITING & NARRATIVE",
                 new ReadOnlyCollection<string>(new string[]
                 {
+                    "Ashley Haberberger",
                     "Nicholas Best",
                     "Matthew Glass",
                     "Bella Howe",
@@ -99,6 +100,7 @@ namespace Assets.Scripts.Data
         /// <summary>AI tools (name-only lines, same as team rows).</summary>
         public static readonly IReadOnlyList<string> AiAssistanceNames = new ReadOnlyCollection<string>(new string[]
         {
+            "ChatGPT", 
             "Cursor",
             "Composer 2"
         });

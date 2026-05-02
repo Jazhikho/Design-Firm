@@ -29,14 +29,14 @@
                     <ui:Label text="Label" name="lblWarning" class="scenario-description" style="color: rgb(224, 112, 144);"/>
                 </ui:VisualElement>
                 <ui:ScrollView name="clothingItemsList" mode="Vertical" class="clothing-item-list"/>
+                <ui:Button name="nextSceneButton" class="submit-button button-common" style="width: 325px; flex-direction: row; align-self: center; margin-top: 10px;">
+                    <ui:Label text="0:00:0&#10;" name="lblTimer" class="timer-label" style="background-color: rgb(255, 255, 255); border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;"/>
+                    <ui:Label text="Click here to &#10;SUBMIT OUTFIT" name="lblSubmitOutfit" style="margin-left: 15px;"/>
+                </ui:Button>
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="bottomRow" class="bottomRow">
             <ui:Image source="project://database/Assets/Art/UI/Sew%20It%20Goes%20Logo-small.png?fileID=21300000&amp;guid=118a4da3414f6e44a9f87cdf843ce0b1&amp;type=3#Sew It Goes Logo-small" name="Image" class="game-logo-small"/>
-            <ui:Button name="nextSceneButton" class="submit-button button-common" style="width: 325px; flex-direction: row; left: 50%; right: 50%;">
-                <ui:Label text="0:00:0&#10;" name="lblTimer" class="timer-label" style="background-color: rgb(255, 255, 255); border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0;"/>
-                <ui:Label text="Click here to &#10;SUBMIT OUTFIT" name="lblSubmitOutfit" style="margin-left: 15px;"/>
-            </ui:Button>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

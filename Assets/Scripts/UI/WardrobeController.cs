@@ -77,7 +77,7 @@ namespace Assets.Scripts.UI
                 _sandboxMode = true;
 
             _wardrobeTimeExpiredHandled = false;
-            _nextScene = _sandboxMode ? GameConstants.MainMenuScene : GameConstants.TaskResultScene;
+            _nextScene = _sandboxMode ? GameConstants.MainMenuScene : GameConstants.ResultScene;
 
             _uiDocument = GetComponent<UIDocument>();
             VisualElement root = _uiDocument.rootVisualElement;
@@ -102,7 +102,7 @@ namespace Assets.Scripts.UI
                 _timerLabel.visible = false;
 
             _lblWarning = _uiDocument.rootVisualElement.Q<Label>("lblWarning");
-            _lblWarning.text = "";
+            _lblWarning.text = string.Empty;
 
             _clothingScrollView = root.Q<ScrollView>("clothingItemsList");
             if (_clothingScrollView == null)
@@ -399,7 +399,7 @@ namespace Assets.Scripts.UI
         private void GoToScenarios(ClickEvent e)
         {
             AudioManager.TryPlayButtonSfx();
-            NavigationManager.Instance.NavigateToScene(GameConstants.TaskScenarioScene);
+            NavigationManager.Instance.NavigateToScene(GameConstants.ScenarioScene);
         }
 
         /// <summary>Loads the configured next scene when the submit button is used.</summary>
@@ -410,6 +410,7 @@ namespace Assets.Scripts.UI
                 Debug.LogError("WardrobeController: nextScene is not set; check sandbox mode and Build Settings.");
                 return;
             }
+            AudioManager.TryPlaySubmitOutfitSfx();
             NavigationManager.Instance.NavigateToScene(_nextScene);
         }
 

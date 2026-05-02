@@ -1,0 +1,16 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/USS/CommonStylesheet.uss?fileID=7433441132597879392&amp;guid=8e23400638b471247abded66e2e9521e&amp;type=3#CommonStylesheet"/>
+    <Style src="project://database/Assets/UI/USS/CreditsStylesheet.uss?fileID=7433441132597879392&amp;guid=efb1ac394bb874a44b6475376507f7e4&amp;type=3#CreditsStylesheet"/>
+    <ui:VisualElement class="app-document-root" style="flex-grow: 1;">
+        <ui:Image class="background-runway"/>
+        <ui:VisualElement name="topRow" class="topRow" style="flex-grow: 1;">
+            <ui:Button text="Button" name="btnBack" class="button-common"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="middleRow" style="flex-grow: 1; padding-right: 50px; padding-left: 50px;">
+            <ui:ScrollView style="background-image: url(&quot;project://database/Assets/Art/UI/Panels/UIPanel3.png?fileID=-3657673086416332405&amp;guid=139033b5b1bc28a47aeb7effa178cc12&amp;type=3#UIPanel3_0&quot;);"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="bottomRow" class="bottomRow">
+            <ui:Image source="project://database/Assets/Art/UI/Sew%20It%20Goes%20Logo-small.png?fileID=21300000&amp;guid=118a4da3414f6e44a9f87cdf843ce0b1&amp;type=3#Sew It Goes Logo-small" class="game-logo-small"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -325,6 +325,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Core.AudioManager
   _buttonSfx: {fileID: 8300000, guid: 5404e3eed0b05f24493e8f3b56038d09, type: 3}
+  _backgroundMusic: {fileID: 8300000, guid: 80fda1bdd60864343adc7333b56570fa, type: 3}
+  _musicVolume: 0.5
+  _submitOutfitSfx: {fileID: 8300000, guid: 617dbe7da463a7d43a948eba9af446ce, type: 3}
+  _idealOutfitMatchSfx: {fileID: 8300000, guid: 6441c9c3de3e0a74ab1a536cc99fb531, type: 3}
+  _lessThanIdealOutfitMatchSfx: {fileID: 8300000, guid: d825e481934b7864eb7d2c762f7de2b7, type: 3}
+  _equipClothingItemSfx: {fileID: 8300000, guid: a03e4df61bc040a4fbd9036a1e507e93, type: 3}
+  _timerEndSfx: {fileID: 8300000, guid: 36866d8c98956a04cae2bbbc0e5d7b87, type: 3}
 --- !u!82 &1685619526
 AudioSource:
   m_ObjectHideFlags: 0
