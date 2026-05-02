@@ -17,6 +17,17 @@ Disclosure and audit trail for AI-assisted work. Update when committing signific
 
 **Date:** 2026-05-02  
 **Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** Credits scrollbar micro-nudge: increase `#CreditsDialog` horizontal padding and `#CreditsScroll` / vertical-scroller right margins slightly (internal 1.0.0.6).  
+**Input materials used:** `MainMenuStylesheet.uss`, `VERSION.md`, this log.  
+**Summary of AI contribution:** padding-right 56px on dialog; CreditsScroll margin-right 44px; vertical-scroller margin-right 18px.  
+**What the human accepted / rejected / changed:** (pending review)  
+**Validation method used:** USS-only tweak.  
+**Final approver:** (if applicable)  
+
+---
+
+**Date:** 2026-05-02  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
 **Task purpose:** Credits scrollbar: remove overlapping squished arrow buttons via USS `display: none`; increase `#CreditsDialog` and `#CreditsScroll` margins so thumb clears nine-slice frame.  
 **Input materials used:** `MainMenuStylesheet.uss`, `VERSION.md`, this log.  
 **Summary of AI contribution:** Inset ScrollView with margin-left/right; wider vertical scroller track; hide `.unity-scroller__low-button` / `high-button`; internal label 1.0.0.5.  
