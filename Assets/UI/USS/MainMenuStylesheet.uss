@@ -136,8 +136,8 @@ Button.main-menu-button {
     flex-shrink: 0;
     overflow: hidden;
     /* Horizontal inset so text and scrollbar clear the nine-slice frame lights on UIPanel3. */
-    padding-left: 52px;
-    padding-right: 56px;
+    padding-left: 56px;
+    padding-right: 64px;
     padding-top: 20px;
     padding-bottom: 24px;
     background-image: url("project://database/Assets/Art/UI/Panels/UIPanel3.png?fileID=2800000&guid=139033b5b1bc28a47aeb7effa178cc12&type=3#UIPanel3");
@@ -166,7 +166,7 @@ Button.main-menu-button {
     margin-bottom: 8px;
     /* Pull the whole ScrollView (content + scroller) inward from the dialog padding box. */
     margin-left: 6px;
-    margin-right: 44px;
+    margin-right: 54px;
     -unity-font-definition: url("project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&guid=cb230a455f9d47d41b5e9547def9fba4&type=3#Caldstone-SemiBold");
     color: rgb(255, 255, 255);
     font-size: 14px;
@@ -187,7 +187,7 @@ Button.main-menu-button {
 
 /* Vertical scroller: width for thumb; extra right margin keeps bar off the pink/yellow frame. */
 #CreditsScroll .unity-scroll-view__vertical-scroller {
-    margin-right: 18px;
+    margin-right: 26px;
     margin-left: 10px;
     width: 18px;
     min-width: 18px;

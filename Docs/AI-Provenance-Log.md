@@ -17,6 +17,17 @@ Disclosure and audit trail for AI-assisted work. Update when committing signific
 
 **Date:** 2026-05-02  
 **Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** Credits scrollbar another small inward nudge (USS margins/padding; internal 1.0.0.7).  
+**Input materials used:** `MainMenuStylesheet.uss`, `VERSION.md`, this log.  
+**Summary of AI contribution:** `#CreditsDialog` padding 56/64px; `#CreditsScroll` margin-right 54px; vertical-scroller margin-right 26px.  
+**What the human accepted / rejected / changed:** (pending review)  
+**Validation method used:** USS-only.  
+**Final approver:** (if applicable)  
+
+---
+
+**Date:** 2026-05-02  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
 **Task purpose:** Credits scrollbar micro-nudge: increase `#CreditsDialog` horizontal padding and `#CreditsScroll` / vertical-scroller right margins slightly (internal 1.0.0.6).  
 **Input materials used:** `MainMenuStylesheet.uss`, `VERSION.md`, this log.  
 **Summary of AI contribution:** padding-right 56px on dialog; CreditsScroll margin-right 44px; vertical-scroller margin-right 18px.  
