@@ -15,6 +15,17 @@ Disclosure and audit trail for AI-assisted work. Update when committing signific
 
 ---
 
+**Date:** 2026-05-02  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** Hardening and style pass on wardrobe covers-bottom and equip/unequip/swap SFX (PR #75 follow-up); update `VERSION.md` and this log; merge PR.  
+**Input materials used:** `AudioManager.cs`, `WardrobeController.cs`, `WardrobeState.cs`, `VERSION.md`, this log; prior PR review notes.  
+**Summary of AI contribution:** Unity `Color` 0–1 for red highlight; per-session default border from first created tile; renamed private fields to `_camelCase`; `AudioManager` public SFX key constants; null early-return in `ItemCoverBottomChecks`; XML comment and `GetCurrentItem` default branch; internal version 1.0.0.1.  
+**What the human accepted / rejected / changed:** (pending review)  
+**Validation method used:** C# lints on edited files.  
+**Final approver:** (if applicable)  
+
+---
+
 **Date:** 2026-04-25  
 **Tool or model used:** Cursor agent (AI-assisted editing)  
 **Task purpose:** Release versioning: set product and builds to **v1.0** (`bundleVersion` 1.0, internal label 1.0.0.0 per major-release reset).  

@@ -26,6 +26,15 @@ namespace Assets.Scripts.Core
 
         private AudioSource _audioSource;
 
+        /// <summary>Key for <see cref="PlayOtherSFX"/> equip clip.</summary>
+        public const string OtherSfxEquipKey = "equip";
+
+        /// <summary>Key for <see cref="PlayOtherSFX"/> unequip clip.</summary>
+        public const string OtherSfxUnequipKey = "unequip";
+
+        /// <summary>Key for <see cref="PlayOtherSFX"/> swap clip.</summary>
+        public const string OtherSfxSwapKey = "swap";
+
         /// <summary>
         /// Duration of the button SFX in seconds.
         /// Returns 0 if no clip is assigned — callers can safely wait this long before acting.
@@ -131,30 +140,34 @@ namespace Assets.Scripts.Core
         }
 
         /// <summary>
-        /// Plays a sound dependant on it's key.
+        /// Plays a sound identified by <paramref name="soundKey"/> (see <see cref="OtherSfxEquipKey"/>, <see cref="OtherSfxUnequipKey"/>, <see cref="OtherSfxSwapKey"/>).
         /// </summary>
+        /// <param name="soundKey">Which wardrobe interaction clip to play.</param>
         public void PlayOtherSFX(string soundKey)
         {
             AudioClip otherSound = null;
 
             switch (soundKey)
             {
-                case "equip":
+                case OtherSfxEquipKey:
                     otherSound = _equipSfx;
                     break;
-                case "unequip":
+                case OtherSfxUnequipKey:
                     otherSound = _unequipSfx;
                     break;
-                case "swap":
+                case OtherSfxSwapKey:
                     otherSound = _swapSfx;
                     break;
-                
             }
             if (otherSound != null)
             {
                 _audioSource.PlayOneShot(otherSound);
             }
         }
+        /// <summary>
+        /// Calls <see cref="PlayOtherSFX"/> when <see cref="Instance"/> exists; otherwise logs a warning.
+        /// </summary>
+        /// <param name="soundKey">Same keys as <see cref="PlayOtherSFX"/>.</param>
         public static void TryPlayOtherSFX(string soundKey)
         {
             if (Instance != null)
@@ -163,7 +176,7 @@ namespace Assets.Scripts.Core
             }
             else
             {
-                Debug.LogWarning("AudioManager.Instance is null; Other SFX was skipped.");
+                Debug.LogWarning("AudioManager.Instance is null; other SFX was skipped.");
             }
         }
     }
