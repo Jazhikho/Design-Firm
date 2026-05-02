@@ -92,7 +92,15 @@ namespace Assets.Scripts.UI
             _backButton = root.Q<Button>("btnBack");
             if (_backButton != null)
             {
-                _backButton.RegisterCallback<ClickEvent>(GoToScenarios);
+                switch (_sandboxMode)
+                {
+                    case true:
+                        _backButton.RegisterCallback<ClickEvent>(NextSceneScript);
+                        break;
+                    case false:
+                        _backButton.RegisterCallback<ClickEvent>(GoToScenarios);
+                        break;
+                }
             }
 
             _nextSceneButton = root.Q<Button>("nextSceneButton");
@@ -111,6 +119,7 @@ namespace Assets.Scripts.UI
             }
             if (_sandboxMode)
             {
+                _nextSceneButton.text = ">Finish<";
                 _timerLabel.visible = false;
             }
 
@@ -196,7 +205,15 @@ namespace Assets.Scripts.UI
         {
             if (_backButton != null)
             {
-                _backButton.UnregisterCallback<ClickEvent>(GoToScenarios);
+                switch (_sandboxMode)
+                {
+                    case true:
+                        _backButton.UnregisterCallback<ClickEvent>(NextSceneScript);
+                        break;
+                    case false:
+                        _backButton.UnregisterCallback<ClickEvent>(GoToScenarios);
+                        break;
+                }
             }
 
             if (_nextSceneButton != null)
