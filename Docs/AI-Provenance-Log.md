@@ -17,6 +17,17 @@ Disclosure and audit trail for AI-assisted work. Update when committing signific
 
 **Date:** 2026-05-02  
 **Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** Clear UI Toolkit USS validator warnings: unsupported CSS-style properties; fix empty Image `source` semantic warning in Results UXML.  
+**Input materials used:** `WardrobeStylesheet.uss`, `MainMenuStylesheet.uss`, `ResultsUI.uxml`, `VERSION.md`, this log.  
+**Summary of AI contribution:** Removed `box-sizing`, `column-gap`, `z-index`; replaced gap with `#sandboxF { margin-right: 8px }`; documented overlay draw order; removed `source=""` from Gianna `ui:Image`; internal label 1.0.0.2.  
+**What the human accepted / rejected / changed:** (pending review)  
+**Validation method used:** File review against UI Toolkit USS supported properties.  
+**Final approver:** (if applicable)  
+
+---
+
+**Date:** 2026-05-02  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
 **Task purpose:** Hardening and style pass on wardrobe covers-bottom and equip/unequip/swap SFX (PR #75 follow-up); update `VERSION.md` and this log; merge PR.  
 **Input materials used:** `AudioManager.cs`, `WardrobeController.cs`, `WardrobeState.cs`, `VERSION.md`, this log; prior PR review notes.  
 **Summary of AI contribution:** Unity `Color` 0–1 for red highlight; per-session default border from first created tile; renamed private fields to `_camelCase`; `AudioManager` public SFX key constants; null early-return in `ItemCoverBottomChecks`; XML comment and `GetCurrentItem` default branch; internal version 1.0.0.1.  

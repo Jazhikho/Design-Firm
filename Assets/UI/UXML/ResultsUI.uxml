@@ -22,7 +22,7 @@
                     <ui:Label text="Let&apos;s see... only x out of y correct." name="lblTotalScore" style="bottom: -35%; font-size: 40px; white-space: normal; -unity-font-definition: url(&quot;project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&amp;guid=cb230a455f9d47d41b5e9547def9fba4&amp;type=3#Caldstone-SemiBold&quot;); padding-right: 80px; padding-left: 80px; padding-top: 0; -unity-text-align: lower-center;"/>
                 </ui:Image>
             </ui:VisualElement>
-            <ui:Image source="" scale-mode="ScaleToFit" name="gianna" style="bottom: 0; background-image: url(&quot;project://database/Assets/Art/UI/NPC/Gianna%201.png?fileID=2800000&amp;guid=efbbc363b80a57643acf0efa90608d5d&amp;type=3#Gianna 1&quot;); top: auto; left: auto; right: auto; flex-grow: 1; aspect-ratio: 0.5; width: 100%; max-width: 100%; min-height: 0; margin-top: 40%;"/>
+            <ui:Image scale-mode="ScaleToFit" name="gianna" style="bottom: 0; background-image: url(&quot;project://database/Assets/Art/UI/NPC/Gianna%201.png?fileID=2800000&amp;guid=efbbc363b80a57643acf0efa90608d5d&amp;type=3#Gianna 1&quot;); top: auto; left: auto; right: auto; flex-grow: 1; aspect-ratio: 0.5; width: 100%; max-width: 100%; min-height: 0; margin-top: 40%;"/>
         </ui:VisualElement>
         <ui:VisualElement name="colYourOutfitVisual" class="middle-column" style="visibility: visible; display: flex; min-width: 45%; max-height: 100%; flex-grow: 1; min-height: 0; height: auto; bottom: 0; top: auto; padding-left: 0%;">
             <ui:Image name="activeAvatar" class="stacked-image" style="padding-left: 20%;"/>

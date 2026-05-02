@@ -92,7 +92,6 @@ Button.main-menu-button {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    column-gap: 8px;
     visibility: hidden;
     flex-shrink: 0;
 }
@@ -104,13 +103,18 @@ Button.main-menu-button {
     max-width: none;
 }
 
+/* USS has no column-gap; spacing between Female/Male (see MainMenuUI SubMenu). */
+#sandboxF {
+    margin-right: 8px;
+}
+
+/* Draw order: CreditsOverlay is last under MainMenuRoot in UXML (no USS z-index in UI Toolkit). */
 #CreditsOverlay {
     position: absolute;
     left: 0;
     top: 0;
     right: 0;
     bottom: 0;
-    z-index: 100;
     flex-direction: row;
     justify-content: center;
     align-items: center;
