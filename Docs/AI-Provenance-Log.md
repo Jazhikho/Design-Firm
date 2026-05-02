@@ -17,6 +17,17 @@ Disclosure and audit trail for AI-assisted work. Update when committing signific
 
 **Date:** 2026-05-02  
 **Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** Credits scrollbar: remove overlapping squished arrow buttons via USS `display: none`; increase `#CreditsDialog` and `#CreditsScroll` margins so thumb clears nine-slice frame.  
+**Input materials used:** `MainMenuStylesheet.uss`, `VERSION.md`, this log.  
+**Summary of AI contribution:** Inset ScrollView with margin-left/right; wider vertical scroller track; hide `.unity-scroller__low-button` / `high-button`; internal label 1.0.0.5.  
+**What the human accepted / rejected / changed:** (pending review)  
+**Validation method used:** USS review (Unity UI Toolkit Scroller class names).  
+**Final approver:** (if applicable)  
+
+---
+
+**Date:** 2026-05-02  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
 **Task purpose:** Credits third-party UX: replace URL-heavy strings with `ThirdPartyCreditEntry` (asset, source, license, use); widen dialog/scroll padding and inset scrollbar; USS blocks for third-party fields.  
 **Input materials used:** `CreditsCatalog.cs`, `MainMenuController.cs`, `MainMenuStylesheet.uss`, `VERSION.md`, `Docs/Credits.md`, this log.  
 **Summary of AI contribution:** Structured catalog rows without raw links in-game; `AddThirdPartyCreditBlock`; content-container and `#CreditsDialog` horizontal inset; internal label 1.0.0.4.  
