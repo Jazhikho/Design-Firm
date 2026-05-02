@@ -135,8 +135,9 @@ Button.main-menu-button {
     flex-grow: 0;
     flex-shrink: 0;
     overflow: hidden;
-    padding-left: 20px;
-    padding-right: 20px;
+    /* Horizontal inset so text and scrollbar clear the nine-slice frame lights on UIPanel3. */
+    padding-left: 36px;
+    padding-right: 36px;
     padding-top: 20px;
     padding-bottom: 24px;
     background-image: url("project://database/Assets/Art/UI/Panels/UIPanel3.png?fileID=2800000&guid=139033b5b1bc28a47aeb7effa178cc12&type=3#UIPanel3");
@@ -166,8 +167,7 @@ Button.main-menu-button {
     -unity-font-definition: url("project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&guid=cb230a455f9d47d41b5e9547def9fba4&type=3#Caldstone-SemiBold");
     color: rgb(255, 255, 255);
     font-size: 14px;
-    /* Extra right padding so content clears the vertical scroller (inset from panel edge). */
-    padding: 6px 8px 8px 12px;
+    padding: 6px 0 8px 0;
     flex-direction: column;
     align-items: stretch;
     align-self: stretch;
@@ -176,10 +176,16 @@ Button.main-menu-button {
     overflow: hidden;
 }
 
-/* Inset vertical scrollbar from the decorative panel rim; match pink / cream UI theme. */
+/* Inset all scroll content (team names, AI, third-party) from the viewport edges. */
+#CreditsScroll .unity-scroll-view__content-container {
+    padding-left: 12px;
+    padding-right: 16px;
+}
+
+/* Inset vertical scrollbar with dialog margins so it stays inside the lit frame. */
 #CreditsScroll .unity-scroll-view__vertical-scroller {
-    margin-right: 14px;
-    margin-left: 4px;
+    margin-right: 8px;
+    margin-left: 12px;
     width: 14px;
     flex-shrink: 0;
 }
@@ -256,8 +262,42 @@ Button.main-menu-button {
     margin-bottom: 6px;
     white-space: normal;
     align-self: stretch;
-    padding-left: 4px;
-    padding-right: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.credits-third-party-block {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin-bottom: 18px;
+    flex-direction: column;
+    align-items: stretch;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.credits-third-party-name {
+    -unity-text-align: middle-center;
+    color: rgb(255, 243, 186);
+    font-size: 15px;
+    width: 100%;
+    margin-bottom: 6px;
+    white-space: normal;
+    -unity-font-style: bold;
+}
+
+.credits-third-party-field {
+    -unity-text-align: middle-center;
+    color: rgb(250, 250, 252);
+    font-size: 13px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin-top: 0;
+    margin-bottom: 4px;
+    white-space: normal;
+    align-self: stretch;
 }
 
 /* Uses .button-common from CommonStylesheet (panel Close control); tuned size and label contrast. */

@@ -1,6 +1,6 @@
 # Third-Party Assets
 
-Track any third-party art, audio, fonts, or other assets used in the project. Keep license and source in sync with the codebase. In-game credits mirror key rows via `CreditsCatalog.ThirdPartyAttributions`.
+Track any third-party art, audio, fonts, or other assets used in the project. Keep license and source in sync with the codebase. In-game credits use structured `CreditsCatalog.ThirdPartyCredits` (URLs stay in this table only).
 
 | Asset / description | Source / URL | License | Notes |
 |--------------------|--------------|---------|--------|

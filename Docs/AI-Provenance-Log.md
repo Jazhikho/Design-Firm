@@ -17,6 +17,17 @@ Disclosure and audit trail for AI-assisted work. Update when committing signific
 
 **Date:** 2026-05-02  
 **Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** Credits third-party UX: replace URL-heavy strings with `ThirdPartyCreditEntry` (asset, source, license, use); widen dialog/scroll padding and inset scrollbar; USS blocks for third-party fields.  
+**Input materials used:** `CreditsCatalog.cs`, `MainMenuController.cs`, `MainMenuStylesheet.uss`, `VERSION.md`, `Docs/Credits.md`, this log.  
+**Summary of AI contribution:** Structured catalog rows without raw links in-game; `AddThirdPartyCreditBlock`; content-container and `#CreditsDialog` horizontal inset; internal label 1.0.0.4.  
+**What the human accepted / rejected / changed:** (pending review)  
+**Validation method used:** C# lints on edited scripts.  
+**Final approver:** (if applicable)  
+
+---
+
+**Date:** 2026-05-02  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
 **Task purpose:** Credits content and presentation: multi-section team names, Pixabay/font third-party lines, Claude in AI list; inset themed scrollbar and Close button styling; sync `Docs/Assets.md` / `Docs/Credits.md`.  
 **Input materials used:** User-provided role mapping and asset URLs; `CreditsCatalog.cs`, `MainMenuStylesheet.uss`, `MainMenuController.cs`, `VERSION.md`, `Docs/Assets.md`, `Docs/Credits.md`, this log.  
 **Summary of AI contribution:** Rebuilt `TeamByFunctionSections` with duplicate names across teams; populated `ThirdPartyAttributions` and `AiAssistanceNames` (added Claude); USS for `#CreditsScroll` vertical scroller margins and slider track/dragger/low-high buttons; `#CreditsCloseButton` sizing/color atop `.button-common`; documentation sync; internal label 1.0.0.3.  

@@ -300,8 +300,8 @@ namespace Assets.Scripts.UI
 
         /// <summary>
         /// Fills the credits scroll with section headings and one label per name (no role sub-lines); repeats names
-        /// across sections when catalog lists them for multiple teams. Third-party lines appear only when
-        /// <see cref="CreditsCatalog.ThirdPartyAttributions"/> has entries (wrapped attribution text).
+        /// across sections when catalog lists them for multiple teams. Third-party assets use structured labels when
+        /// <see cref="CreditsCatalog.ThirdPartyCredits"/> has entries.
         /// </summary>
         private void BuildCreditsScrollContent()
         {
@@ -325,24 +325,13 @@ namespace Assets.Scripts.UI
             {
                 AddCreditsNameLine(_creditsScroll.contentContainer, toolName);
             }
-            IReadOnlyList<string> thirdParty = CreditsCatalog.ThirdPartyAttributions;
+            IReadOnlyList<CreditsCatalog.ThirdPartyCreditEntry> thirdParty = CreditsCatalog.ThirdPartyCredits;
             if (thirdParty.Count > 0)
             {
                 AddCreditsSectionHeading(_creditsScroll.contentContainer, CreditsCatalog.ThirdPartySectionHeading, false);
-                foreach (string line in thirdParty)
+                foreach (CreditsCatalog.ThirdPartyCreditEntry entry in thirdParty)
                 {
-                    if (line == null)
-                    {
-                        continue;
-                    }
-                    string t = line.Trim();
-                    if (t.Length == 0)
-                    {
-                        continue;
-                    }
-                    Label row = new Label(t);
-                    row.AddToClassList("credits-name-line");
-                    _creditsScroll.contentContainer.Add(row);
+                    AddThirdPartyCreditBlock(_creditsScroll.contentContainer, entry);
                 }
             }
         }
@@ -378,6 +367,49 @@ namespace Assets.Scripts.UI
             Label row = new Label(trimmed);
             row.AddToClassList("credits-name-line");
             parent.Add(row);
+        }
+
+        /// <summary>
+        /// Adds one third-party asset block: asset name plus Source, License, and Used for lines (no URLs).
+        /// </summary>
+        /// <param name="parent">Scroll content container.</param>
+        /// <param name="entry">Structured fields from <see cref="CreditsCatalog.ThirdPartyCredits"/>.</param>
+        private void AddThirdPartyCreditBlock(VisualElement parent, CreditsCatalog.ThirdPartyCreditEntry entry)
+        {
+            if (string.IsNullOrWhiteSpace(entry.AssetName))
+            {
+                return;
+            }
+
+            VisualElement block = new VisualElement();
+            block.AddToClassList("credits-third-party-block");
+
+            Label nameLabel = new Label(entry.AssetName.Trim());
+            nameLabel.AddToClassList("credits-third-party-name");
+            block.Add(nameLabel);
+
+            if (!string.IsNullOrWhiteSpace(entry.Source))
+            {
+                Label sourceLabel = new Label("Source: " + entry.Source.Trim());
+                sourceLabel.AddToClassList("credits-third-party-field");
+                block.Add(sourceLabel);
+            }
+
+            if (!string.IsNullOrWhiteSpace(entry.License))
+            {
+                Label licenseLabel = new Label("License: " + entry.License.Trim());
+                licenseLabel.AddToClassList("credits-third-party-field");
+                block.Add(licenseLabel);
+            }
+
+            if (!string.IsNullOrWhiteSpace(entry.Usage))
+            {
+                Label usageLabel = new Label("Used for: " + entry.Usage.Trim());
+                usageLabel.AddToClassList("credits-third-party-field");
+                block.Add(usageLabel);
+            }
+
+            parent.Add(block);
         }
 
         /// <summary>

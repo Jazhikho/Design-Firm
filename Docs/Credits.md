@@ -40,6 +40,6 @@ When listing assistant tools in in-game, marketing, or ship credits, align with 
 
 ## Team and Role Credits
 
-The **in-game** main menu “Credits” screen reads team data from `Assets/Scripts/Data/CreditsCatalog.cs`, grouped by **function** via `TeamByFunctionSections`: each line is a **person’s name** (no role subtitle). The same person appears **again** in another section when their contributions span that team. The AI block uses `AiAssistanceNames` (tool names). A “Third-Party Assets” block appears **only** when `ThirdPartyAttributions` is non-empty; entries should stay aligned with `Docs/Assets.md` (the game does not read markdown at runtime).
+The **in-game** main menu “Credits” screen reads team data from `Assets/Scripts/Data/CreditsCatalog.cs`, grouped by **function** via `TeamByFunctionSections`: each line is a **person’s name** (no role subtitle). The same person appears **again** in another section when their contributions span that team. The AI block uses `AiAssistanceNames` (tool names). A “Third-Party Assets” block appears **only** when `ThirdPartyCredits` is non-empty; each entry is **asset name**, **source** (plain text, no URLs in-game), **license**, and **usage**. Full URLs stay in `Docs/Assets.md` (the game does not read markdown at runtime).
 
 Current team names and role assignments in external team docs are also linked from `README.md` under **External Docs and Tools**.
