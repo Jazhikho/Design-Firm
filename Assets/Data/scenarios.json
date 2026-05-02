@@ -57,7 +57,7 @@
       },
       "idealOutfit": {
         "jacket": { "itemId": "2000sBusinessJacket", "score": 1.0, "commentary": "" },
-        "top": { "itemId": "2000sBusinessShirt", "score": 1.0, "commentary": "" },
+        "top": { "itemId": "2000sBusinessTop", "score": 1.0, "commentary": "" },
         "bottom": { "itemId": "2000sBusinessBottom", "score": 1.0, "commentary": "" },
         "shoes": { "itemId": "2000sBusinessShoes", "score": 1.0, "commentary": "" }
       }
@@ -81,7 +81,7 @@
         "jacket": { "itemId": "1980sFormalJacket", "score": 1.0, "commentary": "" },
         "top": { "itemId": "1980sFormalTop", "score": 1.0, "commentary": "" },
         "bottom": { "itemId": "1980sFormalBottom", "score": 1.0, "commentary": "" },
-        "shoes": { "itemId": "1980FormalShoes", "score": 1.0, "commentary": "" }
+        "shoes": { "itemId": "1980sFormalShoes", "score": 1.0, "commentary": "" }
       }
     },
     {
