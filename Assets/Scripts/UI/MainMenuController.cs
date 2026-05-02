@@ -299,8 +299,9 @@ namespace Assets.Scripts.UI
         }
 
         /// <summary>
-        /// Fills the credits scroll with section headings and one label per name (no role sub-lines); third-party
-        /// lines appear only when <see cref="CreditsCatalog.ThirdPartyAttributions"/> has entries.
+        /// Fills the credits scroll with section headings and one label per name (no role sub-lines); repeats names
+        /// across sections when catalog lists them for multiple teams. Third-party lines appear only when
+        /// <see cref="CreditsCatalog.ThirdPartyAttributions"/> has entries (wrapped attribution text).
         /// </summary>
         private void BuildCreditsScrollContent()
         {

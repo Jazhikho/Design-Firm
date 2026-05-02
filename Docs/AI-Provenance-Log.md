@@ -17,6 +17,17 @@ Disclosure and audit trail for AI-assisted work. Update when committing signific
 
 **Date:** 2026-05-02  
 **Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** Credits content and presentation: multi-section team names, Pixabay/font third-party lines, Claude in AI list; inset themed scrollbar and Close button styling; sync `Docs/Assets.md` / `Docs/Credits.md`.  
+**Input materials used:** User-provided role mapping and asset URLs; `CreditsCatalog.cs`, `MainMenuStylesheet.uss`, `MainMenuController.cs`, `VERSION.md`, `Docs/Assets.md`, `Docs/Credits.md`, this log.  
+**Summary of AI contribution:** Rebuilt `TeamByFunctionSections` with duplicate names across teams; populated `ThirdPartyAttributions` and `AiAssistanceNames` (added Claude); USS for `#CreditsScroll` vertical scroller margins and slider track/dragger/low-high buttons; `#CreditsCloseButton` sizing/color atop `.button-common`; documentation sync; internal label 1.0.0.3.  
+**What the human accepted / rejected / changed:** (pending review)  
+**Validation method used:** C# lints on edited scripts; USS class names per Unity ScrollView manual (vertical scroller / base slider).  
+**Final approver:** (if applicable)  
+
+---
+
+**Date:** 2026-05-02  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
 **Task purpose:** Clear UI Toolkit USS validator warnings: unsupported CSS-style properties; fix empty Image `source` semantic warning in Results UXML.  
 **Input materials used:** `WardrobeStylesheet.uss`, `MainMenuStylesheet.uss`, `ResultsUI.uxml`, `VERSION.md`, this log.  
 **Summary of AI contribution:** Removed `box-sizing`, `column-gap`, `z-index`; replaced gap with `#sandboxF { margin-right: 8px }`; documented overlay draw order; removed `source=""` from Gianna `ui:Image`; internal label 1.0.0.2.  
