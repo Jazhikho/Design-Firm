@@ -222,9 +222,11 @@
 }
 
 .shoeRack {
-    background-image: url("project://database/Assets/Art/UI/Clickables/shoeRackPlain.png?fileID=-7839403241852442443&guid=a7567da19081f1e459fa15c73c3778bc&type=3#shoeRackPlain_0");
+    background-image: url("project://database/Assets/Art/UI/Clickables/shoeRackPlain.png?fileID=2800000&guid=309ab8a8051763e47b7ca0e47df3d8f0&type=3#shoeRackPlain");
+    background-size: cover;
 }
 
 .shoeRack:hover {
-    background-image: url("project://database/Assets/Art/UI/Clickables/shoeRackOutline.png?fileID=-1552157400154358130&guid=746b59cb07f400542b121ec2c4df0292&type=3#shoeRackOutline_0");
+    background-image: url("project://database/Assets/Art/UI/Clickables/shoeRackOutline.png?fileID=2800000&guid=21428c23e6c2c0f47b547580bf605755&type=3#shoeRackOutline");
+    background-size: cover;
 }
