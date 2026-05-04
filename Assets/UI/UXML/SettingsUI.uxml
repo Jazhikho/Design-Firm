@@ -2,18 +2,18 @@
     <Style src="project://database/Assets/UI/USS/CommonStylesheet.uss?fileID=7433441132597879392&amp;guid=8e23400638b471247abded66e2e9521e&amp;type=3#CommonStylesheet"/>
     <Style src="project://database/Assets/UI/USS/SettingsStylesheet.uss?fileID=7433441132597879392&amp;guid=244f133b657301f4e8a5f109d8b337dd&amp;type=3#SettingsStylesheet"/>
     <ui:VisualElement name="AppDocumentRoot" class="app-document-root">
-        <ui:Image class="background-runway full-panel-background-scale"/>
+        <ui:Image name="imgBackground" class="background-runway"/>
         <ui:VisualElement name="topRow" class="topRow">
             <ui:Button name="MainMenuButton" text="Back" class="button-common"/>
         </ui:VisualElement>
-        <ui:VisualElement name="root">
-            <ui:VisualElement name="SliderElement">
-                <ui:Label text="Sound" name="labelSound"/>
-                <ui:Slider label="Master" value="50" high-value="100" name="MasterSlider"/>
-            </ui:VisualElement>
+        <ui:VisualElement name="root" class="middle-row" style="border-right-width: 50px; border-left-width: 50px;">
+            <ui:ScrollView class="settings-panel">
+                <ui:Label text="Audio" name="labelSound" class="settings-header" style="margin-top: 10px; margin-bottom: 10px;"/>
+                <ui:Slider label="Master Volume" value="50" high-value="100" name="MasterSlider" class="slider" style="font-size: 24px;"/>
+            </ui:ScrollView>
         </ui:VisualElement>
         <ui:VisualElement name="bottomRow" class="bottomRow">
-            <ui:Image source="project://database/Assets/Art/UI/Sew%20It%20Goes%20Logo-small.png?fileID=21300000&amp;guid=118a4da3414f6e44a9f87cdf843ce0b1&amp;type=3#Sew It Goes Logo-small" class="game-logo-small"/>
+            <ui:Image source="project://database/Assets/Art/UI/Sew%20It%20Goes%20Logo-small-shadowed.png?fileID=21300000&amp;guid=da32d1e9dd949b64ab6b973578ac13d5&amp;type=3#Sew It Goes Logo-small-shadowed" class="game-logo-small"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

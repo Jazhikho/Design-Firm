@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NavigationManager
   fadeColor: {r: 0.8784314, g: 0.4392157, b: 0.5647059, a: 1}
-  fadeDuration: 0.5
+  fadeDuration: 0.4
 --- !u!1 &860792009
 GameObject:
   m_ObjectHideFlags: 0

@@ -68,6 +68,19 @@ namespace Assets.Scripts.UI
         };
 
         /// <summary>
+        /// Defines the five slot indicator icons rendered in the corners / right edge of each tile.
+        /// <c>slot</c> is null for the Dress icon, which is driven by <see cref="WardrobeItem.coversBottom"/> instead.
+        /// </summary>
+        private static readonly (string key, string posClass, ClothingSlot? slot, bool isDress)[] SlotIconDefs =
+        {
+            ("UI/Icon_Jacket.png", "slot-icon--jacket", ClothingSlot.Jacket, false),
+            ("UI/Icon_Top.png",    "slot-icon--top",    ClothingSlot.Top,    false),
+            ("UI/Icon_Bottom.png", "slot-icon--bottom", ClothingSlot.Bottom, false),
+            ("UI/Icon_Shoes.png",  "slot-icon--shoes",  ClothingSlot.Shoes,  false),
+            ("UI/Icon_Dress.png",  "slot-icon--dress",  null,                true),
+        };
+
+        /// <summary>
         /// Chooses next-scene routing, caches UI references, and binds callbacks.
         /// </summary>
         private void OnEnable()
@@ -388,6 +401,17 @@ namespace Assets.Scripts.UI
                 // Select this item
                 SetSlotItem(slot, item);
                 UpdateSlotSelection(slot, clickedButton);
+
+                if (slot == ClothingSlot.Top && item.coversBottom)
+                {
+                    SetSlotItem(ClothingSlot.Bottom, null);
+                    UpdateSlotSelection(ClothingSlot.Bottom, null);
+                }
+                else if (slot == ClothingSlot.Bottom && WardrobeState.Instance.CurrentItemTop?.coversBottom == true)
+                {
+                    SetSlotItem(ClothingSlot.Top, null);
+                    UpdateSlotSelection(ClothingSlot.Top, null);
+                }
             }
         }
 
@@ -455,6 +479,8 @@ namespace Assets.Scripts.UI
                 AddFallbackLabel(button, item.name);
             }
 
+            AddSlotIcons(button, item);
+
             TileButtonData tileButtonData = new(item);
             button.RegisterCallback<ClickEvent, TileButtonData>(WardrobeItemClicked, tileButtonData);
             button.RegisterCallback<PointerEnterEvent, TileButtonData>(WardrobeTilePointerEntered, tileButtonData);
@@ -478,6 +504,37 @@ namespace Assets.Scripts.UI
             ClothingSlot.Shoes => "wardrobe-tile-image--shoes",
             _ => string.Empty,
         };
+
+        /// <summary>
+        /// Creates the five slot indicator icon elements and adds them to <paramref name="button"/>.
+        /// Only the icon(s) matching the item's slot are made visible; for <c>coversBottom</c> tops
+        /// both the Top icon and the Dress icon are shown.
+        /// Sprites are loaded on-demand via Addressables (which caches internally across tiles).
+        /// </summary>
+        private void AddSlotIcons(Button button, WardrobeItem item)
+        {
+            foreach (var (key, posClass, slot, isDress) in SlotIconDefs)
+            {
+                bool visible = isDress
+                    ? item.SlotType == ClothingSlot.Top && item.coversBottom
+                    : item.SlotType == slot;
+
+                VisualElement icon = new();
+                icon.AddToClassList("slot-icon");
+                icon.AddToClassList(posClass);
+                icon.pickingMode = PickingMode.Ignore;
+
+                if (visible)
+                {
+                    icon.AddToClassList("slot-icon--visible");
+                    string capturedKey = key;
+                    LoadSprite(capturedKey,
+                        sprite => icon.style.backgroundImage = new StyleBackground(sprite));
+                }
+
+                button.Add(icon);
+            }
+        }
 
         #endregion
 

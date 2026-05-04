@@ -165,6 +165,45 @@
     align-items: center;
 }
 
+/* Slot indicator icons overlaid on each clothing tile */
+.slot-icon {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    -unity-background-scale-mode: scale-to-fit;
+    display: none;
+}
+
+.slot-icon--jacket {
+    left: 4px;
+    top: 4px;
+}
+
+.slot-icon--top {
+    right: 4px;
+    top: 4px;
+}
+
+.slot-icon--bottom {
+    right: 4px;
+    bottom: 4px;
+}
+
+.slot-icon--shoes {
+    left: 4px;
+    bottom: 4px;
+}
+
+/* Right edge, vertically centred between the top-right and bottom-right corner icons */
+.slot-icon--dress {
+    right: 4px;
+    top: 86px;
+}
+
+.slot-icon--visible {
+    display: flex;
+}
+
 .stacked-image {
     position: absolute;
     left: 0;
@@ -176,21 +215,21 @@
 
 .scenario-description {
     -unity-font-definition: url("project://database/Assets/UI/Fonts/DMSans-VariableFont_opsz,wght.ttf?fileID=12800000&guid=67849e8619a53d749898b7e60ed76be0&type=3#DMSans-VariableFont_opsz,wght");
-    -unity-text-align: middle-center;
     align-self: center;
     align-items: center;
-    padding-top: 5px;
-    padding-right: 5px;
-    padding-bottom: 5px;
-    padding-left: 5px;
-    margin-top: 0;
     margin-right: 10px;
-    margin-bottom: 0;
     margin-left: 10px;
     font-size: 14px;
     color: rgb(250, 212, 224);
     -unity-font-style: bold;
     text-overflow: ellipsis;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    -unity-text-align: middle-center;
 }
 
 .timer-label {
@@ -279,18 +318,4 @@
 
 .clothing-item-list .unity-scroller__low-button {
     display: none;
-}
-
-.textbox {
-    background-color: rgb(39, 35, 35);
-    border-left-color: rgb(240, 128, 152);
-    border-right-color: rgb(240, 128, 152);
-    border-top-color: rgb(240, 128, 152);
-    border-bottom-color: rgb(240, 128, 152);
-    border-top-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border-top-width: 3px;
-    border-right-width: 3px;
-    border-bottom-width: 3px;
-    border-left-width: 3px;
 }

@@ -1,4 +1,4 @@
-using Assets.Scripts.Core;
+﻿using Assets.Scripts.Core;
 using Assets.Scripts.Data;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,7 +19,7 @@ public class CreditsController : MonoBehaviour
         _btnBack = root.Q<Button>("btnBack");
         _btnBack?.RegisterCallback<ClickEvent>(OnCreditsCloseButtonClick);
 
-        _scrollCredits = root.Q<ScrollView>("");
+        _scrollCredits = root.Q<ScrollView>("CreditsScroll");
 
         BuildCreditsScrollContent();
     }

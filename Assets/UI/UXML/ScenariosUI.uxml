@@ -6,18 +6,18 @@
         <ui:VisualElement name="topRow" class="topRow">
             <ui:Button text="Back" name="btnBack" class="button-common"/>
         </ui:VisualElement>
-        <ui:VisualElement name="middleRow" style="flex-grow: 1; min-height: 0; min-width: 0;">
+        <ui:VisualElement name="middleRow" style="flex-grow: 1; min-height: 0; min-width: 0; margin-right: 25%; margin-left: 25%;">
             <ui:Label text="Label" name="lblErrorMessage" class="status-label" style="display: none;"/>
-            <ui:VisualElement name="filtersRow" style="flex-direction: row; justify-content: center;">
+            <ui:VisualElement name="filtersRow" style="flex-direction: row; justify-content: space-evenly;">
                 <ui:VisualElement name="decadeFilters"/>
                 <ui:VisualElement name="categoryFilters"/>
             </ui:VisualElement>
-            <ui:VisualElement style="flex-grow: 1; flex-direction: row; min-height: 0; min-width: 0; visibility: visible; justify-content: center;">
+            <ui:VisualElement style="flex-grow: 1; flex-direction: row; justify-content: center; padding-right: 20px; padding-left: 20px;">
                 <ui:ScrollView name="scrollScenariosList" mode="Vertical" class="scenarios-list-scroll" style="-unity-slice-type: tiled; -unity-slice-left: 526; -unity-slice-top: 526; -unity-slice-right: 526; -unity-slice-bottom: 526; -unity-slice-scale: 0.6px;"/>
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="bottomRow" class="bottomRow">
-            <ui:Image source="project://database/Assets/Art/UI/Sew%20It%20Goes%20Logo-small.png?fileID=21300000&amp;guid=118a4da3414f6e44a9f87cdf843ce0b1&amp;type=3#Sew It Goes Logo-small" class="game-logo-small"/>
+            <ui:Image source="project://database/Assets/Art/UI/Sew%20It%20Goes%20Logo-small-shadowed.png?fileID=21300000&amp;guid=da32d1e9dd949b64ab6b973578ac13d5&amp;type=3#Sew It Goes Logo-small-shadowed" class="game-logo-small"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

@@ -5,8 +5,8 @@
         <ui:Image name="imgBackground" class="wardrobe-room-background"/>
         <ui:VisualElement name="topRow" class="topRow">
             <ui:Button text="&lt; Back" name="btnBack" class="button-common"/>
-            <ui:VisualElement class="textbox" style="margin-left: 10px;">
-                <ui:Label text="1980s Formal" name="scenarioDesc" class="scenario-description" style="padding-right: 25px; padding-left: 25px;"/>
+            <ui:VisualElement class="textbox" style="margin-left: 10px; padding-right: 25px; padding-left: 25px;">
+                <ui:Label text="1980s Formal" name="scenarioDesc" class="scenario-description"/>
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="middleRow" style="flex-direction: row; flex-grow: 1; min-height: 0; min-width: 0; padding-right: 25px; padding-left: 25px;">
@@ -25,8 +25,8 @@
                     <ui:Button text="shoes" name="btnShoesFilter" class="button-common filter-button"/>
                 </ui:ToggleButtonGroup>
                 <ui:VisualElement class="textbox" style="height: 70px;">
-                    <ui:Label text="Clothing Item Descriptions" name="hoverItemDesc" class="scenario-description"/>
-                    <ui:Label text="Label" name="lblWarning" class="scenario-description" style="color: rgb(224, 112, 144);"/>
+                    <ui:Label text="Clothing Item Descriptions" name="hoverItemDesc" class="scenario-description" style="-unity-text-align: upper-center;"/>
+                    <ui:Label text="Label" name="lblWarning" class="scenario-description" style="color: rgb(224, 112, 144); -unity-text-align: lower-center;"/>
                 </ui:VisualElement>
                 <ui:ScrollView name="clothingItemsList" mode="Vertical" class="clothing-item-list"/>
                 <ui:Button name="nextSceneButton" class="submit-button button-common" style="width: 325px; flex-direction: row; align-self: center; margin-top: 10px;">
@@ -36,7 +36,7 @@
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="bottomRow" class="bottomRow">
-            <ui:Image source="project://database/Assets/Art/UI/Sew%20It%20Goes%20Logo-small.png?fileID=21300000&amp;guid=118a4da3414f6e44a9f87cdf843ce0b1&amp;type=3#Sew It Goes Logo-small" name="Image" class="game-logo-small"/>
+            <ui:Image source="project://database/Assets/Art/UI/Sew%20It%20Goes%20Logo-small-shadowed.png?fileID=21300000&amp;guid=da32d1e9dd949b64ab6b973578ac13d5&amp;type=3#Sew It Goes Logo-small-shadowed" name="Image" class="game-logo-small"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

@@ -3,14 +3,16 @@
     <Style src="project://database/Assets/UI/USS/CreditsStylesheet.uss?fileID=7433441132597879392&amp;guid=efb1ac394bb874a44b6475376507f7e4&amp;type=3#CreditsStylesheet"/>
     <ui:VisualElement class="app-document-root" style="flex-grow: 1;">
         <ui:Image class="background-runway"/>
-        <ui:VisualElement name="topRow" class="topRow" style="flex-grow: 1;">
-            <ui:Button text="Button" name="btnBack" class="button-common"/>
+        <ui:VisualElement name="topRow" class="topRow">
+            <ui:Button text="Back" name="btnBack" class="button-common"/>
         </ui:VisualElement>
-        <ui:VisualElement name="middleRow" style="flex-grow: 1; padding-right: 50px; padding-left: 50px;">
-            <ui:ScrollView style="background-image: url(&quot;project://database/Assets/Art/UI/Panels/UIPanel3.png?fileID=-3657673086416332405&amp;guid=139033b5b1bc28a47aeb7effa178cc12&amp;type=3#UIPanel3_0&quot;);"/>
+        <ui:VisualElement name="middleRow" style="flex-grow: 1; padding-right: 50px; padding-left: 50px; margin-right: 20px; margin-left: 20px;">
+            <ui:VisualElement style="flex-grow: 1; background-image: url(&quot;project://database/Assets/Art/UI/Panels/UIPanel1.png?fileID=-2169736900652779216&amp;guid=f08f96d1ee06bf045a24fab765205359&amp;type=3#UIPanel1_0&quot;); -unity-slice-left: 200; -unity-slice-top: 200; -unity-slice-right: 200; -unity-slice-bottom: 200; padding-top: 150px; padding-right: 150px; padding-bottom: 150px; padding-left: 150px;">
+                <ui:ScrollView name="CreditsScroll" style="background-image: none;"/>
+            </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="bottomRow" class="bottomRow">
-            <ui:Image source="project://database/Assets/Art/UI/Sew%20It%20Goes%20Logo-small.png?fileID=21300000&amp;guid=118a4da3414f6e44a9f87cdf843ce0b1&amp;type=3#Sew It Goes Logo-small" class="game-logo-small"/>
+            <ui:Image source="project://database/Assets/Art/UI/Sew%20It%20Goes%20Logo-small-shadowed.png?fileID=21300000&amp;guid=da32d1e9dd949b64ab6b973578ac13d5&amp;type=3#Sew It Goes Logo-small-shadowed" class="game-logo-small"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

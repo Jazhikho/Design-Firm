@@ -13,6 +13,8 @@ namespace Assets.Scripts.UI
     [RequireComponent(typeof(UIDocument))]
     public class ResultsController : MonoBehaviour
     {
+        [SerializeField] private ParticleSystem _confettiSystem;
+
         private Button _retryButton;
         private Button _mainMenuButton;
         private Button _retryScenarioButton;
@@ -224,6 +226,18 @@ namespace Assets.Scripts.UI
 
             float shoesScore = ScoreItem(WardrobeState.Instance.CurrentItemShoe, idealOutfit?.shoes, scoredItems);
             AssignStarImage(shoesScore, _root.Q<Image>("imgShoesStarScore"));
+
+            float totalScore = jacketScore + topScore + bottomScore + shoesScore;
+            if (totalScore >= 4.0f)
+            {
+                AudioManager.TryPlayIdealOutfitMatchSfx();
+                if (_confettiSystem != null)
+                    _confettiSystem.Play();
+            }
+            else
+            {
+                AudioManager.TryPlayLessThanIdealOutfitMatchSfx();
+            }
         }
 
         private void AssignStarImage(float score, Image starImagePlaceholder)

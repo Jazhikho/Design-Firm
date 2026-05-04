@@ -76,17 +76,22 @@
 }
 
 .scenario-card {
-    width: 200px;
-    min-height: 200px;
+    width: 255px;
+    min-height: 250px;
     margin: 8px;
     padding: 12px;
     border-width: 2px;
-    border-color: rgba(244, 167, 188, 0.3);
+    border-color: rgb(240, 128, 152);
     border-radius: 6px;
     flex-shrink: 0;
     align-items: center;
     background-color: rgb(30, 30, 30);
-    height: 250px;
+    height: 175px;
+}
+
+.scenario-card:hover {
+    border-width: 3px;
+    border-color: rgb(240, 128, 152);
 }
 
 .scenario-card-name {
@@ -95,7 +100,7 @@
     -unity-text-align: upper-center;
     white-space: normal;
     margin-bottom: 8px;
-    color: rgb(244, 167, 188);
+    color: rgb(240, 128, 152);
 }
 
 .scenario-card-description {

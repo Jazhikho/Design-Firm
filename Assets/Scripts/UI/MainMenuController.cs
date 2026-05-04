@@ -48,6 +48,9 @@ namespace Assets.Scripts.UI
             _settingsButton = _root.Q<Button>("SettingsButton");
             _settingsButton?.RegisterCallback<ClickEvent>(OnSettingsButtonClick);
 
+            _creditsButton = _root.Q<Button>("CreditsButton");
+            _creditsButton?.RegisterCallback<ClickEvent>(OnCreditsButtonClick);
+
             _quitButton = _root.Q<Button>("QuitButton");
             if (Application.platform == RuntimePlatform.WebGLPlayer)
                 _quitButton.style.display = DisplayStyle.None;

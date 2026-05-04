@@ -4,25 +4,21 @@
     <ui:VisualElement name="MainMenuRoot" class="app-document-root">
         <ui:Image name="imgBackground" class="background-runway"/>
         <ui:Image source="project://database/Assets/Art/UI/Sew%20It%20Goes%20Logo.png?fileID=2800000&amp;guid=3cb41c076ba23e141a7305055afd53a0&amp;type=3#Sew It Goes Logo" name="imgGameLogo" class="logo-image" style="width: 1135px; height: 300px;"/>
-        <ui:VisualElement name="middleRow" style="flex-grow: 1;">
-            <ui:Button text="Play" name="PlayButton" class="button-common main-menu-button"/>
-            <ui:Button text="Sandbox" name="SandboxButton" class="button-common main-menu-button"/>
+        <ui:VisualElement name="middleRow" style="flex-grow: 1; padding-left: 20px; padding-right: 20px;">
+            <ui:VisualElement name="playElements" style="flex-direction: row; align-self: center;"/>
+            <ui:Label text="&apos;Play&apos; lets you choose a scenario and try to match the ideal outfit before the time runs out." name="lblPlayInstructions" class="textbox tutorial-text"/>
+            <ui:Button text="Play" name="PlayButton" class="button-common main-menu-button" style="margin-top: 0;"/>
+            <ui:Label text="&apos;Sandbox&apos; lets you choose your avatar and freely dress them without the pressure of a timer." name="lblSandboxInstructions" class="textbox tutorial-text" style="align-self: center; margin-top: 20px;"/>
+            <ui:Button text="Sandbox" name="SandboxButton" class="button-common main-menu-button" style="margin-top: 0;"/>
             <ui:VisualElement name="SubMenu" class="main-menu-sandbox-flyout">
                 <ui:Button text="Female" name="sandboxF" class="button-common sandbox-option-button"/>
                 <ui:Button text="Male" name="sandboxM" class="button-common sandbox-option-button"/>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="bottomRow" style="flex-grow: 1;">
+        <ui:VisualElement name="bottomRow" style="flex-grow: 1; flex-direction: row; justify-content: space-around; padding-right: 50px; padding-left: 50px;">
             <ui:Button text="Settings" name="SettingsButton" class="button-common main-menu-button"/>
             <ui:Button text="Credits" name="CreditsButton" class="button-common main-menu-button"/>
             <ui:Button text="Quit" name="QuitButton" class="button-common main-menu-button"/>
-            <ui:VisualElement name="CreditsOverlay">
-                <ui:VisualElement name="CreditsDialog" style="flex-direction: column; flex-grow: 0; flex-shrink: 0;">
-                    <ui:Label name="CreditsTitle" text="Credits" emoji-fallback-support="false"/>
-                    <ui:ScrollView name="CreditsScroll" mode="Vertical" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Auto"/>
-                    <ui:Button name="CreditsCloseButton" text="Close" class="button-common"/>
-                </ui:VisualElement>
-            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>
