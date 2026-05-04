@@ -123,7 +123,7 @@
 
 
 
-#scrollScenariosList #unity-tracker {
+Scroller #unity-tracker {
     background-image: url("project://database/Assets/Art/UI/Sliders/Slider_Sew.png?fileID=2800000&guid=70febfc68954cbe449e4bf0a19e96323&type=3#Slider_Sew");
     -unity-slice-type: tiled;
     -unity-slice-left: 300;
@@ -138,10 +138,9 @@
     border-bottom-color: rgba(0, 0, 0, 0);
 }
 
-#scrollScenariosList #unity-dragger {
+Scroller #unity-dragger {
     background-color: rgba(255, 255, 255, 0);
     background-image: url("project://database/Assets/Art/UI/Sliders/Dragger_Sew.png?fileID=2800000&guid=f6e9df0b2c7b7db4da7f8ef8dd9e0574&type=3#Dragger_Sew");
-    width: 34px;
     -unity-slice-type: tiled;
     -unity-slice-left: 212;
     -unity-slice-top: 212;
@@ -150,14 +149,13 @@
     -unity-slice-scale: 0.1px;
 }
 
-#scrollScenariosList #unity-dragger-border {
-}
 
-#scrollScenariosList #unity-low-button {
+
+Scroller #unity-low-button {
     visibility: hidden;
 }
 
-#scrollScenariosList #unity-high-button {
+Scroller #unity-high-button {
     visibility: hidden;
 }
 
