@@ -49,25 +49,23 @@
 .filter-button {
     margin: 4px;
     padding: 6px 12px;
-    background-color: rgb(42, 42, 42);
-    color: rgb(192, 176, 176);
-    border-left-color: rgb(64, 64, 64);
-    border-right-color: rgb(64, 64, 64);
-    border-top-color: rgb(64, 64, 64);
-    border-bottom-color: rgb(64, 64, 64);
-    border-left-width: 1px;
-    border-right-width: 1px;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
+    background-color: rgba(42,42,42,1);
+    color: rgba(192,176,176,1);
+    border-color: rgba(64,64,64,1);
+    border-width: 1px;
+}
+
+.filter-button:hover {
+    background-color: rgba(61,56,56,1);
+    color: rgba(245,240,232,1);
+    border-color: rgba(192,144,168,1);
+    translate: 0 -1px;
 }
 
 .filter-button:checked {
-    background-color: rgb(240, 128, 152);
-    color: rgb(42, 42, 42);
-    border-left-color: rgb(240, 128, 152);
-    border-right-color: rgb(240, 128, 152);
-    border-top-color: rgb(240, 128, 152);
-    border-bottom-color: rgb(240, 128, 152);
+    background-color: rgba(240,128,152,1);
+    color: rgba(42,26,32,1);
+    border-color: rgba(224,112,144,1);
 }
 
 .status-label-error {

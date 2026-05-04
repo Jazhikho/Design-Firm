@@ -1,7 +1,27 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace Assets.Scripts.Core
 {
+    public enum SfxType
+    {
+        CommonButton,
+        SubmitOutfit,
+        IdealOutfitMatch,
+        LessThanIdealOutfitMatch,
+        EquipClothingItem,
+        TimerEnd
+    }
+
+    [Serializable]
+    public class SfxEntry
+    {
+        public SfxType Type;
+        public AudioClip Clip;
+    }
+
     /// <summary>
     /// Singleton audio manager that persists across scenes.
     /// Owns one AudioSource for UI/gameplay SFX and a second for looping background music.
@@ -13,34 +33,41 @@ namespace Assets.Scripts.Core
         /// <summary>The single instance shared across all scenes.</summary>
         public static AudioManager Instance { get; private set; }
 
-        [Header("SFX – UI")]
-        [SerializeField] private AudioClip _buttonSfx;
+        private const string MasterVolumeParam = "MasterVolume";
+        private const string MusicVolumeParam = "MusicVolume";
+        private const string SfxVolumeParam = "SFXVolume";
+
+        private const string MasterVolumeKey = "volume_master";
+        private const string MusicVolumeKey = "volume_music";
+        private const string SfxVolumeKey = "volume_sfx";
+
+        private const float DefaultVolume = 1f;
+        private const float MinDb = -80f;
+        private const float MaxDb = 0f;
+
+        [Header("Mixer")]
+        [SerializeField] private AudioMixer audioMixer;
+        [SerializeField] private AudioMixerGroup sfxMixerGroup;
+        [SerializeField] private AudioMixerGroup musicMixerGroup;
 
         [Header("Music")]
-        [SerializeField] private AudioClip _backgroundMusic;
-        [SerializeField] [Range(0f, 1f)] private float _musicVolume = 0.5f;
+        [SerializeField] private AudioClip backgroundMusic;
+        [SerializeField] private bool playMusicOnStart = true;
 
-        [Header("SFX – Gameplay")]
-        [SerializeField] private AudioClip _submitOutfitSfx;
-        [SerializeField] private AudioClip _idealOutfitMatchSfx;
-        [SerializeField] private AudioClip _lessThanIdealOutfitMatchSfx;
-        [SerializeField] private AudioClip _equipClothingItemSfx;
-        [SerializeField] private AudioClip _timerEndSfx;
+        [Header("SFX")]
+        [SerializeField] private List<SfxEntry> sfxEntries = new();
 
-        private AudioSource _audioSource;
+        private readonly Dictionary<SfxType, AudioClip> _sfxClips = new();
+
+        private AudioSource _sfxSource;
         private AudioSource _musicSource;
 
-        /// <summary>
-        /// Duration of the button SFX in seconds.
-        /// Returns 0 if no clip is assigned — callers can safely wait this long before acting.
-        /// </summary>
-        public float ButtonSfxLength => _buttonSfx != null ? _buttonSfx.length : 0f;
+        public float MasterVolume => PlayerPrefs.GetFloat(MasterVolumeKey, DefaultVolume);
+        public float MusicVolume => PlayerPrefs.GetFloat(MusicVolumeKey, DefaultVolume);
+        public float SfxVolume => PlayerPrefs.GetFloat(SfxVolumeKey, DefaultVolume);
 
-        /// <summary>
-        /// Enforces singleton, survives scene loads, caches the SFX AudioSource,
-        /// creates a dedicated music AudioSource, and starts background music.
-        /// Duplicate instances (e.g. from scene reloads) are destroyed immediately.
-        /// </summary>
+        public float CommonButtonSfxLength => GetSfxLength(SfxType.CommonButton);
+
         private void Awake()
         {
             if (Instance != null && Instance != this)
@@ -52,164 +79,184 @@ namespace Assets.Scripts.Core
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            _audioSource = GetComponent<AudioSource>();
+            _sfxSource = GetComponent<AudioSource>();
+            _sfxSource.playOnAwake = false;
+            _sfxSource.volume = 1f;
+            _sfxSource.outputAudioMixerGroup = sfxMixerGroup;
 
             _musicSource = gameObject.AddComponent<AudioSource>();
             _musicSource.loop = true;
             _musicSource.playOnAwake = false;
+            _musicSource.volume = 1f;
+            _musicSource.outputAudioMixerGroup = musicMixerGroup;
 
-            StartBackgroundMusic();
+            BuildSfxLookup();
         }
 
-        private void StartBackgroundMusic()
+        private void Start()
         {
-            if (_backgroundMusic == null) return;
-            _musicSource.clip = _backgroundMusic;
-            _musicSource.volume = _musicVolume;
+            ApplySavedVolumes();
+
+            if (playMusicOnStart)
+                PlayBackgroundMusic();
+        }
+
+        private void OnValidate()
+        {
+            if (sfxEntries == null)
+                return;
+
+            HashSet<SfxType> seenTypes = new();
+
+            foreach (SfxEntry entry in sfxEntries)
+            {
+                if (entry == null)
+                    continue;
+
+                if (!seenTypes.Add(entry.Type))
+                    Debug.LogWarning($"Duplicate SFX entry found for {entry.Type}. Only one should exist.", this);
+            }
+        }
+
+        private void BuildSfxLookup()
+        {
+            _sfxClips.Clear();
+
+            foreach (SfxEntry entry in sfxEntries)
+            {
+                if (entry == null)
+                    continue;
+
+                if (entry.Clip == null)
+                {
+                    Debug.LogWarning($"SFX entry '{entry.Type}' has no AudioClip assigned.", this);
+                    continue;
+                }
+
+                if (_sfxClips.ContainsKey(entry.Type))
+                {
+                    Debug.LogWarning($"Duplicate SFX entry '{entry.Type}' ignored.", this);
+                    continue;
+                }
+
+                _sfxClips.Add(entry.Type, entry.Clip);
+            }
+        }
+
+        public void PlaySfx(SfxType type)
+        {
+            if (_sfxSource == null)
+            {
+                Debug.LogWarning("SFX source is missing; SFX was skipped.", this);
+                return;
+            }
+
+            if (!_sfxClips.TryGetValue(type, out AudioClip clip) || clip == null)
+            {
+                Debug.LogWarning($"Missing SFX clip for {type}.", this);
+                return;
+            }
+
+            _sfxSource.PlayOneShot(clip);
+        }
+
+        public static void TryPlaySfx(SfxType type)
+        {
+            if (Instance == null)
+            {
+                Debug.LogWarning($"AudioManager.Instance is null; SFX '{type}' was skipped.");
+                return;
+            }
+
+            Instance.PlaySfx(type);
+        }
+
+        public void PlayBackgroundMusic()
+        {
+            if (_musicSource == null)
+            {
+                Debug.LogWarning("Music source is missing; background music was skipped.", this);
+                return;
+            }
+
+            if (backgroundMusic == null)
+            {
+                Debug.LogWarning("No background music clip assigned.", this);
+                return;
+            }
+
+            if (_musicSource.clip == backgroundMusic && _musicSource.isPlaying)
+                return;
+
+            _musicSource.clip = backgroundMusic;
             _musicSource.Play();
         }
 
-        #region Music volume
-
-        /// <summary>Gets or sets the background music volume (0–1).</summary>
-        public float MusicVolume
+        public void StopBackgroundMusic()
         {
-            get => _musicSource.volume;
-            set => _musicSource.volume = Mathf.Clamp01(value);
+            if (_musicSource != null)
+                _musicSource.Stop();
         }
 
-        public static bool TryGetMusicVolume(out float volume)
+        public void SetMasterVolume(float value)
         {
-            if (Instance != null) { volume = Instance.MusicVolume; return true; }
-            volume = 1f;
-            return false;
+            SetVolume(MasterVolumeParam, MasterVolumeKey, value);
         }
 
-        public static bool TrySetMusicVolume(float volume)
+        public void SetMusicVolume(float value)
         {
-            if (Instance != null) { Instance.MusicVolume = volume; return true; }
-            return false;
+            SetVolume(MusicVolumeParam, MusicVolumeKey, value);
         }
 
-        #endregion
-
-        #region SFX – UI
-
-        /// <summary>
-        /// Plays the button SFX via PlayOneShot so rapid clicks layer instead of cutting off.
-        /// </summary>
-        public void PlayButtonSfx()
+        public void SetSfxVolume(float value)
         {
-            if (_buttonSfx != null)
-                _audioSource.PlayOneShot(_buttonSfx);
+            SetVolume(SfxVolumeParam, SfxVolumeKey, value);
         }
 
-        public static void TryPlayButtonSfx()
+        private void ApplySavedVolumes()
         {
-            if (Instance != null)
-                Instance.PlayButtonSfx();
-            else
-                Debug.LogWarning("AudioManager.Instance is null; button SFX was skipped.");
+            SetMixerVolume(MasterVolumeParam, MasterVolume);
+            SetMixerVolume(MusicVolumeParam, MusicVolume);
+            SetMixerVolume(SfxVolumeParam, SfxVolume);
         }
 
-        #endregion
-
-        #region SFX – Gameplay
-
-        public void PlaySubmitOutfitSfx()
+        private void SetVolume(string mixerParam, string prefsKey, float value)
         {
-            if (_submitOutfitSfx != null)
-                _audioSource.PlayOneShot(_submitOutfitSfx);
+            value = Mathf.Clamp01(value);
+
+            PlayerPrefs.SetFloat(prefsKey, value);
+            PlayerPrefs.Save();
+
+            SetMixerVolume(mixerParam, value);
         }
 
-        public static void TryPlaySubmitOutfitSfx()
+        private void SetMixerVolume(string mixerParam, float linearValue)
         {
-            if (Instance != null)
-                Instance.PlaySubmitOutfitSfx();
-            else
-                Debug.LogWarning("AudioManager.Instance is null; submit outfit SFX was skipped.");
+            if (audioMixer == null)
+            {
+                Debug.LogWarning($"AudioMixer is not assigned. Could not set '{mixerParam}'.", this);
+                return;
+            }
+
+            float dbValue = LinearToDecibels(linearValue);
+
+            if (!audioMixer.SetFloat(mixerParam, dbValue))
+                Debug.LogWarning($"AudioMixer parameter '{mixerParam}' was not found. Check exposed parameter name.", this);
         }
 
-        public void PlayIdealOutfitMatchSfx()
+        private static float LinearToDecibels(float linearValue)
         {
-            if (_idealOutfitMatchSfx != null)
-                _audioSource.PlayOneShot(_idealOutfitMatchSfx);
+            if (linearValue <= 0.0001f)
+                return MinDb;
+
+            return Mathf.Clamp(Mathf.Log10(linearValue) * 20f, MinDb, MaxDb);
         }
 
-        public static void TryPlayIdealOutfitMatchSfx()
+        private float GetSfxLength(SfxType type)
         {
-            if (Instance != null)
-                Instance.PlayIdealOutfitMatchSfx();
-            else
-                Debug.LogWarning("AudioManager.Instance is null; ideal outfit match SFX was skipped.");
+            return _sfxClips.TryGetValue(type, out AudioClip clip) && clip != null
+                ? clip.length
+                : 0f;
         }
-
-        public void PlayLessThanIdealOutfitMatchSfx()
-        {
-            if (_lessThanIdealOutfitMatchSfx != null)
-                _audioSource.PlayOneShot(_lessThanIdealOutfitMatchSfx);
-        }
-
-        public static void TryPlayLessThanIdealOutfitMatchSfx()
-        {
-            if (Instance != null)
-                Instance.PlayLessThanIdealOutfitMatchSfx();
-            else
-                Debug.LogWarning("AudioManager.Instance is null; less-than-ideal outfit match SFX was skipped.");
-        }
-
-        public void PlayEquipClothingItemSfx()
-        {
-            if (_equipClothingItemSfx != null)
-                _audioSource.PlayOneShot(_equipClothingItemSfx);
-        }
-
-        public static void TryPlayEquipClothingItemSfx()
-        {
-            if (Instance != null)
-                Instance.PlayEquipClothingItemSfx();
-            else
-                Debug.LogWarning("AudioManager.Instance is null; equip clothing item SFX was skipped.");
-        }
-
-        public void PlayTimerEndSfx()
-        {
-            if (_timerEndSfx != null)
-                _audioSource.PlayOneShot(_timerEndSfx);
-        }
-
-        public static void TryPlayTimerEndSfx()
-        {
-            if (Instance != null)
-                Instance.PlayTimerEndSfx();
-            else
-                Debug.LogWarning("AudioManager.Instance is null; timer end SFX was skipped.");
-        }
-
-        #endregion
-
-        #region SFX master volume
-
-        /// <summary>Gets or sets the SFX volume on the managed audio source.</summary>
-        public float MasterVolume
-        {
-            get => _audioSource.volume;
-            set => _audioSource.volume = Mathf.Clamp01(value);
-        }
-
-        public static bool TryGetMasterVolume(out float volume)
-        {
-            if (Instance != null) { volume = Instance.MasterVolume; return true; }
-            volume = 1f;
-            return false;
-        }
-
-        public static bool TrySetMasterVolume(float volume)
-        {
-            if (Instance != null) { Instance.MasterVolume = volume; return true; }
-            return false;
-        }
-
-        #endregion
     }
 }

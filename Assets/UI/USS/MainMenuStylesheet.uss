@@ -43,9 +43,7 @@ Button.main-menu-button {
     position: relative;
     overflow: visible;
     align-self: center;
-    width: 320px;
-    min-width: 140px;
-    max-width: 320px;
+    width: 425px;
     height: 48px;
     flex-shrink: 0;
     margin-top: 10px;
@@ -60,6 +58,8 @@ Button.main-menu-button {
 }
 
 .sandbox-option-button {
+    width: 200px;
+    height: 40px;
 }
 
 .logo-image {

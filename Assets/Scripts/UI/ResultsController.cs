@@ -64,9 +64,7 @@ namespace Assets.Scripts.UI
         private void OnDisable()
         {
             _retryButton?.UnregisterCallback<ClickEvent>(GoToWardrobe);
-
             _mainMenuButton?.UnregisterCallback<ClickEvent>(GoToMainMenu);
-
             _retryScenarioButton?.UnregisterCallback<ClickEvent>(NewScenario);
 
             foreach (AsyncOperationHandle<Sprite> handle in _spriteHandles)
@@ -82,7 +80,7 @@ namespace Assets.Scripts.UI
         /// <param name="e">The UI click event that triggered navigation.</param>
         private void GoToWardrobe(ClickEvent e)
         {
-            AudioManager.TryPlayButtonSfx();
+            AudioManager.Instance.PlaySfx(SfxType.CommonButton);
             NavigationManager.Instance.NavigateToScene(GameConstants.WardrobeScene);
         }
 
@@ -92,7 +90,7 @@ namespace Assets.Scripts.UI
         /// <param name="e">The UI click event that triggered navigation.</param>
         private void GoToMainMenu(ClickEvent e)
         {
-            AudioManager.TryPlayButtonSfx();
+            AudioManager.Instance.PlaySfx(SfxType.CommonButton);
             NavigationManager.Instance.NavigateToScene(GameConstants.MainMenuScene);
         }
 
@@ -102,7 +100,7 @@ namespace Assets.Scripts.UI
         /// <param name="e">The UI click event that triggered loading a new scenario.</param>
         private void NewScenario(ClickEvent e)
         {
-            AudioManager.TryPlayButtonSfx();
+            AudioManager.Instance.PlaySfx(SfxType.CommonButton);
             NavigationManager.Instance.NavigateToScene(GameConstants.ScenarioScene);
         }
 
@@ -230,13 +228,13 @@ namespace Assets.Scripts.UI
             float totalScore = jacketScore + topScore + bottomScore + shoesScore;
             if (totalScore >= 4.0f)
             {
-                AudioManager.TryPlayIdealOutfitMatchSfx();
+                AudioManager.Instance.PlaySfx(SfxType.IdealOutfitMatch);
                 if (_confettiSystem != null)
                     _confettiSystem.Play();
             }
             else
             {
-                AudioManager.TryPlayLessThanIdealOutfitMatchSfx();
+                AudioManager.Instance.PlaySfx(SfxType.LessThanIdealOutfitMatch);
             }
         }
 

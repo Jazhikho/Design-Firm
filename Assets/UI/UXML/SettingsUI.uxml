@@ -9,7 +9,9 @@
         <ui:VisualElement name="root" class="middle-row" style="border-right-width: 50px; border-left-width: 50px;">
             <ui:ScrollView class="settings-panel">
                 <ui:Label text="Audio" name="labelSound" class="settings-header" style="margin-top: 10px; margin-bottom: 10px;"/>
-                <ui:Slider label="Master Volume" value="50" high-value="100" name="MasterSlider" class="slider" style="font-size: 24px;"/>
+                <ui:Slider label="Master Volume" value="50" high-value="100" name="sliderMasterVolume" class="slider" style="font-size: 24px;"/>
+                <ui:Slider label="Music Volume" value="50" high-value="100" name="sliderMusicVolume" class="slider" style="font-size: 24px;"/>
+                <ui:Slider label="SFX Volume" value="50" high-value="100" name="sliderSFXVolume" class="slider" style="font-size: 24px;"/>
             </ui:ScrollView>
         </ui:VisualElement>
         <ui:VisualElement name="bottomRow" class="bottomRow">

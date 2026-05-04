@@ -34,7 +34,7 @@ public class CreditsController : MonoBehaviour
     /// </summary>
     private void OnCreditsCloseButtonClick(ClickEvent _)
     {
-        AudioManager.Instance.PlayButtonSfx();
+        AudioManager.Instance.PlaySfx(SfxType.CommonButton);
         NavigationManager.Instance.NavigateToScene(GameConstants.MainMenuScene);
     }
 

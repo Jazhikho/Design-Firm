@@ -422,7 +422,7 @@ namespace Assets.Scripts.UI
         /// <summary>Returns from wardrobe to scenario selection.</summary>
         private void GoToScenarios(ClickEvent e)
         {
-            AudioManager.TryPlayButtonSfx();
+            AudioManager.Instance.PlaySfx(SfxType.CommonButton);
             NavigationManager.Instance.NavigateToScene(GameConstants.ScenarioScene);
         }
 
@@ -434,7 +434,7 @@ namespace Assets.Scripts.UI
                 Debug.LogError("WardrobeController: nextScene is not set; check sandbox mode and Build Settings.");
                 return;
             }
-            AudioManager.TryPlaySubmitOutfitSfx();
+            AudioManager.Instance.PlaySfx(SfxType.SubmitOutfit);
             NavigationManager.Instance.NavigateToScene(_nextScene);
         }
 

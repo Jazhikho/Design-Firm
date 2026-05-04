@@ -3,7 +3,6 @@ using Assets.Scripts.Data;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 namespace Assets.Scripts.UI
@@ -208,7 +207,7 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void BackScene(ClickEvent e)
         {
-            AudioManager.TryPlayButtonSfx();
+            AudioManager.Instance.PlaySfx(SfxType.CommonButton);
             NavigationManager.Instance.NavigateToScene(GameConstants.MainMenuScene);
         }
 

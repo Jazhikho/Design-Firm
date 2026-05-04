@@ -2,15 +2,26 @@
     <Style src="project://database/Assets/UI/USS/CommonStylesheet.uss?fileID=7433441132597879392&amp;guid=8e23400638b471247abded66e2e9521e&amp;type=3#CommonStylesheet"/>
     <Style src="project://database/Assets/UI/USS/ResultsStylesheet.uss?fileID=7433441132597879392&amp;guid=59f5a80705eb3a24daaff36c9dbb1ed9&amp;type=3#ResultsStylesheet"/>
     <ui:VisualElement name="AppDocumentRoot" class="app-document-root">
-        <ui:Image name="imgBackground" class="background-runway"/>
+        <ui:VisualElement style="flex-grow: 1; position: absolute; top: 0; left: 0; bottom: 0; right: 0; flex-direction: row;">
+            <ui:Image name="imgBackground1" class="background-runway" style="position: relative; top: auto; left: auto; bottom: auto; right: auto; flex-grow: 1; -unity-background-scale-mode: scale-and-crop;"/>
+            <ui:Image name="imgBackground2" class="background-runway" style="position: relative; top: auto; left: auto; right: auto; bottom: auto; flex-grow: 1; -unity-background-scale-mode: scale-and-crop;"/>
+        </ui:VisualElement>
         <ui:VisualElement name="topRow" class="topRow">
             <ui:Button text="Main Menu" name="btnMainMenu" class="button-common results-button"/>
             <ui:Button text="New Scenario" name="btnNewScenario" class="button-common results-button"/>
             <ui:Button text="Retry Scenario" name="btnRetry" class="button-common results-button"/>
         </ui:VisualElement>
         <ui:VisualElement name="middleRow" style="flex-grow: 1; min-height: 0; min-width: 0; flex-direction: row; margin-left: 40px; margin-right: 40px;">
+            <ui:VisualElement name="colYourOutfitVisual" style="flex-grow: 2;">
+                <ui:Image name="activeAvatar" class="stacked-image" style="padding-left: 20%;"/>
+                <ui:Image name="activeShoes" class="stacked-image" style="padding-left: 20%;"/>
+                <ui:Image name="activeBottoms" class="stacked-image" style="padding-left: 20%;"/>
+                <ui:Image name="activeTop" class="stacked-image" style="padding-left: 20%;"/>
+                <ui:Image name="activeJacket" class="stacked-image" style="padding-left: 20%;"/>
+                <ui:Label text="Your Outfit" class="label-avatar"/>
+            </ui:VisualElement>
             <ui:VisualElement name="colFeedback" style="flex-direction: column; flex-grow: 1;">
-                <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap; width: 250px; align-self: center;">
+                <ui:VisualElement style="flex-grow: 1; flex-direction: row; flex-wrap: wrap; width: 242px; align-self: center;">
                     <ui:VisualElement name="jacketScoreContainer" class="clothing-score-tile">
                         <ui:Image name="imgJacketSlotIcon" source="project://database/Assets/Art/UI/Icon_Jacket.png?fileID=21300000&amp;guid=918a5d551a3c9a347b21da20cfd21956&amp;type=3#Icon_Jacket"/>
                         <ui:Image name="imgJacketStarScore" source="project://database/Assets/Art/UI/Icon_EmptyStar.png?fileID=21300000&amp;guid=0465afbfb5b4b1840ad282b64eb45169&amp;type=3#Icon_EmptyStar"/>
@@ -29,21 +40,13 @@
                     </ui:VisualElement>
                 </ui:VisualElement>
             </ui:VisualElement>
-            <ui:VisualElement name="colYourOutfitVisual" style="flex-grow: 3;">
-                <ui:Image name="activeAvatar" class="stacked-image" style="padding-left: 20%;"/>
-                <ui:Image name="activeShoes" class="stacked-image" style="padding-left: 20%;"/>
-                <ui:Image name="activeBottoms" class="stacked-image" style="padding-left: 20%;"/>
-                <ui:Image name="activeTop" class="stacked-image" style="padding-left: 20%;"/>
-                <ui:Image name="activeJacket" class="stacked-image" style="padding-left: 20%;"/>
-                <ui:Label text="Your Outfit" class="label-avatar"/>
-            </ui:VisualElement>
-            <ui:VisualElement name="colIdealOutfitVisual" style="flex-grow: 3;">
-                <ui:Image name="idealAvatar" source="" class="stacked-image" style="width: 65%;"/>
-                <ui:Image name="idealShoes" class="stacked-image" style="width: 65%;"/>
-                <ui:Image name="idealBottoms" class="stacked-image" style="width: 65%;"/>
-                <ui:Image name="idealTop" class="stacked-image" style="width: 65%;"/>
-                <ui:Image name="idealJacket" class="stacked-image stacked-image-ideal-outfit"/>
-                <ui:Label text="Ideal Outfit" class="label-avatar" style="font-size: 18px;"/>
+            <ui:VisualElement name="colIdealOutfitVisual" style="flex-grow: 2;">
+                <ui:Image name="idealAvatar" source="" class="stacked-image" style="width: auto;"/>
+                <ui:Image name="idealShoes" class="stacked-image" style="width: auto;"/>
+                <ui:Image name="idealBottoms" class="stacked-image" style="width: auto;"/>
+                <ui:Image name="idealTop" class="stacked-image" style="width: auto;"/>
+                <ui:Image name="idealJacket" class="stacked-image stacked-image-ideal-outfit" style="width: auto;"/>
+                <ui:Label text="Ideal Outfit" class="label-avatar"/>
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="bottomRow" class="bottomRow">

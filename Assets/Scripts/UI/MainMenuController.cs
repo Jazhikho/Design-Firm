@@ -79,7 +79,7 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void OnCreditsButtonClick(ClickEvent _)
         {
-            AudioManager.Instance.PlayButtonSfx();
+            AudioManager.Instance.PlaySfx(SfxType.CommonButton);
             NavigationManager.Instance.NavigateToScene(GameConstants.CreditsScene);
         }
 
@@ -88,7 +88,7 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void OnPlayClicked(ClickEvent e)
         {
-            AudioManager.TryPlayButtonSfx();
+            AudioManager.Instance.PlaySfx(SfxType.CommonButton);
             NavigationManager.Instance.NavigateToScene(GameConstants.ScenarioScene);
         }
 
@@ -97,7 +97,7 @@ namespace Assets.Scripts.UI
         /// </summary>
         private void OnQuitClicked(ClickEvent e)
         {
-            AudioManager.TryPlayButtonSfx();
+            AudioManager.Instance.PlaySfx(SfxType.CommonButton);
             StartCoroutine(QuitAfterSfx());
         }
 
@@ -109,7 +109,7 @@ namespace Assets.Scripts.UI
         {
             float waitSeconds = 0f;
             if (AudioManager.Instance != null)
-                waitSeconds = AudioManager.Instance.ButtonSfxLength;
+                waitSeconds = AudioManager.Instance.CommonButtonSfxLength;
 
             yield return new WaitForSeconds(waitSeconds);
             Application.Quit();
@@ -130,7 +130,7 @@ namespace Assets.Scripts.UI
                 return;
             }
 
-            AudioManager.TryPlayButtonSfx();
+            AudioManager.Instance.PlaySfx(SfxType.CommonButton);
             _sandboxSubMenu.visible = !_sandboxSubMenu.visible;
         }
 
@@ -159,13 +159,13 @@ namespace Assets.Scripts.UI
                 sandboxScenario.avatarImage = "Avatars/MascModel.png";
 
             ScenarioState.Instance.ActiveScenario = sandboxScenario;
-            AudioManager.TryPlayButtonSfx();
+            AudioManager.Instance.PlaySfx(SfxType.CommonButton);
             NavigationManager.Instance.NavigateToScene(GameConstants.WardrobeScene);
         }
 
         private void OnSettingsButtonClick(ClickEvent evt)
         {
-            AudioManager.TryPlayButtonSfx();
+            AudioManager.Instance.PlaySfx(SfxType.CommonButton);
             NavigationManager.Instance.NavigateToScene(GameConstants.SettingsScene);
         }
     }

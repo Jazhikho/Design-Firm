@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 355816113}
   - component: {fileID: 355816112}
   - component: {fileID: 355816111}
+  - component: {fileID: 355816114}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -211,6 +212,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &355816114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355816110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!1 &887690128
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,14 +369,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f78799fea3cf3349a41cd509bee4a9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Core.AudioManager
-  _buttonSfx: {fileID: 8300000, guid: 5404e3eed0b05f24493e8f3b56038d09, type: 3}
-  _backgroundMusic: {fileID: 8300000, guid: 80fda1bdd60864343adc7333b56570fa, type: 3}
-  _musicVolume: 0.5
-  _submitOutfitSfx: {fileID: 8300000, guid: 617dbe7da463a7d43a948eba9af446ce, type: 3}
-  _idealOutfitMatchSfx: {fileID: 8300000, guid: 6441c9c3de3e0a74ab1a536cc99fb531, type: 3}
-  _lessThanIdealOutfitMatchSfx: {fileID: 8300000, guid: d825e481934b7864eb7d2c762f7de2b7, type: 3}
-  _equipClothingItemSfx: {fileID: 8300000, guid: a03e4df61bc040a4fbd9036a1e507e93, type: 3}
-  _timerEndSfx: {fileID: 8300000, guid: 36866d8c98956a04cae2bbbc0e5d7b87, type: 3}
+  audioMixer: {fileID: 24100000, guid: 022ee536dfcd288448005dc215dede6e, type: 2}
+  sfxMixerGroup: {fileID: -2333661262567227777, guid: 022ee536dfcd288448005dc215dede6e, type: 2}
+  musicMixerGroup: {fileID: 7964134151412680647, guid: 022ee536dfcd288448005dc215dede6e, type: 2}
+  backgroundMusic: {fileID: 8300000, guid: 80fda1bdd60864343adc7333b56570fa, type: 3}
+  playMusicOnStart: 1
+  sfxEntries:
+  - Type: 0
+    Clip: {fileID: 8300000, guid: 5404e3eed0b05f24493e8f3b56038d09, type: 3}
+  - Type: 4
+    Clip: {fileID: 8300000, guid: a03e4df61bc040a4fbd9036a1e507e93, type: 3}
+  - Type: 1
+    Clip: {fileID: 8300000, guid: 617dbe7da463a7d43a948eba9af446ce, type: 3}
+  - Type: 2
+    Clip: {fileID: 8300000, guid: 6441c9c3de3e0a74ab1a536cc99fb531, type: 3}
+  - Type: 3
+    Clip: {fileID: 8300000, guid: d825e481934b7864eb7d2c762f7de2b7, type: 3}
+  - Type: 5
+    Clip: {fileID: 8300000, guid: 36866d8c98956a04cae2bbbc0e5d7b87, type: 3}
 --- !u!82 &1685619526
 AudioSource:
   m_ObjectHideFlags: 0

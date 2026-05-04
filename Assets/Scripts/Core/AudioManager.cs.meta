@@ -4,7 +4,14 @@ MonoImporter:
   externalObjects: {}
   serializedVersion: 2
   defaultReferences:
+  - audioMixer: {fileID: 24100000, guid: 022ee536dfcd288448005dc215dede6e, type: 2}
   - _buttonSfx: {fileID: 8300000, guid: 5404e3eed0b05f24493e8f3b56038d09, type: 3}
+  - _backgroundMusic: {fileID: 8300000, guid: 80fda1bdd60864343adc7333b56570fa, type: 3}
+  - _submitOutfitSfx: {instanceID: 0}
+  - _idealOutfitMatchSfx: {instanceID: 0}
+  - _lessThanIdealOutfitMatchSfx: {instanceID: 0}
+  - _equipClothingItemSfx: {instanceID: 0}
+  - _timerEndSfx: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
