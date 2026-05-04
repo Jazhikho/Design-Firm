@@ -54,6 +54,14 @@
     transition-timing-function: ease;
     transition-delay: 0s;
     -unity-font-definition: url("project://database/Assets/UI/Fonts/Caldstone-SemiBold.otf?fileID=12800000&guid=cb230a455f9d47d41b5e9547def9fba4&type=3#Caldstone-SemiBold");
+    color: rgb(0, 0, 0);
+    -unity-font-style: normal;
+    -unity-slice-left: 340;
+    -unity-slice-top: 340;
+    -unity-slice-right: 340;
+    -unity-slice-bottom: 340;
+    -unity-slice-type: tiled;
+    -unity-slice-scale: 0.1px;
 }
 
 .button-common:hover {
@@ -112,3 +120,45 @@
 .main-menu-btn:active {
     background-color: rgb(249, 143, 156);
 }
+
+
+
+#scrollScenariosList #unity-tracker {
+    background-image: url("project://database/Assets/Art/UI/Sliders/Slider_Sew.png?fileID=2800000&guid=70febfc68954cbe449e4bf0a19e96323&type=3#Slider_Sew");
+    -unity-slice-type: tiled;
+    -unity-slice-left: 300;
+    -unity-slice-top: 300;
+    -unity-slice-right: 300;
+    -unity-slice-bottom: 300;
+    -unity-slice-scale: 0.1px;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}
+
+#scrollScenariosList #unity-dragger {
+    background-color: rgba(255, 255, 255, 0);
+    background-image: url("project://database/Assets/Art/UI/Sliders/Dragger_Sew.png?fileID=2800000&guid=f6e9df0b2c7b7db4da7f8ef8dd9e0574&type=3#Dragger_Sew");
+    width: 34px;
+    -unity-slice-type: tiled;
+    -unity-slice-left: 212;
+    -unity-slice-top: 212;
+    -unity-slice-right: 212;
+    -unity-slice-bottom: 212;
+    -unity-slice-scale: 0.1px;
+}
+
+#scrollScenariosList #unity-dragger-border {
+}
+
+#scrollScenariosList #unity-low-button {
+    visibility: hidden;
+}
+
+#scrollScenariosList #unity-high-button {
+    visibility: hidden;
+}
+
+
