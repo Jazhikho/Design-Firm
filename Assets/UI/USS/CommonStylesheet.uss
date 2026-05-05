@@ -30,11 +30,11 @@
 
 .background-runway {
     position: absolute;
-    background-image: url("project://database/Assets/Art/Backgrounds/RunwayBlockout.jpg?fileID=21300000&guid=f18ea575f83278347a4688f400d99869&type=3#RunwayBlockout");
     left: 0;
     top: 0;
     right: 0;
     bottom: 0;
+    background-image: url("project://database/Assets/Art/Backgrounds/RunwayBlockout-shaded.jpg?fileID=21300000&guid=8545f19f9b8136a4eaab5cc7c91f2e03&type=3#RunwayBlockout-shaded");
 }
 
 .button-common {
@@ -54,17 +54,17 @@
 }
 
 .button-common:hover {
-  background-color: rgba(244,144,152,1);
-  border-color: rgba(250,212,224,0.8);
-  translate: 0 -1px;
+    background-color: rgb(244, 144, 152);
+    border-color: rgba(250, 212, 224, 0.8);
+    translate: 0 -1px;
 }
 
 .button-common:active {
-  background-color: rgba(224,112,144,1);
-  border-color: rgba(224,112,144,1);
-  translate: 0 1px;
-  transition-duration: 80ms;
-  transition-timing-function: ease-in;
+    background-color: rgb(224, 112, 144);
+    border-color: rgb(224, 112, 144);
+    translate: 0 1px;
+    transition-duration: 80ms;
+    transition-timing-function: ease-in;
 }
 
 .small-game-title {
@@ -92,16 +92,6 @@
     min-width: auto;
 }
 
-
-
-
-
-
-
-
-
 .stacked-image-ideal-outfit {
     width: 65%;
 }
-
-
