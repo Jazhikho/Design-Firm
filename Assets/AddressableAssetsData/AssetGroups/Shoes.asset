@@ -15,13 +15,13 @@ MonoBehaviour:
   m_GroupName: Shoes
   m_GUID: 25c287493a920824aa4eab94088aea84
   m_SerializeEntries:
-  - m_GUID: 50eceee05f4e35d4b818208b762629f1
-    m_Address: Shoes/2000sCasualShoes.png
+  - m_GUID: 11f2a8af145bf694b9350e052d0e7e99
+    m_Address: Shoes/1990sBusinessShoes.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 5cb1c53002bca9646aa64d047fc69655
-    m_Address: Shoes/2010sCasualShoesF.png
+  - m_GUID: 50eceee05f4e35d4b818208b762629f1
+    m_Address: Shoes/2000sCasualShoes.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -42,11 +42,6 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: b4514c8084eebb540b7dd2d65a76602a
     m_Address: Shoes/2000sFormalShoes.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c163cb48eecc62741a5577e928b720ca
-    m_Address: Shoes/2010sCasualShoesM.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

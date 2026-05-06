@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 10e32cee56cfbb143ae1a4468dee11bb
+guid: af03215032d588f4189a678cfb344660
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4168864884248414144
-    second: 2010sCasualJacketF_0
-  - first:
-      213: 1860057400779437438
-    second: 2010sCasualJacketF_1
+      213: -7256181270009819904
+    second: 1990sBusinessBottom_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -116,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 2010sCasualJacketF_0
+      name: 1990sBusinessBottom_0
       rect:
         serializedVersion: 2
-        x: 301
-        y: 710
-        width: 104
-        height: 254
+        x: 340
+        y: 62
+        width: 304
+        height: 898
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,30 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 048f5c1b9773526c0800000000000000
-      internalID: -4168864884248414144
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2010sCasualJacketF_1
-      rect:
-        serializedVersion: 2
-        x: 438
-        y: 689
-        width: 124
-        height: 277
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e757b4bd95040d910800000000000000
-      internalID: 1860057400779437438
+      spriteID: 00dc83f649ddc4b90800000000000000
+      internalID: -7256181270009819904
       vertices: []
       indices: 
       edges: []
@@ -173,8 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      2010sCasualJacketF_0: -4168864884248414144
-      2010sCasualJacketF_1: 1860057400779437438
+      1990sBusinessBottom_0: -7256181270009819904
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
