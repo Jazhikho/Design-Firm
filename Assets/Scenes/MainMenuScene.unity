@@ -313,6 +313,10 @@ MonoBehaviour:
   _equipSfx: {fileID: 8300000, guid: a03e4df61bc040a4fbd9036a1e507e93, type: 3}
   _unequipSfx: {fileID: 8300000, guid: b533bc66017c58b419f56d785c99ccea, type: 3}
   _swapSfx: {fileID: 8300000, guid: 3f7b7082c048c2b46b8824b634939364, type: 3}
+  _MainMusic: {fileID: 8300000, guid: 80fda1bdd60864343adc7333b56570fa, type: 3}
+  _80Music: {fileID: 8300000, guid: a9fcf6339da6c8945bd4f4a648582421, type: 3}
+  _90Music: {fileID: 8300000, guid: 2c2eb17a8e6550841ae42e70e4344eb4, type: 3}
+  _00Music: {fileID: 8300000, guid: e3e8831202027784886123fe50f8466c, type: 3}
 --- !u!82 &1685619526
 AudioSource:
   m_ObjectHideFlags: 0
@@ -322,13 +326,13 @@ AudioSource:
   m_GameObject: {fileID: 1685619524}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: da24b7142391dd04392b2d1936312323, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

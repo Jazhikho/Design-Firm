@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Core
 {
@@ -23,6 +24,16 @@ namespace Assets.Scripts.Core
         private AudioClip _unequipSfx;
         [SerializeField]
         private AudioClip _swapSfx;
+        //MUSIC
+        [SerializeField]
+        private AudioClip _MainMusic;
+        [SerializeField]
+        private AudioClip _80Music;
+        [SerializeField]
+        private AudioClip _90Music;
+        [SerializeField]
+        private AudioClip _00Music;
+        private AudioClip _CurrentMusic;
 
         private AudioSource _audioSource;
 
@@ -65,6 +76,7 @@ namespace Assets.Scripts.Core
             Instance = this;
             DontDestroyOnLoad(gameObject);
             _audioSource = GetComponent<AudioSource>();
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
         /// <summary>
@@ -177,6 +189,65 @@ namespace Assets.Scripts.Core
             else
             {
                 Debug.LogWarning("AudioManager.Instance is null; other SFX was skipped.");
+            }
+        }
+        /// <summary>
+        /// Checks if the supplied <paramref name="musicClip"/> is currently playing, if not stop what music is currently playing and start playing the new music.
+        /// </summary>
+        public void PlayMusic(AudioClip musicClip)
+        {
+            if (musicClip != _CurrentMusic && musicClip != null)
+            {
+                _CurrentMusic = musicClip;
+                _audioSource.Stop();
+                _audioSource.generator = musicClip;
+                _audioSource.Play();
+            }
+            
+        }
+        /// <summary>
+        /// Identifies if the active scenario has an era and returns the appropriate music for that era.
+        /// </summary>
+        private AudioClip GetEraMusic()
+        {
+            AudioClip EraMusic = null;
+            if (ScenarioState.Instance == null)
+            {
+                Debug.LogError("AudioManager: Get Era Music failure");
+                return null;
+            }
+            switch (ScenarioState.Instance.ActiveScenario.era)
+            {
+                case "1980s":
+                    EraMusic = _80Music;
+                    return EraMusic;
+                case "1990s":
+                    EraMusic = _90Music;
+                    return EraMusic;
+                case "2000s":
+                    EraMusic = _00Music;
+                    return EraMusic;
+            }
+            if (EraMusic == null)
+            {
+                EraMusic = _MainMusic;
+            }
+            return EraMusic;
+        }
+        /// <summary>
+        /// Checks if the current scene is the wardrobe or result scene and plays music with the GetEraMusic function if it does, or plays the main menu music if it does not.
+        /// </summary>
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            string sceneName = scene.name;
+
+            if (sceneName == GameConstants.WardrobeScene || sceneName == GameConstants.TaskResultScene)
+            {
+                PlayMusic(GetEraMusic());
+            }
+            else
+            {
+                PlayMusic(_MainMusic);
             }
         }
     }
