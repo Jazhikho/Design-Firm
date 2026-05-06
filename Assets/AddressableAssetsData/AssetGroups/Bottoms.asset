@@ -30,16 +30,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4128de20fc13e7e448f158ad62156098
-    m_Address: Bottom/2010sCasualBottomM.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 42cca1817ddc83f4f9422d4f43af06f5
-    m_Address: Bottom/2010sCasualBottomF.png
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6b3d8104439aee5438ed033023ce8f94
     m_Address: Bottom/1990sFormalBottom.png
     m_ReadOnly: 0
@@ -47,6 +37,11 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7f370a1c5182eec40b365ab16d3b4c84
     m_Address: Bottom/2000sCasualBottom.png
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: af03215032d588f4189a678cfb344660
+    m_Address: Bottom/1990sBusinessBottom.png
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
