@@ -73,40 +73,22 @@
       "description": "A pair of classic black heels."
     },
     {
-      "id": "1980sFormalJacket",
-      "name": "Blazer with Shoulder Pads",
-      "slot": "jacket",
-      "gender": "female",
-      "coversBottom": false,
-      "sprite": "Jackets/1980sFormalJacket.png",
-      "description": "A pink blazer with shoulder pads."
-    },
-    {
       "id": "1980sFormalTop",
-      "name": "White Turtleneck with Jewelry",
+      "name": "Dress with Puffy Sleeves",
       "slot": "top",
       "gender": "female",
-      "coversBottom": false,
+      "coversBottom": true,
       "sprite": "Tops/1980sFormalTop.png",
-      "description": "A white turtleneck with gold jewelry."
-    },
-    {
-      "id": "1980sFormalBottom",
-      "name": "Pencil Skirt and Sheer Tights",
-      "slot": "bottom",
-      "gender": "female",
-      "coversBottom": false,
-      "sprite": "Bottom/1980sFormalBottom.png",
-      "description": "A black pencil skirt over sheer tights."
+      "description": "A floor length gown with puffy sleeves."
     },
     {
       "id": "1980sFormalShoes",
-      "name": "Black Heels with Ankle Strap",
+      "name": "Decorated Heels",
       "slot": "shoes",
       "gender": "female",
       "coversBottom": false,
       "sprite": "Shoes/1980sFormalShoes.png",
-      "description": "A pair of black heels secured with an ankle strap."
+      "description": "A pair of shiny heels decorated with a flower."
     },
     {
       "id": "1980sBusinessJacket",
@@ -199,31 +181,40 @@
       "description": " A pair of dark dress shoes."
     },
      {
-      "id": "1990sBusinessTop",
+      "id": "1990sBusinessJacket",
       "name": "Loose Fitting Blazer",
+      "slot": "jacket",
+      "gender": "female",
+      "coversBottom": false,
+      "sprite": "Jackets/1990sBusinessJacket.png",
+      "description": "A full cut blazer with a loose fit."
+    },
+     {
+      "id": "1990sBusinessTop",
+      "name": "White Turtleneck with Jewelry",
       "slot": "top",
-      "gender": "male",
+      "gender": "female",
       "coversBottom": false,
       "sprite": "Tops/1990sBusinessTop.png",
-      "description": "A full cut blazer with a loose fit."
+      "description": "A white turtleneck with gold jewelry."
     },
     {
       "id": "1990sBusinessBottom",
-      "name": "High-Waisted Trousers",
+      "name": "Pencil Skirt and Sheer Tights",
       "slot": "bottom",
-      "gender": "male",
+      "gender": "female",
       "coversBottom": false,
       "sprite": "Bottom/1990sBusinessBottom.png",
-      "description": "Pleated trousers with a high-waist."
+      "description": "A black pencil skirt over sheer tights."
     },
     {
       "id": "1990sBusinessShoes",
-      "name": "Oxford Loafers",
+      "name": "Black Heels with Ankle Strap",
       "slot": "shoes",
-      "gender": "male",
+      "gender": "female",
       "coversBottom": false,
       "sprite": "Shoes/1990sBusinessShoes.png",
-      "description": "A chunky pair of oxford loafers."
+      "description": "A pair of black heels secured with an ankle strap."
     },
     {
       "id": "1990sCasualTop",

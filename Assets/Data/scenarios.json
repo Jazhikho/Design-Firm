@@ -78,9 +78,7 @@
         "shoes": ""
       },
       "idealOutfit": {
-        "jacket": { "itemId": "1980sFormalJacket", "score": 1.0, "commentary": "" },
         "top": { "itemId": "1980sFormalTop", "score": 1.0, "commentary": "" },
-        "bottom": { "itemId": "1980sFormalBottom", "score": 1.0, "commentary": "" },
         "shoes": { "itemId": "1980sFormalShoes", "score": 1.0, "commentary": "" }
       }
     },
@@ -175,7 +173,7 @@
       "era": "1990s",
       "category": "business", 
       "backgroundImage": "Scenarios/DressingRoom.png",
-      "avatarImage": "Avatars/MascModel.png",
+      "avatarImage": "Avatars/2000FemModel.png",
       "scoredItems": [
       ],
       "incorrectSlotFeedback": {
@@ -185,6 +183,7 @@
         "shoes": ""
       },
       "idealOutfit": {
+        "jacket": { "itemId": "1990sBusinessJacket", "score": 1.0, "commentary": "" },
         "top": { "itemId": "1990sBusinessTop", "score": 1.0, "commentary": "" },
         "bottom": { "itemId": "1990sBusinessBottom", "score": 1.0, "commentary": "" },
         "shoes": { "itemId": "1990sBusinessShoes", "score": 1.0, "commentary": "" }
