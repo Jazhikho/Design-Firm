@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 746b59cb07f400542b121ec2c4df0292
+guid: 21428c23e6c2c0f47b547580bf605755
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1552157400154358130
-    second: shoeRackOutline_0
+      213: 589237682989910876
+    second: Shoe Rack Outline 3_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: shoeRackOutline_0
+      name: Shoe Rack Outline 3_0
       rect:
         serializedVersion: 2
-        x: 21
-        y: 0
-        width: 1083
-        height: 603
+        x: 72
+        y: 444
+        width: 757
+        height: 284
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e8e3e487111a57ae0800000000000000
-      internalID: -1552157400154358130
+      spriteID: c5b43eefc846d2800800000000000000
+      internalID: 589237682989910876
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      shoeRackOutline_0: -1552157400154358130
+      Shoe Rack Outline 3_0: 589237682989910876
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
