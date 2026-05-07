@@ -316,7 +316,7 @@ MonoBehaviour:
   _MainMusic: {fileID: 8300000, guid: 80fda1bdd60864343adc7333b56570fa, type: 3}
   _80Music: {fileID: 8300000, guid: a9fcf6339da6c8945bd4f4a648582421, type: 3}
   _90Music: {fileID: 8300000, guid: 2c2eb17a8e6550841ae42e70e4344eb4, type: 3}
-  _00Music: {fileID: 8300000, guid: e3e8831202027784886123fe50f8466c, type: 3}
+  _00Music: {fileID: 8300000, guid: 2c2eb17a8e6550841ae42e70e4344eb4, type: 3}
 --- !u!82 &1685619526
 AudioSource:
   m_ObjectHideFlags: 0
