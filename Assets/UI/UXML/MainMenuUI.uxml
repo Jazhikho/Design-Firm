@@ -2,7 +2,7 @@
     <Style src="project://database/Assets/UI/USS/CommonStylesheet.uss?fileID=7433441132597879392&amp;guid=8e23400638b471247abded66e2e9521e&amp;type=3#CommonStylesheet"/>
     <Style src="project://database/Assets/UI/USS/MainMenuStylesheet.uss?fileID=7433441132597879392&amp;guid=7d161ed00ef895f4caf1c032a658e17b&amp;type=3#MainMenuStylesheet"/>
     <ui:VisualElement name="MainMenuRoot" class="main-menu-root" style="justify-content: flex-start; align-self: center; align-items: center;">
-        <ui:Image name="imgBackground" class="background-runway"/>
+        <ui:Image name="imgBackground" class="background-runway" style="background-image: url(&quot;project://database/Assets/Art/Backgrounds/MuseumExteriorFinal.jpg?fileID=8015653444968251561&amp;guid=c7a80f13ca2008d47a12213d5ab10f26&amp;type=3#MuseumExteriorFinal_0&quot;);"/>
         <ui:Label text="Sew It Goes" emoji-fallback-support="false" class="main-menu-title" style="font-size: 102%;"/>
         <ui:VisualElement style="flex-grow: 1; width: 100%; height: 100%; align-items: center; justify-content: space-around; top: auto;">
             <ui:Button text="Play" name="PlayButton" class="main-menu-btn"/>

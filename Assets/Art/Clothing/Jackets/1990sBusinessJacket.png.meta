@@ -1,19 +1,13 @@
 fileFormatVersion: 2
-guid: 5cb1c53002bca9646aa64d047fc69655
+guid: 090bdf880afc6a547b756a6cb906d158
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6855370343309769916
-    second: 2010sCasualShoesF_0
+      213: -2699864235238044559
+    second: 1990sBusinessJacket_0
   - first:
-      213: 1214494636306464734
-    second: 2010sCasualShoesF_1
-  - first:
-      213: 178442806087268930
-    second: 2010sCasualShoesF_2
-  - first:
-      213: 6196816548317786360
-    second: 2010sCasualShoesF_3
+      213: 4952843326991573598
+    second: 1990sBusinessJacket_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -122,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: 2010sCasualShoesF_0
+      name: 1990sBusinessJacket_0
       rect:
         serializedVersion: 2
-        x: 460
-        y: 688
-        width: 48
-        height: 43
+        x: 634
+        y: 1122
+        width: 158
+        height: 454
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cbcf9b4810b232f50800000000000000
-      internalID: 6855370343309769916
+      spriteID: 17ccad458c7288ad0800000000000000
+      internalID: -2699864235238044559
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: 2010sCasualShoesF_1
+      name: 1990sBusinessJacket_1
       rect:
         serializedVersion: 2
-        x: 435
-        y: 570
-        width: 48
-        height: 10
+        x: 825
+        y: 1125
+        width: 172
+        height: 631
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,52 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: edff9a2ef60cad010800000000000000
-      internalID: 1214494636306464734
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2010sCasualShoesF_2
-      rect:
-        serializedVersion: 2
-        x: 494
-        y: 563
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 24a3e8569c4f97200800000000000000
-      internalID: 178442806087268930
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: 2010sCasualShoesF_3
-      rect:
-        serializedVersion: 2
-        x: 373
-        y: 40
-        width: 206
-        height: 166
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8f07ebc81d38ff550800000000000000
-      internalID: 6196816548317786360
+      spriteID: e522f7db3c80cb440800000000000000
+      internalID: 4952843326991573598
       vertices: []
       indices: 
       edges: []
@@ -223,10 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      2010sCasualShoesF_0: 6855370343309769916
-      2010sCasualShoesF_1: 1214494636306464734
-      2010sCasualShoesF_2: 178442806087268930
-      2010sCasualShoesF_3: 6196816548317786360
+      1990sBusinessJacket_0: -2699864235238044559
+      1990sBusinessJacket_1: 4952843326991573598
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
