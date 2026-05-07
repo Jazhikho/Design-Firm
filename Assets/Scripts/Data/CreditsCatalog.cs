@@ -149,6 +149,16 @@ namespace Assets.Scripts.Data
         public static readonly IReadOnlyList<ThirdPartyCreditEntry> ThirdPartyCredits = new ReadOnlyCollection<ThirdPartyCreditEntry>(new ThirdPartyCreditEntry[]
         {
             new ThirdPartyCreditEntry(
+                "1980s background music",
+                "Sprint 53 Studio (created by Jade Dorman)",
+                "Studio-owned original asset.",
+                "Background music for 1980s era gameplay flow."),
+            new ThirdPartyCreditEntry(
+                "1990s background music",
+                "Sprint 53 Studio (created by Jade Dorman)",
+                "Studio-owned original asset.",
+                "Background music for 1990s era gameplay flow."),
+            new ThirdPartyCreditEntry(
                 "Timer Start",
                 "Pixabay (sound effects)",
                 "Pixabay Content License — free for commercial use; attribution not required.",

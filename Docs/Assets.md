@@ -4,6 +4,8 @@ Track any third-party art, audio, fonts, or other assets used in the project. Ke
 
 | Asset / description | Source / URL | License | Notes |
 |--------------------|--------------|---------|--------|
+| 1980s background music | Created in-house by Jade Dorman (Sprint 53 Studio) | Studio-owned original asset | 1980s era scene music |
+| 1990s background music | Created in-house by Jade Dorman (Sprint 53 Studio) | Studio-owned original asset | 1990s era scene music (also used for current 2000s mapping) |
 | Timer Start | https://pixabay.com/sound-effects/film-special-effects-game-start-317318/ | Pixabay Content License (free commercial use; attribution not required) | Timer start chime |
 | Timer Warning | https://pixabay.com/sound-effects/film-special-effects-warning-sound-6686/ | Pixabay Content License | Low-time warning |
 | Timer End | https://pixabay.com/sound-effects/film-special-effects-tv-show-hiter-351567/ | Pixabay Content License | Timer end |

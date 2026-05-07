@@ -26,6 +26,17 @@ Disclosure and audit trail for AI-assisted work. Update when committing signific
 
 ---
 
+**Date:** 2026-05-07  
+**Tool or model used:** Cursor agent (AI-assisted editing)  
+**Task purpose:** Add explicit music attribution for 1980s and 1990s tracks in shipped credits data and docs asset ledger; sync internal version label.  
+**Input materials used:** `Assets/Scripts/Data/CreditsCatalog.cs`, `Docs/Assets.md`, `VERSION.md`, this log; user-provided attribution direction for Jade Dorman.  
+**Summary of AI contribution:** Added two `ThirdPartyCreditEntry` rows for 1980s/1990s background music (source: Sprint 53 Studio, created by Jade Dorman; studio-owned original asset), added matching `Docs/Assets.md` rows including current 2000s mapping note, and bumped internal label to 1.0.0.8.  
+**What the human accepted / rejected / changed:** User explicitly requested updating credits and sending the update to the repository.  
+**Validation method used:** C# lint check on `CreditsCatalog.cs`; markdown file review.  
+**Final approver:** Chris Del Gesso  
+
+---
+
 **Date:** 2026-05-02  
 **Tool or model used:** Cursor agent (AI-assisted editing)  
 **Task purpose:** Credits scrollbar micro-nudge: increase `#CreditsDialog` horizontal padding and `#CreditsScroll` / vertical-scroller right margins slightly (internal 1.0.0.6).  
